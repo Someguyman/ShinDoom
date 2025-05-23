@@ -1,0 +1,49 @@
+version "4.14.1"
+
+//		Shared		//
+
+#include "Zscript/Monsters/BaseDoom/Sd_Possessed.zs"
+#include "Zscript/Monsters/BaseDoom/Sd_DoomImp.zs"
+#include "Zscript/Monsters/BaseDoom/Sd_BullDemons.zs"
+#include "Zscript/Monsters/BaseDoom/Sd_LostSoul.zs"
+#include "Zscript/Monsters/BaseDoom/Sd_Cacodemon.zs"
+#include "Zscript/Monsters/BaseDoom/Sd_Hellknight.zs"
+#include "Zscript/Monsters/BaseDoom/Sd_BaronOfHell.zs"
+#include "Zscript/Monsters/BaseDoom/Sd_SpiderMastermind.zs"
+#include "Zscript/Monsters/BaseDoom/Sd_Cyberdemon.zs"
+
+#include "Zscript/Monsters/NewGuys/Sd_MonsterSpawner.zs"
+
+//		Doom 1		//
+
+#include "Zscript/Monsters/NewGuys/Sd_Watcher.zs"
+#include "Zscript/Monsters/NewGuys/Sd_Gargoyle.zs"
+#include "Zscript/Monsters/NewGuys/Sd_WarGrin.zs"
+#include "Zscript/Monsters/NewGuys/Sd_SoulHoarders.zs"
+#include "Zscript/Monsters/NewGuys/Sd_HellHound.zs"
+#include "Zscript/Monsters/NewGuys/Sd_HellGaurd.zs"
+#include "Zscript/Monsters/NewGuys/Sd_Summoner.zs"
+
+//		Doom 2		//
+
+#include "Zscript/Monsters/BaseDoom/Sd_Revenant.zs"
+#include "Zscript/Monsters/BaseDoom/Sd_PainElemental.zs"
+#include "Zscript/Monsters/BaseDoom/Sd_Arachnotron.zs"
+#include "Zscript/Monsters/BaseDoom/Sd_Fatso.zs"
+#include "Zscript/Monsters/BaseDoom/Sd_Archvile.zs"
+
+#include "Zscript/Monsters/NewGuys/Sd_DreadKnight.zs"
+#include "Zscript/Monsters/NewGuys/Sd_CyberFatso.zs"
+#include "Zscript/Monsters/NewGuys/Sd_Infernoble.zs"
+
+//		Bosses		//
+
+#include "Zscript/Monsters/Bosses/Sd_IconOfSin.zs"
+#include "Zscript/Monsters/Bosses/Sd_LordBalgarr.zs"
+#include "Zscript/Monsters/Bosses/Sd_AraneaImperatrix.zs"
+
+//		Misc		//
+
+#include "Zscript/Eventhandlers/Sd_Eventhandler.zs"
+#include "Zscript/LevelPostProcessor/Sd_LevelPostProcessor.zs"
+#include "Zscript/ShinDoom_Actor.zs"
