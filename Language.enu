@@ -1,0 +1,23 @@
+[enu default]
+
+GOTCHAINSAW = "\cgA Chainsaw! Find some \cameat\cg! \cc(Slot: 1)";
+PICKUP_PISTOL_DROPPED = "\cgPicked up a pistol. \cc(Slot: 2)";
+GOTSMG = "\cgYou got the sub machine gun! \cc(Slot: 2)";
+GOTSHOTGUN = "\cgYou got the shotgun! \cc(Slot: 3)";
+GOTSHOTGUN2 = "\cgYou got the \cfSuper \cgshotgun! \cc(Slot: 3)";
+GOTRIFLE = "\cgYou got the combat rifle! \cc(Slot: 4)";
+GOTCHAINGUN = "\cgYou got the chaingun! \cc(Slot: 4)";
+GOTLAUNCHER = "\cgYou got the rocket launcher! \cc(Slot: 5)";
+GOTGRENADE = "\cgYou got the grenade launcher! \cc(Slot: 5)";
+GOTPLASMA = "\cgYou got the plasma rifle! \cc(Slot: 6)";
+GOTGAUSS = "\cgYou got the gauss cannon! \cc(Slot: 6)";
+GOTBFG9000 = "\cgYou got the BFG9000! \cdOh yes. \cc(Slot: 6)";
+ID24_GOTINCINERATOR = "\cgYou got the incinerator! \cc(Slot: 6)";
+ID24_GOTCALAMITYBLADE = "\cgYou got the calamity blade! \cxHot Damn\cg! \cc(Slot: 6)";
+GOTCLAW = "\cgYou got the dark claw! \cc(Slot: 7)";
+GOTREAPER = "\cgYou got the reaper! \cc(Slot: 7)";
+GOTUNMAKER = "What the a@&*% is this?! \cc(Slot: 7)";
+
+FN_ZOMBIE = "Former Human";
+FN_SHOTGUN = "Former Seregant";
+FN_HEAVY = "Former Commando";

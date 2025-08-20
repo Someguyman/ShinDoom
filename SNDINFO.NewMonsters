@@ -1,0 +1,163 @@
+
+$random machinegunguy/sight	{ machinegunguy/sight1  machinegunguy/sight2  }
+$random machinegunguy/death	{ machinegunguy/death1  machinegunguy/death2  }
+machinegunguy/sight1 DSXPSIT1
+machinegunguy/sight2 DSXPSIT2
+machinegunguy/active DSXPACT
+machinegunguy/pain DSXPPAIN
+machinegunguy/death1 DSXPDTH1
+machinegunguy/death2 DSXPDTH2
+machinegunguy/attack DSXPFIRE
+$limit machinegunguy/attack 0
+
+$random MechaZombie/Sight { MechaZombie/Sight1 MechaZombie/Sight2 }
+MechaZombie/Sight1 DSMZSIT1
+MechaZombie/Sight2 DSMZSIT2
+MechaZombie/Active DSMZACT
+MechaZombie/Pain DSMZPAIN
+$random MechaZombie/Death { MechaZombie/Death1 MechaZombie/Death2 }
+MechaZombie/Death1 DSMZDTH1
+MechaZombie/Death2 DSMZDTH2
+
+$RANDOM Gargoyle/Sight { Gargoyle/Sight1 Gargoyle/Sight2 }
+Gargoyle/Sight1 DSGGSIT1
+Gargoyle/Sight2 DSGGSIT2
+Gargoyle/Active DSGGACT
+Gargoyle/Pain DSGGPAIN
+Gargoyle/Death DSGGDTH
+Gargoyle/Attack	DSGGSTK
+Gargoyle/Shotx DSGGHIT
+
+$RANDOM harvester/sight { harvester/sight1 harvester/sight2 }
+harvester/sight1 shsight1
+harvester/sight2 shsight2
+$RANDOM harvester/death { harvester/death1 harvester/death2 }
+harvester/death1 shdeath1
+harvester/death2 shdeath2
+harvester/scream SHFBSCRM
+harvester/active DSBGACT
+harvester/pain DSBGPAIN
+harvester/ghost shghscrm
+$pitchset harvester/active 0.6
+$pitchset harvester/pain 0.6
+
+Reaper/Sight DSKN2SIT
+Reaper/Death DSKN2DTH
+Reaper/Active dskntact
+Reaper/Pain dskntpin
+$pitchset Reaper/Sight 0.7
+$pitchset Reaper/death 0.8
+$pitchset Reaper/Pain 0.7
+$pitchset Reaper/Active 0.7
+
+Devourer/Sight DSCACSIT
+Devourer/Active DSCACACT
+Devourer/Pain DSCACPIN
+Devourer/Death DSCACDTH
+$pitchset Devourer/Sight 0.7
+$pitchset Devourer/Active 0.7
+$pitchset Devourer/Pain 0.7
+$pitchset Devourer/Death 0.8
+
+$random imp2/sight		{ imp2/sight1  imp2/sight2 }
+$random imp2/death		{ imp2/death1  imp2/death2 }
+imp2/sight1	dsbgsit1
+imp2/sight2	dsbgsit2
+imp2/pain DSBGPAIN
+imp2/active	dsbgact
+imp2/death1 dsbgdth1
+imp2/death2 dsbgdth2
+imp/attack2 DSFIRSHT
+imp/shotx2 DSFIRXPL
+$limit imp2/active 6
+
+$pitchset imp2/sight 0.9
+$pitchset imp2/active 0.9
+$pitchset imp2/pain 0.9
+$pitchset imp2/death 0.9
+
+demon2/sight dssgtsit
+demon2/active DSDMACT
+demon2/pain DSDMPAIN
+demon2/melee dssgtatk
+demon2/death dssgtdth
+
+$pitchset demon2/sight 0.9
+$pitchset demon2/melee 0.9
+$pitchset demon2/death 0.9
+$pitchset demon2/active 0.9
+$pitchset demon2/pain 0.9
+
+caco2/sight DSCACSIT
+caco2/active DSCACACT
+caco2/pain DSCACPIN
+caco2/death DSCACDTH
+
+$alias caco/attack2 caco/attack
+$alias caco/shotx2 caco/shotx
+
+$pitchset caco2/sight 0.9
+$pitchset caco2/active 0.9
+$pitchset caco2/pain 0.9
+$pitchset caco2/death 0.9
+
+Hound/Sight DSHLHSIT
+Hound/Active DSHLHACT
+Hound/Pain DSHLHPIN
+Hound/Death DSHLHDTH
+$Random Hound/Melee { Hound/Melee1 Hound/Melee2 }
+Hound/Melee1 DSHLHAK1
+Hound/Melee2 DSHLHAK2
+
+$limit Hound/Melee 4
+
+watcher/sight   dswatsit
+watcher/active  dswatact
+watcher/pain	dswatpai
+watcher/death   dswatdth
+watcher/attack  DSWATATK
+watcher/shotx   DSWATHIT
+watcher/bite   DSDEMBIT
+
+Wargrin/Sight DSWAGSIT
+Wargrin/Active DSWAGATK
+Wargrin/Pain DSWAGPIN
+Wargrin/Death DSWAGDTH
+
+Gaurd/sight HWARSIT
+Gaurd/Active HWARACT
+Gaurd/Pain HWARPAI
+Gaurd/death HWARDTH
+Gaurd/melee dskntmel
+Gaurd/attack dskntatk
+Gaurd/shotx dskntexp
+
+Cybruiser/Sight DSDKISIT
+Cybruiser/Active DSDKIACT
+Cybruiser/Pain DSDKIPIN
+Cybruiser/Death DSDKIDTH
+Cybruiser/Walk DSDKIWLK
+
+summoner/sight dssumsit
+summoner/active dssumact
+summoner/pain dssumpai
+summoner/death dssumdth
+summoner/teleport dstelept
+$pitchset summoner/teleport 1.8
+$volume summoner/teleport 0.5
+$limit summoner/teleport 0
+
+Arachknight/Sight DSARASIT
+Arachknight/Pain DSARAPAI
+Arachknight/Active DSARAACT
+Arachknight/Death DSARADTH
+Arachknight/Walk DSARAWLK
+Arachknight/Attack DSARAATK
+$limit Arachknight/Attack 0
+
+corpulent/see                  dsma2sit
+corpulent/attack               dsma2atk
+corpulent/pain                 dsma2pai
+corpulent/death                dsma2dth      
+corpulent/shot				   DSM2SHOT
+corpulent/shotx				   DSMN2EXP

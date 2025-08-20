@@ -1,0 +1,126 @@
+
+grunt/attack DSPOATK
+$attenuation grunt/attack 0.9
+
+$random shotguy/sight		{ shotguy/sight1  shotguy/sight2 }
+$random shotguy/death		{ shotguy/death1  shotguy/death2 }
+shotguy/sight1 DSSPSIT1
+shotguy/sight2 DSSPSIT2
+shotguy/active DSSPACT
+shotguy/pain DSSPPAIN
+shotguy/death1 DSSPDTH1
+shotguy/death2 DSSPDTH2
+shotguy/attack DSSPATK
+$attenuation shotguy/attack 0.9
+
+$random chainguy/sight	{ chainguy/sight1  chainguy/sight2 }
+$random chainguy/death	{ chainguy/death1  chainguy/death2 }
+chainguy/sight1	DSCPSIT1
+chainguy/sight2	DSCPSIT2
+chainguy/active	DSCPACT
+chainguy/pain	DSCPPAIN
+chainguy/death1	DSCPDTH1
+chainguy/death2	DSCPDTH2
+chainguy/attack	DSCPATK
+$limit chainguy/attack 0
+$attenuation chainguy/attack 0.9
+
+imp/pain DSBGPAIN
+
+demon/active DSSGTACT
+demon/pain	DSSGTPIN
+
+spectre/sight dssg2sit
+spectre/active dssg2act
+spectre/pain dssg2pin
+spectre/melee dssg2atk
+spectre/death dssg2dth
+spectre/invisible dssg2inv
+spectre/visible dssg2vis
+
+skull/active dssklact
+skull/pain	dssklpin
+skull/death	dsskldth
+
+caco/active DSCACACT
+caco/pain DSCACPIN
+caco/melee DSCACBIT
+caco/attack	DSCACATK
+caco/shotx DSCACEXP
+
+KnightD1/Sight DSKN2SIT
+KnightD1/Death DSKN2DTH
+KnightD1/pain DSBRSPIN
+KnightD1/active DSBRSACT
+
+$pitchset KnightD1/pain 1.2
+$pitchset KnightD1/active 1.2
+
+knight/active dskntact
+knight/pain	dskntpin
+knight/melee dskntmel
+knight/attack dskntatk
+knight/shotx dskntexp
+
+baron/active DSBRSACT
+baron/pain	DSBRSPIN
+baron/melee	 dsbrsmel
+baron/attack dsbrsatk
+baron/shotx	 dsbrsexp
+
+baby/pain DSBSPPIN
+baby/attack DSBSPATK
+baby/shotx DSBSPEXP
+//$volume baby/walk 0.4
+
+pain/active	DSPEACT
+pain/attack DSPEATK
+
+skeleton/pain DSSKEPIN
+skeleton/tracex	DSSKEEXP
+
+fatso/active DSMANACT
+fatso/attack DSMNSHOT
+fatso/shotx DSMANEXP
+
+vile/raise DSVILREV
+vile/stop DSVILEXP
+
+spider/active DSSPIACT
+spider/pain	DSSPIPIN
+spider/attack DSSPIATK
+spider/walk DSSPIWLK
+spider/XDeath DSSPIEXP
+
+cyber/active DSCYBACT
+cyber/pain DSCYBPIN
+cyber/walk DSMETAL
+cyber/attack DSCYBATK
+cyber/shotx DSCYBEXP
+
+$limit brain/cube 0
+brain/cubeboom DSBOSFIR
+$alias brain/spawn brain/cubeboom
+
+wolfss/active DSSSACT
+wolfss/pain	DSSSPAIN
+wolfss/attack DSSSATK
+
+Commanderkeen/pain keenpain
+Commanderkeen/death keendth
+
+$volume misc/MechanicalWeer 0.5
+$pitchset misc/MechanicalWeer 0.7
+misc/MechanicalWeer DSMWEER
+misc/thud DSTHUD
+misc/HeavyThud DSTHUD
+caco/deathland DSCALAND
+$pitchset misc/HeavyThud 0.6
+boss/explode DSEXPLO1
+$volume boss/explode 0.7
+$pitchset boss/explode 0.9
+$limit boss/explode 12
+$attenuation boss/explode 0.5
+
+Explosion/lol DSEXPLO2
+$volume Explosion/lol 0.8

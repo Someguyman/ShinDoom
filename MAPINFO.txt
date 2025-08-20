@@ -1,0 +1,40 @@
+//
+gameinfo 
+{
+	PlayerClasses = "Shin_DoomPlayer"
+	AddEventHandlers = "ShinDoom_EventHandler"
+}
+
+DoomEdNums
+{
+	666 = Shin_Unmaker
+	
+	667 = Shin_Demonkey1
+	668 = Shin_Demonkey2
+	669 = Shin_Demonkey3
+	
+	685 = Shin_NightmareImp
+	697 = Shin_NightmareSpectre
+	686 = Shin_NightmareCacodemon
+	
+	3007 = Shin_Ghoul
+	3008 = Shin_Banshee
+	3009 = Shin_Mindweaver	
+	3010 = Shin_ShockTrooper
+	3011 = Shin_Vassago
+	3012 = Shin_Tyrant
+	3013 = Shin_Tyrant_boss_1
+	3014 = Shin_Tyrant_boss_2
+	
+	10001 = Shin_DeadArachnotron
+	10002 = Shin_DeadArchvile
+	10003 = Shin_DeadBaronOfHell
+	10004 = Shin_DeadCyberdemon
+	10005 = Shin_DeadSpectre
+	10006 = Shin_DeadChaingunguy
+	10007 = Shin_DeadMancubus
+	10008 = Shin_DeadRevenant
+	10009 = Shin_DeadSpiderMastermind
+	10010 = Shin_DeadWolfensteinSS
+	10011 = Shin_DeadHellKnight
+}

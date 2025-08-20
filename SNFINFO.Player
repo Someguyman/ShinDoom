@@ -1,0 +1,14 @@
+$playersound 	player	male	*pain100	dsplpin1
+$playersound 	player	male	*pain75		dsplpin2
+$playersound 	player	male	*pain50		dsplpin2
+$playersound 	player	male	*pain25		dsplpin3
+
+$playersound 	player	female	*pain100	dsplpin1
+$playersound 	player	female	*pain75		dsplpin2
+$playersound 	player	female	*pain50		dsplpin2
+$playersound 	player	female	*pain25		dsplpin3
+
+$playersound 	player	other	*pain100	dsplpin1
+$playersound 	player	other	*pain75		dsplpin2
+$playersound 	player	other	*pain50		dsplpin2
+$playersound 	player	other	*pain25		dsplpin3

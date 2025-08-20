@@ -1,0 +1,61 @@
+weapons/GrenadeFire DSGRFIRE
+weapons/GrenadeBounce DSGRBNCE
+
+weapons/chngun DSCHGUN
+weapons/click DSWPNCL
+
+weapons/smgo dsdbopn
+weapons/smgl dsdbload
+$Pitchset weapons/smgo 1.1
+$Pitchset weapons/smgl 1.1
+
+Weapons/RifleR dswpnup
+$Pitchset Weapons/RifleR 0.9
+$Volume Weapons/RifleR 0.7
+
+$Random Weapons/IncineratorFire { Weapons/IncineratorFire1 Weapons/IncineratorFire2 }
+Weapons/IncineratorFire1 DSINCFI1
+Weapons/IncineratorFire2 DSINCFI2
+
+weapons/sawidlelow dssawidl
+$Pitchset weapons/sawidlelow 0.9
+weapons/sawfulllow	dssawful
+$Pitchset weapons/sawfulllow 0.9
+weapons/sawhitlow dssawhit
+$Pitchset weapons/sawhitlow 0.9
+weapons/sawuplow dssawup
+$Pitchset weapons/sawuplow 0.9
+
+weapons/plasmax DSPLADTH
+$Limit weapons/plasmax 0
+
+Weapons/BfgBallFly DSBFGFLY
+
+Weapon/ChaingunRevUp DSMGUP
+Weapon/ChaingunRevMid DSMGMID
+Weapon/ChaingunRevDown DSMGDOWN
+$Volume Weapon/ChaingunRevUp 0.7
+$Volume Weapon/ChaingunRevMid 0.7
+$Volume Weapon/ChaingunRevDown 0.7
+$Pitchset Weapon/ChaingunRevUp 0.9
+$Pitchset Weapon/ChaingunRevMid 0.9
+$Pitchset Weapon/ChaingunRevDown 0.9
+
+weaponUP/Pistol DSPISUP
+weaponUP/Shotgun dswpnup
+weaponUP/SuperShotgun dsdbcls
+weaponUP/Chaingun DSCGNPU
+weaponUP/RocketLauncher dsrokLup
+weaponIP/GLauncher DSGRPKUP
+weaponUP/Plasmarifle D3PLSMUP
+weaponUP/BFG9000 DSBFGUP
+
+misc/w_pkup_Saw DSSWPIC
+misc/w_pkup_Pistol DSPISPU
+misc/w_pkup_Shotgun DSSHGNPU
+misc/w_pkup_SuperShotgun DSDSGNPK
+misc/w_pkup_Chaingun DSCGNPK
+misc/w_pkup_RocketLauncher dsrokLpk
+misc/w_pkup_GLauncher DSGRPKPU
+misc/w_pkup_Plasmarifle D3PLSMPU
+misc/w_pkup_BFG9000 DSBFGPK

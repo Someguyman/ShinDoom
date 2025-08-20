@@ -1,0 +1,44 @@
+
+$Limit skeleton/walk 0
+$volume skeleton/walk 0.5
+$random skeleton/walk { skeleton/walk1 skeleton/walk2 skeleton/walk3 skeleton/walk4 }
+skeleton/walk1 DSSKEWK1
+skeleton/walk2 DSSKEWK2
+skeleton/walk3 DSSKEWK3
+skeleton/walk4 DSSKEWK4
+
+$Limit vile/walk 0
+$volume vile/walk 0.1
+$Random vile/walk { vile/walk1 vile/walk2 vile/walk3 vile/walk4 }
+vile/walk1 DSVILWK1
+vile/walk2 DSVILWK2
+vile/walk3 DSVILWK3
+vile/walk4 DSVILWK4
+
+$Alias Knight/Walk Baron/walk
+$Alias Gaurd/Walk Baron/walk
+
+$Limit Baron/walk 0
+$volume Baron/walk 0.2
+$Random Baron/walk { Baron/walk1 Baron/walk2 Baron/walk3 Baron/walk4 }
+Baron/walk1 DSNBLWK1
+Baron/walk2 DSNBLWK2
+Baron/walk3 DSNBLWK3
+Baron/walk4 DSNBLWK4
+
+$volume baby/walk 0.4
+$volume baby/step 0.4
+$Random baby/step { baby/step1 baby/step2 baby/step3 baby/step4 }
+baby/step1 DSARCSP1
+baby/step2 DSARCSP2
+baby/step3 DSARCSP3
+baby/step4 DSARCSP4
+
+$Random Fatso/walk { Fatso/walk1 Fatso/walk2 Fatso/walk3 Fatso/walk4 Fatso/walk5 }
+$volume Fatso/walk 0.4
+Fatso/walk1 DSBEHST1
+Fatso/walk2 DSBEHST2
+Fatso/walk3 DSBEHST3
+Fatso/walk4 DSBEHST4
+Fatso/walk5 DSBEHST5
+

@@ -20,5 +20,39 @@ This is to ensure the best possible experience for each map.
 
 Class ShinDoom_EventHandler : EventHandler
 {
-
+	override void WorldLoaded(WorldEvent e)
+	{
+		ShinDoom_MonsterSpawner.CheckMapHashes();
+	}
+	
+	override void CheckReplacee (ReplacedEvent e)
+	{
+		if (e.Replacement == 'Shin_Cyberboss')
+			e.Replacee = 'Cyberdemon';
+			
+		if (e.Replacement == 'Shin_Spiderboss')
+			e.Replacee = 'Spidermastermind';
+	}
+	
+	override void CheckReplacement(ReplaceEvent e)
+	{
+		String mapPrefix = level.MapName.Left(3);
+        mapPrefix = mapPrefix.MakeLower();
+		String mapName = level.MapName.MakeLower();
+		
+		if ( mapPrefix == "ab_" )
+		{
+			if (e.Replacee == 'Chainsaw')
+			e.Replacement = 'Chainsaw';
+			
+			if (e.Replacee == 'Plasmarifle')
+			e.Replacement = 'Plasmarifle';
+			
+			if (e.Replacee == 'CommanderKeen')
+			e.Replacement = 'Shin_NightmareImp';
+			
+			if (e.Replacee == 'GibbedMarineExtra')
+			e.Replacement = 'Shin_NightmareCacodemon';
+		}
+	}
 }
