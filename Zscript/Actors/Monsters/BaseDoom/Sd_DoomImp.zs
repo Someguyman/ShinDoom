@@ -59,20 +59,3 @@ Class Shin_DoomImp : ShinDoom_Actor Replaces Doomimp
 		Goto See;
 	}
 }
-
-Class Shin_DeadDoomimp : Shin_DoomImp Replaces DeadDoomImp
-{
-	Default { +NEVERRESPAWN -COUNTKILL }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+4;
-	}
-}

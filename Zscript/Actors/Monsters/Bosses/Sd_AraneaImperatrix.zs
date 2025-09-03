@@ -33,7 +33,6 @@ class Shin_SpiderBoss : Shin_SpiderMastermind
 		A_SpawnProjectile(PlasmaFire[Random(0,1)],32,0,random(-16,16),CMF_OFFSETPITCH,random(-4,16));
 		A_SpawnProjectile(PlasmaFire[Random(0,1)],32,0,random(-16,16),CMF_OFFSETPITCH,random(-4,4));
 		A_SpawnProjectile(PlasmaFire[Random(0,1)],32);
-		//A_PlaySound("monsters/spidermastermind/fire");
 	}
 	
 	States

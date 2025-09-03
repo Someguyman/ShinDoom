@@ -8,6 +8,8 @@ Class Shin_RocketLauncher : ShinDoom_Weapon replaces RocketLauncher
 		Weapon.AmmoGive 2;
 		Weapon.AmmoType "RocketAmmo";
 		+WEAPON.NOAUTOFIRE
+		Weapon.UpSound "weaponUP/RocketLauncher";
+		Inventory.PickupSound "misc/w_pkup_RocketLauncher";
 		Inventory.PickupMessage "$GOTLAUNCHER";
 		Tag "$TAG_ROCKETLAUNCHER";
 	}

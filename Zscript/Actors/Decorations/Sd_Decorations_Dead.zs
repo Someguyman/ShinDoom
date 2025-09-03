@@ -1,3 +1,14 @@
+class Shin_DeadMarine_Spawner : RandomSpawner
+{
+	Default
+	{
+		DropItem "DeadMarine", 256, 90;
+		DropItem "Shin_DeadMarine_Alt", 256, 90;
+		DropItem "Shin_DeadMarine_frontup", 256, 90;
+		DropItem "Shin_DeadMarine_strife", 256, 90;
+		DropItem "Shin_DeadMarine_Headless", 256, 10;
+	}
+}
 
 Class Shin_DeadMarine_Headless : ShinDoom_Actor
 {
@@ -76,6 +87,40 @@ Class Shin_CorpsePile : ShinDoom_Actor
 	}
 }
 
+Class Shin_SweatDeadBunny : ShinDoom_Actor
+{
+	Default
+	{
+		Radius 16;
+		Height 56;
+		ProjectilePassHeight -16;
+		+SOLID
+	}
+	States
+	{
+		Spawn:
+			BUNS A -1;
+			Stop;
+	}
+}
+
+Class Shin_SweatDeadBunny2 : ShinDoom_Actor
+{
+	Default
+	{
+		Radius 16;
+		Height 40;
+		ProjectilePassHeight -16;
+		+SOLID
+	}
+	States
+	{
+		Spawn:
+			BUNN A -1;
+			Stop;
+	}
+}
+
 Class Shin_DeadStick : ShinDoom_Actor Replaces DeadStick
 {
 	Default
@@ -84,7 +129,6 @@ Class Shin_DeadStick : ShinDoom_Actor Replaces DeadStick
 		+SHOOTABLE
 		Radius 16;
 		Height 64;
-		//DeathHeight 0;
 		Mass 0x7fffffff;
 		ProjectilePassHeight -16;
 		Health 15;
@@ -121,7 +165,6 @@ Class Shin_LiveStick : ShinDoom_Actor Replaces LiveStick
 		ProjectilePassHeight -16;
 		Health 20;
 		PainChance 200;
-		//DeathSound "grunt/death";
 		+SOLID
 		+SHOOTABLE
 	}
@@ -148,6 +191,54 @@ Class Shin_LiveStick : ShinDoom_Actor Replaces LiveStick
 			POL6 J 5;
 			POL6 KLMNO 5;
 			POL6 P -1;
+			Stop;
+	}
+}
+
+Class Shin_ConsoleMeat : ShinDoom_Actor
+{
+	Default
+	{
+		Radius 16;
+		Height 84;
+		//+SOLID
+		+NOGRAVITY
+		+SPAWNCEILING
+	}
+	States
+	{
+		Spawn:
+			CCPR A -1;
+			Stop;
+	}
+}
+
+Class Shin_ConsoleMeat2 : Shin_ConsoleMeat
+{
+	States
+	{
+		Spawn:
+			CCPR B -1;
+			Stop;
+	}
+}
+
+Class Shin_ConsoleMeat3 : Shin_ConsoleMeat
+{
+	States
+	{
+		Spawn:
+			CCPR C -1;
+			Stop;
+	}
+}
+
+Class Shin_ConsoleMeat4 : Shin_ConsoleMeat
+{
+	States
+	{
+		Spawn:
+			CCPR D -1;
 			Stop;
 	}
 }

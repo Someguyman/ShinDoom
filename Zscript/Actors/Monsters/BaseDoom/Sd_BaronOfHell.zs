@@ -87,26 +87,7 @@ Class Shin_BaronOfHell : ShinDoom_Actor Replaces Baronofhell
 			else
 			{
 				A_FireVolley("Baronball", 5, 45);
-				//A_FaceTarget();
 			}
 		}
-	}
-}
-
-Class Shin_DeadBaronOfHell : Shin_BaronOfHell
-{
-	Default { -COUNTKILL +NEVERRESPAWN }
-	
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+6;
 	}
 }

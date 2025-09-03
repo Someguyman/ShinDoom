@@ -4,7 +4,7 @@ version "4.14.1"
 
 #include "Zscript/Actors/Monsters/BaseDoom/Sd_Possessed.zs"
 #include "Zscript/Actors/Monsters/BaseDoom/Sd_DoomImp.zs"
-#include "Zscript/Actors/Monsters/BaseDoom/Sd_BullDemons.zs"
+#include "Zscript/Actors/Monsters/BaseDoom/Sd_PinkyDemons.zs"
 #include "Zscript/Actors/Monsters/BaseDoom/Sd_LostSoul.zs"
 #include "Zscript/Actors/Monsters/BaseDoom/Sd_Cacodemon.zs"
 #include "Zscript/Actors/Monsters/BaseDoom/Sd_Hellknight.zs"
@@ -77,6 +77,8 @@ version "4.14.1"
 
 //		Misc		//
 
+#include "Zscript/Actors/Monsters/Sd_Monster_Standies.zs"
+#include "Zscript/Actors/Monsters/Sd_Dead_Monsters.zs"
 #include "Zscript/Actors/Items/Sd_Ammo.zs"
 #include "Zscript/Actors/Items/Sd_DemonKeys.zs"
 #include "Zscript/Actors/Items/Sd_PowerUps.zs"

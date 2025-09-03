@@ -3,12 +3,14 @@ Class Shin_CombatRifle : ShinDoom_Weapon
 {
 	Default
 	{
-		Weapon.SelectionOrder 700;
+		Weapon.SelectionOrder 720;
 		Weapon.AmmoUse 1;
 		Weapon.Ammouse2 1;
-		Weapon.AmmoGive 40;
+		Weapon.AmmoGive 30;
 		Weapon.AmmoType "Shin_HeavyAmmo";
 		Weapon.AmmoType2 "Shin_HeavyAmmo";
+		Weapon.UpSound "weaponUP/Machinegun";
+		Inventory.PickupSound "misc/w_pkup_Machinegun";
 		Inventory.PickupMessage "$GOTRIFLE";
 		Obituary "$OB_MPCHAINGUN";
 		Tag "Combat Rifle";
@@ -63,6 +65,7 @@ Class Shin_CombatRifle : ShinDoom_Weapon
 		RIFL K 5 A_StartSound("weapons/smgl",CHAN_AUTO);
 		RIFL L 6; //Offset(0,32);
 		RIFL F 5 { invoker.mp_clip = 0; }
+		RIFL A 1 Offset(1,36) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
 		Goto Ready;
 	Flash:
 		Stop;
@@ -76,8 +79,8 @@ Extend Class Shin_CombatRifle
 {
 	Action void A_FireRifle()
 	{
-		A_FireBullets (2.5, 0, 1, 5, "BulletPuff");
-		A_StartSound("weapons/pistol", CHAN_WEAPON);
+		A_FireBullets (2.5, 0, 1, 7, "BulletPuff");
+		A_StartSound("Weapons/MachineGun", CHAN_WEAPON);
 		A_GunFlash();
 	}	
 }

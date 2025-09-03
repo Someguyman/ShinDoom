@@ -18,6 +18,20 @@ GOTCLAW = "\cgYou got the dark claw! \cc(Slot: 7)";
 GOTREAPER = "\cgYou got the reaper! \cc(Slot: 7)";
 GOTUNMAKER = "What the a@&*% is this?! \cc(Slot: 7)";
 
-FN_ZOMBIE = "Former Human";
+GOTSHELLS = "Picked up Shotgun Shells";
+
+FN_ZOMBIE = "Former Trooper";
 FN_SHOTGUN = "Former Seregant";
+FN_BURST = "Former Lieutenant";
 FN_HEAVY = "Former Commando";
+FN_CAPTAIN = "Former Captain";
+FN_CYBERZ = "Hellified Soldier";
+FN_DEMON = "Pinky";
+
+OB_ZOMBIE = "%o was killed by a Former Trooper.";
+OB_SHOTGUN = "%o was shot by a Former Sergeant.";
+OB_BURST = "%o was riddled with bullets by a Former Lieutenant.";
+OB_HEAVY = "%o was perforated by a Former Commando.";
+OB_CAPTAIN = "%o was destroyed by a Former Captain.";
+OB_CYBERZ = "%o was blasted by a Hellified Soldier.";
+OB_DEMONHIT = "%o was bit by a Pinky.";

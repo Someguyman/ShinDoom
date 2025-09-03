@@ -5,7 +5,7 @@ Class Shin_Unmaker : DoomWeapon
 	Default
 	{
 		Height 20;
-		Weapon.SelectionOrder 3000;
+		Weapon.SelectionOrder 50;
 		Weapon.AmmoUse 1;
 		Weapon.AmmoGive 50;
 		+WEAPON.BFG;

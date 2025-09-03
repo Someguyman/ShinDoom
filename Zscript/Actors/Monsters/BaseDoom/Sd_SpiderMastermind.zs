@@ -79,23 +79,6 @@ Class Shin_SpiderMastermind : ShinDoom_Actor Replaces SpiderMastermind
 	}
 }
 
-Class Shin_DeadSpiderMastermind : Shin_SpiderMastermind
-{
-	Default { -COUNTKILL +NEVERRESPAWN -BOSSDEATH }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+11;
-	}
-}
-
 Extend Class Shin_SpiderMastermind
 {	
 	void A_Spiderweer()

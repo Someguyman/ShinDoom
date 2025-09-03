@@ -129,3 +129,25 @@ class Shin_ExtremeBulletPuff : BulletPuff
 		+EXTREMEDEATH
 	}
 }
+
+Class Shin_FlyingBlood : Blood
+{
+	Default
+	{
+		+MISSILE
+		+BLOODLESSIMPACT
+		+THRUACTORS
+		+MOVEWITHSECTOR
+		//+NOCLIP
+		Speed 8;
+		Radius 3;
+		Height 3;
+		gravity 0.5;
+	}
+	States
+	{
+		Spawn:
+			BLUD CBA 8;
+			Stop;
+	}
+}

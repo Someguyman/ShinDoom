@@ -1,0 +1,11 @@
+
+
+
+misc/p_pkup_v DSGETPWV
+misc/p_pkup_i DSGETPWI
+misc/p_pkup_a DSGETPWA
+misc/p_pkup_r DSGETPWR
+misc/p_pkup_l DSGETPWL
+misc/p_pkup_s DSGETPWS
+misc/p_pkup_m DSGETPWM
+misc/p_pkup_q DSGETPWQ

@@ -49,12 +49,20 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 		SKUL E 3 BRIGHT A_Pain;
 		Goto See;
 	Death:
-		SKUL F 6 BRIGHT {bFLOATBOB = False;}
+		SKUL F 6 BRIGHT { bFLOATBOB = False; }
 		SKUL G 6 BRIGHT A_Scream;
 		SKUL H 6 BRIGHT;
 		SKUL I 6 BRIGHT A_NoBlocking;
-		SKUL J 6;
-		SKUL K 6;
+		SKUL J 6 BRIGHT;
+		SKUL K 6 BRIGHT;
+		Stop;
+	XDeath:
+		SKUL F 4 BRIGHT {bFLOATBOB = False;}
+		SKUL G 4 BRIGHT A_Scream;
+		SKUL H 4 BRIGHT;
+		SKUL I 4 BRIGHT A_NoBlocking;
+		SKUL J 4 BRIGHT;
+		SKUL K 4 BRIGHT;
 		Stop;
 	}
 }

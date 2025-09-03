@@ -4,12 +4,12 @@ Class Shin_LightAmmo : Ammo replaces Clip
 	Default
 	{
 		Inventory.Amount 10;
-		Inventory.MaxAmount 100;
+		Inventory.MaxAmount 200;
 		Ammo.BackpackAmount 10;
-		Ammo.BackpackMaxAmount 200;
-		Inventory.PickupMessage "Picked up a 10 caliber magazine";
+		Ammo.BackpackMaxAmount 400;
+		Inventory.PickupMessage "Picked up Light Ammo Mag";
 		Inventory.Icon "MAGSA0";
-		Tag "10 caliber Light Magazine";
+		Tag "Light Ammo Magazine";
 	}
 	States
 	{
@@ -19,13 +19,13 @@ Class Shin_LightAmmo : Ammo replaces Clip
 	}
 }
 
-Class Shin_40CalLightAmmo : Shin_LightAmmo Replaces ClipBox
+Class Shin_LightAmmoStick : Shin_LightAmmo Replaces ClipBox
 {
 	Default
 	{
-		Inventory.PickupMessage "Picked up a 40 caliber magazine";
+		Inventory.PickupMessage "Picked up Light Ammo Stick Mag";
 		Inventory.Amount 40;
-		Tag "40 caliber Light Magazine";
+		Tag "Light Ammo Stick Mag";
 	}
 	States
 	{
@@ -39,11 +39,11 @@ Class Shin_HeavyAmmo : ammo
 {
 	Default
 	{
-		Inventory.PickupMessage "$GOTCLIP";
-		Inventory.Amount 8;
-		Inventory.MaxAmount 200;
+		Inventory.PickupMessage "Picked up a Heavy Ammo Clip";
+		Inventory.Amount 10;
+		Inventory.MaxAmount 150;
 		Ammo.BackpackAmount 8;
-		Ammo.BackpackMaxAmount 400;
+		Ammo.BackpackMaxAmount 300;
 		Inventory.Icon "CLIPA0";
 		Tag "Heavy Ammo Clip";
 	}
@@ -59,8 +59,8 @@ Class Shin_HeavyAmmoBox : Shin_HeavyAmmo //Replaces ClipBox
 {
 	Default
 	{
-		Inventory.PickupMessage "$GOTCLIP";
-		Inventory.Amount 100;
+		Inventory.PickupMessage "Picked up a Heavy Ammo Box";
+		Inventory.Amount 50;
 		Inventory.Icon "CLIPA0";
 		Tag "Heavy Ammo Box";
 	}
@@ -100,6 +100,21 @@ Class Shin_CellPack : CellPack Replaces Cellpack
 	Spawn:
 		CELP ABCD 7; 
 		Loop;
+	}
+}
+
+Class Shin_SoulEnergy : Ammo
+{
+	Default
+	{
+		Inventory.Amount 5;
+		Inventory.MaxAmount 100;
+	}
+	States
+	{
+		Spawn:
+			CELP A -1; 
+			Stop;
 	}
 }
 

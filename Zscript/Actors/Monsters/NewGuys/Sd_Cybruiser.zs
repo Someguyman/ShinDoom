@@ -64,23 +64,6 @@ Class Shin_Cybruiser : Shin_BaronOfHell
 	}
 }
 
-Class Shin_DeadCybruiser : Shin_Cybruiser
-{
-	Default { -COUNTKILL +NEVERRESPAWN -BOSSDEATH }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+9;
-	}
-}
-
 Extend Class Shin_Cybruiser
 {
 	Void A_CybruAttack(Class<Actor> p)

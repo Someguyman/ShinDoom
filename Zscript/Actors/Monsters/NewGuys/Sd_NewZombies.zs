@@ -14,9 +14,11 @@ Class Shin_MachinegunGuy : ShinDoom_Actor
 		ActiveSound "machinegunguy/active";
 		PainSound "machinegunguy/pain";
 		DeathSound "machinegunguy/death";
-		Obituary "%o was riddled with bullets by a burstgunner.";
-		Tag "Burstgunner";
+		Obituary "$OB_BURST";
+		Tag "$FN_BURST";
 		Dropitem "Shin_CombatRifle";
+		//DropItem "Shin_HeavyAmmo", 62;
+		DropItem "Shin_LightAmmo", 63;
 	}
 	
 	States
@@ -59,23 +61,6 @@ Class Shin_MachinegunGuy : ShinDoom_Actor
 	}
 }
 
-Class Shin_DeadMachinegunGuy : Shin_MachinegunGuy
-{
-	Default { -COUNTKILL +NEVERRESPAWN -BOSSDEATH }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+4;
-	}
-}
-
 class Shin_MechaZombie : ShinDoom_Actor
 {
 	Default
@@ -90,17 +75,16 @@ class Shin_MechaZombie : ShinDoom_Actor
 		+FLOORCLIP
 		Gibhealth 20;
 		SeeSound "MechaZombie/Sight";
-		AttackSound "grunt/attack";
 		PainSound "MechaZombie/Pain";
 		DeathSound "MechaZombie/Death";
 		ActiveSound "MechaZombie/Active";
-		Obituary "$OB_ZOMBIE";
-		Tag "$FN_ZOMBIE";
+		Obituary "$OB_CYBERZ";
+		Tag "$FN_CYBERZ";
 	}
 	States
 	{
 	Spawn:
-		POSM AB 10 A_Look;
+		POSM A 10 A_Look;
 		Loop;
 	See:
 		POSM BBCCDDEE 3 A_Chase;
@@ -141,20 +125,59 @@ class Shin_MechaZombie : ShinDoom_Actor
 	}
 }
 
-Class Shin_DeadMechaZombie : Shin_MechaZombie
+Class Shin_SMGDude : ShinDoom_Actor
 {
-	Default { -COUNTKILL +NEVERRESPAWN -BOSSDEATH }
+	Default
+	{
+		Health 50;
+		Radius 20;
+		Height 56;
+		Speed 8;
+		PainChance 170;
+		Monster;
+		+FLOORCLIP
+		SeeSound "shotguy/sight";
+		AttackSound "grunt/attack";
+		PainSound "shotguy/pain";
+		DeathSound "shotguy/death";
+		ActiveSound "shotguy/active";
+		Obituary "$OB_BURST";
+		Tag "$FN_BURST";
+		Dropitem "Shin_MachinePistol";
+		DropItem "Shin_HeavyAmmo", 63;
+	}
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
+			MPOS AB 10 A_Look;
+			Loop;
+		See:
+			MPOS AABBCCDD 3 A_Chase();
+			Loop;
+		Missile:
+			MPOS E 11 A_FaceTarget;
+			MPOS F 2 BRIGHT A_CPosAttack;
+			MPOS E 2 BRIGHT A_FaceTarget;
+			MPOS E 0 A_CPosRefire;
+			Goto Missile+1;
+		Pain:
+			MPOS G 3;
+			MPOS G 3 A_Pain;
+			Goto See;
+		Death:
+			MPOS H 5;
+			MPOS I 5 A_Scream;
+			MPOS J 5 A_NoBlocking;
+			MPOS K 5;
+			MPOS L -1;
 			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+4;
+		XDeath:
+			MPOS M 5;
+			MPOS N 5 A_XScream;
+			MPOS O 5 A_NoBlocking;
+			MPOS PQRST 5;
+			MPOS U -1;
+			Stop;
 	}
 }
 
@@ -163,6 +186,6 @@ Extend Class Shin_MachineGunGuy
 	Void A_GunnerAttack()
 	{
 		A_FaceTarget();
-		A_CustomBulletAttack(22.5, 0, 1, random(1,5)*3, "BulletPuff", 0, CBAF_NORANDOM);
+		A_CustomBulletAttack(22.5, 0, 1, random(1,7)*3, "BulletPuff", 0, CBAF_NORANDOM);
 	}
 }

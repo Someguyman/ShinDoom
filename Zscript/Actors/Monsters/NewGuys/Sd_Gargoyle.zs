@@ -64,23 +64,6 @@ Class Shin_Gargoyle : Shin_DoomImp
 	}
 }
 
-Class Shin_DeadGargoyle : Shin_Gargoyle
-{
-	Default { -COUNTKILL +NEVERRESPAWN -BOSSDEATH }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+5;
-	}
-}
-
 Class Shin_GargoyleProjectile : ShinDoom_Actor
 {
 	Default

@@ -54,7 +54,7 @@ Class Shin_ShockTrooper : ShinDoom_Actor
 			PPOS U -1;
 			stop;
 		raise:
-			PPOS MLKJIH 5;
+			PPSX FEDCBA 5;
 			goto see;
 	}
 }
@@ -107,24 +107,6 @@ Class Shin_ShockTrooperTorso : ShinDoom_Actor
 			PPOS W 5;
 			PPOS X -1;
 			stop;
-	}
-}
-
-Class Shin_DeadShockTrooper : Shin_ShockTrooper
-{
-	Default { -COUNTKILL +NEVERRESPAWN }
-	
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+6;
 	}
 }
 

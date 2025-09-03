@@ -35,8 +35,10 @@ spectre/active dssg2act
 spectre/pain dssg2pin
 spectre/melee dssg2atk
 spectre/death dssg2dth
-spectre/invisible dssg2inv
-spectre/visible dssg2vis
+spectre/invisible dssg2in
+spectre/visible dssg2vs
+$attenuation spectre/invisible 0.9
+$attenuation spectre/visible 0.9
 
 skull/active dssklact
 skull/pain	dssklpin

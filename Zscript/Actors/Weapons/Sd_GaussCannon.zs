@@ -3,10 +3,12 @@ Class Shin_GaussCannon : ShinDoom_Weapon
 {
 	Default
 	{
-		//Weapon.SelectionOrder 100;
+		Weapon.SelectionOrder 2900;
 		Weapon.AmmoUse 20;
 		Weapon.AmmoGive 40;
 		Weapon.AmmoType "Cell";
+		//WeaponUP/GaussCannon
+		Weapon.UpSound "WeaponUP/GaussCannon";
 		Inventory.PickupMessage "$GOTGAUSS";
 		Tag "$TAG_PLASMARIFLE";
 	}
@@ -56,6 +58,7 @@ Class Shin_GaussLaserTrail : ShinDoom_Actor
 		Radius 6;
 		Height 12;
 		Scale 0.2;
+		//YScale 1.1;
 	}
 	
   States

@@ -129,7 +129,7 @@ Class Shin_SummonerPentagram : ShinDoom_Actor
 //This thinking state decides if it should attack or summon based on it's current position in relation to the player and it's current health.
 //
 
-Extend Class SHin_Summoner
+Extend Class Shin_Summoner
 {
 	
 	void A_SummonAttack()

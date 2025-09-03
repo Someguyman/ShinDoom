@@ -68,7 +68,7 @@ Class Shin_Arachnotron : ShinDoom_Actor Replaces Arachnotron
 		"####" I 5 A_GenericFreezeDeath;
 		TNT1 A 1 A_Freezedeathchunks;
 		WAIT;
-	Death: //A_StartSound("misc/thud", 0);
+	Death:
 		"####" J 1;
 		"####" J 19 A_Scream;
 		"####" K 7 A_NoBlocking;
@@ -141,24 +141,6 @@ Class Shin_ArachknightPlasma : Shin_ArachnotronPlasma
 	Death:
 		ARAX CDEFGHI 3 BRIGHT;
 		Stop;
-	}
-}
-
-Class Shin_DeadArachnotron : Shin_Arachnotron
-{
-	Default { -COUNTKILL +NEVERRESPAWN }
-	States
-	{
-		Spawn:
-			BSPI P 0;
-			BSPI P 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			BSPI P 0 A_NoBlocking;
-			BSPI P -1;
-			Stop;
 	}
 }
 

@@ -53,23 +53,6 @@ Class Shin_Ghoul : ShinDoom_Actor
 	}
 }
 
-Class Shin_DeadGhoul : Shin_Ghoul Replaces DeadLostSoul
-{
-	Default { -COUNTKILL +NEVERRESPAWN }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+7;
-	}
-}
-
 Class Shin_GhoulBall : ShinDoom_Actor
 {
 	Default

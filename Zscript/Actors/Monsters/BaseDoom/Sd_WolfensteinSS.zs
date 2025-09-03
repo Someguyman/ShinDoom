@@ -59,25 +59,3 @@ Class Shin_WolfensteinSS : ShinDoom_Actor Replaces WolfensteinSS
 		Goto See ;
 	}
 }
-
-Class Shin_DeadWolfensteinSS : Shin_WolfensteinSS
-{
-	Default
-	{
-		-COUNTKILL
-		+NEVERRESPAWN
-		DropItem "None";
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+4;
-	}
-}

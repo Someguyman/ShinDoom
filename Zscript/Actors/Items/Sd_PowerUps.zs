@@ -7,7 +7,7 @@ Class Shin_InvulnerabilitySpherePickUp : CustomInventory Replaces Invulnerabilit
 		+FLOATBOB
 		+ZDOOMTRANS
 		+INVENTORY.BIGPOWERUP
-		Inventory.PickupSound "misc/p_pkup";
+		Inventory.PickupSound "misc/p_pkup_v";
 		Inventory.PickupMessage "\cfInvulnerability!";
 		//Powerup.Colormap 0.243, 0.0, 0.639, 1.5, 0.75, 0.0;
 		RenderStyle "Translucent";
@@ -40,7 +40,7 @@ Class Shin_InvulnerabilitySphere : PowerupGiver
 		+INVENTORY.ALWAYSPICKUP
 		+INVENTORY.BIGPOWERUP
 		Inventory.MaxAmount 0;
-		Inventory.PickupSound "misc/p_pkup";
+		Inventory.PickupSound "misc/p_pkup_v";
 		Inventory.PickupMessage "\cfInvulnerability!";
 		Powerup.Colormap 0.243, 0.0, 0.639, 1.5, 0.75, 0.0;
 		RenderStyle "Translucent";
@@ -87,7 +87,7 @@ Class Shin_Onslaught : CustomInventory
 		+CASTSPRITESHADOW
 		Inventory.MaxAmount 0;
 		Inventory.PickupMessage "\ctOnslaught!";
-		Inventory.PickupSound "misc/p_pkup";
+		Inventory.PickupSound "misc/p_pkup_q";
 		RenderStyle "Translucent";
 		Alpha 0.8;
 	}
@@ -113,7 +113,7 @@ Class Shin_OnslaughtPickup : CustomInventory
 		+ZDOOMTRANS
 		+CASTSPRITESHADOW
 		Inventory.PickupMessage "\ctOnslaught!";
-		Inventory.PickupSound "misc/p_pkup";
+		Inventory.PickupSound "misc/p_pkup_q";
 		RenderStyle "Translucent";
 		Alpha 0.8;
 	}
@@ -191,7 +191,7 @@ Class Shin_Megasphere : CustomInventory Replaces Megasphere
 		-COUNTITEM
 		RenderStyle "Translucent";
 		Inventory.PickupMessage "\cfMegasphere!";
-		Inventory.PickupSound "misc/p_pkup";
+		Inventory.PickupSound "misc/p_pkup_m";
 		Alpha 0.8;
 	}
 	States
@@ -270,7 +270,7 @@ Class Shin_Berserk : Custominventory Replaces Berserk
 		+CASTSPRITESHADOW
 		+ZDOOMTRANS
 		Tag "Berserk";
-		Inventory.PickupSound "misc/p_pkup";
+		Inventory.PickupSound "misc/p_pkup_s";
 		Inventory.PickupMessage "\cgBerserk!";
 		Alpha 0.8;
 		-COUNTITEM
@@ -316,7 +316,7 @@ Class Shin_BlurSpherePickup : Custominventory Replaces BlurSphere
 		-COUNTITEM
 		RenderStyle "Translucent";
 		Inventory.PickupMessage "\cxPartial Invisibility!";
-		Inventory.PickupSound "misc/p_pkup";
+		Inventory.PickupSound "misc/p_pkup_i";
 		Alpha 0.8;
 	}
 	States
@@ -349,7 +349,7 @@ Class Shin_Lightamp : Custominventory Replaces Infrared
 	{
 		-COUNTITEM
 		+CASTSPRITESHADOW
-		Inventory.PickupSound "misc/p_pkup";
+		Inventory.PickupSound "misc/p_pkup_l";
 		Inventory.PickupMessage "\cqLight Amplification";
 	}
 	States
@@ -386,7 +386,7 @@ Class Shin_Computerareamap : CustomInventory replaces Allmap
 	{
 		+CASTSPRITESHADOW
 		-COUNTITEM
-		Inventory.PickupSound "misc/p_pkup";
+		Inventory.PickupSound "misc/p_pkup_a";
 		Inventory.PickupMessage "\cdComputer Area Map";
 	}
 	States
@@ -418,7 +418,7 @@ Class Shin_RadSuit : Custominventory Replaces Radsuit
 	Default
 	{
 		+CASTSPRITESHADOW
-		Inventory.PickupSound "misc/p_pkup";
+		Inventory.PickupSound "misc/p_pkup_r";
 		Inventory.PickupMessage "\cpRadiation Protection";
 		+ZDOOMTRANS
 	}

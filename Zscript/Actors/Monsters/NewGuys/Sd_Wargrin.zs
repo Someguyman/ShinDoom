@@ -6,9 +6,9 @@ Class Shin_Wargrin : ShinDoom_Actor
 		Health 250;
 		Radius 20;
 		Height 56;
-		Speed 7;
+		Speed 8;
 		Gibhealth 40;
-		PainChance 160;
+		PainChance 140;
 		Mass 200;
 		Monster;
 		+FLOORCLIP
@@ -16,6 +16,7 @@ Class Shin_Wargrin : ShinDoom_Actor
 		PainSound "Wargrin/pain";
 		DeathSound "Wargrin/death";
 		ActiveSound "Wargrin/active";
+		DropItem "ID24Fuel";
 		Obituary "%o was squished by a wargrin.";
 		Tag "Wargrin";
 	}
@@ -35,9 +36,9 @@ Class Shin_Wargrin : ShinDoom_Actor
 	Missile:
 		WARG E 18 A_BattleCry("Wargrin/active");
 		WARG F 6 Bright A_FireVolley("Shin_WargrinFireball",0,0,18);
-		WARG E 10 A_FaceTarget;
-		WARG F 6 Bright A_FireVolley("Shin_WargrinFireball",2,15,18);
-		WARG E 10 A_FaceTarget;
+		WARG E 9 A_FaceTarget;
+		WARG F 6 Bright A_FireVolley("Shin_WargrinFireball",4,30,18);
+		WARG E 9 A_FaceTarget;
 		WARG F 6 Bright A_FireVolley("Shin_WargrinFireball",0,0,18);
 		WARG G 26 A_FaceTarget;
 		Goto See;
@@ -75,7 +76,7 @@ class Shin_WargrinFireball : Doomimpball
 {
 	Default
 	{
-		SPEED 10; 
+		SPEED 12; 
 		FastSpeed 20;
 		//SeeSound "Superimp/attack";
 	}

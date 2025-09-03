@@ -18,6 +18,7 @@ Class Shin_ZombieMan : ShinDoom_Actor Replaces ZombieMan
 		Obituary "$OB_ZOMBIE";
 		Tag "$FN_ZOMBIE";
 		DropItem "Shin_Pistol";
+		DropItem "Shin_HeavyAmmo", 128;
 	}
 	States
 	{
@@ -57,28 +58,6 @@ Class Shin_ZombieMan : ShinDoom_Actor Replaces ZombieMan
 	}
 }
 
-Class Shin_Deadzombieman : Shin_ZombieMan Replaces DeadZombieMan
-{
-	Default
-	{
-		+NEVERRESPAWN
-		-COUNTKILL
-		DropItem "None";
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+4;
-	}
-}
-
 Class Shin_ShotgunGuy : ShinDoom_Actor Replaces ShotgunGuy
 {
 	Default
@@ -99,6 +78,8 @@ Class Shin_ShotgunGuy : ShinDoom_Actor Replaces ShotgunGuy
 		Obituary "$OB_SHOTGUY";
 		Tag "$FN_SHOTGUN";
 		DropItem "Shin_Shotgun";
+		DropItem "Shin_HeavyAmmo", 64;
+		DropItem "Shin_LightAmmo", 64;
 	}
 	States
 	{
@@ -135,28 +116,6 @@ Class Shin_ShotgunGuy : ShinDoom_Actor Replaces ShotgunGuy
 		SPOS L 5;
 		SPOS KJIH 5;
 		Goto See;
-	}
-}
-
-Class Shin_DeadShotgunner : Shin_ShotgunGuy Replaces DeadShotgunGuy
-{
-	Default
-	{
-		+NEVERRESPAWN
-		-COUNTKILL
-		DropItem "None";
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+4;
 	}
 }
 
@@ -227,7 +186,7 @@ Class Shin_ChaingunGuy : ShinDoom_Actor Replaces ChaingunGuy
 		"####" AABBCCDD 3 A_Chase;
 		Loop;
 	Missile:
-		CPOS H 0 A_Jumpif((BaseSprite == GetSpriteIndex('CPS2')), "Missile.D1");
+		CPOS V 0 A_Jumpif((BaseSprite == GetSpriteIndex('CPS2')), "Missile.D1");
 		CPOS V 11 A_FaceTarget;
 		Goto Attack;
 	Missile.D1:
@@ -277,30 +236,5 @@ Class Shin_ChaingunGuy : ShinDoom_Actor Replaces ChaingunGuy
 		"####" N 5;
 		"####" MLKJIH 5;
 		Goto See;
-	}
-}
-
-Class Shin_DeadChaingunguy : Shin_Chaingunguy
-{
-	Default
-	{
-		-COUNTKILL
-		+NEVERRESPAWN
-		DropItem "None";
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_Jumpif((BaseSprite == GetSpriteIndex('CPS2')), "D1.Corpse");
-			Goto Super::Death+7;
-		D1.Corpse:
-			Goto Super::Death.D1+8;
 	}
 }

@@ -37,8 +37,8 @@ Class Shin_Chainsaw : ShinDoom_Weapon Replaces Chainsaw
 		SAWG F 2 A_WeaponReady;
 		Goto Ready;
 	Deselect:
-		SAWG C 0 A_StopSound(7);
-		SAWG C 1 A_Lower;
+		SAWG A 0 A_StopSound(7);
+		SAWG A 1 A_Lower;
 		Loop;
 	Select:
 		SAWG C 0 A_JumpIfInventory("ID24Fuel",1,"Select.Full");

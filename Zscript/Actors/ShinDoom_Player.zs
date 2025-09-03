@@ -1,4 +1,4 @@
-//
+
 Class Shin_DoomPlayer : DoomPlayer Replaces DoomPlayer
 {
 	Default

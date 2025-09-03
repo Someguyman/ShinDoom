@@ -110,23 +110,6 @@ Class Shin_MindweaverALT : Shin_Mindweaver
 	}
 }
 
-Class Shin_DeadMindweaver : Shin_Mindweaver
-{
-	Default { -COUNTKILL +NEVERRESPAWN }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+7;
-	}
-}
-
 extend class Shin_Mindweaver 
 {	
 	Void A_MindWalk()

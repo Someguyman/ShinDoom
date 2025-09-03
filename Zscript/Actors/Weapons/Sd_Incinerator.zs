@@ -7,6 +7,8 @@ Class Shin_Incinerator : ShinDoom_Weapon Replaces ID24Incinerator // Incinerator
 		Weapon.AmmoUse 1;
 		Weapon.AmmoGive 20;
 		Weapon.AmmoType "ID24Fuel";
+		//WeaponUp/Incinerator
+		Weapon.UpSound "WeaponUp/Incinerator";
 		Inventory.PickupMessage "$ID24_GOTINCINERATOR";
 		Tag "$TAG_ID24INCINERATOR";
 	}
@@ -23,7 +25,7 @@ Class Shin_Incinerator : ShinDoom_Weapon Replaces ID24Incinerator // Incinerator
 		FLMG A 1 A_Lower;
 		Loop;
 	Select:
-		FLMG A 1 A_Raise;
+		FLMG D 1 A_Raise;
 		Loop;
 	Fire:
 		FLMF A 1 BRIGHT A_InfneratorFire();
@@ -91,6 +93,11 @@ Class Shin_IncineratorFlame : ShinDoom_Actor Replaces ID24IncineratorFlame// Inc
 		IFLM POP 2 BRIGHT;
 		Stop;
 	}
+}
+
+Class Shin_AirBlast_Projectile : ShinDoom_Actor
+{
+
 }
 
 Extend Class Shin_Incinerator

@@ -105,23 +105,6 @@ Class Shin_KnightBall : BaronBall
 	}
 }
 
-Class Shin_DeadHellKnight : Shin_HellKnight
-{
-	Default { -COUNTKILL }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+6;
-	}
-}
-
 extend Class Shin_Hellknight
 {	
 	static const name HellKnightSprite[] = 

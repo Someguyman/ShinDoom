@@ -11,6 +11,8 @@ Class Shin_Pistol : ShinDoom_Weapon Replaces Pistol
 		+WEAPON.WIMPY_WEAPON
 		+WEAPON.NOAUTOFIRE
 		Inventory.Pickupmessage "$PICKUP_PISTOL_DROPPED";
+		Weapon.UpSound "weaponUP/Pistol";
+		Inventory.PickupSound "misc/w_pkup_Pistol";
 		Tag "$TAG_PISTOL";
 	}
 	
@@ -74,6 +76,6 @@ Extend Class Shin_Pistol
 		{
 			A_gunflash("Flash");
 			A_Startsound("weapons/pistol", CHAN_AUTO);
-			A_Firebullets(0.2, 0, 1, 4, "BulletPuff", FBF_USEAMMO);
+			A_Firebullets(0.2, 0, 1, 5, "BulletPuff", FBF_USEAMMO);
 		}
 }

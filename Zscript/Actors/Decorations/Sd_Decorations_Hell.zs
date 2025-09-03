@@ -15,6 +15,16 @@ Class Shin_EvilEye : ShinDoom_Actor
 	}
 }
 
+Class Shin_SigilEye : Shin_EvilEye
+{
+	States
+	{
+	Spawn:
+		S8LE ABCB 6 BRIGHT;
+		Loop;
+	}
+}
+
 Class Shin_EvilEyeCandle : ShinDoom_Actor Replaces EvilEye
 {
 	Default
@@ -27,12 +37,23 @@ Class Shin_EvilEyeCandle : ShinDoom_Actor Replaces EvilEye
 	States
 	{
 	Spawn:
-		TNT1 A 0;
-		TNT1 A 0 A_SpawnItemEx("Shin_EvilEye",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0);
-		goto idle;
-	Idle:
 		CEY2 ABCB 6 BRIGHT;
 		Loop;
+	}
+	
+	override void PostBeginPlay()
+	{
+		string mapName = Level.MapName.MakeLower();
+		super.PostBeginPlay();
+		
+		if ((MapName.left(2) == "e5") || (MapName.left(2) == "e6"))
+		{
+			A_SpawnItemEx("Shin_SigilEye",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0);
+		}
+		Else
+		{
+			A_SpawnItemEx("Shin_EvilEye",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0);
+		}
 	}
 }
 

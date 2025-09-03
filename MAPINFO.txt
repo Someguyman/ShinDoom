@@ -7,6 +7,9 @@ gameinfo
 
 DoomEdNums
 {
+	15 = Shin_DeadMarine_Spawner
+	21 = Shin_DeadPinky_Spawner
+	
 	666 = Shin_Unmaker
 	
 	667 = Shin_Demonkey1
@@ -14,8 +17,10 @@ DoomEdNums
 	669 = Shin_Demonkey3
 	
 	685 = Shin_NightmareImp
-	697 = Shin_NightmareSpectre
 	686 = Shin_NightmareCacodemon
+	697 = Shin_NightmareSpectre
+	
+	2002 = Shin_MachinePistol
 	
 	3007 = Shin_Ghoul
 	3008 = Shin_Banshee
@@ -37,4 +42,15 @@ DoomEdNums
 	10009 = Shin_DeadSpiderMastermind
 	10010 = Shin_DeadWolfensteinSS
 	10011 = Shin_DeadHellKnight
+}
+
+map LR_MAP14 "$XHUSTR_15"
+{
+	Next = EndSequence, "Id1Cast"
+	TitlePatch = "XWILV16"
+	Sky1 =  "SKYX5A"
+	Music = "D_SKELET"
+	SpecialAction = "Shin_Tyrant_boss_1", "Floor_LowerToNearest", 666, 8
+	SpecialAction = "Shin_Tyrant_boss_2", "Floor_LowerToNearest", 667, 8
+	Author = "$WF_AU_XASER"
 }

@@ -72,20 +72,3 @@ Class Shin_Revenant : ShinDoom_Actor Replaces Revenant
 		Goto See;
 	}
 }
-
-Class Shin_DeadRevenant : Shin_Revenant
-{
-	Default { -COUNTKILL +NEVERRESPAWN }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+5;
-	}
-}

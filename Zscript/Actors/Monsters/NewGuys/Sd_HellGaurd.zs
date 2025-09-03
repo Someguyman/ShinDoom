@@ -73,23 +73,6 @@ Class Shin_HellGaurd : Shin_BaronOfHell
 	}
 }
 
-Class Shin_DeadHellgaurd : Shin_Hellgaurd
-{
-	Default { -COUNTKILL +NEVERRESPAWN -BOSSDEATH }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+10;
-	}
-}
-
 Class Shin_GaurdShield : Actor
 {
 	Default
@@ -124,7 +107,7 @@ Class Shin_Gaurdball : BaronBall
 	States
 	{
 		Spawn:
-			HWB2 AB 4 BRIGHT;
+			HWFB AB 4 BRIGHT;
 			Loop;
 		Death:
 			HWFB CDE 6 BRIGHT;

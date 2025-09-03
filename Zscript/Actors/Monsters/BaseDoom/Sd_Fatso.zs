@@ -95,7 +95,36 @@ Class Shin_Mancubus : ShinDoom_Actor Replaces Fatso
 	}
 }
 
-Class Shin_CorpulentShot : Fatshot
+Class Shin_FatShot : ShinDoom_Actor Replaces Fatshot
+{
+	Default
+	{
+		Radius 6;
+		Height 8;
+		Speed 20;
+		Damage 8;
+		Projectile;
+		+RANDOMIZE
+		+ZDOOMTRANS
+		RenderStyle "Add";
+		Alpha 1;
+		SeeSound "fatso/attack";
+		DeathSound "fatso/shotx";
+	}
+	States
+	{
+	Spawn:
+		MANF AB 4 BRIGHT;
+		Loop;
+	Death:
+		MANF C 8 BRIGHT;
+		MANF D 6 BRIGHT;
+		MANF E 4 BRIGHT;
+		Stop;
+	}
+}
+
+Class Shin_CorpulentShot : Shin_FatShot
 {
 	Default
 	{
@@ -111,6 +140,7 @@ Class Shin_FireTrail : ShinDoom_Actor
 		Radius 13.0;
 		Height 8.0;
 		Speed 25;
+		Scale 0.9;
 		//FastSpeed 20;
 		DamageFunction 1;
 		Mass 1000;
@@ -141,24 +171,6 @@ Class Shin_FireTrail : ShinDoom_Actor
 		//FLAM B 1 BRIGHT;
 		Stop;
 		Stop;
-	}
-}
-
-Class Shin_DeadMancubus : Shin_Mancubus
-{
-	Default { -COUNTKILL +NEVERRESPAWN }
-	
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+9;
 	}
 }
 

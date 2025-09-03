@@ -79,6 +79,7 @@ Class Shin_BFGBall : ShinDoom_Actor Replaces BFGBall
 		+ZDOOMTRANS
 		RenderStyle "Add";
 		Alpha 0.75;
+		SeeSound "Weapons/BfgBallFire";
 		DeathSound "weapons/bfgx";
 		Obituary "$OB_MPBFG_BOOM";
 	}

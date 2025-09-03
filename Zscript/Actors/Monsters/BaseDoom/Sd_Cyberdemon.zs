@@ -93,23 +93,6 @@ Class Shin_EnemyRocket : Shin_PlayerRocket Replaces Rocket
 	}
 }
 
-Class Shin_DeadCyberdemon : Shin_Cyberdemon
-{
-	Default { -COUNTKILL +NEVERRESPAWN -BOSSDEATH }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+9;
-	}
-}
-
 Extend Class Shin_Cyberdemon
 {
 	void A_CyberdemonAttack()

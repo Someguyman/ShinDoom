@@ -1,20 +1,21 @@
 Dr pyspy:
-Gargoyle, 2016 Cyberdemon (aka, Lord Balgarr), 
-2016 Spidermastermind (aka, the Aranea Imperatrix), 
-Monster Closet (Monster Spawner), 
-Hellified Soldier (aka, Mecha Zombie), 
-Zombieman Rifle, 
-Dark Claw, 
-and Reaper (Doom Delta Unmaker).
+Gargoyle from Doom Delta.
+2016 Cyberdemon (aka, Lord Balgarr, in this mod).
+2016 Spidermastermind (dubbed, the Aranea Imperatrix, in this mod).
+Monster Closet (Monster Spawner).
+Hellified Soldier (aka, Mecha Zombie).
+Zombieman Rifle.
+Dark Claw and Unmaker (Called Reaper in this mod) from Doom Delta.
 
 Cardboard Marty:
-Machine Gunner sprite and Extra Monsters Sounds.
+Machine Gunner sprites and Sounds from Monsters Sounds EX.
+Additional Monster sounds from Monsters Sounds EX.
 
 Craneo:
-Cyber Mancubus and Dual Arachnotron.
+Cyber Mancubus and Original Dual Arachnotron sprites (Edits by Manardo).
 
 Nmn:
-Wargrinn.
+Original Wargrinn sprites.
 
 XLightningStormL:
-Gauss cannon sprites.
+Original Gauss cannon sprites.

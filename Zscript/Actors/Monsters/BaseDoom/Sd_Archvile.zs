@@ -51,6 +51,7 @@ Class Shin_Archvile : ShinDoom_Actor Replaces Archvile
 		Goto See+1;
 	Meleefire:
 		VILE LM 5 Bright A_FaceTarget();
+		VILE M 5 Bright A_FaceTarget();
 		VILE KJ 3 Bright A_FaceTarget();
 		VILE I 3 A_SpawnProjectile("Shin_VileHellFire", 32, 0, 0);
 		VILE HGHIHGHIHGHIGHI 3 Bright A_FaceTarget();
@@ -87,23 +88,6 @@ Class Shin_Archvile : ShinDoom_Actor Replaces Archvile
 	}
 }
 
-Class Shin_DeadArchvile : Shin_Archvile
-{
-	Default { -COUNTKILL +NEVERRESPAWN }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+9;
-	}
-}
-
 Class Shin_VileHellFire : Actor
 {
   Default
@@ -125,14 +109,14 @@ Class Shin_VileHellFire : Actor
   {
   Spawn:
     HLFR A 2 Bright A_StartFire;
-    HLFR BAB 2 Bright DiabolistFire(4);
-    HLFR C 2 Bright DiabolistCrackle(4);
-    HLFR B 2 Bright DiabolistFire(4);
-    HLFR CBCDCDCDEDED 2 Bright DiabolistFire(5);
-    HLFR E 2 Bright DiabolistCrackle(4);
-    HLFR F 2 Bright DiabolistFire(4);
-    HLFR EFE 2 Bright DiabolistFire(3);
-    HLFR FGH 2 Bright DiabolistFire(2);
+    HLFR BAB 2 Bright DiabolistFire(2);
+    HLFR C 2 Bright DiabolistCrackle(2);
+    HLFR B 2 Bright DiabolistFire(2);
+    HLFR CBCDCDCDEDED 2 Bright DiabolistFire(3);
+    HLFR E 2 Bright DiabolistCrackle(2);
+    HLFR F 2 Bright DiabolistFire(2);
+    HLFR EFE 2 Bright DiabolistFire(1);
+    HLFR FGH 2 Bright DiabolistFire(1);
     HLFR GHGH 2 Bright DiabolistFire(1);
     Stop;
   Death.Missilekiller1:
@@ -151,4 +135,18 @@ Class Shin_VileHellFire : Actor
     A_Explode(damage, 25);
     A_FireCrackle();
   }
+}
+
+Class Shin_Archvile_Standie : Shin_MonsterStandie
+{
+	Default
+	{
+		Scale 1.15;
+	}
+	States
+	{
+		Spawn:
+			VILE G -1;
+			Stop;
+	}
 }

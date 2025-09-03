@@ -40,6 +40,12 @@ Class ShinDoom_EventHandler : EventHandler
         mapPrefix = mapPrefix.MakeLower();
 		String mapName = level.MapName.MakeLower();
 		
+		if ( mapName.Left(1) == "e" && mapName.Mid(2, 1) == "m" )
+		{
+			if (e.Replacee == 'Shin_Archvile')
+			e.Replacement = 'Shin_Summoner';
+		}
+		
 		if ( mapPrefix == "ab_" )
 		{
 			if (e.Replacee == 'Chainsaw')

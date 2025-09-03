@@ -29,7 +29,12 @@ $Pitchset weapons/sawuplow 0.9
 weapons/plasmax DSPLADTH
 $Limit weapons/plasmax 0
 
+Weapons/BfgBallFire DSBFGFIR
+
 Weapons/BfgBallFly DSBFGFLY
+
+weapons/FistSwing DSSKESWG
+$Pitchset weapons/FistSwing 0.9
 
 Weapon/ChaingunRevUp DSMGUP
 Weapon/ChaingunRevMid DSMGMID
@@ -41,19 +46,31 @@ $Pitchset Weapon/ChaingunRevUp 0.9
 $Pitchset Weapon/ChaingunRevMid 0.9
 $Pitchset Weapon/ChaingunRevDown 0.9
 
+Weapons/MachinePistol DSPISTOL
+$Pitchset Weapons/MachinePistol 1.1
+Weapons/MachineGun DSPISTOL
+$Pitchset Weapons/Machinegun 0.9
+
 weaponUP/Pistol DSPISUP
+weaponUp/SMG DSSMGGUP
 weaponUP/Shotgun dswpnup
 weaponUP/SuperShotgun dsdbcls
+weaponUP/Machinegun DSMNGUP
 weaponUP/Chaingun DSCGNPU
 weaponUP/RocketLauncher dsrokLup
 weaponIP/GLauncher DSGRPKUP
 weaponUP/Plasmarifle D3PLSMUP
+WeaponUp/Incinerator DSFTHRUP
 weaponUP/BFG9000 DSBFGUP
+WeaponUP/GaussCannon DSBFGUP
+$Pitchset WeaponUP/GaussCannon 0.7
 
 misc/w_pkup_Saw DSSWPIC
-misc/w_pkup_Pistol DSPISPU
+misc/w_pkup_Pistol DSPISPK
+misc/w_pkup_SMG DSSMGGPK
 misc/w_pkup_Shotgun DSSHGNPU
 misc/w_pkup_SuperShotgun DSDSGNPK
+misc/w_pkup_Machinegun DSMNGPK
 misc/w_pkup_Chaingun DSCGNPK
 misc/w_pkup_RocketLauncher dsrokLpk
 misc/w_pkup_GLauncher DSGRPKPU

@@ -50,7 +50,8 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		HEAD F 6;
 		Goto See;
 	Death:
-		HEAD G 8 { bFLOATBOB = False; }
+		HEAD G 1;
+		HEAD G 7 { bFLOATBOB = False; A_SpectreAppear(); }
 		HEAD H 8 A_Scream;
 		HEAD I 7;
 	DeathLoop:
@@ -63,7 +64,8 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		HEAD L -1 A_SetFloorClip;
 		Stop;
 	XDeath:
-		HEDX A 4 {bFLOATBOB = False;}
+		HEDX A 1;
+		HEDX A 3 {bFLOATBOB = False; A_SpectreAppear(); }
 		HEDX B 4 A_XScream;
 		HEDX C 4;
 		HEDX D 4 A_NoBlocking();
@@ -71,7 +73,8 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		HEDX J -1;
 		Stop;
 	Raise:
-		HEAD L 8 A_UnSetFloorClip;
+		HEAD L 1 A_UnSetFloorClip;
+		HEAD L 7 A_SpectreDisappear();
 		HEAD KJIHG 8;
 		HEAD A 0 {bFLOATBOB = True;}
 		Goto See;
@@ -103,26 +106,6 @@ Class Shin_CacodemonBall : ShinDoom_Actor
 	Death:
 		BAL6 CDE 6 BRIGHT;
 		Stop;
-	}
-}
-
-Class Shin_DeadCaco : Shin_Cacodemon Replaces DeadCacodemon
-{
-	Default { -COUNTKILL +NEVERRESPAWN }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_Jump(50, "Gibbed");
-			Goto Super::DeathStop+3;
-		Gibbed:
-			Goto Super::XDeath+9;
 	}
 }
 

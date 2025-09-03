@@ -69,23 +69,6 @@ Class Shin_HellHound : ShinDoom_Actor
 	}
 }
 
-Class Shin_DeadHellHound : Shin_HellHound
-{
-	Default { -COUNTKILL +NEVERRESPAWN -BOSSDEATH }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+7;
-	}
-}
-
 Extend Class Shin_Hellhound
 {	
 	void A_HoundChase()

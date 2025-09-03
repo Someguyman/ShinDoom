@@ -8,7 +8,7 @@ Class Shin_DarkClaw : ShinDoom_Weapon
 		Inventory.PickupMessage "$GOTCLAW";
 		Obituary "$OB_MPFIST";
 		Tag "$TAG_FIST";
-		+WEAPON.NOAUTOSWITCHTO
+		//+WEAPON.NOAUTOSWITCHTO
 	}
 	
 	States

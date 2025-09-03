@@ -23,6 +23,15 @@ Class ShinDoom_Actor : Actor
 	
 	SpriteID BaseSprite;
 	
+	override void PostBeginPlay()
+	{
+		super.PostBeginPlay();
+		if (bSHADOW == true)
+		{
+			A_SetTranslucent(0.25, 0);
+		}
+	}
+	
 	override void Tick()
     {
         super.Tick();
@@ -118,17 +127,6 @@ Class ShinDoom_Actor : Actor
 			Stop;
 	}
 	
-	/*
-	override void PostBeginPlay()
-	{
-		super.PostBeginPlay();
-		if (bICONSPAWN && (bIsDead == true))
-		{
-		
-		}
-	}
-	*/
-	
 	void A_BruisAttack()
 	{
 		let targ = target;
@@ -176,6 +174,22 @@ Class ShinDoom_Actor : Actor
 		}
 	}
 	
+	void A_SpectreAppear()
+	{
+		if (bSHADOW == true)
+		{
+			A_StartSound("spectre/visible", CHAN_AUTO);
+		}
+	}
+	
+	void A_SpectreDisappear()
+	{
+		if (bSHADOW == true)
+		{
+			A_StartSound("spectre/invisible", CHAN_AUTO);
+		}
+	}
+	
 	void A_Footstep()
 	{
 		PlayFootstepSound(FootstepSound);
@@ -207,12 +221,23 @@ Class ShinDoom_Actor : Actor
         A_StartSound(soundname, FootstepSoundChannel, CHANF_DEFAULT, 1, ATTN_IDLE);
     }
 	
+	void A_BloodSplat()
+	{
+		if (bNOBLOOD != true)
+		For (Int I; I <= 16; I++)
+		{
+			A_SpawnProjectile("Shin_FlyingBlood", 32, 0, random(0, 360), 2, random(0, 160));
+		}
+	}
+	
 	Void A_XScream()
 	{
 		if (bBOSS == True || bFULLVOLDEATH == True)
 			A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_NONE);
 		else
 			A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_IDLE);
+		
+		A_BloodSplat();
 	}
 	
 	void A_SummonDudes()
@@ -298,5 +323,23 @@ Class ShinDoom_Weapon : DoomWeapon
 
 		A_GunFlash();
 		SpawnPlayerMissile("BFGBall", angle, nofreeaim:sv_nobfgaim);
+	}
+}
+
+Class Shin_MonsterStandie : ShinDoom_Actor
+{
+	Default
+	{
+		Radius 16;
+		Height 52;
+		ProjectilePassHeight -16;
+		+SOLID
+		Translation "MonoChrome";
+	}
+	States
+	{
+		Spawn:
+			TNT1 A -1 Bright;
+			Stop;
 	}
 }

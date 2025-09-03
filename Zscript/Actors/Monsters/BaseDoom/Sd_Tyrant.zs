@@ -71,23 +71,6 @@ Class Shin_Tyrant_boss_2 : Shin_Tyrant
 
 }
 
-Class Shin_DeadTyrant : Shin_Tyrant
-{
-	Default { -COUNTKILL +NEVERRESPAWN -BOSSDEATH }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+9;
-	}
-}
-
 Extend Class Shin_Tyrant
 {
 	void A_TyrantAttack()

@@ -103,23 +103,6 @@ Class Shin_VassagoFlame : ShinDoom_Actor
 	}
 }
 
-Class Shin_DeadVassago : Shin_Vassago
-{
-	Default { -COUNTKILL +NEVERRESPAWN -BOSSDEATH }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+7;
-	}
-}
-
 extend class Shin_VassagoFlame
 {
 	int i;
