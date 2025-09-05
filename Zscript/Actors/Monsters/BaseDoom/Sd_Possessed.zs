@@ -143,35 +143,6 @@ Class Shin_ChaingunGuy : ShinDoom_Actor Replaces ChaingunGuy
 		Dropitem "Shin_LightAmmo";
 	}
 	
-	static const name ChaingunnerSprite[] = 
-    {
-        'CPOS',
-        'CPS2'
-    };
-	
-	override void PostBeginPlay()
-	{
-		string mapName = Level.MapName.MakeLower();
-		super.PostBeginPlay();
-		int i = 0;
-		
-		if ( mapName.Left(1) == "e" && mapName.Mid(2, 1) == "m" )
-		{
-			i = 1;
-		}
-		
-		if ( mapName == "test" )
-		{
-			i = random(0,1);
-		}
-		
-		BaseSprite = GetSpriteIndex(ChaingunnerSprite[i]);
-		
-		sprite = BaseSprite;
-		
-		Return;
-	}
-	
 	States
 	{
 	Precache:
@@ -236,5 +207,51 @@ Class Shin_ChaingunGuy : ShinDoom_Actor Replaces ChaingunGuy
 		"####" N 5;
 		"####" MLKJIH 5;
 		Goto See;
+	}
+}
+
+Extend Class Shin_Chaingunguy
+{	
+	static const name ChaingunnerSprite[] = 
+    {
+        'CPOS',
+        'CPS2'
+    };
+	
+	override void PostBeginPlay()
+	{
+		string mapName = Level.MapName.MakeLower();
+		super.PostBeginPlay();
+		int i = 0;
+		int IsDoom1 = ( mapName.Left(1) == "e" && mapName.Mid(2, 1) == "m" );
+		
+		if ( mapName == "test" )
+		{
+			i = random(0,1); //Spawn with ethier appearence in the test map.
+		}
+		
+		if (IsDoom1)
+		{
+			i = 1;
+		}
+		
+		if (wads.FindLump("KDISCR01") != -1)
+		{
+			i = 1;
+		}
+		
+		if ( i == 1 ) //If we are using the Doom 1 sprites, then change the sounds to the Doom 1 versions as well.
+		{
+			SeeSound = "Chainguy2/Sight";
+			ActiveSound = "Chainguy2/Active";
+			PainSound = "Chainguy2/Pain";
+			DeathSound = "Chainguy2/Death";
+		}
+		
+		BaseSprite = GetSpriteIndex(ChaingunnerSprite[i]);
+		
+		sprite = BaseSprite;
+		
+		Return;
 	}
 }

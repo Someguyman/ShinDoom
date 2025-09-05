@@ -136,11 +136,11 @@ Class Shin_SMGDude : ShinDoom_Actor
 		PainChance 170;
 		Monster;
 		+FLOORCLIP
-		SeeSound "shotguy/sight";
-		AttackSound "grunt/attack";
-		PainSound "shotguy/pain";
-		DeathSound "shotguy/death";
-		ActiveSound "shotguy/active";
+		SeeSound "SMGDude/sight";
+		AttackSound "SMGDude/attack";
+		PainSound "SMGDude/pain";
+		DeathSound "SMGDude/death";
+		ActiveSound "SMGDude/active";
 		Obituary "$OB_BURST";
 		Tag "$FN_BURST";
 		Dropitem "Shin_MachinePistol";

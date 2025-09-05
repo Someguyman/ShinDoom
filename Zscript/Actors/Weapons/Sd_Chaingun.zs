@@ -26,99 +26,99 @@ Class Shin_Chaingun : ShinDoom_Weapon Replaces Chaingun
 	States
 	{
 	Ready:
-		CHGG A 1 A_ChaingunReady();
+		SDWG A 1 A_ChaingunReady();
 		Loop;
 	Deselect:
-		CHGG A 0 A_Stopsound(7);
-		CHGG A 0 { Invoker.Isspinning = false; }
+		SDWG A 0 A_Stopsound(7);
+		SDWG A 0 { Invoker.Isspinning = false; }
 	Deselect.Loop:
-		CHGG A 1 A_Lower;
+		SDWG A 1 A_Lower;
 		Loop;
 	Select:
-		CHGG A 0 { Invoker.Isspinning = false; }
+		SDWG A 0 { Invoker.Isspinning = false; }
 	Select.Loop:
-		CHGG A 1 A_Raise;
+		SDWG A 1 A_Raise;
 		Loop;
 	Fire:
-		CHGG A 0 { if(Invoker.Isspinning == true) SetWeaponState("Fire.part4"); }
+		SDWG A 0 { if(Invoker.Isspinning == true) SetWeaponState("Fire.part4"); }
 	Fire.part1:
-		CHGG A 0 A_Startsound("Weapon/ChaingunRevUp", 7, CHANF_LOOPING);
-		CHGG A 5 A_FireCGun1();
-		CHGG B 5 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
-		CHGG A 4 A_FireCGun2();
-		CHGG B 4 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
-		CHGG B 0 A_ReFire("Fire.part2");
-		CHGG A 0 A_Stopsound(7);
-		CHGG AAAAAABBBBBBAAAAAABBBBBB 1 A_ReFire("Fire.part1");
+		SDWG A 0 A_Startsound("Weapon/ChaingunRevUp", 7, CHANF_LOOPING);
+		SDWG A 5 A_FireCGun1();
+		SDWG B 5 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
+		SDWG A 4 A_FireCGun2();
+		SDWG B 4 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
+		SDWG B 0 A_ReFire("Fire.part2");
+		SDWG A 0 A_Stopsound(7);
+		SDWG AAAAAABBBBBBAAAAAABBBBBB 1 A_ReFire("Fire.part1");
 		Goto Ready;
 	Fire.part2:
-		CHGG A 0 A_Startsound("Weapon/ChaingunRevUp", 7, CHANF_LOOPING);
-		CHGG A 4 A_FireCGun3();
-		CHGG B 4 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
-		CHGG B 0 A_ReFire("Fire.part3");
-		CHGG A 0 A_Stopsound(7);
-		CHGG AAAAAABBBBBBAAAAAABBBBBB 1 A_ReFire("Fire.part1");
+		SDWG A 0 A_Startsound("Weapon/ChaingunRevUp", 7, CHANF_LOOPING);
+		SDWG A 4 A_FireCGun3();
+		SDWG B 4 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
+		SDWG B 0 A_ReFire("Fire.part3");
+		SDWG A 0 A_Stopsound(7);
+		SDWG AAAAAABBBBBBAAAAAABBBBBB 1 A_ReFire("Fire.part1");
 		Goto Ready;
 	Fire.part3:
-		CHGG A 0 A_Startsound("Weapon/ChaingunRevUp", 7, CHANF_LOOPING);
-		CHGG A 3 A_FireCGun3();
-		CHGG B 3 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
-		CHGG A 3 A_FireCGun3();
-		CHGG B 3 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
-		CHGG A 3 A_FireCGun3();
-		CHGG B 3 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
-		CHGG A 3 A_FireCGun3();
-		CHGG B 3 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
-		CHGG B 0 A_ReFire("Fire.part4");
-		CHGG A 0 A_Stopsound(7);
-		CHGG AAAABBBB 1 A_ReFire("Fire.part1");
-		CHGG AAAAAABBBBBBAAAAAABBBBBB 1 A_ReFire("Fire.part1");
+		SDWG A 0 A_Startsound("Weapon/ChaingunRevUp", 7, CHANF_LOOPING);
+		SDWG A 3 A_FireCGun3();
+		SDWG B 3 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
+		SDWG A 3 A_FireCGun3();
+		SDWG B 3 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
+		SDWG A 3 A_FireCGun3();
+		SDWG B 3 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
+		SDWG A 3 A_FireCGun3();
+		SDWG B 3 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
+		SDWG B 0 A_ReFire("Fire.part4");
+		SDWG A 0 A_Stopsound(7);
+		SDWG AAAABBBB 1 A_ReFire("Fire.part1");
+		SDWG AAAAAABBBBBBAAAAAABBBBBB 1 A_ReFire("Fire.part1");
 		Goto Ready;
 	Fire.part4:
-		CHGG A 0 A_Startsound("Weapon/ChaingunRevmid", 7, CHANF_LOOPING);
-		CHGG A 2 A_FireCGun4();
-		CHGG B 2;
-		CHGG B 0 A_ReFire("Fire.part4");
-		CHGG A 0 A_CheckSpin();
+		SDWG A 0 A_Startsound("Weapon/ChaingunRevmid", 7, CHANF_LOOPING);
+		SDWG A 2 A_FireCGun4();
+		SDWG B 2;
+		SDWG B 0 A_ReFire("Fire.part4");
+		SDWG A 0 A_CheckSpin();
 		Goto SpinDown;
 	Altfire:
-		CHGG A 0 { if (Invoker.Isspinning == false) { Invoker.Isspinning = true; SetWeaponState("Ready"); } }
+		SDWG A 0 { if (Invoker.Isspinning == false) { Invoker.Isspinning = true; SetWeaponState("Ready"); } }
 	NoSpin:
-		CHGG A 0 { if (Invoker.Isspinning == true) { Invoker.Isspinning = false; } }
+		SDWG A 0 { if (Invoker.Isspinning == true) { Invoker.Isspinning = false; } }
 		Goto Spindown;
 	SpinUp.Part1:
-		CHGG A 4 A_Startsound("Weapon/ChaingunRevUp", 7);
-		CHGG BAB 4 Offset(0,32);
-		CHGG ABABAB 3 Offset(0,32);
+		SDWG A 4 A_Startsound("Weapon/ChaingunRevUp", 7);
+		SDWG BAB 4 Offset(0,32);
+		SDWG ABABAB 3 Offset(0,32);
 		Goto SpinUp.Part2;
 	SpinUp.Part2:
-		CHGG A 0 A_Startsound("Weapon/ChaingunRevmid", 7, CHANF_LOOPING);
-		CHGG A 2 Offset(0,32) { A_WeaponReady(WRF_NOBOB|WRF_NOSWITCH); A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY); }
-		CHGG B 2 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
-		CHGG A 0 A_WeaponReady(WRF_NOBOB|WRF_NOSWITCH);
-		CHGG A 0 { if(Invoker.Isspinning != true) SetWeaponState("SpinDown"); }
+		SDWG A 0 A_Startsound("Weapon/ChaingunRevmid", 7, CHANF_LOOPING);
+		SDWG A 2 Offset(0,32) { A_WeaponReady(WRF_NOBOB|WRF_NOSWITCH); A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY); }
+		SDWG B 2 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
+		SDWG A 0 A_WeaponReady(WRF_NOBOB|WRF_NOSWITCH);
+		SDWG A 0 { if(Invoker.Isspinning != true) SetWeaponState("SpinDown"); }
 		Goto SpinUp.Part2;
 	Spindown:
-		CHGG A 0 Offset(1,32) { A_Stopsound(7); A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY); }
-		CHGG A 0 Offset(0,32) A_Startsound("Weapon/ChaingunRevDown", 7);
-		CHGG AABBBBAAAABBBBAAAA 1 Offset(0,32) Offset(0,32) { if (player.cmd.buttons & BT_ATTACK) { A_ReFire("Fire.part4"); } }
-		CHGG BBBBBBAAAAAABBBBBBAAAAAA 1 Offset(0,32) { if (player.cmd.buttons & BT_ATTACK) { A_ReFire("Fire.part3"); } }
+		SDWG A 0 Offset(1,32) { A_Stopsound(7); A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY); }
+		SDWG A 0 Offset(0,32) A_Startsound("Weapon/ChaingunRevDown", 7);
+		SDWG AABBBBAAAABBBBAAAA 1 Offset(0,32) Offset(0,32) { if (player.cmd.buttons & BT_ATTACK) { A_ReFire("Fire.part4"); } }
+		SDWG BBBBBBAAAAAABBBBBBAAAAAA 1 Offset(0,32) { if (player.cmd.buttons & BT_ATTACK) { A_ReFire("Fire.part3"); } }
 		Goto Ready;
 	Flash1:
-		CHGF A 5 Bright A_Light1;
-		CHGF B 4 Bright A_Light2;
+		SDWG C 5 Bright A_Light1;
+		SDWG D 4 Bright A_Light2;
 		Goto LightDone;
 	Flash2:
-		CHGF A 4 Bright A_Light1;
-		CHGF B 3 Bright A_Light2;
+		SDWG C 4 Bright A_Light1;
+		SDWG D 3 Bright A_Light2;
 		Goto LightDone;
 	Flash3:
-		CHGF A 3 Bright A_Light1;
-		CHGF B 2 Bright A_Light2;
+		SDWG C 3 Bright A_Light1;
+		SDWG D 2 Bright A_Light2;
 		Goto LightDone;
 	Flash4:
-		CHGF A 2 Bright A_Light1;
-		CHGF B 1 Bright A_Light2;
+		SDWG C 2 Bright A_Light1;
+		SDWG D 1 Bright A_Light2;
 		Goto LightDone;
 	Spawn:
 		CGUN A -1;

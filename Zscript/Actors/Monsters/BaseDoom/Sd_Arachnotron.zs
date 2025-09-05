@@ -159,18 +159,21 @@ Extend Class Shin_Arachnotron
 		string mapName = Level.MapName.MakeLower();
 		super.PostBeginPlay();
 		int i = 0; //The Regular Hell Knight sprites are the default.
-
-		if (wads.FindLump("D_FLEE") && wads.FindLump("dswlfhwl") != -1)
-		{
-			i = 1;
-			//A_Log("Ancient Aliens Detected");
-		}
-		
+					
 		if ( mapName == "test" )
 		{
 			i = random(0,1); //Spawn with ethier appearence in the test map.
 		}
+
+		if (wads.FindLump("D_FLEE") && wads.FindLump("dswlfhwl") != -1)
+		{
+			i = 1;
+		}
 		
+		if (wads.FindLump("KDISCR01") != -1)
+		{
+			i = 1;
+		}
 		
 		if ( i == 1 ) //If we are using the Doom 1 sprites, then change the sounds to the Doom 1 versions as well.
 		{

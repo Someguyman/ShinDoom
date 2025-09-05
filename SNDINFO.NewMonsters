@@ -19,6 +19,24 @@ $random MechaZombie/Death { MechaZombie/Death1 MechaZombie/Death2 }
 MechaZombie/Death1 DSMZDTH1
 MechaZombie/Death2 DSMZDTH2
 
+$random SMGdude/sight	{ SMGdude/sight1  SMGdude/sight2 }
+$random SMGdude/death	{ SMGdude/death1  SMGdude/death2 }
+SMGdude/sight1	DSCPSIT1
+SMGdude/sight2	DSCPSIT2
+SMGdude/active	DSCPACT
+SMGdude/pain	DSCPPAIN
+SMGdude/death1	DSCPDTH1
+SMGdude/death2	DSCPDTH2
+SMGdude/attack 	DSPOATK
+
+$pitchset SMGdude/sight1 1.1
+$pitchset SMGdude/sight2 1.1
+$pitchset SMGdude/death1 1.1
+$pitchset SMGdude/death2 1.1
+$pitchset SMGdude/active 1.1
+$pitchset SMGdude/pain 1.1
+$pitchset SMGdude/attack 1.1
+
 $RANDOM Gargoyle/Sight { Gargoyle/Sight1 Gargoyle/Sight2 }
 Gargoyle/Sight1 DSGGSIT1
 Gargoyle/Sight2 DSGGSIT2

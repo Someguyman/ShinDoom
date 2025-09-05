@@ -71,7 +71,22 @@ Class Shin_BaronOfHell : ShinDoom_Actor Replaces Baronofhell
 		BOSS LKJI  8;
 		Goto See;
 	}
+}
+
+Class Shin_BaronBall_Big : ShinDoom_Actor
+{
+	Default
+	{
 	
+	}
+	States
+	{
+	
+	}
+}
+
+Extend Class Shin_BaronOfHell
+{
 	void A_BaronAttack()
 	{
 		let targ = target;
@@ -89,5 +104,10 @@ Class Shin_BaronOfHell : ShinDoom_Actor Replaces Baronofhell
 				A_FireVolley("Baronball", 5, 45);
 			}
 		}
+	}
+	
+	void A_BaronAttack2()
+	{
+	
 	}
 }

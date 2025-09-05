@@ -1,0 +1,66 @@
+#library "Shin_ACS"
+#include "zcommon.acs"
+
+Script "WeaponManagement" Enter //Used to clean up inventory if you gave yourself all weapons via cheats
+{
+	str mapName = StrParam(n:PRINTNAME_LEVEL);
+	str episode = StrMid(mapName, 1, 1);
+	str mission = StrMid(mapName, 3, 1);
+	str levelset = StrMid(mapName, 0, 3);
+	str levelset2 = StrMid(mapName, 0, 6);
+	
+	delay(1);
+	
+	if(StrICmp(mapName, "TEST") == 0)
+	{
+		terminate;
+	}
+	
+	/*
+	if (CheckActorProperty(0, APROP_SPECIES, "Cyberdemon") == 0)
+    {
+		//Log(s:"Cyberdemon is tree!");
+		//Terminate;
+		TakeInventory("Shin_SuperShotgun", 1);
+		TakeInventory("Shin_GrenadeLauncher", 1);
+		TakeInventory("Shin_GaussCannon", 1);
+		TakeInventory("Shin_Incinerator", 1);
+		TakeInventory("Shin_BFG9000", 1);
+		TakeInventory("Shin_CalamityBlade", 1);
+		TakeInventory("Shin_Unmaker", 1);
+	}
+	*/
+	
+	if((StrICmp(levelset, "e1m") == 0) ||
+	   (StrICmp(levelset, "e2m") == 0) ||
+	   (StrICmp(levelset, "e3m") == 0) ||
+	   (StrICmp(levelset, "e4m") == 0) ||
+	   (StrICmp(levelset, "e5m") == 0) ||
+	   (StrICmp(levelset, "e6m") == 0) ||
+	   (StrICmp(levelset, "eu_") == 0))
+	{	
+		TakeInventory("Shin_SuperShotgun", 1);
+		TakeInventory("Shin_GrenadeLauncher", 1);
+		TakeInventory("Shin_GaussCannon", 1);
+		TakeInventory("Shin_Incinerator", 1);
+		TakeInventory("Shin_CalamityBlade", 1);
+		TakeInventory("Shin_Unmaker", 1);
+	}
+	
+	if((StrICmp(levelset, "map") == 0) ||
+	   (StrICmp(levelset, "tn_") == 0) ||
+	   (StrICmp(levelset, "pl_") == 0) ||
+	   (StrICmp(levelset, "ml_") == 0) ||
+	   (StrICmp(levelset, "nv_") == 0) ||
+	   (StrICmp(levelset, "ab_") == 0) ||
+	   (StrICmp(levelset, "dz_") == 0) ||
+	   (StrICmp(levelset, "le_") == 0) ||
+	   (StrICmp(levelset, "pg_") == 0) ||
+	   (StrICmp(levelset, "hp_") == 0))
+	 {
+		TakeInventory("Shin_DarkClaw", 1);
+		TakeInventory("Shin_Reaper", 1);
+	 }
+	
+	Restart;
+}

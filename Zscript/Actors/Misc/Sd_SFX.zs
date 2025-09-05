@@ -40,7 +40,7 @@ Class Shin_TeleportFogEffect : ShinDoom_Actor
 		+NOTELEPORT
 		Damage 0;
 		RenderStyle "Translucent";
-		Alpha 0.67;
+		Alpha 0.61;
 	}
 	States
 	{

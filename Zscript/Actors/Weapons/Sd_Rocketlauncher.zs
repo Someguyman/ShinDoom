@@ -17,27 +17,27 @@ Class Shin_RocketLauncher : ShinDoom_Weapon replaces RocketLauncher
 	States
 	{
 	Ready:
-		MISG A 1 A_WeaponReady;
+		SDWR A 1 A_WeaponReady;
 		Loop;
 	Deselect:
-		MISG A 1 A_Lower;
+		SDWR A 1 A_Lower;
 		Loop;
 	Select:
-		MISG A 1 A_Raise;
+		SDWR A 1 A_Raise;
 		Loop;
 	Fire:
-		MISG A 2 A_FireRLaunch();
-		MISG B 10 Offset(0,38);
-		MISG B 3 Offset(0,34);
-		MISG A 3 Offset(0,34);
-		MISG A 3 Offset(0,32);
-		MISG B 0 A_ReFire;
+		SDWR A 2 A_FireRLaunch();
+		SDWR B 10 Offset(0,38);
+		SDWR B 3 Offset(0,34);
+		SDWR A 3 Offset(0,34);
+		SDWR A 3 Offset(0,32);
+		SDWR B 0 A_ReFire;
 		Goto Ready;
 	Flash:
-		MISF A 3 Bright A_Light2;
-		MISF B 4 Bright A_Light2;
-		MISF C 4 Bright A_Light1;
-		MISF D 2 Bright A_Light1;
+		SDWR C 3 Bright A_Light2;
+		SDWR D 4 Bright A_Light2;
+		SDWR E 4 Bright A_Light1;
+		SDWR F 2 Bright A_Light1;
 		Goto LightDone;
 	Spawn:
 		LAUN A -1;

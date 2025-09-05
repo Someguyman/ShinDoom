@@ -18,12 +18,12 @@ Class Shin_CyberFatso : Shin_mancubus
 		DeathSound "fatso/death";
 		ActiveSound "fatso/active";
 		Obituary "$OB_FATSO";
-		Tag "$FN_MANCU";
+		Tag "Cyber Mancubus";
 	}
 	States
 	{
 	Spawn:
-		CFAT AB 15 A_Look;
+		CFAT AB 15 { A_Look(); A_RestoreSprite(); }
 		Loop;
 	See:
 		CFAT A 4 A_Footstep();
@@ -73,5 +73,25 @@ Class Shin_CyberFatso : Shin_mancubus
 		stop;
 	Raise:
 		stop;
+	}
+}
+
+Extend Class Shin_CyberFatso
+{
+	override void PostBeginPlay()
+	{
+		super.PostBeginPlay();
+		
+
+		BaseSprite = GetSpriteIndex("CFAT");	
+		sprite = BaseSprite;
+		
+		SeeSound = "Fatso/Sight";
+		PainSound = "Fatso/Pain";
+		DeathSound = "Fatso/Death";
+		ActiveSound = "Fatso/Active";
+		SetTag("Cyber Mancubus");
+		
+		Return;
 	}
 }

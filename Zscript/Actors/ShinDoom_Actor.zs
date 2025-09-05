@@ -28,7 +28,8 @@ Class ShinDoom_Actor : Actor
 		super.PostBeginPlay();
 		if (bSHADOW == true)
 		{
-			A_SetTranslucent(0.25, 0);
+			//A_SetTranslucent(0.25, 0);
+			A_SetRenderStyle(0.25, STYLE_OptFuzzy);
 		}
 	}
 	
@@ -215,7 +216,7 @@ Class ShinDoom_Actor : Actor
 	
 	private void PlayFootstepSound(sound soundname)
     {
-        if (!soundname || !cx_mfs_enabled) return;
+        if (!soundname) return;
 		if (Pos.Z > FloorZ || self.bOnMobj || waterlevel > 0) return;
 		
         A_StartSound(soundname, FootstepSoundChannel, CHANF_DEFAULT, 1, ATTN_IDLE);

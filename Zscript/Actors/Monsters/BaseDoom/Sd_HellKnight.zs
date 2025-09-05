@@ -124,9 +124,9 @@ extend Class Shin_Hellknight
 			i = 1; //Switch the sprite to the Doom 1 version.
 		}
 		
-		if ( mapName == "test" )
+		if (wads.FindLump("KDISCR01") != -1)
 		{
-			i = random(0,1); //Spawn with ethier appearence in the test map.
+			i = 1;
 		}
 		
 		if ( i == 1 ) //If we are using the Doom 1 sprites, then change the sounds to the Doom 1 versions as well.

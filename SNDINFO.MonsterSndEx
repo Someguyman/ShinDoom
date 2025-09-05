@@ -25,6 +25,16 @@ chainguy/attack	DSCPATK
 $limit chainguy/attack 0
 $attenuation chainguy/attack 0.9
 
+$random chainguy2/sight	{ chainguy2/sight1  chainguy2/sight2 }
+$random chainguy2/death	{ chainguy2/death1  chainguy2/death2 }
+chainguy2/sight1	DS1CSIT1
+chainguy2/sight2	DS1CSIT2
+chainguy2/active	DS1CACT
+chainguy2/pain	DS1CPAIN
+chainguy2/death1	DS1CDTH1
+chainguy2/death2	DS1CDTH2
+$alias chainguy2/attack chainguy/attack
+
 imp/pain DSBGPAIN
 
 demon/active DSSGTACT

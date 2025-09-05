@@ -98,7 +98,7 @@ Extend Class Shin_Cyberdemon
 	void A_CyberdemonAttack()
 	{
 		A_FaceTarget();
-		A_SpawnProjectile("Shin_EnemyRocket",52,-28,0,CMF_BADPITCH);
+		A_SpawnProjectile("Shin_EnemyRocket",54,-28,0,CMF_BADPITCH);
 	}
 	
 	Void A_Cyberexplode()

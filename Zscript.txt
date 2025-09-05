@@ -96,12 +96,3 @@ version "4.14.1"
 //		LevelPostProcessor		//
 
 #include "Zscript/LevelPostProcessor/Sd_LevelPostProcessor.zs"
-#include "Zscript/LevelPostProcessor/Levels/Sd_E1M1.zs"
-#include "Zscript/LevelPostProcessor/Levels/Sd_E1M2.zs"
-#include "Zscript/LevelPostProcessor/Levels/Sd_E1M3.zs"
-#include "Zscript/LevelPostProcessor/Levels/Sd_E1M4.zs"
-#include "Zscript/LevelPostProcessor/Levels/Sd_E1M5.zs"
-#include "Zscript/LevelPostProcessor/Levels/Sd_E1M6.zs"
-#include "Zscript/LevelPostProcessor/Levels/Sd_E1M7.zs"
-#include "Zscript/LevelPostProcessor/Levels/Sd_E1M8.zs"
-#include "Zscript/LevelPostProcessor/Levels/Sd_E1M9.zs"

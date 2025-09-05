@@ -38,7 +38,7 @@ Class Shin_Cybruiser : Shin_BaronOfHell
 		Goto See;
 	Missile:
 		CBOS E 10 A_FaceTarget;
-		CBOS F 6 Bright A_CybruAttack("Shin_EnemyRocket");
+		CBOS F 6 Bright A_CybruAttack();
 		CBOS E 8 A_FaceTarget;
 		Goto See;
 	Pain:
@@ -64,12 +64,38 @@ Class Shin_Cybruiser : Shin_BaronOfHell
 	}
 }
 
+Class Shin_Cybruiser_Missile : ShinDoom_Actor
+{
+	Default
+	{
+		Radius 8;
+		Height 12;
+		Speed 20;
+		Damage 10;
+		Projectile;
+		+RANDOMIZE
+		SeeSound "cyber/attack";
+		DeathSound "cyber/shotx";
+	}
+	States
+	{
+		Spawn:
+			HMIS A 1 Bright;
+			Loop;	
+		Death:
+			MANF C 8 Bright A_Explode(64,64,0);
+			MANF D 6 Bright;
+			MANF E 4 Bright;
+			Stop;
+	}
+}
+
 Extend Class Shin_Cybruiser
 {
-	Void A_CybruAttack(Class<Actor> p)
+	Void A_CybruAttack()
 	{
 		A_FaceTarget();
-		A_SpawnProjectile(p,32,12,0,CMF_BADPITCH);
+		A_SpawnProjectile("Shin_Cybruiser_Missile",42,19,0,CMF_BADPITCH);
 	}
 	
 	void A_Cybrustomp()

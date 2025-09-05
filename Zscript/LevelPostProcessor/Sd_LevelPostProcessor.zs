@@ -5,6 +5,7 @@ Class ShinDoom_LevelPostProcessor : LevelPostProcessor
 	{
 		actor SpawnedThing = Actor.Spawn(actorclass, pos, ALLOW_REPLACE);
 		SpawnedThing.angle = angle;
+		SpawnedThing.bAmbush = flags;
 	}
 	
 	protected void Apply(Name checksum, String mapname)
@@ -46,17 +47,16 @@ Class ShinDoom_LevelPostProcessor : LevelPostProcessor
 			int Tyrant = 			3012;
 			int Vassago = 			3011;
 			
-			//
-			
-			if (ednum == Baronofhell && 
-			( mapName != "e1m8" || 
-			  mapName != "test" || 
-			  mapName != "testmap" ))
-			SetThingEdNum(i, Hellknight);
+			/*
+			if (ednum == Baronofhell && (mapName != "e1m8" || mapName != "e1m8b" ||  mapName != "test" || mapName != "testmap" ))
+			{
+				SetThingEdNum(i, Hellknight);
+			}
+			*/
 			
 			Switch (Checksum)
 			{
-				case 'E43C1797DFD9443D1B4C035327743588' :
+				case 'E43C1797DFD9443D1B4C035327743588' : //TestMap
 				{
 					SetThingEdNum(1,0);
 					SetThingEdNum(3,0);
@@ -80,9 +80,22 @@ Class ShinDoom_LevelPostProcessor : LevelPostProcessor
 					Break;
 				}
 				
-				case 'b49f7a6c519757d390d52667db7d8793' :
+				case 'b49f7a6c519757d390d52667db7d8793' : //E1M1
 				{
 					SetThingEdNum(90,0);
+					Break;
+				}
+				
+				case '1BC04D646B32D3A3E411DAF3C1A38FF8' : //E2M4
+				{
+					SetThingEdNum(138,0);
+					SetThingEdNum(50,0);
+					
+					if (skill_level >= 2)
+					{
+						SetThingEdNum(49,0);
+						SetThingEdNum(137,0);
+					}
 					Break;
 				}
 			}
@@ -98,25 +111,25 @@ Class ShinDoom_MonsterSpawner play
 	{
 		if(level.GetChecksum() == 'E43C1797DFD9443D1B4C035327743588')
 		{
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_ZombieMan_Standie",( -3616, 1824, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Shotgunguy_Standie",( -3456, 1824, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Chaingunguy_Standie",( -3296, 1824, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_DoomImp_Standie",( -3136, 1824, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Pinky_Standie",( -2976, 1824, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Spectre_Standie",( -2816, 1824, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Cacodemon_Standie",( -2656, 1824, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_LostSoul_Standie",( -2496, 1824, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_HellKnight_Standie",( -2336, 1824, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_BaronOfHell_Standie",( -2176, 1824, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Archvile_Standie",( -2016, 1824, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Arachnotron_Standie",( -1856, 1824, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Fatso_Standie",( -1696, 1824, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Revenant_Standie",( -1536, 1824, -999 ), 270, MTF_AMBUSH);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_ZombieMan_Standie",	( -3616, 1824, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Shotgunguy_Standie",	( -3456, 1824, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Chaingunguy_Standie",	( -3296, 1824, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_DoomImp_Standie",		( -3136, 1824, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Pinky_Standie",		( -2976, 1824, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Spectre_Standie",		( -2816, 1824, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Cacodemon_Standie",	( -2656, 1824, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_LostSoul_Standie",	( -2496, 1824, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_HellKnight_Standie",	( -2336, 1824, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_BaronOfHell_Standie",	( -2176, 1824, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Archvile_Standie",	( -2016, 1824, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Arachnotron_Standie",	( -1856, 1824, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Fatso_Standie",		( -1696, 1824, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Revenant_Standie",	( -1536, 1824, -999 ), 270);
 			
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_PainElemental_Standie",( -3616, 1504, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_WolfensteinSS_Standie",( -3456, 1504, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Cyberdemon_Standie",( -3296, 1504, -999 ), 270, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Mastermind_Standie",( -3072, 1504, -999 ), 270, MTF_AMBUSH);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_PainElemental_Standie",( -3616, 1504, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_WolfensteinSS_Standie",( -3456, 1504, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Cyberdemon_Standie",	 ( -3296, 1504, -999 ), 270);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Mastermind_Standie",	 ( -3072, 1504, -999 ), 270);
 		}
 		
 		if(level.GetChecksum() == 'b49f7a6c519757d390d52667db7d8793')
@@ -124,6 +137,20 @@ Class ShinDoom_MonsterSpawner play
 			if (G_SkillPropertyInt(SKILLP_ACSReturn) >= 3)
 			{
 				ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_MachinegunGuy",( 2464, -2432, -999 ), 180, MTF_AMBUSH);
+			}
+		}
+		
+		if(level.GetChecksum() == '1BC04D646B32D3A3E411DAF3C1A38FF8')
+		{
+			if (G_SkillPropertyInt(SKILLP_ACSReturn) >= 2)
+			{
+				ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_HellHound",( 1664, -64, -999 ), 90, MTF_AMBUSH);
+				ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_HellHound",( 1920, -64, -999 ), 90, MTF_AMBUSH);
+			}
+			
+			if (G_SkillPropertyInt(SKILLP_ACSReturn) >= 3)
+			{
+				ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Hellknight",( -752, -2400, -999 ), 90, MTF_AMBUSH);
 			}
 		}
 	}
