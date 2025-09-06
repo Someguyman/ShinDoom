@@ -222,23 +222,26 @@ Class ShinDoom_Actor : Actor
         A_StartSound(soundname, FootstepSoundChannel, CHANF_DEFAULT, 1, ATTN_IDLE);
     }
 	
-	void A_BloodSplat()
+	void A_BloodSplat(Int Bloodcount = 5)
 	{
+		if (Bloodcount == 0) { Bloodcount = 5; }
+		
 		if (bNOBLOOD != true)
-		For (Int I; I <= 16; I++)
 		{
-			A_SpawnProjectile("Shin_FlyingBlood", 32, 0, random(0, 360), 2, random(0, 160));
+			For (Int I; I <= Bloodcount; I++)
+			{
+				A_SpawnItemEx ("Shin_FlyingBlood", 1, 1, random(8,32), random(0,5), random(0,5), random(8,18), random(0,360), SXF_USEBLOODCOLOR, 0);
+			}
 		}
 	}
 	
 	Void A_XScream()
 	{
 		if (bBOSS == True || bFULLVOLDEATH == True)
-			A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_NONE);
+			{ A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_NONE); A_BloodSplat(32); }
 		else
-			A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_IDLE);
+			{ A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_IDLE); A_BloodSplat(20); }
 		
-		A_BloodSplat();
 	}
 	
 	void A_SummonDudes()

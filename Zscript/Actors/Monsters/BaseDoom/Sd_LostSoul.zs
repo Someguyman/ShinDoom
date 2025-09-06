@@ -16,7 +16,7 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 		+NOGRAVITY 
 		+DONTFALL 
 		+NOICEDEATH 
-		+ZDOOMTRANS 
+		//+ZDOOMTRANS 
 		-COUNTKILL
 		+BOUNCEONFLOORS 
 		+BOUNCEONCEILINGS 

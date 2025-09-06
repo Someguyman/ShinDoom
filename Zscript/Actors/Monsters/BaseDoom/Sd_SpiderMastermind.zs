@@ -56,6 +56,7 @@ Class Shin_SpiderMastermind : ShinDoom_Actor Replaces SpiderMastermind
 		SPID I 3;
 		SPID I 3 A_Pain;
 		Goto See;
+	Death.SuperShotgun:
 	Death:
 		SPID I 1 Bright;
 		SPID J 19 Bright A_Scream;
@@ -96,5 +97,6 @@ Extend Class Shin_SpiderMastermind
 	Void A_Spiderexplode()
 	{
 		A_SpawnProjectile("Shin_BossExplosion",FRandom(10,60),FRandom(30,-30),FRandom(0,360),2,FRandom(0,360));
+		A_BloodSplat(32);
 	}
 }

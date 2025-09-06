@@ -142,11 +142,12 @@ Class Shin_FlyingBlood : Blood
 		Speed 8;
 		Radius 3;
 		Height 3;
-		gravity 0.5;
+		gravity 1.2;
 	}
 	States
 	{
 		Spawn:
+			TNT1 A 0 ThrustThingZ (0, random(16,29), 0, 1);
 			BLUD CBA 8;
 			Stop;
 	}

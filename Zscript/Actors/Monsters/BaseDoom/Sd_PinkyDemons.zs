@@ -25,7 +25,7 @@ Class Shin_Pinky : ShinDoom_Actor Replaces Demon
 	States
 	{
 	Spawn:
-		SARG AB 10 A_Look;
+		SARG AB 10 { A_Look(); A_RestoreSprite(); }
 		Loop;
 	See:
 		SARG AABBCCDD 2 fast A_Chase;
@@ -43,7 +43,7 @@ Class Shin_Pinky : ShinDoom_Actor Replaces Demon
 		TNT1 A 1 A_Freezedeathchunks;
 		WAIT;
 	Death:
-		SARG I 1;
+		SARG I 1 A_RestoreSprite();
 		SARG I 7 A_SpectreAppear();
 		SARG J 8 A_Scream;
 		SARG K 4;
@@ -57,6 +57,7 @@ Class Shin_Pinky : ShinDoom_Actor Replaces Demon
 		SARG N -1;
 		Stop;
 	Raise:
+		"----" A 0 A_RestoreSprite();
 		SARG M 1;
 		SARG M 4 A_SpectreDisappear();
 		SARG LKJI 5;
@@ -83,13 +84,10 @@ Class Shin_Spectre : Shin_Pinky Replaces Spectre
 	{
 		+SHADOW
 		RenderStyle "OptFuzzy";
-		//Alpha 0.25;
-		Translation "SpectrePal1";
 		SeeSound "spectre/sight";
 		AttackSound "spectre/melee";
 		PainSound "spectre/pain";
 		DeathSound "spectre/death";
-		//DeathSound "";
 		ActiveSound "spectre/active";
 		Obituary "$OB_SPECTREHIT";
 		Tag "$FN_SPECTRE";
@@ -104,6 +102,19 @@ Class Shin_Spectre : Shin_Pinky Replaces Spectre
 		SR2X DEFGHI 4;
 		SR2X J -1;
 		Stop;
+	}
+}
+
+Extend Class Shin_Pinky
+{
+	override void PostBeginPlay()
+	{
+		super.PostBeginPlay();
+		
+
+		BaseSprite = GetSpriteIndex("SARG");	
+		sprite = BaseSprite;
+		Return;
 	}
 }
 

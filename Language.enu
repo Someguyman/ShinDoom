@@ -20,18 +20,28 @@ GOTUNMAKER = "What the a@&*% is this?! \cc(Slot: 7)";
 
 GOTSHELLS = "Picked up Shotgun Shells";
 
-FN_ZOMBIE = "Former Trooper";
-FN_SHOTGUN = "Former Seregant";
-FN_BURST = "Former Lieutenant";
-FN_HEAVY = "Former Commando";
-FN_CAPTAIN = "Former Captain";
-FN_CYBERZ = "Hellified Soldier";
-FN_DEMON = "Pinky";
+FN_ZOMBIE = "former trooper";
+FN_SHOTGUN = "former seregant";
+FN_BURST = "former lieutenant";
+FN_HEAVY = "former commando";
+FN_CAPTAIN = "former captain";
+FN_CYBERZ = "hellified soldier";
+FN_DEMON = "pinky";
 
-OB_ZOMBIE = "%o was killed by a Former Trooper.";
-OB_SHOTGUN = "%o was shot by a Former Sergeant.";
-OB_BURST = "%o was riddled with bullets by a Former Lieutenant.";
-OB_HEAVY = "%o was perforated by a Former Commando.";
-OB_CAPTAIN = "%o was destroyed by a Former Captain.";
-OB_CYBERZ = "%o was blasted by a Hellified Soldier.";
-OB_DEMONHIT = "%o was bit by a Pinky.";
+FN_STEALTHZOMBIE = "camo trooper";
+FN_STEALTHSHOTGUNGUY = "camo seregant";
+
+OB_ZOMBIE = "%o was killed by a former trooper.";
+OB_SHOTGUN = "%o was shot by a former sergeant.";
+OB_BURST = "%o was riddled with bullets by a former lieutenant.";
+OB_HEAVY = "%o was perforated by a former commando.";
+OB_CAPTAIN = "%o was destroyed by a former captain.";
+OB_CYBERZ = "%o was blasted by a sellified soldier.";
+OB_DEMONHIT = "%o was bit by a pinky.";
+
+OB_STEALTHZOMBIE = "%o thought %g saw a former trooper.";
+OB_STEALTHSHOTGUNGUY = "%o thought %g saw a former sergeant.";
+OB_STEALTHCHAINGUY = "%o thought %g saw a former commando.";
+OB_STEALTHDEMON = "%o thought %g saw a pinky.";
+OB_STEALTHSPIDER = "%o thought %g saw a spider mastermind.";
+OB_STEALTHCYBER = "%o thought %g saw a cyberdemon.";

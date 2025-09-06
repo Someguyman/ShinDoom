@@ -46,21 +46,11 @@ Script "WeaponManagement" Enter //Used to clean up inventory if you gave yoursel
 		TakeInventory("Shin_CalamityBlade", 1);
 		TakeInventory("Shin_Unmaker", 1);
 	}
-	
-	if((StrICmp(levelset, "map") == 0) ||
-	   (StrICmp(levelset, "tn_") == 0) ||
-	   (StrICmp(levelset, "pl_") == 0) ||
-	   (StrICmp(levelset, "ml_") == 0) ||
-	   (StrICmp(levelset, "nv_") == 0) ||
-	   (StrICmp(levelset, "ab_") == 0) ||
-	   (StrICmp(levelset, "dz_") == 0) ||
-	   (StrICmp(levelset, "le_") == 0) ||
-	   (StrICmp(levelset, "pg_") == 0) ||
-	   (StrICmp(levelset, "hp_") == 0))
-	 {
+	else
+	{
 		TakeInventory("Shin_DarkClaw", 1);
 		TakeInventory("Shin_Reaper", 1);
-	 }
+	}
 	
 	Restart;
 }

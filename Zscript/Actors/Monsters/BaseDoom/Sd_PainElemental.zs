@@ -14,7 +14,6 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		+NOGRAVITY
 		+NEVERRESPAWN
 		+DONTGIB
-		+ZDOOMTRANS
 		SeeSound "pain/sight";
 		PainSound "pain/pain";
 		DeathSound "pain/death";
@@ -36,7 +35,15 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		PAIN D 5 A_FaceTarget;
 		PAIN E 5 { A_FaceTarget(); A_StartSound("pain/attack", CHAN_VOICE); }
 		PAIN F 5 BRIGHT A_FaceTarget;
-		PAIN F 0 BRIGHT { A_PainAttack("Shin_PainSoul"); A_FaceTarget(); }
+		PAIN F 0 BRIGHT 
+		{ 
+			if (bSHADOW == true)
+				A_PainAttack("Shin_Spectre_PainSoul"); 
+			else
+				A_PainAttack("Shin_PainSoul"); 
+				
+			A_FaceTarget(); 
+		}
 		Goto See;
 	Pain:
 		PAIN G 6;
@@ -47,8 +54,12 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		PAIN G 5 A_GenericFreezeDeath;
 		TNT1 A 1
 		{
-		A_PainDie("Shin_PainSoul");
-		A_Freezedeathchunks();
+			if (bSHADOW == true)
+				A_PainDie("Shin_Spectre_PainSoul");
+			else
+				A_PainDie("Shin_PainSoul");
+				
+			A_Freezedeathchunks();
 		}
 		WAIT;
 	/*
@@ -66,14 +77,14 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		PAIN I 9 BRIGHT A_Scream;
 		PAIN J 5 BRIGHT;
 		PAIN K 8 BRIGHT;
-		PAIN L 7 BRIGHT { A_PainDie("Shin_PainSoul"); A_FadeOut(0.247059); }
+		PAIN L 7 BRIGHT A_PainDie("Shin_PainSoul");
 		PAIN M 6 BRIGHT;
 		Stop;
 	//XDeath:
 		PAIN H 3 BRIGHT {bFLOATBOB = False;}
 		PAIN I 12 BRIGHT; //A_Scream;
 		PAIN K 6 BRIGHT;
-		PAIN L 5 BRIGHT { A_PainDie("Shin_PainSoul"); A_FadeOut(0.247059); }
+		PAIN L 5 BRIGHT A_PainDie("Shin_PainSoul");
 		PAIN M 4 BRIGHT;
 		Stop;
 	Crush:

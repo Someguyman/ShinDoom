@@ -46,7 +46,7 @@ Class Shin_EvilEyeCandle : ShinDoom_Actor Replaces EvilEye
 		string mapName = Level.MapName.MakeLower();
 		super.PostBeginPlay();
 		
-		if ((MapName.left(2) == "e5") || (MapName.left(2) == "e6"))
+		if ((MapName.left(2) == "e5") || (MapName.left(2) == "e6") || (mapName == "OneHumanity"))
 		{
 			A_SpawnItemEx("Shin_SigilEye",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG ,0);
 		}
