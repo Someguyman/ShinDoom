@@ -5,6 +5,7 @@ Class Shin_HellHound : ShinDoom_Actor
 	{
 		Health 300;
 		PainChance 128;
+		PainChance "cutting", 64;
 		Speed 15;
 		Radius 30;
 		Height 56;

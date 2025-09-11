@@ -23,6 +23,7 @@ Class Shin_Tyrant : ShinDoom_Actor
 		PainSound "Tyrant/pain";
 		DeathSound "Tyrant/death";
 		Obituary "$OB_ID24TYRANT";
+		+ShinDoom_Actor.UNHEALABLE;
 		Tag "$FN_ID24TYRANT";
 	}
 	
@@ -51,13 +52,18 @@ Class Shin_Tyrant : ShinDoom_Actor
 	    XDeath:
 		 Death:
 			CYB2 H 1 Bright;
-			CYB2 H 5 Bright A_Scream;
+			CYB2 H 5 Bright A_Scream();
 			CYB2 I 6 Bright;
-			CYB2 J 6 Bright A_NoBlocking;
+			CYB2 J 1 Bright A_BloodSplat(32);
+			CYB2 J 5 Bright A_NoBlocking();
 			CYB2 KLMNO 6 Bright;
 			CYB2 P 30;
 			CYB2 P -1 A_BossDeath;
 			Stop;
+		Raise:
+			CYB2 O 6;
+			CYB2 NMLKJIH 6;
+			Goto See;
 	}
 }
 

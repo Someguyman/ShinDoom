@@ -172,3 +172,57 @@ Class Shin_Spectre_SpiderMastermind : Shin_spidermastermind
 		tag "spectre mastermind";
 	}
 }
+
+Class Shin_Spectre_Ghoul : Shin_Ghoul
+{
+	Default
+	{
+		+SHADOW
+		tag "invisaghoul";
+	}
+}
+
+Class Shin_Spectre_Banshee : Shin_Banshee
+{
+	Default
+	{
+		+SHADOW
+		tag "phantom banshee";
+	}
+}
+
+Class Shin_Spectre_Shocktrooper : Shin_ShockTrooper
+{
+	Default
+	{
+		+SHADOW
+		tag "spec op";
+	}
+}
+
+Class Shin_Spectre_Mindweaver : Shin_Mindweaver
+{
+	Default
+	{
+		+SHADOW
+		tag "Mindspectre";
+	}
+}
+
+Class Shin_Spectre_Vassago : Shin_Vassago
+{
+	Default
+	{
+		+SHADOW
+		tag "Spectre Vassago";
+	}
+}
+
+Class Shin_Spectre_Tyrant : Shin_Tyrant
+{
+		Default
+	{
+		+SHADOW
+		tag "Ghost Tyrant";
+	}
+}

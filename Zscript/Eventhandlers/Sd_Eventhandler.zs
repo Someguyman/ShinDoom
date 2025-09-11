@@ -32,6 +32,41 @@ Class ShinDoom_EventHandler : EventHandler
 			
 		if (e.Replacement == 'Shin_Spiderboss')
 			e.Replacee = 'Spidermastermind';
+			
+		if (e.Replacement == 'Shin_BaronOfHell')
+			e.Replacee = 'BaronOfHell';
+	}
+	
+	static const Class<Actor> NobleSpawnD1[] =
+	{
+		'Shin_Hellknight',
+		'Shin_HellGaurd'
+	};
+	
+	static const Class<Actor> NobleSpawnD2[] =
+	{
+		'Shin_Hellknight',
+		'Shin_Cybruiser'
+	};
+	
+	override void WorldThingSpawned(worldEvent e)
+	{
+		let b1 = Shell(e.thing);
+		let b2 = ShellBox(e.thing);
+		let r1 = RocketAmmo(e.thing);
+		let r2 = RocketBox(e.thing);
+		
+		if (b1)
+		{  inventory(b1).PickupSound = "misc/a_pkup_b1"; }
+		
+		if (b2)
+		{  inventory(b2).PickupSound = "misc/a_pkup_b2"; }
+		
+		if (r1)
+		{  inventory(r1).PickupSound = "misc/a_pkup_r1"; }
+		
+		if (r2)
+		{  inventory(r2).PickupSound = "misc/a_pkup_r2"; }
 	}
 	
 	override void CheckReplacement(ReplaceEvent e)
@@ -39,6 +74,59 @@ Class ShinDoom_EventHandler : EventHandler
 		String mapPrefix = level.MapName.Left(3);
         mapPrefix = mapPrefix.MakeLower();
 		String mapName = level.MapName.MakeLower();
+		
+		if (e.Replacee == 'Shin_DoomPlayer')
+			e.Replacement = 'playerpawn';
+		
+		if (e.Replacee == 'Shotgun')
+			e.Replacement = 'Shin_Shotgun';
+			
+		if (e.Replacee == 'Chaingun')
+			e.Replacement = 'Shin_Chaingun';
+		
+		if (e.Replacee == 'SuperShotgun')
+			e.Replacement = 'Shin_SuperShotgun';
+			
+		if (e.Replacee == 'chaingunguy')
+		{
+			if ( mapName.Left(1) == "e" && mapName.Mid(2, 1) == "m" )
+				e.Replacement = 'Shin_Machinegunguy';
+			else
+				e.Replacement = 'Shin_Chaingunguy';
+		}
+			
+		if (e.Replacee == 'doomimp')
+			e.Replacement = 'Shin_DoomImp';
+			
+		if (e.Replacee == 'demon')
+			e.Replacement = 'Shin_Pinky';
+			
+		if (e.Replacee == 'spectre')
+			e.Replacement = 'Shin_Spectre';
+			
+		if (e.Replacee == 'cacodemon')
+			e.Replacement = 'Shin_Cacodemon';
+			
+		if (e.Replacee == 'baronofhell')
+		{
+			if ((mapName == "e1m8") ||
+				(mapName == "test"))
+			{
+				e.Replacement = 'Shin_Baronofhell';
+			}
+			else
+			{
+				if ( mapName.Left(1) == "e" && mapName.Mid(2, 1) == "m" )
+				{
+					e.Replacement = NoblespawnD1[Random(0,1)];
+				}
+				else
+				{
+					//e.Replacement = NoblespawnD2[Random(0,1)];
+					e.Replacement = "Shin_Cybruiser";
+				}
+			}
+		}
 		
 		if ( mapName.Left(1) == "e" && mapName.Mid(2, 1) == "m" )
 		{

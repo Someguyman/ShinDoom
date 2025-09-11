@@ -8,6 +8,7 @@ Class Shin_LightAmmo : Ammo replaces Clip
 		Ammo.BackpackAmount 10;
 		Ammo.BackpackMaxAmount 400;
 		Inventory.PickupMessage "Picked up Light Ammo Mag";
+		Inventory.PickupSound "misc/a_pkup_l1";
 		Inventory.Icon "MAGSA0";
 		Tag "Light Ammo Magazine";
 	}
@@ -26,6 +27,7 @@ Class Shin_LightAmmoStick : Shin_LightAmmo Replaces ClipBox
 		Inventory.PickupMessage "Picked up Light Ammo Stick Mag";
 		Inventory.Amount 40;
 		Tag "Light Ammo Stick Mag";
+		Inventory.PickupSound "misc/a_pkup_l2";
 	}
 	States
 	{
@@ -45,6 +47,7 @@ Class Shin_HeavyAmmo : ammo
 		Ammo.BackpackAmount 8;
 		Ammo.BackpackMaxAmount 300;
 		Inventory.Icon "CLIPA0";
+		Inventory.PickupSound "misc/a_pkup_h1";
 		Tag "Heavy Ammo Clip";
 	}
 	States
@@ -60,7 +63,8 @@ Class Shin_HeavyAmmoBox : Shin_HeavyAmmo //Replaces ClipBox
 	Default
 	{
 		Inventory.PickupMessage "Picked up a Heavy Ammo Box";
-		Inventory.Amount 50;
+		Inventory.PickupSound "misc/a_pkup_h2";
+		Inventory.Amount 40;
 		Inventory.Icon "CLIPA0";
 		Tag "Heavy Ammo Box";
 	}
@@ -76,9 +80,8 @@ Class Shin_Cell : Cell replaces Cell
 {
 	Default
 	{
-		//Inventory.PickupSound "Ammo/CellSup";
 		Inventory.Icon "CELLA0";
-		//Inventory.PickupMessage "\coPicked up an energy cell";
+		Inventory.PickupSound "misc/a_pkup_c1";
 	}
 	States
 	{
@@ -92,8 +95,7 @@ Class Shin_CellPack : CellPack Replaces Cellpack
 {
 	Default
 	{
-		//Inventory.PickupSound "Ammo/CellLup";
-		//Inventory.PickupMessage "\coPicked up an energy cell pack!";
+		Inventory.PickupSound "misc/a_pkup_c2";
 	}
 	States
 	{
@@ -118,12 +120,13 @@ Class Shin_SoulEnergy : Ammo
 	}
 }
 
-Class Shin_Backpack : BackpackItem Replaces BackpackItem
+Class Shin_Backpack : Backpack Replaces Backpack
 {
 	Default
 	{
 		Height 26;
 		Inventory.PickupMessage "$GOTBACKPACK";
+		Inventory.PickupSound "misc/b_pkup";
 	}
 	States
 	{
@@ -140,7 +143,7 @@ Class Shin_CombatBackpack : CustomInventory
 		Height 26;
 		+Inventory.AlwaysPickup
 		Inventory.PickupMessage "You got a combat pack";
-		Inventory.PickupSound "misc/i_pkup";
+		Inventory.PickupSound "misc/b_pkup";
 	}
 	States
 	{

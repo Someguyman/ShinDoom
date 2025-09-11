@@ -12,6 +12,7 @@ Class Shin_Vassago : ShinDoom_Actor
 		Mass 1000;
 		+BOSSDEATH
 		+DONTHARMCLASS
+		+FLOORCLIP
 		Monster;
 		Scale 1.2;
 		SeeSound "Vassago/sight";

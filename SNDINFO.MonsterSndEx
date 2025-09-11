@@ -97,6 +97,12 @@ fatso/shotx DSMANEXP
 
 vile/raise DSVILREV
 vile/stop DSVILEXP
+vile/start2	dsvilatk
+vile/firestrt2 dsflamst
+vile/firecrkl2 dsflame
+$pitchset vile/start2 0.9
+$pitchset vile/firestrt2 0.9
+$pitchset vile/firecrkl2 0.9
 
 spider/active DSSPIACT
 spider/pain	DSSPIPIN

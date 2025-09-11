@@ -12,6 +12,8 @@ Class Shin_Ghoul : ShinDoom_Actor
 		Monster;
 		+FLOAT
 		+NOGRAVITY
+		//+DONTFALL
+		//+DONTCORPSE
 		FloatBobStrength 0.5;
 		FloatBobFactor 0.8;
 		BloodColor "30 67 23";
@@ -48,7 +50,12 @@ Class Shin_Ghoul : ShinDoom_Actor
 			GHUL QR 5 Bright;
 			GHUL S -1;
 			stop;
-		XDeath:
+		Xdeath:
+			GHUX A 4 Bright {bFLOATBOB = False;}
+			GHUX B 4 Bright A_XScream;
+			GHUX C 4 Bright A_NoBlocking;
+			GHUX DEFGH 4 Bright;
+			GHUX I -1;
 		    Stop;
 	}
 }
@@ -77,7 +84,7 @@ Class Shin_GhoulBall : ShinDoom_Actor
 			loop;
 		death:
 			GBAL C 5 Bright;
-			APBX BCDE 5 Bright;
+			GBAL DEFG 5 Bright;
 			stop;
 	}
 }

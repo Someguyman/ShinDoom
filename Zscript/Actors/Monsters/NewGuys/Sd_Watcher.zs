@@ -3,7 +3,7 @@ Class Shin_Watcher : ShinDoom_Actor
 {
   Default
   {
-		Health 120;
+		Health 150;
 		Radius 24;
 		Height 40;
 		Mass 150;

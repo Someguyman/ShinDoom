@@ -54,7 +54,9 @@ Class Shin_Mindweaver : ShinDoom_Actor
 		CSPI J 1;
 		CSPI J 19 A_Scream;
 		CSPI K 7 A_NoBlocking;
-		CSPI LMNO 7 bright;
+		CSPI L 7 BRIGHT;
+		CSPI M 7 bright A_BloodSplat(20);
+		CSPI NO 7 bright;
 		CSPI P -1;
 		Stop;
 	XDeath:

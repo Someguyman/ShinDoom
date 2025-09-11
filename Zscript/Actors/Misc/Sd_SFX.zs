@@ -107,7 +107,8 @@ Class Shin_ComicalExplosion : ShinDoom_actor
 		Spawn:
 			Goto Death;
 		Death:
-			CEXP A 3 Bright;
+			CEXP A 1 Bright;
+			CEXP A 2 Bright; //A_StartSound("Explosion/lol", CHAN_AUTO);
 			CEXP B 3 Bright A_Explode();
 			CEXP CDEFGHI 3 Bright;
 			Stop;

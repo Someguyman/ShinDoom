@@ -17,7 +17,6 @@ Class Shin_MachinegunGuy : ShinDoom_Actor
 		Obituary "$OB_BURST";
 		Tag "$FN_BURST";
 		Dropitem "Shin_CombatRifle";
-		//DropItem "Shin_HeavyAmmo", 62;
 		DropItem "Shin_LightAmmo", 63;
 	}
 	

@@ -20,6 +20,7 @@ Class Shin_Cyberdemon : ShinDoom_Actor Replaces Cyberdemon
 		+BOSSDEATH
 		+E2M8BOSS
 		+E4M6BOSS
+		+ShinDoom_Actor.UNHEALABLE;
 		Scale 1.1;
 		SeeSound "cyber/sight";
 		PainSound "cyber/pain";
@@ -54,10 +55,10 @@ Class Shin_Cyberdemon : ShinDoom_Actor Replaces Cyberdemon
 		Goto See;
 	Death.SuperShotgun:
 	Death:
-		CYBR H 1 Bright;
-		CYBR H 9 Bright A_Scream;
-		CYBR H 2 Bright;
-		CYBR H 0 Bright A_NoBlocking;
+		CYBR H 1;
+		CYBR H 9 A_Scream;
+		CYBR H 2;
+		CYBR H 0 A_NoBlocking;
 		CYBR I 8 Bright A_Cyberexplode();
 		CYBR I 2 Bright A_Cyberexplode();
 		CYBR JJKKLLMM 5 Bright A_Cyberexplode();
@@ -66,14 +67,18 @@ Class Shin_Cyberdemon : ShinDoom_Actor Replaces Cyberdemon
 		CYBR P -1 A_BossDeath;
 		Stop;
 	  XDeath:
-		CYBR H 1 Bright;
-		CYBR H 5 Bright A_XScream;
+		CYBR H 1;
+		CYBR H 5 A_XScream;
 		CYBR I 6 Bright;
 		CYBR J 6 Bright A_NoBlocking;
 		CYBR KLMNO 6 Bright;
 		CYBR P 30;
 		CYBR P -1 A_BossDeath;
 		Stop;
+	Raise:
+		CYBR O 6;
+		CYBR NMLKJIH 6;
+		Goto See;
 	}
 }
 

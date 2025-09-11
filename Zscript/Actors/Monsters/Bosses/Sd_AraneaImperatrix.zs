@@ -9,8 +9,9 @@ class Shin_SpiderBoss : Shin_SpiderMastermind
 		Mass 1000;
 		Speed 12;
 		Scale 1.0;
-		PainChance 40;
+		PainChance 2;
 		MissileChanceMult 0.5;
+		+ShinDoom_Actor.STAYDEAD;
 		SeeSound "spider/sight";
 		AttackSound "spider/attack";
 		PainSound "spider/pain";

@@ -278,7 +278,7 @@ Class Shin_DeadSpiderMastermind : Shin_SpiderMastermind
 			Goto Super::Spawn;
 		Death.Spawndeath:
 			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+11;
+			Goto Super::Death+17;
 	}
 }
 
@@ -295,7 +295,7 @@ Class Shin_DeadCyberdemon : Shin_Cyberdemon
 			Goto Super::Spawn;
 		Death.Spawndeath:
 			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+9;
+			Goto Super::Death+17;
 	}
 }
 
@@ -406,7 +406,7 @@ Class Shin_DeadTyrant : Shin_Tyrant
 			Goto Super::Spawn;
 		Death.Spawndeath:
 			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+9;
+			Goto Super::Death+10;
 	}
 }
 

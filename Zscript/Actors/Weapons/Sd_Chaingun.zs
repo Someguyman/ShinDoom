@@ -105,19 +105,16 @@ Class Shin_Chaingun : ShinDoom_Weapon Replaces Chaingun
 		SDWG BBBBBBAAAAAABBBBBBAAAAAA 1 Offset(0,32) { if (player.cmd.buttons & BT_ATTACK) { A_ReFire("Fire.part3"); } }
 		Goto Ready;
 	Flash1:
-		SDWG C 5 Bright A_Light1;
-		SDWG D 4 Bright A_Light2;
+		SDWG C 3 Bright A_Light1;
+		SDWG E 2 Bright A_Light2;
 		Goto LightDone;
 	Flash2:
-		SDWG C 4 Bright A_Light1;
-		SDWG D 3 Bright A_Light2;
+		SDWG C 2 Bright A_Light1;
+		SDWG E 1 Bright A_Light2;
 		Goto LightDone;
 	Flash3:
-		SDWG C 3 Bright A_Light1;
-		SDWG D 2 Bright A_Light2;
-		Goto LightDone;
-	Flash4:
 		SDWG C 2 Bright A_Light1;
+		//SDWG E 1 Bright A_Light2;
 		SDWG D 1 Bright A_Light2;
 		Goto LightDone;
 	Spawn:
@@ -143,19 +140,19 @@ Extend Class Shin_Chaingun
 	
 	Action Void A_FireCGun2()
 	{
-		A_FireCGun(); A_GunFlash("Flash2");
+		A_FireCGun(); A_GunFlash("Flash1");
 		A_WeaponOffset(0, 34, WOF_INTERPOLATE);
 	}
 	
 	Action Void A_FireCGun3()
 	{
-		A_FireCGun(); A_GunFlash("Flash3");
+		A_FireCGun(); A_GunFlash("Flash2");
 		A_WeaponOffset(0, 34, WOF_INTERPOLATE);
 	}
 	
 	Action Void A_FireCGun4()
 	{
-		A_FireCGun(); A_GunFlash("Flash4");
+		A_FireCGun(); A_GunFlash("Flash3");
 		int ammo = invoker.Ammo1.Amount;
 		int rand;
 		int ypos;

@@ -67,7 +67,7 @@ Class Shin_PlayerRocket : ShinDoom_Actor
 		MISL A 1 Bright;
 		Loop;
 	Death:
-		MISL B 8 Bright A_Explode;
+		MISL B 8 Bright A_Explode(-1, -1.0, 0, 0, 0, 0, 10, "BulletPuff", "ExplosionDM");
 		MISL C 6 Bright;
 		MISL D 4 Bright;
 		Stop;

@@ -27,6 +27,7 @@ Class Shin_SpiderMastermind : ShinDoom_Actor Replaces SpiderMastermind
 		DeathSound "spider/death";
 		ActiveSound "spider/active";
 		ShinDoom_Actor.XDeathSound "spider/Xdeath";
+		+ShinDoom_Actor.UNHEALABLE;
 		Obituary "$OB_SPIDER";
 		Tag "$FN_SPIDER";
 	}
@@ -58,10 +59,11 @@ Class Shin_SpiderMastermind : ShinDoom_Actor Replaces SpiderMastermind
 		Goto See;
 	Death.SuperShotgun:
 	Death:
-		SPID I 1 Bright;
-		SPID J 19 Bright A_Scream;
-		SPID J 0 Bright A_NoBlocking;
-		SPID KL 10 Bright A_Spiderexplode();
+		SPID J 1;
+		SPID J 19 A_Scream;
+		SPID J 0 A_NoBlocking;
+		SPID K 10 Bright A_Spiderexplode();
+		SPID L 10 Bright A_Spiderexplode();
 		SPID M 8 Bright A_Spiderexplode();
 		SPID M 2 Bright A_Spiderexplode();
 		SPID NNOOPPQQ 5 Bright A_Spiderexplode();
@@ -77,6 +79,10 @@ Class Shin_SpiderMastermind : ShinDoom_Actor Replaces SpiderMastermind
 		SPID S 30;
 		SPID S -1 A_BossDeath;
 		Stop;
+	Raise:
+		SPID R 6;
+		SPID QPONMLKJ 6;
+		Goto See;
 	}
 }
 

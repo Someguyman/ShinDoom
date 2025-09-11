@@ -5,6 +5,7 @@ Class Shin_Cybruiser : Shin_BaronOfHell
   {
 		Health 700;
 		PainChance 15;
+		//PainChance 50;
 		Speed 8;
 		Obituary "%o was blown away by a Cybruiser.";
 		HitObituary "%o was smashed by a Cybruiser.";
@@ -17,7 +18,11 @@ Class Shin_Cybruiser : Shin_BaronOfHell
 		-BOSSDEATH
 		-E1M8BOSS
 		+FLOORCLIP
-		+NORADIUSDMG
+		+DONTHARMCLASS
+		//+NORADIUSDMG
+		+ShinDoom_Actor.UNHEALABLE;
+		DamageFactor "ExplosionDM", 0.5;
+		PainChance "ExplosionDM", 15;
 		Tag "Cybruiser";
   }
 	
@@ -52,15 +57,18 @@ Class Shin_Cybruiser : Shin_BaronOfHell
 	XDeath:
 	Death:
 		CBOS K 1 Bright;
-		CBOS K 5 Bright A_Scream();
-		CBOS LMN 6 Bright;
-		CBOS O 6 Bright A_NoBlocking();
-		CBOS QR 6 Bright;
-		CBOS S 6;
+		CBOS K 4 Bright A_Scream();
+		CBOS LMN 5 Bright;
+		CBOS O 5 Bright { A_NoBlocking(); A_BloodSplat(20); }
+		CBOS P 5 Bright;
+		CBOS QR 5 Bright;
+		CBOS S 5;
 		CBOS T -1 A_BossDeath();
 		Stop;
 	Raise:
-		stop;
+		CBOS S 6;
+		CBOS RQONMLK 6;
+		Goto See;
 	}
 }
 
@@ -83,7 +91,7 @@ Class Shin_Cybruiser_Missile : ShinDoom_Actor
 			HMIS A 1 Bright;
 			Loop;	
 		Death:
-			MANF C 8 Bright A_Explode(64,64,0);
+			MANF C 8 Bright A_Explode(64,64,0,0,0,0,10,"BulletPuff","ExplosionDM");
 			MANF D 6 Bright;
 			MANF E 4 Bright;
 			Stop;

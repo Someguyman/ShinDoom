@@ -5,6 +5,7 @@ Class Shin_Pinky : ShinDoom_Actor Replaces Demon
 	{
 		Health 150;
 		PainChance 180;
+		PainChance "Cutting", 255;
 		Speed 12;
 		Radius 30;
 		Height 56;
@@ -44,7 +45,7 @@ Class Shin_Pinky : ShinDoom_Actor Replaces Demon
 		WAIT;
 	Death:
 		SARG I 1 A_RestoreSprite();
-		SARG I 7 A_SpectreAppear();
+		SARG I 7;
 		SARG J 8 A_Scream;
 		SARG K 4;
 		SARG L 3 A_NoBlocking;
@@ -57,14 +58,14 @@ Class Shin_Pinky : ShinDoom_Actor Replaces Demon
 		SARG N -1;
 		Stop;
 	Raise:
-		"----" A 0 A_RestoreSprite();
+		"----" A 0 { A_RestoreSprite(); }
 		SARG M 1;
 		SARG M 4 A_SpectreDisappear();
 		SARG LKJI 5;
 		Goto See;
 	XDeath:
 		SRGX A 1;
-		SRGX A 3 A_SpectreAppear();
+		SRGX A 3;
 		SRGX B 4 A_XScream;
 		SRGX C 4 A_NoBlocking();
 		SRGX DEFGHI 4;
@@ -96,7 +97,7 @@ Class Shin_Spectre : Shin_Pinky Replaces Spectre
 	{
 	XDeath:
 		SR2X A 1;
-		SR2X A 3 A_SpectreAppear();
+		SR2X A 3;
 		SR2X B 4 A_XScream;
 		SR2X C 4 A_NoBlocking();
 		SR2X DEFGHI 4;

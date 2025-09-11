@@ -144,6 +144,19 @@ Class Shin_NightmareSpectre : Shin_Pinky
 	}
 }
 
+extend class shin_nightmarespectre
+{
+	override void PostBeginPlay()
+	{
+		super.PostBeginPlay();
+		
+
+		BaseSprite = GetSpriteIndex("NSMS");	
+		sprite = BaseSprite;
+		Return;
+	}
+}
+
 Class Shin_NightmareCacodemon : Cacodemon
 {
 	Default

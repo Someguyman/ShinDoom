@@ -54,11 +54,7 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		PAIN G 5 A_GenericFreezeDeath;
 		TNT1 A 1
 		{
-			if (bSHADOW == true)
-				A_PainDie("Shin_Spectre_PainSoul");
-			else
-				A_PainDie("Shin_PainSoul");
-				
+			A_PainDie("Shin_PainSoul");	
 			A_Freezedeathchunks();
 		}
 		WAIT;
@@ -77,16 +73,17 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		PAIN I 9 BRIGHT A_Scream;
 		PAIN J 5 BRIGHT;
 		PAIN K 8 BRIGHT;
-		PAIN L 7 BRIGHT A_PainDie("Shin_PainSoul");
+		PAIN L 7 BRIGHT { A_PainDie("Shin_PainSoul"); A_BloodSplat(20); }
 		PAIN M 6 BRIGHT;
 		Stop;
-	//XDeath:
+	/*XDeath:
 		PAIN H 3 BRIGHT {bFLOATBOB = False;}
 		PAIN I 12 BRIGHT; //A_Scream;
 		PAIN K 6 BRIGHT;
 		PAIN L 5 BRIGHT A_PainDie("Shin_PainSoul");
 		PAIN M 4 BRIGHT;
 		Stop;
+	*/
 	Crush:
 		stop;
 	Raise:

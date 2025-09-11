@@ -86,6 +86,14 @@ Class ShinDoom_LevelPostProcessor : LevelPostProcessor
 					Break;
 				}
 				
+				case '81a4cc5136cbfa49345654190a626c09' : //E1M2
+				{
+					SetThingEdNum(25,0);
+					SetThingEdNum(171,0);
+					SetThingEdNum(163,0);
+					break;
+				}
+				
 				case '1BC04D646B32D3A3E411DAF3C1A38FF8' : //E2M4
 				{
 					SetThingEdNum(138,0);
@@ -132,15 +140,14 @@ Class ShinDoom_MonsterSpawner play
 			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Mastermind_Standie",	 ( -3072, 1504, -999 ), 270);
 		}
 		
-		if(level.GetChecksum() == 'b49f7a6c519757d390d52667db7d8793')
+		if(level.GetChecksum() == '81a4cc5136cbfa49345654190a626c09') //E1M2
 		{
-			if (G_SkillPropertyInt(SKILLP_ACSReturn) >= 3)
-			{
-				ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_MachinegunGuy",( 2464, -2432, -999 ), 180, MTF_AMBUSH);
-			}
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_CombatRifle",( 944, -304, -999 ), 0, MTF_AMBUSH);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_HeavyAmmoBox",( 992, -304, -999 ), 0, MTF_AMBUSH);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_HeavyAmmoBox",( 736, -416, -999 ), 0, MTF_AMBUSH);
 		}
 		
-		if(level.GetChecksum() == '1BC04D646B32D3A3E411DAF3C1A38FF8')
+		if(level.GetChecksum() == '1BC04D646B32D3A3E411DAF3C1A38FF8') //E2M4
 		{
 			if (G_SkillPropertyInt(SKILLP_ACSReturn) >= 2)
 			{

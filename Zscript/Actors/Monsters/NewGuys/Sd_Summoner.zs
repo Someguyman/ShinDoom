@@ -16,6 +16,7 @@ Class Shin_Summoner : ShinDoom_Actor
 		+SEEINVISIBLE
 		+AVOIDHAZARDS
 		+ALWAYSFAST
+		+ShinDoom_Actor.UNHEALABLE;
 		scale 1.1;
 		ReactionTime 55;
 		FloatBobStrength 0.5;
@@ -74,6 +75,10 @@ Class Shin_Summoner : ShinDoom_Actor
 		SUMM M 2 A_KillChildren;
 		SUMM M -1;
 		Stop;
+	Raise:
+		SUMM L 6;
+		SUMM LKJIH 6;
+		Goto See;
 	}
 }
 

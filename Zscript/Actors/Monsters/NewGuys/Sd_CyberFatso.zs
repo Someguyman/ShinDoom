@@ -12,6 +12,8 @@ Class Shin_CyberFatso : Shin_mancubus
 		Monster;
 		+NORADIUSDMG
 		+SEEINVISIBLE
+		+FLOORCLIP
+		+ShinDoom_Actor.UNHEALABLE;
 		Scale 1.2;
 		SeeSound "fatso/sight";
 		PainSound "fatso/pain";
@@ -72,7 +74,9 @@ Class Shin_CyberFatso : Shin_mancubus
 		MANG A -1;
 		stop;
 	Raise:
-		stop;
+		CFAT R 5;
+		CFAT SQPONMLK 5;
+		Goto See;
 	}
 }
 

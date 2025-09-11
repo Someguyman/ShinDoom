@@ -158,15 +158,15 @@ Class Shin_ChaingunGuy : ShinDoom_Actor Replaces ChaingunGuy
 		Loop;
 	Missile:
 		CPOS V 0 A_Jumpif((BaseSprite == GetSpriteIndex('CPS2')), "Missile.D1");
-		CPOS V 11 A_FaceTarget;
+		CPOS V 15 A_FaceTarget;
 		Goto Attack;
 	Missile.D1:
-		CPS2 Z 11 A_FaceTarget;
+		CPS2 Z 15 A_FaceTarget;
 		Goto Attack;
 	Attack:
 		"####" F 2 BRIGHT A_CPosAttack;
 		"####" E 2 BRIGHT A_FaceTarget;
-		"####" F 1 A_CPosRefire;
+		"####" F 0 A_CPosRefire;
 		Goto Attack;
 	Pain:
 		"####" G 3;

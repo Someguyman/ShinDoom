@@ -13,7 +13,7 @@ Class Shin_Banshee : ShinDoom_Actor
 		Monster;
 		+FLOAT
 		+NOGRAVITY
-		+ZDOOMTRANS
+		//+ZDOOMTRANS
 		+DONTFALL
 		PainSound "Banshee/pain";
 		DeathSound "Banshee/death";

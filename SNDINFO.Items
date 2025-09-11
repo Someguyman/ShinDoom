@@ -1,5 +1,24 @@
 
+$Random misc/a_pkup_l1 { misc/a_pkup1 misc/a_pkup2 }
+$Random misc/a_pkup_l2 { misc/a_pkup1 misc/a_pkup2 }
+$Random misc/a_pkup_h1 { misc/a_pkup1 misc/a_pkup2 }
+$Random misc/a_pkup_h2 { misc/a_pkup3 misc/a_pkup4 misc/a_pkup5 }
+$Random misc/a_pkup_b1 { misc/a_pkup1 misc/a_pkup2 }
+$Random misc/a_pkup_b2 { misc/a_pkup3 misc/a_pkup4 misc/a_pkup5 }
 
+misc/a_pkup1 DSCLIPP1
+misc/a_pkup2 DSCLIPP2
+misc/a_pkup3 DSAMMOP1
+misc/a_pkup4 DSAMMOP2
+misc/a_pkup5 DSAMMOP3
+
+misc/a_pkup_r1 DSRKTUP
+misc/a_pkup_r2 DSRBXUP
+misc/a_pkup_c1 DSCELUP
+misc/a_pkup_c2 DSCEPUP
+misc/a_pkup_g1 dsitemup
+misc/a_pkup_g2 dsitemup
+misc/a_pkup_s dsitemup
 
 misc/p_pkup_v DSGETPWV
 misc/p_pkup_i DSGETPWI
@@ -9,3 +28,5 @@ misc/p_pkup_l DSGETPWL
 misc/p_pkup_s DSGETPWS
 misc/p_pkup_m DSGETPWM
 misc/p_pkup_q DSGETPWQ
+
+misc/b_pkup	DSAMMOP4

@@ -10,6 +10,16 @@ class Shin_DeadMarine_Spawner : RandomSpawner
 	}
 }
 
+Class Shin_GibbedMarine_Spawner : RandomSpawner
+{
+	Default
+	{
+		DropItem "Shin_DeadMarine_Headless", 256, 128;
+		DropItem "Shin_DeadMarine_torso", 256, 100;
+		DropItem "Shin_DeadMarine_legs", 256, 100;	
+	}
+}
+
 Class Shin_DeadMarine_Headless : ShinDoom_Actor
 {
 	States
@@ -240,5 +250,57 @@ Class Shin_ConsoleMeat4 : Shin_ConsoleMeat
 		Spawn:
 			CCPR D -1;
 			Stop;
+	}
+}
+
+class Shin_SkullsOnAStick : ShinDoom_Actor
+{
+	Default
+	{
+		Radius 16;
+		Height 64;
+		ProjectilePassHeight -16;
+		+SOLID
+	}
+	States
+	{
+	Spawn:
+		CCPR E -1;
+		Stop;
+	}
+}
+
+class Shin_SkullOnAStick : ShinDoom_Actor
+{
+	Default
+	{
+		Radius 16;
+		Height 56;
+		ProjectilePassHeight -16;
+		+SOLID
+	}
+	States
+	{
+	Spawn:
+		CCPR F -1;
+		Stop;
+	}
+}
+
+Class Shin_HeadOnPike_Spawner : RandomSpawner
+{
+	Default
+	{
+		Dropitem "HeadOnAStick", 256, 128;
+		Dropitem "Shin_SkullOnAStick", 256, 128;
+	}
+}
+
+Class Shin_HeadCabob_Spawner : RandomSpawner
+{
+		Default
+	{
+		Dropitem "HeadsOnAStick", 256, 128;
+		Dropitem "Shin_SkullsOnAStick", 256, 128;
 	}
 }

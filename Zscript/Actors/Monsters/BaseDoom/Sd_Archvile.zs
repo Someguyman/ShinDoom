@@ -16,7 +16,8 @@ Class Shin_Archvile : ShinDoom_Actor Replaces Archvile
 		+FLOORCLIP 
 		+NOTARGET
 		+SEEINVISIBLE
-		+DONTHARMClass
+		+DONTHARMCLASS
+		+ShinDoom_Actor.UNHEALABLE;
 		Scale 1.15;
 		SeeSound "vile/sight";
 		PainSound "vile/pain";
@@ -40,8 +41,8 @@ Class Shin_Archvile : ShinDoom_Actor Replaces Archvile
 		VILE DEEFF 2 A_VileChase;
 		Goto see;
 	Missile:
-		VILE G 0 BRIGHT A_VileStart();
 		VILE G 0 BRIGHT A_JumpIfCloser(120,"Meleefire");
+		VILE G 0 BRIGHT A_VileStart();
 	Normalattack:		
 		VILE G 10 BRIGHT A_FaceTarget;
 		VILE H 8 BRIGHT A_VileTarget;
@@ -50,6 +51,7 @@ Class Shin_Archvile : ShinDoom_Actor Replaces Archvile
 		VILE P 20 BRIGHT;
 		Goto See+1;
 	Meleefire:
+		VILE G 0 BRIGHT A_VileStart2();
 		VILE LM 5 Bright A_FaceTarget();
 		VILE M 5 Bright A_FaceTarget();
 		VILE KJ 3 Bright A_FaceTarget();
@@ -62,7 +64,7 @@ Class Shin_Archvile : ShinDoom_Actor Replaces Archvile
 		VILR ABCABC 5 BRIGHT;
 		Goto See;
 	Pain:
-		VILE Q 5; //A_GiveInventory("MM_Archiesinnerrage", 1); //Ever time an archvile is pained, it will increace it's rage meter
+		VILE Q 5;
 		VILE Q 5 A_Pain;
 		Goto See+1;
 	Death.Ice:
@@ -70,14 +72,14 @@ Class Shin_Archvile : ShinDoom_Actor Replaces Archvile
 		TNT1 A 1 A_Freezedeathchunks;
 		WAIT;
 	Death:
-		VILP A 7;
+		VILE Q 7;
 		VILE R 7 { A_Scream(); A_KillTracer("Missilekiller1", KILS_KILLMISSILES, "Shin_VileHellFire"); }
 		VILE S 7 A_NoBlocking;
 		VILE TUVWXY 7;
 		VILE Z -1 A_BossDeath;
 		Stop;
 	XDeath:
-		VILX A 1; //A_TakeInventory("MM_Archiesinnerrage",2);
+		VILX A 1;
 		VILX A 4;
 		VILX B 5 A_XScream;
 		VILX C 5;
@@ -85,6 +87,36 @@ Class Shin_Archvile : ShinDoom_Actor Replaces Archvile
 		VILX EFGH 5;
 		VILX I -1;
 		Stop;
+	raise:
+		VILE Y 6;
+		VILE XWVUTSR 6;
+		Goto See;
+	}
+}
+
+Class Shin_ArchvileXD : Shin_Archvile
+{
+	Default
+	{
+		+ShinDoom_Actor.ALWAYSHEAL;
+		Tag "Archvile XD";
+	}
+}
+
+Class Shin_Test_Healer : Shin_Archvile
+{
+	Default
+	{
+		-QUICKTORETALIATE
+		+NODAMAGE
+		+ShinDoom_Actor.ALWAYSHEAL;
+	}
+	States
+	{
+		Missile:
+			Stop;
+		Melee:
+			Stop;
 	}
 }
 
@@ -92,7 +124,7 @@ Class Shin_VileHellFire : Actor
 {
   Default
   {
-    Obituary "%o was set ablaze by a Diabloist.";
+    Obituary "%o was set ablaze by an Archvile.";
     Radius 0;
     Height 1;
     Speed 0;
@@ -123,6 +155,12 @@ Class Shin_VileHellFire : Actor
   Death:
 	Stop;
   }
+	
+  Void A_StartFire2()
+  {
+	A_StartSound ("vile/start2", CHAN_AUTO);
+	A_Fire;
+  }
 
   void DiabolistFire(int damage)
   {
@@ -133,7 +171,8 @@ Class Shin_VileHellFire : Actor
   void DiabolistCrackle(int damage)
   {
     A_Explode(damage, 25);
-    A_FireCrackle();
+	A_Startsound("vile/firecrkl2", CHAN_BODY);
+    A_Fire();
   }
 }
 

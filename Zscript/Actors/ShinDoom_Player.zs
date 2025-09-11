@@ -1,5 +1,5 @@
 
-Class Shin_DoomPlayer : DoomPlayer Replaces DoomPlayer
+Class Shin_DoomPlayer : DoomPlayer Replaces playerpawn
 {
 	Default
 	{
@@ -65,6 +65,10 @@ Class Shin_DoomPlayer : DoomPlayer Replaces DoomPlayer
 		PLAY RSTUV 5;
 		PLAY W -1;
 		Stop;
+	Death.SuperShotgun:
+		TNT1 A 0 A_Jumpifcloser(128, "XDeath");
+		TNT1 A 0 A_Jump(256, "Death");
+		Goto Death;
 	AltSkinDeath:
 		PLAY H 6;
 		PLAY I 6 A_PlayerScream;

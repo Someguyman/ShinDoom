@@ -68,7 +68,7 @@ Class Shin_BaronOfHell : ShinDoom_Actor Replaces Baronofhell
 		Stop;
 	Raise:
 		BOSS M 8;
-		BOSS LKJI  8;
+		BOSS LKJI 8;
 		Goto See;
 	}
 }

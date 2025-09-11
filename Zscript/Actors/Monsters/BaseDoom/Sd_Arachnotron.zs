@@ -36,7 +36,8 @@ Class Shin_Arachnotron : ShinDoom_Actor Replaces Arachnotron
 		BSPI AB 10 { A_Look(); A_RestoreSprite(); }
 		Loop;
 	See:
-		"####" A 20;
+		"####" A 20 A_Jumpif(bBOSSSPAWNED == true, "walk");
+	Walk:
 		"####" A 3 A_Footstep();
 		"####" A 3 A_Chase;
 		"####" B 3 A_BabyMetal();
@@ -88,7 +89,7 @@ Class Shin_Arachnotron : ShinDoom_Actor Replaces Arachnotron
 		BSPX G -1 A_BossDeath;
 		Stop;
 	 Raise:
-		"----" A 0 A_RestoreSprite();
+		"----" A 0 { A_RestoreSprite(); }
 		"####" O 5;
 		"####" NMLKJ 5;
 		Goto See+1;

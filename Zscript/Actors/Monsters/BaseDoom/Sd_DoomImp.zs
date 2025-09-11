@@ -54,7 +54,8 @@ Class Shin_DoomImp : ShinDoom_Actor Replaces Doomimp
 		TROO U -1;
 		Stop;
 	Raise:
-		TROO ML 8;
+		TROO M 8;
+		TROO L 8;
 		TROO KJI 6;
 		Goto See;
 	}

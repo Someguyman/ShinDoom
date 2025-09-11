@@ -51,7 +51,7 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		Goto See;
 	Death:
 		HEAD G 1;
-		HEAD G 7 { bFLOATBOB = False; A_SpectreAppear(); }
+		HEAD G 7 { bFLOATBOB = False; }
 		HEAD H 8 A_Scream;
 		HEAD I 7;
 	DeathLoop:
@@ -65,7 +65,7 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		Stop;
 	XDeath:
 		HEDX A 1;
-		HEDX A 3 {bFLOATBOB = False; A_SpectreAppear(); }
+		HEDX A 3 {bFLOATBOB = False; }
 		HEDX B 4 A_XScream;
 		HEDX C 4;
 		HEDX D 4 A_NoBlocking();
@@ -76,7 +76,7 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		HEAD L 1 A_UnSetFloorClip;
 		HEAD L 7 A_SpectreDisappear();
 		HEAD KJIHG 8;
-		HEAD A 0 {bFLOATBOB = True;}
+		HEAD A 0 {bFLOATBOB = True; }
 		Goto See;
 	}
 }

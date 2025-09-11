@@ -7,6 +7,7 @@ Class Shin_MonsterCloset : ShinDoom_Actor
 		Mass 10000;
 		+SOLID;
 		+SHOOTABLE;
+		+FLOORCLIP
 	}
 	States
 	{

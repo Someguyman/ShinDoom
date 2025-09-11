@@ -7,8 +7,12 @@ gameinfo
 
 DoomEdNums
 {
+	12 = Shin_GibbedMarine_Spawner
 	15 = Shin_DeadMarine_Spawner
 	21 = Shin_DeadPinky_Spawner
+	
+	27 = Shin_HeadOnPike_Spawner
+	28 = Shin_HeadCabob_Spawner
 	
 	666 = Shin_Unmaker
 	

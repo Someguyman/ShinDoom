@@ -2,7 +2,9 @@ Class ShinDoom_Actor : Actor
 {
 	//private int ICONSPAWN;
 	int ActorFlags;
-	flagdef ICONSPAWN : ActorFlags, 0;
+	flagdef UNHEALABLE : ActorFlags, 0;
+	flagdef ALWAYSHEAL : ActorFlags, 1;
+	flagdef STAYDEAD : ActorFlags, 2;
 	
 	int FootstepSoundChannel;
 	sound FootstepSound;
@@ -26,16 +28,49 @@ Class ShinDoom_Actor : Actor
 	override void PostBeginPlay()
 	{
 		super.PostBeginPlay();
+		if (bBOSSSPAWNED == true)
+		{
+			bCOUNTKILL = false;
+			bNEVERRESPAWN = true;
+			bNOTELESTOMP = false;
+			bTELESTOMP = true;
+			bNOFEAR = true;
+			bBRIGHT = true;
+			bSTAYDEAD = true;
+			bUNHEALABLE = true;
+			A_SetRenderStyle(0.60, STYLE_Translucent);
+			A_SetTranslation("IconSpawn");
+		}
 		if (bSHADOW == true)
 		{
-			//A_SetTranslucent(0.25, 0);
 			A_SetRenderStyle(0.25, STYLE_OptFuzzy);
 		}
 	}
 	
+	override bool CanResurrect (actor other, bool passive)
+    {
+        if (!passive && other is "ShinDoom_Actor")
+        {
+			return (!ShinDoom_Actor(other).bUNHEALABLE || (bALWAYSHEAL && !ShinDoom_Actor(other).bSTAYDEAD));
+        }
+
+        return true;
+    }
+	
 	override void Tick()
     {
         super.Tick();
+		
+		if (InStateSequence(CurState, ResolveState("Raise")))
+		{
+			A_RaiseStart();
+		}
+		
+		if (InStateSequence(CurState, ResolveState("See")) || 
+            InStateSequence(CurState, ResolveState("Pain")))
+		{
+			A_RaiseEnd();
+		}
  
 		if (bSHADOW == true)
 		{
@@ -47,7 +82,14 @@ Class ShinDoom_Actor : Actor
 			InStateSequence(CurState, ResolveState("XDeath")) ||
 			InStateSequence(CurState, ResolveState("XDeath.D1")))
          {
-             visgoal = 1.0;	
+			if (bBOSSSPAWNED == true)
+			{
+				visgoal = 0.60;	
+			}
+			else
+			{
+				visgoal = 1.0;	
+			}
          }
          else
          {
@@ -97,7 +139,15 @@ Class ShinDoom_Actor : Actor
 		 
 		 if ((alpha > visgoalx3) && (alpha <= 1.0))
 		 {
-			 A_SetTranslation("None");
+			if (bBOSSSPAWNED == true)
+			{
+				A_SetTranslation("IconSpawn");
+			}
+			else
+			{
+				A_SetTranslation("None");
+			}
+				
 		 }
 		 
 		 }
@@ -107,24 +157,36 @@ Class ShinDoom_Actor : Actor
 	{
 		ShinDoom_Actor.FootstepSoundChannel CHAN_AUTO;
 		ShinDoom_Actor.XDeathSound "misc/gibbed";
+		+NOSPLASHALERT
+		+NOTELESTOMP
 	}
 	
 	States
 	{
-		Crush:
+	   Crush:
 			POL5 A 0;
 			POL5 A 0 A_Startsound("Bloody/crush");
 			POL5 A -1;
 			stop;
-		Death.SuperShotgun:
+	   Death.SuperShotgun:
+			"####" A 0 A_Jumpif(Self.SpawnHealth() > 400, "Death");
 			"####" A 0 A_Jumpifcloser(128, "XDeath");
 			"####" A 0 A_Jump(256, "Death");
+			Goto Death;
+	   Death.WeakAttack:
+			"####" A 0 A_Jump(256, "Death");
+			Goto Death;
+	   Death.BarrelExplosion:
+			"####" A 0 A_Jump(128, "XDeath");
+			"####" A 0 A_Jump(256, "Death");
+			Goto Death;
+	   Death.lol:
 			Goto Death;
 	   XDeath:
 			Stop;
 		Death:
-			TNT1 A 8 A_ScaleVelocity(0); 
-			TNT1 A 10 A_Spawnprojectile("Shin_ComicalExplosion", 0);
+			"####" A 8 A_ScaleVelocity(0); 
+			"####" A 10 A_Spawnprojectile("Shin_ComicalExplosion", 0);
 			Stop;
 	}
 	
@@ -208,6 +270,11 @@ Class ShinDoom_Actor : Actor
 		A_StartSound ("vile/start", CHAN_AUTO);
 	}
 	
+	void A_VileStart2()
+	{
+		A_StartSound ("vile/start2", CHAN_AUTO);
+	}
+	
 	void A_MetalHoof()
 	{
 		A_StartSound("cyber/walk", CHAN_BODY, CHANF_DEFAULT, 1, ATTN_IDLE);
@@ -235,13 +302,36 @@ Class ShinDoom_Actor : Actor
 		}
 	}
 	
+	Void A_Scream()
+	{
+		if (bBOSS == True || bFULLVOLDEATH == True)
+			{ A_StartSound(DeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_NONE); }
+		else
+			{ A_StartSound(DeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_IDLE); }
+			
+		A_SpectreAppear();
+	}
+	
 	Void A_XScream()
 	{
 		if (bBOSS == True || bFULLVOLDEATH == True)
 			{ A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_NONE); A_BloodSplat(32); }
 		else
 			{ A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_IDLE); A_BloodSplat(20); }
-		
+			
+		A_SpectreAppear();
+	}
+	
+	Void A_RaiseStart()
+	{
+		bNOPAIN = true;
+		DamageFactor = 0.3;
+	}
+	
+	Void A_RaiseEnd()
+	{
+		bNOPAIN = false;
+		DamageFactor = 1.0;
 	}
 	
 	void A_SummonDudes()

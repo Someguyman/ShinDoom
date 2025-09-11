@@ -75,6 +75,10 @@ version "4.14.1"
 #include "Zscript/Actors/Weapons/Sd_Darkclaw.zs"
 #include "Zscript/Actors/Weapons/Sd_Reaper.zs"
 
+//		Spawners		//
+
+#include "Zscript/Actors/Spawners/Sd_Monster_Spawners.zs"
+
 //		Misc		//
 
 #include "Zscript/Actors/Monsters/Sd_Monster_Standies.zs"
