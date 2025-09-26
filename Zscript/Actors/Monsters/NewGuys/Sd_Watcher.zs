@@ -49,7 +49,7 @@ Class Shin_Watcher : ShinDoom_Actor
 		WATC JKLM 6;
 		WATC N 6 A_NoBlocking();
 		WATC N 0 A_SetFloorClip();
-		WATC O -1;
+		WATC O -1 A_NormalDeath();
 		stop;
 	Raise:
 		WATC ONMLKJI 8;

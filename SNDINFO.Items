@@ -30,3 +30,12 @@ misc/p_pkup_m DSGETPWM
 misc/p_pkup_q DSGETPWQ
 
 misc/b_pkup	DSAMMOP4
+
+armor/pkup1 DSARMR2
+armor/pkup2 DSARMR2
+$pitchset armor/pkup2 0.8
+
+health/pkup1 DSHELTH2
+health/pkup2 DSHEALTH
+
+gore/drink DSHSLURP

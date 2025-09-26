@@ -58,6 +58,7 @@ Class Shin_Summoner : ShinDoom_Actor
 		SUMM A 12 A_Facetarget;
 		goto see;
 	Summon:
+		SUMM E 0 A_Jumpif(bBOSSSPAWNED == true, "Attack");
 		SUMM E 20 Bright A_SummonStart();
 		SUMM E 5 Bright { A_SummonDudes(); SummonedOnce = true; }
 		SUMM A 12 A_Facetarget;
@@ -73,7 +74,7 @@ Class Shin_Summoner : ShinDoom_Actor
 		SUMM JKL 7;
 		SUMM M 38;
 		SUMM M 2 A_KillChildren;
-		SUMM M -1;
+		SUMM M -1 A_NormalDeath();
 		Stop;
 	Raise:
 		SUMM L 6;

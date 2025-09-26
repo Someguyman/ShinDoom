@@ -62,7 +62,7 @@ Class Shin_CyberFatso : Shin_mancubus
 		CFAT M 6 Bright A_NoBlocking;
 		CFAT NOPQ 6 Bright;
 		CFAT RS 6;
-		CFAT T -1 A_BossDeath;
+		CFAT T -1 A_ShinBossDeath();
 		Stop;
 	Death.Ice:
 		CFAT J 5 A_GenericFreezeDeath;

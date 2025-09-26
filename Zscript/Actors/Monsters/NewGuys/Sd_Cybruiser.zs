@@ -63,7 +63,7 @@ Class Shin_Cybruiser : Shin_BaronOfHell
 		CBOS P 5 Bright;
 		CBOS QR 5 Bright;
 		CBOS S 5;
-		CBOS T -1 A_BossDeath();
+		CBOS T -1 A_ShinBossDeath();
 		Stop;
 	Raise:
 		CBOS S 6;

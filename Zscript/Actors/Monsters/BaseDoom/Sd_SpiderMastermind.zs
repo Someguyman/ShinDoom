@@ -69,17 +69,15 @@ Class Shin_SpiderMastermind : ShinDoom_Actor Replaces SpiderMastermind
 		SPID NNOOPPQQ 5 Bright A_Spiderexplode();
 		SPID R 10 Bright;
 		SPID S 30;
-		SPID S -1 A_BossDeath;
+		SPID S -1 A_ShinBossDeath();
 		Stop;
 	XDeath:
 		SPID J 1;
 		SPID J 9 A_XScream();
 		SPID K 6 A_NoBlocking;
 		SPID LMNOPQR 6 Bright;
-		SPID S 30;
-		SPID S -1 A_BossDeath;
-		Stop;
-	Raise:
+		Goto Death+16;
+	Shin.Raise:
 		SPID R 6;
 		SPID QPONMLKJ 6;
 		Goto See;

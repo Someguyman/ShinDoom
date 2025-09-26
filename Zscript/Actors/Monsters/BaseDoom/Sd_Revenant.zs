@@ -56,7 +56,7 @@ Class Shin_Revenant : ShinDoom_Actor Replaces Revenant
 		SKEL N 7 A_Scream;
 		SKEL O 7 A_NoBlocking;
 		SKEL P 7;
-		SKEL Q -1;
+		SKEL Q -1 A_NormalDeath();
 		Stop;
 	XDeath:
 		SKEX A 5;
@@ -64,11 +64,55 @@ Class Shin_Revenant : ShinDoom_Actor Replaces Revenant
 		SKEX C 5;
 		SKEX D 5 A_NoBlocking();
 		SKEX EFG 5;
-		SKEX H -1;
+		SKEX H -1 A_NormalDeath();
 		Stop;
-	Raise:
+	Shin.Raise:
 		SKEL P 5;
 		SKEL OMN 5;
 		Goto See;
+	XRaise:
+		SKEX E 5;
+		SKEX DCBA 5;
+		Goto See;
+	}
+}
+
+Class Shin_RevenantTracer : ShinDoom_Actor
+{
+	Default
+	{
+		Radius 11;
+		Height 8;
+		Speed 10;
+		Damage 6;
+		Projectile;
+		+SEEKERMISSILE 
+		+RANDOMIZE
+		+ZDOOMTRANS
+		scale 0.8;
+		SeeSound "skeleton/attack";
+		DeathSound "skeleton/tracex";
+		RenderStyle "Add";
+	}
+	States
+	{
+	Spawn:
+		FATB AB 2 BRIGHT A_Tracer;
+		Loop;
+	Death:
+		FBXP A 8 BRIGHT;
+		FBXP B 6 BRIGHT;
+		FBXP C 4 BRIGHT;
+		Stop;
+	}
+}
+
+Extend Class Shin_Revenant
+{
+	Void A_SkelMissile()
+	{
+		A_Facetarget();
+		A_SpawnProjectile("Shin_RevenantTracer",53,-20);
+		A_SpawnProjectile("Shin_RevenantTracer",54,9);
 	}
 }

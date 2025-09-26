@@ -45,6 +45,7 @@ Class Shin_CombatRifle : ShinDoom_Weapon
 		RIFF A 1 Bright Offset(0,34) { invoker.mp_clip++; }
 		RIFL A 2 Offset(0,32);
 		RIFL A 0 A_ReFire("Fire.Delay");
+	Pullback:
 		RIFL A 3;
 		RIFL C 3;
 		RIFL D 5 A_StartSound("Weapons/RifleR");
@@ -55,7 +56,8 @@ Class Shin_CombatRifle : ShinDoom_Weapon
 		Goto Ready;
 	Fire.Delay:
 		RIFL A 13;
-		Goto AltFire;
+		RIFL A 0 A_ReFire("AltFire");
+		Goto Pullback;
 	Reload:
 		RIFL C 0 { If(invoker.mp_clip == 0){ SetWeaponState("Ready"); } }
 		RIFL FG 4;

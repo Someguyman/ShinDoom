@@ -25,7 +25,7 @@ class Shin_SpiderBoss : Shin_SpiderMastermind
 	{
 		static const Class<Actor> PlasmaFire[] =
 		{
-			'Shin_PlasmaBall1',
+			'Shin_PlasmaBall2',
 			'Shin_PlasmaBall2'
 		};
 		

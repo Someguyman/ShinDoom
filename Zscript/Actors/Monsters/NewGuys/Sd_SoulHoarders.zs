@@ -43,7 +43,7 @@ Class Shin_SoulHarvester : ShinDoom_Actor
     SLHV S 6 A_SpawnItemEx("Shin_SoulHarvesterGhost", 0,0,32, 0,0,0, 0, SXF_CLIENTSIDE);
     SLHV T 5 A_Fall();
     SLHV UV 5;
-    SLHV W -1;
+    SLHV W -1 A_NormalDeath();
     Stop;
   XDeath:
     SLHV X 6 A_Xscream();
@@ -51,7 +51,7 @@ Class Shin_SoulHarvester : ShinDoom_Actor
     SLHV Z 6;
     SLHV [ 6 A_Fall();
     SLHV ] 6;
-    SLHW A -1;
+    SLHW A -1 A_NormalDeath();
     Stop;
   Raise:
     SLHV WVUTSRQPO 5;

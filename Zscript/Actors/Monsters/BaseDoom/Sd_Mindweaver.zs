@@ -1,5 +1,5 @@
 
-Class Shin_Mindweaver : ShinDoom_Actor
+Class Shin_Mindweaver : ShinDoom_Actor Replaces deh_actor_152
 {
 	Default
 	{
@@ -57,7 +57,7 @@ Class Shin_Mindweaver : ShinDoom_Actor
 		CSPI L 7 BRIGHT;
 		CSPI M 7 bright A_BloodSplat(20);
 		CSPI NO 7 bright;
-		CSPI P -1;
+		CSPI P -1 A_NormalDeath();
 		Stop;
 	XDeath:
 		Stop;

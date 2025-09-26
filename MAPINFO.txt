@@ -26,7 +26,7 @@ DoomEdNums
 	
 	2002 = Shin_MachinePistol
 	
-	3007 = Shin_Ghoul
+	151 = Shin_Ghoul
 	3008 = Shin_Banshee
 	3009 = Shin_Mindweaver	
 	3010 = Shin_ShockTrooper

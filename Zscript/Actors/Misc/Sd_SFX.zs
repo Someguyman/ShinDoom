@@ -140,6 +140,8 @@ Class Shin_FlyingBlood : Blood
 		+THRUACTORS
 		+MOVEWITHSECTOR
 		//+NOCLIP
+		Bouncetype "Doom";
+		BounceCount 1;
 		Speed 8;
 		Radius 3;
 		Height 3;
@@ -151,5 +153,66 @@ Class Shin_FlyingBlood : Blood
 			TNT1 A 0 ThrustThingZ (0, random(16,29), 0, 1);
 			BLUD CBA 8;
 			Stop;
+	}
+}
+
+Class Shin_DeathFire : ShinDoom_Actor
+{
+	Default
+	{
+		+THRUACTORS
+		+MOVEWITHSECTOR
+		+NOBLOCKMAP
+		+NOCLIP
+		+DROPOFF
+		+RANDOMIZE
+		+NOINTERACTION
+		+NOTELEPORT
+		+ZDOOMTRANS
+		Damage 0;
+		scale 1.2;
+	}
+	States
+	{
+		spawn:
+			DTHF C 1 bright;
+			DTHF C 3 bright A_DeathFireExp();
+			DTHF D 4 bright;
+			DTHF E 4 bright;
+		spawn.loop:	
+			DTHF F 4 bright A_DeathBurn(); //1
+			DTHF G 4 bright;
+			DTHF H 4 bright;
+			DTHF H 0 bright A_DeathRepeat();
+			Loop;
+		Death:			
+			DTHF F 4 bright A_DeathBurn(); //8			
+			DTHF J 4 bright;
+			DTHF K 4 bright;
+			DTHF L 4 bright;
+			DTHF MNOPQ 4 bright;
+			stop;
+	}
+}
+
+extend class Shin_DeathFire
+{
+	int i;
+	
+	Void A_DeathFireExp()
+	{
+		A_StartSound("Vassago/fire");
+		i = 2;
+	}
+	
+	Void A_DeathBurn()
+	{
+		A_StartSound("Vassago/fire");
+	}
+	
+	Void A_DeathRepeat()
+	{
+		if (i == 0) SetStateLabel("Death");
+        i--;
 	}
 }

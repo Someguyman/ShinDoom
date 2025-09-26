@@ -1,5 +1,5 @@
 
-Class Shin_Tyrant : ShinDoom_Actor
+Class Shin_Tyrant : ShinDoom_Actor Replaces deh_actor_155
 {
 	Default
 	{
@@ -58,7 +58,7 @@ Class Shin_Tyrant : ShinDoom_Actor
 			CYB2 J 5 Bright A_NoBlocking();
 			CYB2 KLMNO 6 Bright;
 			CYB2 P 30;
-			CYB2 P -1 A_BossDeath;
+			CYB2 P -1 A_ShinBossDeath();
 			Stop;
 		Raise:
 			CYB2 O 6;
@@ -67,12 +67,12 @@ Class Shin_Tyrant : ShinDoom_Actor
 	}
 }
 
-Class Shin_Tyrant_boss_1 : Shin_Tyrant
+Class Shin_Tyrant_boss_1 : Shin_Tyrant Replaces deh_actor_156
 {
 
 }
 
-Class Shin_Tyrant_boss_2 : Shin_Tyrant
+Class Shin_Tyrant_boss_2 : Shin_Tyrant Replaces deh_actor_157
 {
 
 }

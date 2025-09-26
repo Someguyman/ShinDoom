@@ -18,7 +18,7 @@ Class Shin_ZombieMan : ShinDoom_Actor Replaces ZombieMan
 		Obituary "$OB_ZOMBIE";
 		Tag "$FN_ZOMBIE";
 		DropItem "Shin_Pistol";
-		DropItem "Shin_HeavyAmmo", 128;
+		//DropItem "Shin_HeavyAmmo", 128;
 	}
 	States
 	{
@@ -42,18 +42,22 @@ Class Shin_ZombieMan : ShinDoom_Actor Replaces ZombieMan
 		POSS I 5 A_Scream;
 		POSS J 5 A_NoBlocking;
 		POSS K 5;
-		POSS L -1;
+		POSS L -1 A_NormalDeath();
 		Stop;
 	XDeath:
 		POSS M 5;
 		POSS N 5 A_XScream;
 		POSS O 5 A_NoBlocking;
 		POSS PQRST 5;
-		POSS U -1;
+		POSS U -1 A_NormalDeath();
 		Stop;
-	Raise:
+	Shin.Raise:
 		POSS K 5;
 		POSS JIH 5;
+		Goto See;
+	XRaise:
+		POSS R 5;
+		POSS QPONM 5;
 		Goto See;
 	}
 }
@@ -78,8 +82,8 @@ Class Shin_ShotgunGuy : ShinDoom_Actor Replaces ShotgunGuy
 		Obituary "$OB_SHOTGUY";
 		Tag "$FN_SHOTGUN";
 		DropItem "Shin_Shotgun";
-		DropItem "Shin_HeavyAmmo", 64;
-		DropItem "Shin_LightAmmo", 64;
+		//DropItem "Shin_HeavyAmmo", 64;
+		//DropItem "Shin_LightAmmo", 64;
 	}
 	States
 	{
@@ -103,18 +107,22 @@ Class Shin_ShotgunGuy : ShinDoom_Actor Replaces ShotgunGuy
 		SPOS I 5 A_Scream;
 		SPOS J 5 A_NoBlocking;
 		SPOS K 5;
-		SPOS L -1;
+		SPOS L -1 A_NormalDeath();
 		Stop;
 	XDeath:
 		SPOS M 5;
 		SPOS N 5 A_XScream;
 		SPOS O 5 A_NoBlocking;
 		SPOS PQRST 5;
-		SPOS U -1;
+		SPOS U -1 A_NormalDeath();
 		Stop;
-	Raise:
+	Shin.Raise:
 		SPOS L 5;
 		SPOS KJIH 5;
+		Goto See;
+	XRaise:
+		SPOS Q 5;
+		SPOS PONM 5;
 		Goto See;
 	}
 }
@@ -178,14 +186,14 @@ Class Shin_ChaingunGuy : ShinDoom_Actor Replaces ChaingunGuy
 		CPOS I 5 A_Scream;
 		CPOS J 5 A_NoBlocking;
 		CPOS KLM 5;
-		CPOS N -1;
+		CPOS N -1 A_NormalDeath();
 		Stop;
 	Death.D1:
 		CPS2 H 5;
 		CPS2 I 5 A_Scream();
 		CPS2 J 5 A_NoBlocking;
 		CPS2 KLMNO 5;
-		CPS2 P -1;
+		CPS2 P -1 A_NormalDeath();
 		Stop;
 	XDeath:
 		CPOS H 0 A_Jumpif((BaseSprite == GetSpriteIndex('CPS2')), "XDeath.D1");
@@ -193,16 +201,16 @@ Class Shin_ChaingunGuy : ShinDoom_Actor Replaces ChaingunGuy
 		CPOS P 5 A_XScream;
 		CPOS Q 5 A_NoBlocking;
 		CPOS RST 5;
-		CPOS U -1;
+		CPOS U -1 A_NormalDeath();
 		Stop;
 	XDeath.D1:
 		CPS2 Q 5 ;
 		CPS2 R 5 A_XScream();
 		CPS2 S 5A_NoBlocking;
 		CPS2 TUVWX 5;
-		CPS2 Y -1;
+		CPS2 Y -1 A_NormalDeath();
 		Stop;
-	Raise:
+	Shin.Raise:
 		"----" A 0 A_RestoreSprite();
 		"####" N 5;
 		"####" MLKJIH 5;

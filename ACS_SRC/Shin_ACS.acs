@@ -52,5 +52,10 @@ Script "WeaponManagement" Enter //Used to clean up inventory if you gave yoursel
 		TakeInventory("Shin_Reaper", 1);
 	}
 	
+	TakeInventory("ValiantChaingun", 1);
+	TakeInventory("ValiantPistol", 1);
+	TakeInventory("ValiantShotgun", 1);
+	TakeInventory("ValiantSSG", 1);
+	
 	Restart;
 }

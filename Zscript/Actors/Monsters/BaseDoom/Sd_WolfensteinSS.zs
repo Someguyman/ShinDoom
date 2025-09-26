@@ -44,14 +44,14 @@ Class Shin_WolfensteinSS : ShinDoom_Actor Replaces WolfensteinSS
 		SSWV J 5 A_Scream;
 		SSWV K 5 A_NoBlocking;
 		SSWV L 5;
-		SSWV M -1;
+		SSWV M -1 A_NormalDeath();
 		Stop;
 	XDeath:
 		SSWV N 5 ;
 		SSWV O 5 A_XScream;
 		SSWV P 5 A_NoBlocking;
 		SSWV QRSTU 5;
-		SSWV V -1;
+		SSWV V -1 A_NormalDeath();
 		Stop;
 	Raise:
 		SSWV M 5;

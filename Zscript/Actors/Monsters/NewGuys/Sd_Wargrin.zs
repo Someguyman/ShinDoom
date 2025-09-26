@@ -51,7 +51,7 @@ Class Shin_Wargrin : ShinDoom_Actor
 		WARG M 8 A_Scream;
 		WARG N 6;
 		WARG O 6 A_NoBlocking;
-		WARG P -1;
+		WARG P -1 A_NormalDeath();
 		Stop;
 	Death.Ice:
 		WARG H 5 A_GenericFreezeDeath;

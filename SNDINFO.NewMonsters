@@ -179,3 +179,5 @@ corpulent/pain                 dsma2pai
 corpulent/death                dsma2dth      
 corpulent/shot				   DSM2SHOT
 corpulent/shotx				   DSMN2EXP
+
+$attenuation brain/spit 0

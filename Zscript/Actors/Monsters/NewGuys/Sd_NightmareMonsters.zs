@@ -9,7 +9,6 @@ Class Shin_NightmareImp : Shin_Doomimp
 		Speed 16;
 		Health 80;
 		PainChance 128;
-		//Translation "NightmareImp";
 		HitObituary "$OB_NITIMPHIT";
 		Obituary "$OB_NITIMP";
 		SeeSound "imp2/sight";
@@ -40,7 +39,7 @@ Class Shin_NightmareImp : Shin_Doomimp
 			IMP2 J 8 A_Scream;
 			IMP2 K 6;
 			IMP2 L 6 A_NoBlocking;
-			IMP2 M -1;
+			IMP2 M -1 A_NormalDeath();
 			Stop;
 		XDeath:
 			IMP2 N 5;
@@ -48,7 +47,7 @@ Class Shin_NightmareImp : Shin_Doomimp
 			IMP2 P 5;
 			IMP2 Q 5 A_NoBlocking;
 			IMP2 RST 5;
-			IMP2 U -1;
+			IMP2 U -1 A_NormalDeath();
 			Stop;
 		Raise:
 			IMP2 MLKJI 8;
@@ -141,19 +140,6 @@ Class Shin_NightmareSpectre : Shin_Pinky
 			NSMS N 5;
 			NSMS MLKJI 5;
 			Goto See;
-	}
-}
-
-extend class shin_nightmarespectre
-{
-	override void PostBeginPlay()
-	{
-		super.PostBeginPlay();
-		
-
-		BaseSprite = GetSpriteIndex("NSMS");	
-		sprite = BaseSprite;
-		Return;
 	}
 }
 

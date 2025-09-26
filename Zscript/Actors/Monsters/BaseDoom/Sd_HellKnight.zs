@@ -60,7 +60,7 @@ Class Shin_HellKnight : Shin_BaronOfHell Replaces Hellknight
 		"####" K  8;
 		"####" L  8 A_NoBlocking;
 		"####" MN 8;
-		"####" O -1 A_BossDeath;
+		"####" O -1 A_ShinBossDeath();
 		Stop;
 	XDeath:
 		"####" A 0 A_Jumpif((BaseSprite == GetSpriteIndex('ZBS2')), "XDeath.D1");
@@ -69,7 +69,7 @@ Class Shin_HellKnight : Shin_BaronOfHell Replaces Hellknight
 		BS2X C 5;
 		BS2X D 5 A_NoBlocking;
 		BS2X EFGH 5;
-		BS2X I -1; //A_BossDeath;
+		BS2X I -1 A_ShinBossDeath();
 		Stop;
 	XDeath.D1:
 		ZBX2 A 5;
@@ -77,7 +77,7 @@ Class Shin_HellKnight : Shin_BaronOfHell Replaces Hellknight
 		ZBX2 C 5;
 		ZBX2 D 5 A_NoBlocking;
 		ZBX2 EFGH 5;
-		ZBX2 I -1; //A_BossDeath;
+		ZBX2 I -1 A_ShinBossDeath();
 		Stop;
 	Raise:
 		"----" A 0 A_RestoreSprite();

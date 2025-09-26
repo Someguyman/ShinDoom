@@ -56,7 +56,7 @@ Class Shin_HellGaurd : Shin_BaronOfHell
 		HWAR M 5;
 		HWAR N 5 A_NoBlocking();
 		HWAR OPQRS 5;
-		HWAR T -1;
+		HWAR T -1 A_NormalDeath();
 		Stop;
 	XDeath:
 		HWAX A 5 A_SpawnItemEx("Shin_GaurdShield", 0, 0, 25, 6, 0, 0, 60, 128);
@@ -64,7 +64,7 @@ Class Shin_HellGaurd : Shin_BaronOfHell
 		HWAX C 5;
 		HWAX D 5 A_NoBlocking();
 		HWAX EFGH 5;
-		HWAX I -1;
+		HWAX I -1 A_NormalDeath();
 		Stop;
 	Raise:
 		HWAR S 5;

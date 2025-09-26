@@ -64,18 +64,16 @@ Class Shin_Cyberdemon : ShinDoom_Actor Replaces Cyberdemon
 		CYBR JJKKLLMM 5 Bright A_Cyberexplode();
 		CYBR NO 10 Bright;
 		CYBR P 30;
-		CYBR P -1 A_BossDeath;
+		CYBR P -1 A_ShinBossDeath();
 		Stop;
-	  XDeath:
+	 XDeath:
 		CYBR H 1;
 		CYBR H 5 A_XScream;
 		CYBR I 6 Bright;
 		CYBR J 6 Bright A_NoBlocking;
 		CYBR KLMNO 6 Bright;
-		CYBR P 30;
-		CYBR P -1 A_BossDeath;
-		Stop;
-	Raise:
+		Goto Death+16;
+	Shin.Raise:
 		CYBR O 6;
 		CYBR NMLKJIH 6;
 		Goto See;

@@ -51,24 +51,28 @@ Class Shin_BaronOfHell : ShinDoom_Actor Replaces Baronofhell
 		BOSS H  2 A_Pain;
 		Goto See;
 	Death:
-		BOSS I  8;
+		BOSS I  8 A_SpectreAppear();
 		BOSS J  8 A_Scream;
 		BOSS K  8;
 		BOSS L  8 A_NoBlocking;
 		BOSS MN 8;
-		BOSS O -1 A_BossDeath;
+		BOSS O -1 A_ShinBossDeath();
 		Stop;
 	XDeath:
-		BOSX A 5;
+		BOSX A 5 A_SpectreAppear();
 		BOSX B 5 A_XScream;
 		BOSX C 5;
 		BOSX D 5 A_NoBlocking();
 		BOSX EFGH 5;
-		BOSX I -1 A_BossDeath;
+		BOSX I -1 A_ShinBossDeath();
 		Stop;
-	Raise:
-		BOSS M 8;
+	Shin.Raise:
+		BOSS M 8 A_SpectreDisappear();
 		BOSS LKJI 8;
+		Goto See;
+	XRaise:
+		BOSX H 5 A_SpectreDisappear();
+		BOSX GFEDCBA 5;
 		Goto See;
 	}
 }

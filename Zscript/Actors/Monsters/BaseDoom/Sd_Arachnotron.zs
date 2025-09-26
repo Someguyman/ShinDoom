@@ -70,29 +70,33 @@ Class Shin_Arachnotron : ShinDoom_Actor Replaces Arachnotron
 		TNT1 A 1 A_Freezedeathchunks;
 		WAIT;
 	Death:
-		"####" J 1;
+		"####" J 1 A_SpectreAppear();
 		"####" J 19 A_Scream;
 		"####" K 7 A_NoBlocking;
 		"####" LM 7;
 		"####" N 7 A_StartSound("misc/HeavyThud", 0);
 		"####" O 7;
-		"####" P -1 A_BossDeath;
+		"####" P -1 A_ShinBossDeath();
 		Stop;
 	XDeath:
 		"####" A 0 A_Jumpif((BaseSprite == GetSpriteIndex('BSP2')), "Death");
-		BSPX A 1;
+		BSPX A 1 A_SpectreAppear();
 		BSPX A 5 A_XScream;
 		BSPX B 6 A_NoBlocking;
 		BSPX CD 6;
 		BSPX E 6 A_StartSound("caco/deathland", 0);
 		BSPX F 6;
-		BSPX G -1 A_BossDeath;
+		BSPX G -1 A_ShinBossDeath();
 		Stop;
-	 Raise:
+	 Shin.Raise:
 		"----" A 0 { A_RestoreSprite(); }
-		"####" O 5;
+		"####" O 5 A_SpectreDisappear();
 		"####" NMLKJ 5;
 		Goto See+1;
+	XRaise:
+		BSPX F 5 A_SpectreDisappear();
+		BSPX ECDBA 5;
+		Goto See;
 	Crush:
 		BSPI A 0;
 		BSPI A 0 A_Startsound("Bloody/crush");

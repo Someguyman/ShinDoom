@@ -51,6 +51,7 @@ $Pitchset Weapons/MachinePistol 1.1
 Weapons/MachineGun DSPISTOL
 $Pitchset Weapons/Machinegun 0.9
 
+weaponDn/Chainsaw DSSAWDN
 weaponUP/Pistol DSPISUP
 weaponUp/SMG DSSMGGUP
 weaponUP/Shotgun dswpnup

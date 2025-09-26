@@ -44,7 +44,7 @@ Class Shin_Infernoble : Shin_BaronOfHell
 		BOSS K  8;
 		BOSS L  8 A_NoBlocking;
 		BOSS MN 8;
-		BOSS O -1 A_BossDeath;
+		BOSS O -1 A_ShinBossDeath();
 		Stop;
 	Raise:
 		BOSS O 8;

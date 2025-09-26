@@ -1,5 +1,5 @@
 
-Class Shin_Banshee : ShinDoom_Actor
+Class Shin_Banshee : ShinDoom_Actor Replaces deh_actor_151
 {
 	Default
 	{

@@ -39,12 +39,12 @@ $Volume Mindweaver/walk 0.4
 $Volume Mindweaver/step 0.5
 
 Tyrant/sight DSTYRSIT
-Tyrant/active DSCYBACT
+Tyrant/active DSTYRACT
 Tyrant/hoof DSTYRWLK
-$alias Tyrant/pain cyber/pain
+Tyrant/pain DSTYRPIN
 Tyrant/death DSTYRDTH
 
-Lamp/Break DSBREAK
+world/officelamp DSBREAK
 
 world/Klaxon dsklaxon
 world/PortalOpen dsgatopn

@@ -39,6 +39,8 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		{ 
 			if (bSHADOW == true)
 				A_PainAttack("Shin_Spectre_PainSoul"); 
+			else if(bBOSSSPAWNED == true)
+				A_PainAttack("Shin_PainSoul_IOS"); 
 			else
 				A_PainAttack("Shin_PainSoul"); 
 				
@@ -54,7 +56,11 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		PAIN G 5 A_GenericFreezeDeath;
 		TNT1 A 1
 		{
-			A_PainDie("Shin_PainSoul");	
+			if (bBOSSSPAWNED == true)
+				A_PainDie("Shin_PainSoul_IOS"); 
+			else
+				A_PainDie("Shin_PainSoul");	
+				
 			A_Freezedeathchunks();
 		}
 		WAIT;
@@ -73,7 +79,15 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		PAIN I 9 BRIGHT A_Scream;
 		PAIN J 5 BRIGHT;
 		PAIN K 8 BRIGHT;
-		PAIN L 7 BRIGHT { A_PainDie("Shin_PainSoul"); A_BloodSplat(20); }
+		PAIN L 7 BRIGHT 
+		{ 
+			if (bBOSSSPAWNED == true)
+				A_PainDie("Shin_PainSoul_IOS"); 
+			else
+				A_PainDie("Shin_PainSoul");	 
+				
+			A_BloodSplat(20); 
+		}
 		PAIN M 6 BRIGHT;
 		Stop;
 	/*XDeath:
@@ -101,5 +115,14 @@ Class Shin_PainSoul : Shin_Lostsoul
 		Idle:
 			SKUL AB 10 BRIGHT { A_Look(); bFLOATBOB = True; }
 			Loop;
+	}
+}
+
+Class Shin_PainSoul_IOS : Shin_Lostsoul
+{
+	Default
+	{
+		Translation "Iconspawn";
+		alpha 0.60;
 	}
 }

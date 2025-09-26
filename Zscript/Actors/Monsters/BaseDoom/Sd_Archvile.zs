@@ -45,7 +45,7 @@ Class Shin_Archvile : ShinDoom_Actor Replaces Archvile
 		VILE G 0 BRIGHT A_VileStart();
 	Normalattack:		
 		VILE G 10 BRIGHT A_FaceTarget;
-		VILE H 8 BRIGHT A_VileTarget;
+		VILE H 8 BRIGHT A_VileTarget("Shin_ArchvileFire");
 		VILE IJKLMN 8 BRIGHT A_FaceTarget;
 		VILE O 8 BRIGHT A_VileAttack;
 		VILE P 20 BRIGHT;
@@ -76,7 +76,7 @@ Class Shin_Archvile : ShinDoom_Actor Replaces Archvile
 		VILE R 7 { A_Scream(); A_KillTracer("Missilekiller1", KILS_KILLMISSILES, "Shin_VileHellFire"); }
 		VILE S 7 A_NoBlocking;
 		VILE TUVWXY 7;
-		VILE Z -1 A_BossDeath;
+		VILE Z -1 A_NormalDeath();
 		Stop;
 	XDeath:
 		VILX A 1;
@@ -85,12 +85,33 @@ Class Shin_Archvile : ShinDoom_Actor Replaces Archvile
 		VILX C 5;
 		VILX D 5 A_NoBlocking();
 		VILX EFGH 5;
-		VILX I -1;
+		VILX I -1 A_NormalDeath();
 		Stop;
 	raise:
 		VILE Y 6;
 		VILE XWVUTSR 6;
 		Goto See;
+	}
+}
+
+class Shin_ArchvileFire : ArchvileFire
+{
+	void A_StartFire()
+	{
+		A_Fire();
+		A_Startsound("vile/firestrt", CHAN_AUTO);
+	}
+	States
+	{
+	Spawn:
+		FIRE A 1 BRIGHT;
+		FIRE A 1 BRIGHT  A_StartFire();
+		FIRE BAB 2 BRIGHT  A_Fire;
+		FIRE C 2 BRIGHT  A_FireCrackle;
+		FIRE BCBCDCDCDEDED 2 BRIGHT  A_Fire;
+		FIRE E 2 BRIGHT  A_FireCrackle;
+		FIRE FEFEFGHGHGH 2 BRIGHT  A_Fire;
+		Stop;
 	}
 }
 

@@ -32,7 +32,6 @@ Class Shin_DoomImp : ShinDoom_Actor Replaces Doomimp
 	Missile:
 		TROO EF 8 A_FaceTarget;
 		TROO G 6 A_TroopAttack;
-		//TROO G 6 A_FireVolley("Shin_IncineratorProjectile", 15, 70, 32);
 		Goto See;
 	Pain:
 		TROO H 2;
@@ -43,7 +42,7 @@ Class Shin_DoomImp : ShinDoom_Actor Replaces Doomimp
 		TROO J 8 A_Scream;
 		TROO K 6;
 		TROO L 6 A_NoBlocking;
-		TROO M -1;
+		TROO M -1 A_NormalDeath();
 		Stop;
 	XDeath:
 		TROO N 5;
@@ -51,12 +50,16 @@ Class Shin_DoomImp : ShinDoom_Actor Replaces Doomimp
 		TROO P 5;
 		TROO Q 5 A_NoBlocking;
 		TROO RST 5;
-		TROO U -1;
+		TROO U -1 A_NormalDeath();
 		Stop;
-	Raise:
+	Shin.Raise:
 		TROO M 8;
 		TROO L 8;
 		TROO KJI 6;
+		Goto See;
+	XRaise:
+		TROO R 5;
+		TROO QPON 5;
 		Goto See;
 	}
 }

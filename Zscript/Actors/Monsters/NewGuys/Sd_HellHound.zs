@@ -61,7 +61,7 @@ Class Shin_HellHound : ShinDoom_Actor
 	DeathStop:
 		HELH M 0 A_StartSound("misc/thud", 0);
 		HELH M 4;
-		HELH N -1;
+		HELH N -1 A_NormalDeath();
 		Stop;
 	Raise:
 		HELH N 5;

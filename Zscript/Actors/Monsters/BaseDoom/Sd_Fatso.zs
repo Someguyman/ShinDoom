@@ -68,7 +68,8 @@ Class Shin_Mancubus : ShinDoom_Actor Replaces Fatso
 		"####" L 6 A_Scream;
 		"####" M 6 A_NoBlocking;
 		"####" NOPQRS 6;
-		"####" T -1 A_BossDeath;
+		"####" T 0;
+		"####" T -1 A_ShinBossDeath();
 	    Stop;
 	Death.Ice:
 		"####" J 5 A_GenericFreezeDeath;
@@ -80,7 +81,7 @@ Class Shin_Mancubus : ShinDoom_Actor Replaces Fatso
 		FATX B 5 A_XScream;
 		FATX C 5 A_NoBlocking();
 		FATX DEF 5;
-		FATX G -1 A_BossDeath;
+		FATX G -1 A_ShinBossDeath();
 		Stop;
 	Crush:
 		MANG A 0;

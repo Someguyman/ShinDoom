@@ -10,6 +10,7 @@ Class Shin_CyberBoss : Shin_Cyberdemon
 		Speed 16;
 		PainChance 2;
 		Monster;
+		Damage 8;
 		+ShinDoom_Actor.STAYDEAD;
 		MinMissileChance 160;
 		MissileChanceMult 0.5;
@@ -20,18 +21,6 @@ Class Shin_CyberBoss : Shin_Cyberdemon
 		ActiveSound "cyber/active";
 		Obituary "$OB_CYBORG";
 		Tag "$FN_CYBER";
-	}
-	
-	Void A_CyberBossMelee()
-	{
-		A_Facetarget();
-		A_CustomMeleeAttack(10 * random(5, 8));
-	}
-	
-	void A_CyberdemonAttack()
-	{
-		A_FaceTarget();
-		A_SpawnProjectile("Shin_EnemyRocket",65,-28,0,CMF_BADPITCH);
 	}
 	
 	States
@@ -70,9 +59,9 @@ Class Shin_CyberBoss : Shin_Cyberdemon
 		Dash: //DASHING!!!
 			BCYB R 8 A_Facetarget;
 			BCYB S 4 A_Facetarget;
-			BCYB T 15 A_SkullAttack(30);
+			BCYB T 15 A_SkullAttack(40);
 			BCYB U 6;
-			BCYB A 6;
+			BCYB A 6 A_ScaleVelocity(0); 
 			Goto See;
 		Melee:
 			BCYB MN 8 A_Facetarget;
@@ -88,9 +77,9 @@ Class Shin_CyberBoss : Shin_Cyberdemon
 			CYBD G 12;
 			CYBD H 3;
 			CYBD G 6;
-			CYBD H 3 A_Scream;
+			CYBD H 3; 
 			CYBD G 3;
-			CYBD I 6 Bright;
+			CYBD I 6 Bright A_Scream;
 			CYBD JK 6 Bright; 
 			CYBD L 6 bright A_NoBlocking;
 			CYBD MNO 6 bright;
@@ -99,5 +88,31 @@ Class Shin_CyberBoss : Shin_Cyberdemon
 			Stop;
 		XDeath:
 			Stop;
+	}
+}
+
+extend class Shin_Cyberboss
+{
+	Void A_CyberBossMelee()
+	{
+		A_Facetarget();
+		A_CustomMeleeAttack(10 * random(5, 8));
+		A_Startsound("weapons/calamityblade/shoot", CHAN_BODY);
+		A_SpawnProjectile("ID24IncineratorProjectile", 32, 0, -20.0);
+		A_SpawnProjectile("ID24IncineratorProjectile", 32, 0, -15.0);
+		A_SpawnProjectile("ID24IncineratorProjectile", 32, 0, -10.0);
+		A_SpawnProjectile("ID24IncineratorProjectile", 32, 0, -5.0);
+		A_SpawnProjectile("ID24IncineratorProjectile", 32, 0, 0); 
+		A_SpawnProjectile("ID24IncineratorProjectile", 32, 0, 5.0);
+		A_SpawnProjectile("ID24IncineratorProjectile", 32, 0, 10.0); 
+		A_SpawnProjectile("ID24IncineratorProjectile", 32, 0, 15.0); 
+		A_SpawnProjectile("ID24IncineratorProjectile", 32, 0, 20.0); 
+		A_FaceTarget(); 
+	}
+	
+	void A_CyberdemonAttack()
+	{
+		A_FaceTarget();
+		A_SpawnProjectile("Shin_EnemyRocket",65,-28,0,CMF_BADPITCH);
 	}
 }

@@ -1,5 +1,5 @@
 
-Class Shin_ShockTrooper : ShinDoom_Actor
+Class Shin_ShockTrooper : ShinDoom_Actor Replaces deh_actor_153
 {
 	Default
 	{
@@ -43,7 +43,7 @@ Class Shin_ShockTrooper : ShinDoom_Actor
 			PPOS I 5 A_Scream;
 			PPOS J 5 A_NoBlocking;
 			PPOS KL 5;
-			PPOS M -1;
+			PPOS M -1 A_NormalDeath();
 			stop;
 		xdeath:
 			PPOS N 5;
@@ -51,7 +51,7 @@ Class Shin_ShockTrooper : ShinDoom_Actor
 			PPOS P 5 A_Fall;
 			PPOS Q 5 { A_SpawnItemEx("Shin_ShocktrooperTorso", -8.0, 0, 32.0 , 4.0, 0 , 2.0 , 0, SXF_ABSOLUTEVELOCITY|SXF_ABSOLUTEPOSITION); A_FaceTarget(); }
 			PPOS RST 5;
-			PPOS U -1;
+			PPOS U -1 A_NormalDeath();
 			stop;
 		raise:
 			PPSX FEDCBA 5;

@@ -49,12 +49,24 @@ Class ShinDoom_EventHandler : EventHandler
 		'Shin_Cybruiser'
 	};
 	
+	override void WorldThingRevived(WorldEvent e)
+	{
+		RevertKillCounter(e);
+	}
+	
 	override void WorldThingSpawned(worldEvent e)
 	{
 		let b1 = Shell(e.thing);
 		let b2 = ShellBox(e.thing);
 		let r1 = RocketAmmo(e.thing);
 		let r2 = RocketBox(e.thing);
+		let armor1 = GreenArmor(e.thing);
+		let armor2 = BlueArmor(e.thing);
+		let health1 = stimpack(e.thing);
+		let health2 = medikit(e.thing);
+		
+		if ( Level.MapTime > 0 )
+			RevertKillCounter(e);
 		
 		if (b1)
 		{  inventory(b1).PickupSound = "misc/a_pkup_b1"; }
@@ -67,6 +79,18 @@ Class ShinDoom_EventHandler : EventHandler
 		
 		if (r2)
 		{  inventory(r2).PickupSound = "misc/a_pkup_r2"; }
+		
+		if (armor1)
+		{  inventory(armor1).PickupSound = "armor/pkup1"; }
+		
+		if (armor2)
+		{  inventory(armor2).PickupSound = "armor/pkup2"; }
+		
+		if (health1)
+		{  inventory(health1).PickupSound = "health/pkup1"; }
+		
+		if (health2)
+		{  inventory(health2).PickupSound = "health/pkup2"; }
 	}
 	
 	override void CheckReplacement(ReplaceEvent e)
@@ -110,6 +134,7 @@ Class ShinDoom_EventHandler : EventHandler
 		if (e.Replacee == 'baronofhell')
 		{
 			if ((mapName == "e1m8") ||
+				(mapName == "e1m8b") ||
 				(mapName == "test"))
 			{
 				e.Replacement = 'Shin_Baronofhell';
@@ -148,5 +173,11 @@ Class ShinDoom_EventHandler : EventHandler
 			if (e.Replacee == 'GibbedMarineExtra')
 			e.Replacement = 'Shin_NightmareCacodemon';
 		}
+	}
+	
+	void RevertKillCounter(WorldEvent e)
+	{
+		if ( e.Thing && e.Thing.bCountKill )
+			e.Thing.ClearCounters();
 	}
 }

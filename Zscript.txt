@@ -15,7 +15,7 @@ version "4.14.1"
 #include "Zscript/Actors/Monsters/BaseDoom/Sd_WolfensteinSS.zs"
 
 #include "Zscript/Actors/Monsters/NewGuys/Sd_MonsterSpawner.zs"
-#include "Zscript/Actors/Monsters/Stealth/Sd_StealthMonsters.zs"
+#include "Zscript/Actors/Monsters/Sd_StealthMonsters.zs"
 
 //		Doom 1		//
 
@@ -84,6 +84,7 @@ version "4.14.1"
 #include "Zscript/Actors/Monsters/Sd_Monster_Standies.zs"
 #include "Zscript/Actors/Monsters/Sd_Dead_Monsters.zs"
 #include "Zscript/Actors/Items/Sd_Ammo.zs"
+#include "Zscript/Actors/Items/Sd_Health&Armor.zs"
 #include "Zscript/Actors/Items/Sd_DemonKeys.zs"
 #include "Zscript/Actors/Items/Sd_PowerUps.zs"
 #include "Zscript/Actors/Decorations/Sd_Decorations_Hell.zs"

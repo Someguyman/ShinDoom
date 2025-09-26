@@ -35,7 +35,7 @@ Class Shin_CalamityBlade : ShinDoom_Weapon Replaces ID24CalamityBlade // Heatwav
 		HETG E 3 BRIGHT;
 		HETG D 4;
 		HETG C 4;
-		HETG B 4;
+		HETG B 4 Offset(0,32);
 		HETG A 0 A_ReFire;
 		Goto Ready;
 	FlashCharge1:

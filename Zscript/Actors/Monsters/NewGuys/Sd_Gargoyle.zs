@@ -47,7 +47,7 @@ Class Shin_Gargoyle : Shin_DoomImp
 		Loop;
 	DeathStop:
 		FIMP LM 4;
-		FIMP M -1;
+		FIMP M -1 A_NormalDeath();
 		Stop;
 	XDeath:
 		FIMP N 5;
@@ -55,7 +55,7 @@ Class Shin_Gargoyle : Shin_DoomImp
 		FIMP P 5;
 		FIMP Q 5 A_NoBlocking;
 		FIMP RST 5;
-		FIMP U -1;
+		FIMP U -1 A_NormalDeath();
 		Stop;	
 	Raise:
 		FIMP L 8;

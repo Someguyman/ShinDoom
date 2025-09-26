@@ -82,7 +82,8 @@ Class ShinDoom_LevelPostProcessor : LevelPostProcessor
 				
 				case 'b49f7a6c519757d390d52667db7d8793' : //E1M1
 				{
-					SetThingEdNum(90,0);
+					SetThingEdNum(61,0);
+					SetThingEdNum(62,0);
 					Break;
 				}
 				
@@ -94,10 +95,24 @@ Class ShinDoom_LevelPostProcessor : LevelPostProcessor
 					break;
 				}
 				
+				case '5faa25f5a6aab3409cae0af87f910341' : //E1M6
+				{
+					SetThingEdNum(198,0);
+					SetThingEdNum(199,0);
+					break;
+				}
+				
+				case '9007f68e7f351a5758198933336f6b9f' : //E1M7
+				{
+					SetThingEdNum(53,0);
+					break;
+				}
+				
 				case '1BC04D646B32D3A3E411DAF3C1A38FF8' : //E2M4
 				{
 					SetThingEdNum(138,0);
 					SetThingEdNum(50,0);
+					SetThingEdNum(160,0);
 					
 					if (skill_level >= 2)
 					{
@@ -140,11 +155,28 @@ Class ShinDoom_MonsterSpawner play
 			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Mastermind_Standie",	 ( -3072, 1504, -999 ), 270);
 		}
 		
+		if(level.GetChecksum() == 'b49f7a6c519757d390d52667db7d8793') //E1M1
+		{
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Lamp_Breakable",( 2928, -4528, -999 ), 180);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Lamp_Breakable",( 3088, -4528, -999 ), 180);
+		}
+		
 		if(level.GetChecksum() == '81a4cc5136cbfa49345654190a626c09') //E1M2
 		{
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_CombatRifle",( 944, -304, -999 ), 0, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_HeavyAmmoBox",( 992, -304, -999 ), 0, MTF_AMBUSH);
-			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_HeavyAmmoBox",( 736, -416, -999 ), 0, MTF_AMBUSH);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_CombatRifle",( 944, -304, -999 ), 0);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_HeavyAmmoBox",( 992, -304, -999 ), 0);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_HeavyAmmoBox",( 736, -416, -999 ), 0);
+		}
+		
+		if(level.GetChecksum() == '5faa25f5a6aab3409cae0af87f910341') //E1M6
+		{
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Lamp_Breakable",( -144, 2336, -999 ), 225);
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Lamp_Breakable",( 16, 2336, -999 ), 225);
+		}
+		
+		if(level.GetChecksum() == '9007f68e7f351a5758198933336f6b9f') //E1M6
+		{
+			ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Chaingun",( -1312, -2656, -999 ), 0);
 		}
 		
 		if(level.GetChecksum() == '1BC04D646B32D3A3E411DAF3C1A38FF8') //E2M4
@@ -157,7 +189,8 @@ Class ShinDoom_MonsterSpawner play
 			
 			if (G_SkillPropertyInt(SKILLP_ACSReturn) >= 3)
 			{
-				ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Hellknight",( -752, -2400, -999 ), 90, MTF_AMBUSH);
+				ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Hellknight",( -800, -2400, -999 ), 90, MTF_AMBUSH);
+				ShinDoom_LevelPostProcessor.Shin_Spawnthing("Shin_Hellknight",( -864, -2400, -999 ), 90, MTF_AMBUSH);
 			}
 		}
 	}

@@ -50,7 +50,7 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		HEAD F 6;
 		Goto See;
 	Death:
-		HEAD G 1;
+		HEAD G 1 A_SpectreAppear();
 		HEAD G 7 { bFLOATBOB = False; }
 		HEAD H 8 A_Scream;
 		HEAD I 7;
@@ -61,22 +61,28 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		HEAD J 0 A_StartSound("caco/deathland", 0);
 		HEAD J 8;
 		HEAD K 8 A_NoBlocking;
-		HEAD L -1 A_SetFloorClip;
+		HEAD L -1 { A_SetFloorClip; A_NormalDeath(); }
 		Stop;
 	XDeath:
-		HEDX A 1;
-		HEDX A 3 {bFLOATBOB = False; }
-		HEDX B 4 A_XScream;
-		HEDX C 4;
-		HEDX D 4 A_NoBlocking();
-		HEDX EFGHI 4;
-		HEDX J -1;
+		HEDX A 1 A_SpectreAppear();
+		HEDX A 4 {bFLOATBOB = False; }
+		HEDX B 5 A_XScream;
+		HEDX C 5;
+		HEDX D 5 A_NoBlocking();
+		HEDX EFGHI 5;
+		HEDX J -1 { A_SetFloorClip; A_NormalDeath(); }
 		Stop;
-	Raise:
+	Shin.Raise:
 		HEAD L 1 A_UnSetFloorClip;
 		HEAD L 7 A_SpectreDisappear();
 		HEAD KJIHG 8;
 		HEAD A 0 {bFLOATBOB = True; }
+		Goto See;
+	XRaise:
+		HEDX H 1 A_UnSetFloorClip;
+		HEDX H 4 A_SpectreDisappear();
+		HEDX GFEDCBA 5;
+		HEDX A 0 {bFLOATBOB = True; }
 		Goto See;
 	}
 }

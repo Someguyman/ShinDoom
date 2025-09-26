@@ -27,20 +27,32 @@ Class Shin_Shotgun : ShinDoom_Weapon Replaces Shotgun
 	Fire:
 		SDWS A 2 Offset(0,42) A_FireShotgun();
 		SDWS A 2 Offset(0,38);
-		SDWS ABC 3 Offset(0,32);
+		SDWS A 3 Offset(0,32);
+		SDWS A 0 A_Jump(128, "RightPump");
+		SDWS BC 3 Offset(0,32);
 		SDWS C 3 Offset(0,34);
 		SDWS D 1 Offset(-3,32);
 		SDWS D 3 Offset(-5,46);
 		SDWS C 6 Offset(-1,32);
 		SDWS B 2 Offset(-1,32);
 		SDWS B 2 Offset(28,56);
+	Fire.End:
 		SDWS A 1 Offset(1,36) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
 		SDWS A 1 Offset(0,32);
 		SDWS A 7 Offset(0,32) A_ReFire;
 		Goto Ready;
+	RightPump:
+		SDWS EF 3 Offset(0,32);
+		SDWS F 3 Offset(0,34);
+		SDWS G 1 Offset(3,32);
+		SDWS G 3 Offset(5,46);
+		SDWS F 6 Offset(1,32);
+		SDWS E 2 Offset(1,32);
+		SDWS E 2 Offset(-28,56);
+		Goto Fire.End;
 	Flash:
-		SDWS E 2 Bright A_Light1;
-		SDWS F 1 Bright A_Light2;
+		SDWS H 2 Bright A_Light1;
+		SDWS I 1 Bright A_Light2;
 		Goto LightDone;
 	Spawn:
 		SHOT A -1;

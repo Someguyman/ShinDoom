@@ -1,5 +1,5 @@
 
-Class Shin_Ghoul : ShinDoom_Actor
+Class Shin_Ghoul : ShinDoom_Actor Replaces deh_actor_150
 {
 	Default
 	{
@@ -48,14 +48,14 @@ Class Shin_Ghoul : ShinDoom_Actor
 			GHUL NO 5 Bright;
 			GHUL P 5 Bright A_NoBlocking;
 			GHUL QR 5 Bright;
-			GHUL S -1;
+			GHUL S -1 A_NormalDeath();
 			stop;
 		Xdeath:
 			GHUX A 4 Bright {bFLOATBOB = False;}
 			GHUX B 4 Bright A_XScream;
 			GHUX C 4 Bright A_NoBlocking;
 			GHUX DEFGH 4 Bright;
-			GHUX I -1;
+			GHUX I -1 A_NormalDeath();
 		    Stop;
 	}
 }

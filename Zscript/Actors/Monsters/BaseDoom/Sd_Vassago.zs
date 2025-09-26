@@ -1,5 +1,5 @@
 
-Class Shin_Vassago : ShinDoom_Actor
+Class Shin_Vassago : ShinDoom_Actor Replaces deh_actor_154
 {
 	Default
 	{
@@ -52,7 +52,7 @@ Class Shin_Vassago : ShinDoom_Actor
 			VASS M 6 Bright A_NoBlocking;
 			VASS NO 6 Bright;
 			VASS P 7 Bright;
-			VASS Q -1 A_BossDeath;
+			VASS Q -1 A_ShinBossDeath();
 			stop;
 		raise:
 			VASS P 8;
