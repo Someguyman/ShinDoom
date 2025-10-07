@@ -35,9 +35,25 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		HEAD A 3 A_Chase();
 		Loop;
 	Missile:
+		HEAD B 0 A_Jump(40, "Missile2");
+		HEAD B 0 A_Jump(40, "Missile3");
+		HEAD B 5 A_FaceTarget(); 
+		HEAD C 5 A_FaceTarget;
+		HEAD D 5 BRIGHT A_HeadAttack();
+		HEAD B 0 A_Jump(50, "Missile3");
+		Goto See;
+	Missile2:
+		HEAD E 5 A_FaceTarget;
 		HEAD B 5 A_FaceTarget;
 		HEAD C 5 A_FaceTarget;
-		HEAD D 5 BRIGHT A_CacoAttack();
+		HEAD DDD 5 BRIGHT A_HeadAttack();
+		HEAD B 0 A_Jump(50, "Missile3");
+		Goto See;
+	Missile3:
+		HEAD M 5 A_FaceTarget; 
+		HEAD N 5 A_FaceTarget;
+		HEAD O 5 BRIGHT A_HeadAttack2();
+		HEAD M 5 A_FaceTarget; 
 		Goto See;
 	Melee:
 		HEAD C 4 A_FaceTarget();
@@ -50,8 +66,7 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		HEAD F 6;
 		Goto See;
 	Death:
-		HEAD G 1 A_SpectreAppear();
-		HEAD G 7 { bFLOATBOB = False; }
+		HEAD G 8 { bFLOATBOB = False; }
 		HEAD H 8 A_Scream;
 		HEAD I 7;
 	DeathLoop:
@@ -64,26 +79,26 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		HEAD L -1 { A_SetFloorClip; A_NormalDeath(); }
 		Stop;
 	XDeath:
-		HEDX A 1 A_SpectreAppear();
 		HEDX A 4 {bFLOATBOB = False; }
-		HEDX B 5 A_XScream;
-		HEDX C 5;
-		HEDX D 5 A_NoBlocking();
-		HEDX EFGHI 5;
+		HEDX B 4 A_XScream;
+		HEDX C 4;
+		HEDX D 4 A_NoBlocking;
+		HEDX EFGHI 4;
 		HEDX J -1 { A_SetFloorClip; A_NormalDeath(); }
 		Stop;
 	Shin.Raise:
-		HEAD L 1 A_UnSetFloorClip;
-		HEAD L 7 A_SpectreDisappear();
+		HEAD L 8 A_UnSetFloorClip;
 		HEAD KJIHG 8;
 		HEAD A 0 {bFLOATBOB = True; }
 		Goto See;
 	XRaise:
-		HEDX H 1 A_UnSetFloorClip;
-		HEDX H 4 A_SpectreDisappear();
+		HEDX H 5 A_UnSetFloorClip;
 		HEDX GFEDCBA 5;
 		HEDX A 0 {bFLOATBOB = True; }
 		Goto See;
+	Crush.Loop:
+		HEGI A -1;
+		Stop;
 	}
 }
 
@@ -115,12 +130,60 @@ Class Shin_CacodemonBall : ShinDoom_Actor
 	}
 }
 
+Class Shin_Cacodemonball2 : Shin_CacodemonBall
+{
+	States
+	{
+		Spawn:
+			BAL2 AB 4 BRIGHT;
+			Loop;
+		Death:
+			BAL2 CDE 6 BRIGHT;
+			Stop;
+	}
+}
+
 Extend Class Shin_cacodemon
 {
-	Void A_CacoAttack()
+	void A_HeadAttack()
 	{
-		A_FaceTarget();
-		A_CustomMeleeAttack(10 * random(1, 6), "caco/melee");
-		A_SpawnProjectile("Shin_CacodemonBall", 22, 0, 0, CMF_BADPITCH);
+		let targ = target;
+		if (targ)
+		{
+			if (CheckMeleeRange())
+			{
+				int damage = random[pr_headattack](1, 6) * 10;
+				A_StartSound (AttackSound, CHAN_WEAPON);
+				int newdam = target.DamageMobj (self, self, damage, "Melee");
+				targ.TraceBleed (newdam > 0 ? newdam : damage, self);
+			}
+			else
+			{
+				// launch a missile
+				A_FaceTarget();
+				A_SpawnProjectile("Shin_CacodemonBall", 22, 0, 0, CMF_BADPITCH);
+			}
+		}
+	}
+	
+	void A_HeadAttack2()
+	{
+		let targ = target;
+		if (targ)
+		{
+			if (CheckMeleeRange())
+			{
+				int damage = random[pr_headattack](1, 6) * 10;
+				A_StartSound (AttackSound, CHAN_WEAPON);
+				int newdam = target.DamageMobj (self, self, damage, "Melee");
+				targ.TraceBleed (newdam > 0 ? newdam : damage, self);
+			}
+			else
+			{
+				// launch a missile
+				A_FaceTarget();
+				A_SpawnProjectile("Shin_PlasmaBall3", 22, 0, 0, CMF_BADPITCH);
+			}
+		}
 	}
 }

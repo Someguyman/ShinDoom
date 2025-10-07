@@ -35,9 +35,9 @@ Class Shin_Archvile : ShinDoom_Actor Replaces Archvile
 		VILE AB 10 A_Look;
 		Loop;
 	See:
-		VILE A 2 A_Footstep();
+		VILE A 2 A_Footstep;
 		VILE ABBCC 2 A_VileChase;
-		VILE D 2 A_Footstep();
+		VILE D 2 A_Footstep;
 		VILE DEEFF 2 A_VileChase;
 		Goto see;
 	Missile:
@@ -83,9 +83,9 @@ Class Shin_Archvile : ShinDoom_Actor Replaces Archvile
 		VILX A 4;
 		VILX B 5 A_XScream;
 		VILX C 5;
-		VILX D 5 A_NoBlocking();
+		VILX D 5 A_NoBlocking;
 		VILX EFGH 5;
-		VILX I -1 A_NormalDeath();
+		VILX I -1 A_NormalDeath;
 		Stop;
 	raise:
 		VILE Y 6;

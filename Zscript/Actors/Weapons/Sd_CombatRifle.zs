@@ -63,11 +63,11 @@ Class Shin_CombatRifle : ShinDoom_Weapon
 		RIFL FG 4;
 		RIFL H 4;
 		RIFL I 5 A_StartSound("weapons/smgo",CHAN_AUTO);
-		RIFL J 5;
-		RIFL K 5 A_StartSound("weapons/smgl",CHAN_AUTO);
-		RIFL L 6; //Offset(0,32);
-		RIFL F 5 { invoker.mp_clip = 0; }
-		RIFL A 1 Offset(1,36) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
+		RIFL J 8;
+		RIFL K 3 A_StartSound("weapons/smgl",CHAN_AUTO);
+		RIFL L 5;
+		RIFL G 5;
+		RIFL F 3 { invoker.mp_clip = 0; }
 		Goto Ready;
 	Flash:
 		Stop;

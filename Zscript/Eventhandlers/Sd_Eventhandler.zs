@@ -62,8 +62,16 @@ Class ShinDoom_EventHandler : EventHandler
 		let r2 = RocketBox(e.thing);
 		let armor1 = GreenArmor(e.thing);
 		let armor2 = BlueArmor(e.thing);
+		
 		let health1 = stimpack(e.thing);
 		let health2 = medikit(e.thing);
+		
+		let keycardB = BlueCard(e.thing);
+		let skullkeyB = BlueSkull(e.thing);
+		let keycardR = RedCard(e.thing);
+		let skullkeyR = RedSkull(e.thing);
+		let keycardY = YellowCard(e.thing);
+		let skullkeyY = YellowSkull(e.thing);
 		
 		if ( Level.MapTime > 0 )
 			RevertKillCounter(e);
@@ -91,6 +99,24 @@ Class ShinDoom_EventHandler : EventHandler
 		
 		if (health2)
 		{  inventory(health2).PickupSound = "health/pkup2"; }
+		
+		if (keycardB)
+		{  inventory(keycardB).PickupSound = "KeyCard/pkup"; }
+		
+		if (skullkeyB)
+		{  inventory(skullkeyB).PickupSound = "SkullKey/pkup"; }
+		
+		if (keycardR)
+		{  inventory(keycardR).PickupSound = "KeyCard/pkup"; }
+		
+		if (skullkeyR)
+		{  inventory(skullkeyR).PickupSound = "SkullKey/pkup"; }
+		
+		if (keycardY)
+		{  inventory(keycardY).PickupSound = "KeyCard/pkup"; }
+		
+		if (skullkeyY)
+		{  inventory(skullkeyY).PickupSound = "SkullKey/pkup"; }
 	}
 	
 	override void CheckReplacement(ReplaceEvent e)
@@ -130,7 +156,7 @@ Class ShinDoom_EventHandler : EventHandler
 			
 		if (e.Replacee == 'cacodemon')
 			e.Replacement = 'Shin_Cacodemon';
-			
+					
 		if (e.Replacee == 'baronofhell')
 		{
 			if ((mapName == "e1m8") ||
@@ -143,19 +169,13 @@ Class ShinDoom_EventHandler : EventHandler
 			{
 				if ( mapName.Left(1) == "e" && mapName.Mid(2, 1) == "m" )
 				{
-					e.Replacement = NoblespawnD1[Random(0,1)];
-				}
-				else
-				{
-					//e.Replacement = NoblespawnD2[Random(0,1)];
-					e.Replacement = "Shin_Cybruiser";
+					e.Replacement = 'Shin_Hellknight';
 				}
 			}
 		}
 		
-		if ( mapName.Left(1) == "e" && mapName.Mid(2, 1) == "m" )
+		if (e.Replacee == 'Shin_Archvile' && (mapName.Left(1) == "e" && mapName.Mid(2, 1) == "m" ))
 		{
-			if (e.Replacee == 'Shin_Archvile')
 			e.Replacement = 'Shin_Summoner';
 		}
 		

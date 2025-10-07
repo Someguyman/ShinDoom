@@ -22,10 +22,13 @@ class Shin_BossBrain : ShinDoom_Actor Replaces Bossbrain
 	Pain:
 		BBRN B 36 A_BrainPain;
 		Goto Spawn;
-	Death:
-		BBRN A 100 A_BrainScream;
-		BBRN AA 10;
-		BBRN A -1 A_BrainDie;
+	Death:	
+		BBRN B 100 A_BrainScream;
+		BBRN BB 10;
+		BBRN B -1 A_BrainDie;
+		Stop;
+	Death.InstantEnd:
+		BBRN B -1 A_BrainDie;
 		Stop;
 	}
 }
@@ -34,6 +37,7 @@ class Shin_BossEye : ShinDoom_Actor Replaces Bosseye
 {
 	Default
 	{
+		
 		Height 32;
 		+NOBLOCKMAP
 		+NOSECTOR
@@ -84,6 +88,55 @@ class Shin_SpawnShot : ShinDoom_Actor Replaces SpawnShot
 	}
 }
 
+Class Shin_SpawnCube : ShinDoom_Actor
+{
+	Default
+	{
+		Radius 20;
+		Height 56;
+		Health 10;
+		Speed 0;
+		monster;
+		+NOBLOOD
+		//Dropitem "Shin_Spectre", -1, 128;
+		//Dropitem "Shin_Spectre_DoomImp", -1, 128;
+		//Deathsound "brain/cubeboom";
+	}
+	States
+	{
+		Spawn:
+			BOSF A 4 Bright { A_Look(); A_Startsound("brain/cube"); }
+			BOSF BCD 4 Bright A_Look();
+			Loop;
+		See:
+			BOSF A 4 Bright A_Startsound("brain/cube");
+			BOSF BCD 4 Bright;
+			Loop;
+		Death:
+			FIRE A 0 A_NoBlocking();
+			FIRE A 4 A_CubeSpawn();
+			FIRE BCDEFGH 4 Bright A_Fire;
+			Stop;
+	}
+}
+
+Class Shin_SpawnCube_Large : Shin_SpawnCube
+{
+	Default
+	{
+		Scale 2.0;
+		Dropitem "Shin_Arachnotron", -1, 128;
+		Dropitem "Shin_Mancubus", -1, 128;
+		Dropitem "Shin_Mindweaver", -1, 90;
+		Dropitem "Shin_Archvile", -1, 90;
+		Dropitem "Shin_Baronofhell", -1, 90;
+		Dropitem "Shin_Vassago", -1, 60;
+		Dropitem "Shin_Tyrant", -1, 60;
+		Dropitem "Shin_Cyberdemon", -1, 30;
+		Dropitem "Shin_Spidermastermind", -1, 30;
+	}
+}
+
 Extend Class Shin_Bossbrain
 {
 	private static void BrainishExplosion(vector3 pos)
@@ -103,11 +156,24 @@ Extend Class Shin_Bossbrain
 	}
 
 	void A_BrainScream()
-	{
+	{	
+		int Ypos;
+		int Zpos;
+		int Xpos;
+		
+		if(level.GetChecksum() == '42B68B84FF8E55F264C31E6F4CFEA82D')
+		{
+			Ypos = 623;
+		}
+		else
+		{
+			Ypos = -320;
+		}
+		
 		for (double x = -280; x < +280; x += 8)
 		{
 			// (1 / 512.) is actually what the original value of 128 did, even though it probably meant 128 map units.
-			BrainishExplosion(Vec2OffsetZ(x, -320, (1 / 512.) + random[BrainExplode](0, 255) * 2));
+			BrainishExplosion(Vec2OffsetZ(x, Ypos, (1 / 512.) + random[BrainExplode](0, 255) * 2));
 		}
 		A_StartSound("brain/death", CHAN_VOICE, CHANF_DEFAULT, 1., ATTN_NONE);
 		
@@ -139,5 +205,116 @@ Extend Class Shin_Bossbrain
 		double x = random2[BrainExplode]() / 32.;
 		Vector3 pos = Vec2OffsetZ(x, 0, 1 / 512. + random[BrainExplode]() * 2);
 		BrainishExplosion(pos);
+	}
+	
+	override void Die(Actor source, Actor inflictor, int dmgflags, Name MeansOfDeath)
+	{
+		if(level.GetChecksum() == '42B68B84FF8E55F264C31E6F4CFEA82D')
+			ACS_NamedExecuteAlways("TNTSkyChange",0);
+			
+		super.Die(source, inflictor, dmgflags, MeansOfDeath);
+	}	
+}
+
+Extend Class Shin_Spawncube
+{
+	
+	Void A_CubeSpawn()
+	{
+		if (DamageType == 'Massacre') return;
+		
+		A_Facetarget();
+		A_StartSound("brain/cubeboom");
+		
+		Actor newmobj;
+		int r;
+		
+		DropItem di;   // di will be our drop item list iterator
+		DropItem drop; // while drop stays as the reference point.
+		int n = 0;
+		
+		class<Actor> SpawnName = null;
+		
+		drop = GetDropItems();
+		
+		if (drop != null)
+		{
+			for (di = drop; di != null; di = di.Next)
+			{
+				if (di.Name != 'None')
+				{
+					int amt = di.Amount;
+					if (amt < 0)
+					{
+						amt = 1; // default value is -1, we need a positive value.
+					}
+					n += amt; // this is how we can weight the list.
+				}
+			}
+			di = drop;
+			n = random[pr_spawnfly](0, n);
+			while (n >= 0)
+			{
+				if (di.Name != 'none')
+				{
+					int amt = di.Amount;
+					if (amt < 0)
+					{
+						amt = 1;
+					}
+					n -= amt;
+				}
+				if ((di.Next != null) && (n >= 0))
+				{
+					di = di.Next;
+				}
+				else
+				{
+					n = -1;
+				}
+			}
+			SpawnName = di.Name;
+		}
+		if (SpawnName == null)
+		{
+			// Randomly select monster to spawn.
+			r = random[pr_spawnfly](0, 255);
+
+			// Probability distribution (kind of :),
+			// decreasing likelihood.
+				 if (r < 50)  SpawnName = "DoomImp";
+			else if (r < 90)  SpawnName = "Demon";
+			else if (r < 120) SpawnName = "Spectre";
+			else if (r < 130) SpawnName = "PainElemental";
+			else if (r < 160) SpawnName = "Cacodemon";
+			else if (r < 162) SpawnName = "Archvile";
+			else if (r < 172) SpawnName = "Revenant";
+			else if (r < 192) SpawnName = "Arachnotron";
+			else if (r < 222) SpawnName = "Fatso";
+			else if (r < 246) SpawnName = "HellKnight";
+			else			  SpawnName = "BaronOfHell";
+		}
+		if (spawnname != null)
+		{
+			newmobj = Spawn (spawnname, self.pos, ALLOW_REPLACE);
+			if (newmobj != null)
+			{
+				newmobj.CopyFriendliness (self, false);
+				// Make it act as if it was around when the player first made noise
+				// (if the player has made noise).
+				newmobj.LastHeard = newmobj.CurSector.SoundTarget;
+
+				if (newmobj.SeeState != null && newmobj.LookForPlayers (true))
+				{
+					newmobj.SetState (newmobj.SeeState);
+				}
+				if (!newmobj.bDestroyed)
+				{
+					// telefrag anything in this spot
+					newmobj.TeleportMove (newmobj.pos, true);
+				}
+				newmobj.bBossSpawned = true;
+			}
+		}
 	}
 }

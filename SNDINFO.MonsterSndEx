@@ -47,8 +47,8 @@ spectre/melee dssg2atk
 spectre/death dssg2dth
 spectre/invisible dssg2in
 spectre/visible dssg2vs
-$attenuation spectre/invisible 0.9
-$attenuation spectre/visible 0.9
+$attenuation spectre/invisible 0.7
+$attenuation spectre/visible 0.7
 
 skull/active dssklact
 skull/pain	dssklpin
@@ -59,6 +59,8 @@ caco/pain DSCACPIN
 caco/melee DSCACBIT
 caco/attack	DSCACATK
 caco/shotx DSCACEXP
+caco/shot2 DSCAATK2
+caco/xshot2 DSCAEXP2
 
 KnightD1/Sight DSKN2SIT
 KnightD1/Death DSKN2DTH
@@ -142,3 +144,6 @@ $attenuation boss/explode 0.5
 
 Explosion/lol DSEXPLO2
 $volume Explosion/lol 0.8
+
+misc/BigGibbed DSSLOP 
+$pitchset misc/BigGibbed 0.9

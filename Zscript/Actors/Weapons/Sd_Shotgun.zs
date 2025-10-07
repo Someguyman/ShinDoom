@@ -13,6 +13,9 @@ Class Shin_Shotgun : ShinDoom_Weapon Replaces Shotgun
 		Obituary "$OB_MPSHOTGUN";
 		Tag "$TAG_SHOTGUN";
 	}
+	
+	
+	
 	States
 	{
 	Ready:

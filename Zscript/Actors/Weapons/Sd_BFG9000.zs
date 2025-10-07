@@ -100,6 +100,10 @@ Extend Class Shin_BFG9000
 {
 	action void A_BFGsound() 
 	{ 
+		if (player == null)
+		{
+			return;
+		}
 		A_Overlay(2, "Charge");
 		A_Overlay(3, "Glow");
 		A_StartSound("weapons/bfgf", CHAN_WEAPON); 
@@ -107,6 +111,10 @@ Extend Class Shin_BFG9000
 	
 	Action void A_Bfgflash()
 	{
+		if (player == null)
+		{
+			return;
+		}
 		A_Overlay(2, "Gun.Flash");
 	}
 	

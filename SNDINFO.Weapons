@@ -63,6 +63,7 @@ weaponIP/GLauncher DSGRPKUP
 weaponUP/Plasmarifle D3PLSMUP
 WeaponUp/Incinerator DSFTHRUP
 weaponUP/BFG9000 DSBFGUP
+WeaponUP/CalamityBlade DSHEGUP
 WeaponUP/GaussCannon DSBFGUP
 $Pitchset WeaponUP/GaussCannon 0.7
 

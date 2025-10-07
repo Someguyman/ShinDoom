@@ -101,7 +101,7 @@ Class Shin_DeadPinky : Shin_Pinky
 			TNT1 A 0 A_Jump(50, "Gibbed");
 			Goto Super::DeathStop+2;
 		Gibbed:
-			Goto Super::XDeath+10;
+			Goto Super::XDeath+9;
 	}
 }
 
@@ -121,7 +121,7 @@ Class Shin_DeadSpectre : Shin_Spectre
 			TNT1 A 0 A_Jump(50, "Gibbed");
 			Goto Super::DeathStop+2;
 		Gibbed:
-			Goto Super::XDeath+10;
+			Goto Super::XDeath+9;
 	}
 	
 	override void PostBeginPlay()

@@ -106,6 +106,19 @@ $pitchset demon2/death 0.9
 $pitchset demon2/active 0.9
 $pitchset demon2/pain 0.9
 
+spectre2/sight dssg2sit
+spectre2/active dssg2act
+spectre2/pain dssg2pin
+spectre2/melee dssg2atk
+spectre2/death dssg2dth
+
+$pitchset spectre2/sight 0.9
+$pitchset spectre2/melee 0.9
+$pitchset spectre2/death 0.9
+$pitchset spectre2/active 0.9
+$pitchset spectre2/pain 0.9
+
+
 caco2/sight DSCACSIT
 caco2/active DSCACACT
 caco2/pain DSCACPIN
@@ -181,3 +194,11 @@ corpulent/shot				   DSM2SHOT
 corpulent/shotx				   DSMN2EXP
 
 $attenuation brain/spit 0
+
+Beta/Shot DSBETAB
+Beta/Shotx DSBETAX
+$limit Beta/Shot 0
+
+PsxPlasma/Shot DSPSXPL
+PsxPlasma/ShotX DSPSXPX
+$limit PsxPlasma/Shot 0

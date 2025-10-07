@@ -99,6 +99,7 @@ Class Shin_ComicalExplosion : ShinDoom_actor
 	{
 		+RANDOMIZE
 		projectile;
+		damagetype "lol";
 		SeeSound "Explosion/lol";
 		DeathSound "Explosion/lol";
 	}
@@ -108,8 +109,8 @@ Class Shin_ComicalExplosion : ShinDoom_actor
 			Goto Death;
 		Death:
 			CEXP A 1 Bright;
-			CEXP A 2 Bright; //A_StartSound("Explosion/lol", CHAN_AUTO);
-			CEXP B 3 Bright A_Explode();
+			CEXP A 2 Bright;
+			CEXP B 3 Bright A_Explode(-1, -1.0, XF_HURTSOURCE, true, 0.0, 0, 10, "BulletPuff", "lol");
 			CEXP CDEFGHI 3 Bright;
 			Stop;
 	}
@@ -195,6 +196,30 @@ Class Shin_DeathFire : ShinDoom_Actor
 	}
 }
 
+Class Shin_DeathFire_Large : Shin_DeathFire
+{
+	Default
+	{
+		scale 1.4;
+	}
+}
+
+Class Shin_DeathFire_Extra_Large : Shin_DeathFire
+{
+	Default
+	{
+		scale 2.0;
+	}
+}
+
+Class Shin_DeathFire_Small : Shin_DeathFire
+{
+	Default
+	{
+		scale 0.8;
+	}
+}
+
 extend class Shin_DeathFire
 {
 	int i;
@@ -202,7 +227,7 @@ extend class Shin_DeathFire
 	Void A_DeathFireExp()
 	{
 		A_StartSound("Vassago/fire");
-		i = 2;
+		i = 1;
 	}
 	
 	Void A_DeathBurn()

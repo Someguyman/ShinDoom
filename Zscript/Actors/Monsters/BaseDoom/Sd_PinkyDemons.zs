@@ -78,7 +78,7 @@ Class Shin_Spectre : Shin_Pinky Replaces Spectre
 {	
 	Default
 	{
-		+SHADOW
+		+ShinDoom_Actor.SHINSHADOW
 		RenderStyle "OptFuzzy";
 		SeeSound "spectre/sight";
 		AttackSound "spectre/melee";
@@ -122,7 +122,7 @@ Class Shin_Spectre : Shin_Pinky Replaces Spectre
 		SAR2 N -1 A_NormalDeath();
 		Stop;
 	Shin.Raise:
-		SAR2 M 5 A_SpectreDisappear();
+		SAR2 M 5;
 		SAR2 LKJI 5;
 		Goto See;
 	XDeath:
@@ -133,7 +133,7 @@ Class Shin_Spectre : Shin_Pinky Replaces Spectre
 		SR2X J -1 A_NormalDeath();
 		Stop;
 	XRaise:
-		SR2X G 4 A_SpectreDisappear();
+		SR2X G 4;
 		SR2X FEDCBA 4;
 		Goto See;
 	}

@@ -7,6 +7,7 @@ Class Shin_CalamityBlade : ShinDoom_Weapon Replaces ID24CalamityBlade // Heatwav
 		Weapon.AmmoUse 10;
 		Weapon.AmmoGive 20;
 		Weapon.AmmoType "ID24Fuel";
+		Weapon.UpSound "WeaponUp/CalamityBlade";
 		Inventory.PickupMessage "$ID24_GOTCALAMITYBLADE";
 		Tag "$TAG_ID24CALAMITYBLADE";
 	}	

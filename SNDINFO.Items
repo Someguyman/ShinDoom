@@ -39,3 +39,6 @@ health/pkup1 DSHELTH2
 health/pkup2 DSHEALTH
 
 gore/drink DSHSLURP
+
+KeyCard/pkup DPICKUPK
+SkullKey/pkup DPICKUPS

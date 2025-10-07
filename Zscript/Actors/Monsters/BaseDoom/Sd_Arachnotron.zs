@@ -26,6 +26,8 @@ Class Shin_Arachnotron : ShinDoom_Actor Replaces Arachnotron
 		Tag "$FN_ARACH";
 	}
 	
+	bool HASAWOKEN;
+	
 	States
 	{
 	Precache:
@@ -36,7 +38,8 @@ Class Shin_Arachnotron : ShinDoom_Actor Replaces Arachnotron
 		BSPI AB 10 { A_Look(); A_RestoreSprite(); }
 		Loop;
 	See:
-		"####" A 20 A_Jumpif(bBOSSSPAWNED == true, "walk");
+		"####" A 20 A_Jumpif((bBOSSSPAWNED == true) && (HASAWOKEN == false), "walk");
+		"####" A 0 { HASAWOKEN = true; }
 	Walk:
 		"####" A 3 A_Footstep();
 		"####" A 3 A_Chase;

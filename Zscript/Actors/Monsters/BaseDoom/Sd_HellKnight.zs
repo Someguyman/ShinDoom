@@ -38,9 +38,11 @@ Class Shin_HellKnight : Shin_BaronOfHell Replaces Hellknight
 	Melee:
 		Goto Missile+1;
 	Missile:
+		//"####" A 0 A_JUMP(100, "Missile.Dual1");
 		"####" A 0 A_JUMP(70, "Missile.Triple");
 		"####" EF 8 A_FaceTarget;
 		"####" G 8 A_HKnightAttack();
+		//"####" A 0 A_JUMP(128, "Missile.RightHand");
 		Goto See;
 	Missile.RightHand:
 		"####" PQ 8 A_FaceTarget;

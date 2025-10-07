@@ -1,7 +1,6 @@
 
 Class Shin_Unmaker : DoomWeapon
 {
-	
 	Default
 	{
 		Height 20;

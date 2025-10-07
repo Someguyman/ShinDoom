@@ -2,10 +2,11 @@ Class ShinDoom_Actor : Actor Replaces Actor
 {
 	Default
 	{
+		PainSound "demon/pain";
+		ActiveSound "demon/active";
 		ShinDoom_Actor.FootstepSoundChannel CHAN_AUTO;
 		ShinDoom_Actor.XDeathSound "misc/gibbed";
 		+NOSPLASHALERT
-		+NOTELESTOMP
 	}
 	
 	States
@@ -13,10 +14,13 @@ Class ShinDoom_Actor : Actor Replaces Actor
 	   Crush:
 			POL5 A 0;
 			POL5 A 0 A_Startsound("Bloody/crush");
+			"####" A 0 A_Jump(256, "Crush.Loop");
+			Goto Crush.Loop;
+		Crush.Loop:
 			POL5 A -1;
 			stop;
 	   Death.SuperShotgun:
-			"####" A 0 A_Jumpif(Self.SpawnHealth() > 400, "Death");
+			"####" A 0 A_Jumpif(Self.SpawnHealth() > 400, "Death"); //Any enemy with 400 + health will not gib to the super shotgun
 			"####" A 0 A_Jumpifcloser(128, "XDeath");
 			"####" A 0 A_Jump(256, "Death");
 			Stop;
@@ -32,22 +36,21 @@ Class ShinDoom_Actor : Actor Replaces Actor
 	   XDeath:
 			Stop;
 		Death:
-			"####" A 8 A_ScaleVelocity(0); 
-			"####" A 10 A_Spawnprojectile("Shin_ComicalExplosion", 0);
+			"####" "#" 8 Bright A_ScaleVelocity(0); 
+			"####" "#" 10 Bright A_Spawnprojectile("Shin_ComicalExplosion", 0);
 			Stop;
 		DeathFade:
 			"####" "#" 30;
-			"####" "#" 10 A_SpawnItemEx("Shin_DeathFire",0,0,0,0,0,0,0,SXF_TRANSFERSCALE,0,0);
+			"####" "#" 10 Bright A_DeathFireSpawn();
 		DeathFade.Loop:
 			"####" "#" 0 {A_JumpIf(radius<=0,"NULL"); A_JumpIf(height<=0,"NULL"); A_JumpIf(scale.x<=0,"NULL");}
-			"####" "#" 3 A_FadeOut(0.05);
+			"####" "#" 3 Bright A_FadeOut(0.05);
 			"####" "#" 0 {A_SetSize(radius-1,height-1); A_SetScale(scale.x-0.05,scale.y-0.05);}
 			Loop;
 		Raise:
 			"####" "#" 0
 			{
-				A_SpectreDisappear();
-				STOPFADDING == false;			
+				A_SpectreDisappear();			
 				return isgibbed? ResolveState("XRaise") : ResolveState("Shin.Raise");
 			}
 			stop;	
@@ -67,9 +70,10 @@ Extend Class ShinDoom_Actor
 	flagdef UNHEALABLE : ActorFlags, 0;
 	flagdef ALWAYSHEAL : ActorFlags, 1;
 	flagdef STAYDEAD : ActorFlags, 2;
+	flagdef SHINSHADOW : ActorFlags, 3;
 
 	Bool ISGIBBED;
-	Bool STOPFADDING;
+	Bool ISINVISABLE;
 	
 	int FootstepSoundChannel;
 	sound FootstepSound;
@@ -90,6 +94,30 @@ Extend Class ShinDoom_Actor
 	
 	SpriteID BaseSprite;
 	
+	override void BeginPlay()
+	{
+		super.BeginPlay();
+				
+		if (bISMONSTER)
+		{	
+			if ((Self.SpawnHealth() >= 400) && (XDeathSound == "misc/gibbed"))
+			{
+				XDeathSound = "misc/biggibbed";
+			}
+			
+			if (bSTAYDEAD == true)
+			{
+				bUNHEALABLE = true;
+			}
+			
+			if(bSHINSHADOW == true)
+			{
+				A_SetRenderStyle(1.0, STYLE_OptFuzzy);
+			}
+		}
+	}
+	
+	
 	override void PostBeginPlay()
 	{
 		super.PostBeginPlay();
@@ -108,23 +136,27 @@ Extend Class ShinDoom_Actor
 				A_SetRenderStyle(0.60, STYLE_Translucent);
 				A_SetTranslation("IconSpawn");
 			}
-		
-			if (bSTAYDEAD == true)
-			{
-				bUNHEALABLE = true;
-			}
 		}
 	}
 	
 	override bool CanResurrect (actor other, bool passive)
     {
-        if (!passive && other is "ShinDoom_Actor")
+		if (!passive && other is "ShinDoom_Actor")
         {
 			return (!ShinDoom_Actor(other).bUNHEALABLE || (bALWAYSHEAL && !ShinDoom_Actor(other).bSTAYDEAD));
         }
 		
 		return true;
     }
+	
+	override void Die(Actor source, Actor inflictor, int dmgflags, Name MeansOfDeath)
+	{
+		if (bISMONSTER)
+		{	
+			A_SpectreAppear();
+		}
+		super.Die(source, inflictor, dmgflags, MeansOfDeath);
+	}
 	
 	override void Tick()
     {				
@@ -152,21 +184,19 @@ Extend Class ShinDoom_Actor
 				ISGIBBED = false;
 			}
  
-			if (bSHADOW == true)
+			if (bSHINSHADOW == true)
 			{
-			
-			if (InStateSequence(CurState, ResolveState("Spawn")) || 
-				InStateSequence(CurState, ResolveState("Idle")))
-			{
-				A_SetRenderStyle(0.25, STYLE_OptFuzzy);
-			}
 		
-			if (InStateSequence(CurState, ResolveState("Death")) || 
+			if (InStateSequence(CurState, ResolveState("Spawn")) || 
+				InStateSequence(CurState, ResolveState("Idle")) || 
+				InStateSequence(CurState, ResolveState("Death")) || 
 				InStateSequence(CurState, ResolveState("DeathLoop")) || 
 				InStateSequence(CurState, ResolveState("DeathStop")) ||
 				InStateSequence(CurState, ResolveState("Death.D1")) ||
 				InStateSequence(CurState, ResolveState("XDeath")) ||
-				InStateSequence(CurState, ResolveState("XDeath.D1")))
+				InStateSequence(CurState, ResolveState("XDeath.D1")) ||
+				InStateSequence(CurState, ResolveState("DeathFade.Loop")) ||
+				InStateSequence(CurState, ResolveState("DeathFade")))
 			{
 				if (bBOSSSPAWNED == true)
 				{
@@ -176,9 +206,13 @@ Extend Class ShinDoom_Actor
 				{
 					visgoal = 1.0;	
 				}
+				
+				bSHADOW = false;
+				ISINVISABLE = false;
 			}
 			else
 			{
+								
 				if (bBOSSSPAWNED == true)
 				{
 					visgoal = 0.15;
@@ -187,6 +221,9 @@ Extend Class ShinDoom_Actor
 				{
 					visgoal = 0.25;
 				}
+				
+				bSHADOW = true;
+				ISINVISABLE = true;
 			}
 		 
 			if (InStateSequence(CurState, ResolveState("XDeath")) ||
@@ -207,18 +244,38 @@ Extend Class ShinDoom_Actor
 				visgoalx2 = 0.45;
 				visgoalx3 = 0.75;
 			}
-         
-			// Smooth fading effect
-			if (STOPFADDING != true)
+			
+			if ((ISINVISABLE == true) && (alpha > visgoal))
 			{
-			if (alpha > visgoal)
-			{
+				if (alpha < visgoal)
+				{
+					if (bBOSSSPAWNED == true)
+						alpha = 0.15;
+					else
+						alpha = 0.25;
+				}
+				else
+				{
 					alpha -= visAddSub;
+				}
 			}
-			else if (alpha < visgoal)
+			
+			if ((ISINVISABLE != true) && (alpha < visgoal))
 			{
-					alpha += visAddSub;
-			}
+				if(!InStateSequence(CurState, ResolveState("DeathFade.Loop")))
+				{
+					if (alpha > visgoal)
+					{
+						if (bBOSSSPAWNED == true)
+							alpha = 0.6;
+						else
+							alpha = 1.0;
+					}
+					else
+					{
+						alpha += visAddSub;
+					}
+				}
 			}
 		 
 			if (alpha <= visgoalx1)
@@ -303,7 +360,7 @@ Extend Class ShinDoom_Actor
 	
 	void A_SpectreAppear()
 	{
-		if (bSHADOW == true)
+		if (bSHINSHADOW == true)
 		{
 			A_StartSound("spectre/visible", CHAN_AUTO);
 		}
@@ -311,7 +368,7 @@ Extend Class ShinDoom_Actor
 	
 	void A_SpectreDisappear()
 	{
-		if (bSHADOW == true)
+		if (bSHINSHADOW == true)
 		{
 			A_StartSound("spectre/invisible", CHAN_AUTO);
 		}
@@ -350,7 +407,6 @@ Extend Class ShinDoom_Actor
 	{	
 		if (bBOSSSPAWNED == true)
 		{
-			STOPFADDING = true;
 			A_SetRenderStyle(0.60, STYLE_Translucent);
 			SetState(FindState("DeathFade"));
 		}
@@ -360,6 +416,18 @@ Extend Class ShinDoom_Actor
 	{
 		A_Bossdeath();
 		A_NormalDeath();
+	}
+	
+	Void A_DeathFireSpawn()
+	{
+		if (Radius >= 77)
+			A_SpawnItemEx("Shin_DeathFire_Extra_Large");
+		else if (Radius > 30)
+			A_SpawnItemEx("Shin_DeathFire_Large");
+		else if (Radius <= 20)
+			A_SpawnItemEx("Shin_DeathFire_Small");
+		else
+			A_SpawnItemEx("Shin_DeathFire");
 	}
 	
 	private void PlayFootstepSound(sound soundname)
@@ -389,8 +457,6 @@ Extend Class ShinDoom_Actor
 			{ A_StartSound(DeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_NONE); }
 		else
 			{ A_StartSound(DeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_IDLE); }
-			
-		A_SpectreAppear();
 	}
 	
 	Void A_XScream()
@@ -399,8 +465,6 @@ Extend Class ShinDoom_Actor
 			{ A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_NONE); A_BloodSplat(32); }
 		else
 			{ A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_IDLE); A_BloodSplat(20); }
-			
-		A_SpectreAppear();
 	}
 	
 	Void A_RaiseStart()

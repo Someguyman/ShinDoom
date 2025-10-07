@@ -47,14 +47,3 @@ DoomEdNums
 	10010 = Shin_DeadWolfensteinSS
 	10011 = Shin_DeadHellKnight
 }
-
-map LR_MAP14 "$XHUSTR_15"
-{
-	Next = EndSequence, "Id1Cast"
-	TitlePatch = "XWILV16"
-	Sky1 =  "SKYX5A"
-	Music = "D_SKELET"
-	SpecialAction = "Shin_Tyrant_boss_1", "Floor_LowerToNearest", 666, 8
-	SpecialAction = "Shin_Tyrant_boss_2", "Floor_LowerToNearest", 667, 8
-	Author = "$WF_AU_XASER"
-}

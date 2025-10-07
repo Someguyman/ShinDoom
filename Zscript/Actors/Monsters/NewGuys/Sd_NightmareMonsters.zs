@@ -76,7 +76,7 @@ Class Shin_NightmareImpBall : CacodemonBall
 	}
 }
 
-Class Shin_NightmareSpectre : Shin_Pinky
+Class Shin_Nightmaredemon : Shin_Pinky
 {
 	Default
 	{
@@ -89,56 +89,119 @@ Class Shin_NightmareSpectre : Shin_Pinky
 		Speed 12;
 		//Alpha 0.4;
 		Health 300;
-		//+SHADOW
-		//RenderStyle "Subtract";
 		RenderStyle "Translucent";
 		BloodColor "Blue";
-		Obituary "%o was devoured by a nightmare spectre.";
-		//Translation "NightmareSpectre";
+		Obituary "%o was devoured by a nightmare demon.";
 		Species "NightmareSpectre";
+		Tag "Nightmare Demon";
 	}
-	
-	
 	
 	States
 	{
 		Spawn:
-			NSMS AB 10 A_Look;
+			NMDM AB 10 A_Look;
 			Loop;
 		See:
-			NSMS AABBCCDD 2 Fast A_Chase;
+			NMDM AABBCCDD 2 Fast A_Chase;
 			Loop;
 		Melee:
-			NSMS EF 8 Fast A_FaceTarget;
-			NSMS G 8 Fast A_SargAttack;
+			NMDM EF 8 Fast A_FaceTarget;
+			NMDM G 8 Fast A_SargAttack;
 			Goto See;
 		Pain:
-			NSMS H 2 Fast;
-			NSMS H 2 Fast A_Pain;
+			NMDM H 2 Fast;
+			NMDM H 2 Fast A_Pain;
 			Goto See;
 		Death:
-			NSMS I 8;
-			NSMS J 8 A_Scream;
-			NSMS K 4;
-			NSMS L 3 A_NoBlocking;
+			NMDM I 8;
+			NMDM J 8 A_Scream;
+			NMDM K 4;
+			NMDM L 3 A_NoBlocking;
 		DeathLoop:
-			NSMS L 1 A_CheckFloor("DeathStop");
+			NMDM L 1 A_CheckFloor("DeathStop");
 			Loop;
 		DeathStop:
-			NSMS M 0 A_StartSound("misc/thud", 0);
-			NSMS M 4;
-			NSMS N -1;
+			NMDM M 0 A_StartSound("misc/thud", 0);
+			NMDM M 4;
+			NMDM N -1;
 			Stop;
 		XDeath:
-			NSSG A 4;
-			NSSG B 4 A_XScream;
-			NSSG C 4 A_NoBlocking();
-			NSSG DEFGHI 4;
-			NSSG J -1;
+			NMDX A 4;
+			NMDX B 4 A_XScream;
+			NMDX C 4 A_NoBlocking();
+			NMDX DEFGHI 4;
+			NMDX J -1;
 			Stop;
-		Raise:
-			NSMS N 5;
-			NSMS MLKJI 5;
+		Shin.Raise:
+			NMDM N 5;
+			NMDM MLKJI 5;
+			Goto See;
+		XRaise:
+			NMDX G 4;
+			NMDX FEDCBA 4;
+			Goto See;
+	}
+}
+
+Class Shin_NightmareSpectre : Shin_Nightmaredemon
+{
+	Default
+	{
+		SeeSound "spectre2/sight";
+		AttackSound "spectre2/melee";
+		PainSound "spectre2/pain";
+		DeathSound "spectre2/death";
+		ActiveSound "spectre2/active";
+		+SHADOW
+		RenderStyle "Subtract";
+		Obituary "%o was devoured by a nightmare spectre.";
+		Species "NightmareSpectre";
+		Tag "Nightmare Spectre";
+	}
+	
+	States
+	{
+		Spawn:
+			NMSP AB 10 A_Look;
+			Loop;
+		See:
+			NMSP AABBCCDD 2 Fast A_Chase;
+			Loop;
+		Melee:
+			NMSP EF 8 Fast A_FaceTarget;
+			NMSP G 8 Fast A_SargAttack;
+			Goto See;
+		Pain:
+			NMSP H 2 Fast;
+			NMSP H 2 Fast A_Pain;
+			Goto See;
+		Death:
+			NMSP I 8;
+			NMSP J 8 A_Scream;
+			NMSP K 4;
+			NMSP L 3 A_NoBlocking;
+		DeathLoop:
+			NMSP L 1 A_CheckFloor("DeathStop");
+			Loop;
+		DeathStop:
+			NMSP M 0 A_StartSound("misc/thud", 0);
+			NMSP M 4;
+			NMSP N -1;
+			Stop;
+		XDeath:
+			NMSX A 4;
+			NMSX B 4 A_XScream;
+			NMSX C 4 A_NoBlocking();
+			NMSX DEFGHI 4;
+			NMSX J -1;
+			Stop;
+		Shin.Raise:
+			NMSP N 5;
+			NMSP MLKJI 5;
+			Goto See;
+		XRaise:
+			NMSX G 4;
+			NMSX FEDCBA 4;
 			Goto See;
 	}
 }

@@ -3,7 +3,7 @@ Class Shin_BaronOfHell : ShinDoom_Actor Replaces Baronofhell
 {
 	Default
 	{
-		Health 1200;
+		Health 1000;
 		Radius 24;
 		Height 64;
 		Mass 1000;
@@ -42,9 +42,19 @@ Class Shin_BaronOfHell : ShinDoom_Actor Replaces Baronofhell
 		BOSS CDD 3 A_Chase;
 		Loop;
 	Melee:
+		Goto Missile+1;
 	Missile:
+		BOSS A 0 A_JUMP(80, "Missile.SuperAtk");
 		BOSS EF 8 A_FaceTarget;
 		BOSS G 8 A_BaronAttack();
+		Goto See;
+	Missile.RightHand:
+		BOSS PQ 8 A_FaceTarget;
+		BOSS R 8 A_BaronAttack();
+		Goto See;
+	Missile.SuperAtk:
+		BOSS ST 8 A_FaceTarget;
+		BOSS U 8 A_BaronAttack2();
 		Goto See;
 	Pain:
 		BOSS H  2;
@@ -81,11 +91,28 @@ Class Shin_BaronBall_Big : ShinDoom_Actor
 {
 	Default
 	{
-	
+		Radius 10;
+		Height 16;
+		Speed 20;
+		FastSpeed 25;
+		Damage 12;
+		Projectile;
+		+RANDOMIZE
+		+ZDOOMTRANS
+		RenderStyle "Add";
+		Alpha 1;
+		SeeSound "baron/attack";
+		DeathSound "baron/shotx";
+		Decal "BaronScorch";
 	}
 	States
 	{
-	
+	Spawn:
+		BBL2 AB 4 BRIGHT;
+		Loop;
+	Death:
+		BBL2 CDE 6 BRIGHT;
+		Stop;
 	}
 }
 
@@ -105,13 +132,28 @@ Extend Class Shin_BaronOfHell
 			}
 			else
 			{
-				A_FireVolley("Baronball", 5, 45);
+				A_FireVolley("Baronball");
+				//A_FireVolley("Baronball", 6, 50);
 			}
 		}
 	}
 	
 	void A_BaronAttack2()
 	{
-	
+		let targ = target;
+		if (targ)
+		{
+			if (CheckMeleeRange())
+			{
+				int damage = random[pr_bruisattack](1, 10) * 20;
+				A_StartSound ("baron/melee", CHAN_WEAPON);
+				int newdam = target.DamageMobj (self, self, damage, "Melee");
+				targ.TraceBleed (newdam > 0 ? newdam : damage, self);
+			}
+			else
+			{
+				A_FireVolley("Baronball", 6, 50);
+			}
+		}
 	}
 }

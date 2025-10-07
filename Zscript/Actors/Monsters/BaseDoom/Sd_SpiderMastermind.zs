@@ -57,9 +57,8 @@ Class Shin_SpiderMastermind : ShinDoom_Actor Replaces SpiderMastermind
 		SPID I 3;
 		SPID I 3 A_Pain;
 		Goto See;
-	Death.SuperShotgun:
 	Death:
-		SPID J 1;
+		SPID J 1 A_Jumpif(bBOSSSPAWNED == true, "XDeath");
 		SPID J 19 A_Scream;
 		SPID J 0 A_NoBlocking;
 		SPID K 10 Bright A_Spiderexplode();
@@ -100,7 +99,10 @@ Extend Class Shin_SpiderMastermind
 	
 	Void A_Spiderexplode()
 	{
-		A_SpawnProjectile("Shin_BossExplosion",FRandom(10,60),FRandom(30,-30),FRandom(0,360),2,FRandom(0,360));
-		A_BloodSplat(32);
+		if (!bBOSSSPAWNED)
+		{
+			A_SpawnProjectile("Shin_BossExplosion",FRandom(10,60),FRandom(30,-30),FRandom(0,360),2,FRandom(0,360));
+			A_BloodSplat(32);
+		}
 	}
 }

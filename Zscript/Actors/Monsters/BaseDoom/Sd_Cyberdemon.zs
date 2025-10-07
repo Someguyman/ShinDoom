@@ -53,9 +53,8 @@ Class Shin_Cyberdemon : ShinDoom_Actor Replaces Cyberdemon
 	Pain:
 		CYBR G 10 A_Pain;
 		Goto See;
-	Death.SuperShotgun:
 	Death:
-		CYBR H 1;
+		CYBR H 1 A_Jumpif(bBOSSSPAWNED == true, "XDeath");
 		CYBR H 9 A_Scream;
 		CYBR H 2;
 		CYBR H 0 A_NoBlocking;
@@ -107,7 +106,10 @@ Extend Class Shin_Cyberdemon
 	
 	Void A_Cyberexplode()
 	{
-		A_SpawnProjectile("Shin_BossExplosion",FRandom(20,80),FRandom(20,-20),FRandom(0,360),2,FRandom(0,360));
-		A_BloodSplat(32);
+		if (!bBOSSSPAWNED)
+		{
+			A_SpawnProjectile("Shin_BossExplosion",FRandom(20,80),FRandom(20,-20),FRandom(0,360),2,FRandom(0,360));
+			A_BloodSplat(32);
+		}
 	}
 }

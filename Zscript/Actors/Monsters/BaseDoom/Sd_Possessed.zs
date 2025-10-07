@@ -13,7 +13,8 @@ Class Shin_ZombieMan : ShinDoom_Actor Replaces ZombieMan
 		SeeSound "grunt/sight";
 		AttackSound "grunt/attack";
 		PainSound "grunt/pain";
-		DeathSound "grunt/death";
+		//DeathSound "grunt/death";
+		ShinDoom_Actor.XDeathSound "";
 		ActiveSound "grunt/active";
 		Obituary "$OB_ZOMBIE";
 		Tag "$FN_ZOMBIE";

@@ -1,6 +1,23 @@
 #library "Shin_ACS"
 #include "zcommon.acs"
 
+script "TNTSkyChange" (void)
+{	
+	//Thing_Destroy(0);
+	Delay(10);
+	ChangeSky("DOHBLU2","DOHBLU2");	
+	Delay(10);
+	ChangeSky("DOHBLU3","DOHBLU3");	
+	Delay(10);
+	ChangeSky("DOHBLU4","DOHBLU4");
+	Delay(10);
+	ChangeSky("DOHBLU5","DOHBLU5");	
+	Delay(10);
+	ChangeSky("DOHBLU6","DOHBLU6");	
+	Delay(10);	
+	Terminate;
+}
+
 Script "WeaponManagement" Enter //Used to clean up inventory if you gave yourself all weapons via cheats
 {
 	str mapName = StrParam(n:PRINTNAME_LEVEL);
