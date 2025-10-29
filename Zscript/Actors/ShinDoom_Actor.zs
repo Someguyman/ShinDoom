@@ -40,17 +40,22 @@ Class ShinDoom_Actor : Actor Replaces Actor
 			"####" "#" 10 Bright A_Spawnprojectile("Shin_ComicalExplosion", 0);
 			Stop;
 		DeathFade:
-			"####" "#" 30;
-			"####" "#" 10 Bright A_DeathFireSpawn();
+			"####" "#" 24;
+			"####" "#" 0 A_ShrinkingFade();
+			"####" "#" 3 A_SetTranslation("IconSpawn");
+			"####" "#" 0 A_ShrinkingFade();
+			"####" "#" 3 Bright { A_DeathFireSpawn(); A_SetTranslation("IconSpawn2"); }
+			"####" "#" 0 A_ShrinkingFade();
 		DeathFade.Loop:
 			"####" "#" 0 {A_JumpIf(radius<=0,"NULL"); A_JumpIf(height<=0,"NULL"); A_JumpIf(scale.x<=0,"NULL");}
 			"####" "#" 3 Bright A_FadeOut(0.05);
-			"####" "#" 0 {A_SetSize(radius-1,height-1); A_SetScale(scale.x-0.05,scale.y-0.05);}
+			"####" "#" 0 A_ShrinkingFade;
 			Loop;
 		Raise:
 			"####" "#" 0
 			{
-				A_SpectreDisappear();			
+				A_SpectreDisappear();		
+				A_RestoreSprite();
 				return isgibbed? ResolveState("XRaise") : ResolveState("Shin.Raise");
 			}
 			stop;	
@@ -71,6 +76,7 @@ Extend Class ShinDoom_Actor
 	flagdef ALWAYSHEAL : ActorFlags, 1;
 	flagdef STAYDEAD : ActorFlags, 2;
 	flagdef SHINSHADOW : ActorFlags, 3;
+	flagdef STARTINVIS : ActorFlags, 4;
 
 	Bool ISGIBBED;
 	Bool ISINVISABLE;
@@ -127,14 +133,9 @@ Extend Class ShinDoom_Actor
 			if (bBOSSSPAWNED == true)
 			{
 				bNEVERRESPAWN = true;
-				bNOTELESTOMP = false;
 				bTELESTOMP = true;
-				bNOFEAR = true;
-				bBRIGHT = true;
 				bSTAYDEAD = true;
-				//bNOBLOOD = true;
-				A_SetRenderStyle(0.60, STYLE_Translucent);
-				A_SetTranslation("IconSpawn");
+				bBOSSDEATH = false;
 			}
 		}
 	}
@@ -187,127 +188,97 @@ Extend Class ShinDoom_Actor
 			if (bSHINSHADOW == true)
 			{
 		
-			if (InStateSequence(CurState, ResolveState("Spawn")) || 
-				InStateSequence(CurState, ResolveState("Idle")) || 
-				InStateSequence(CurState, ResolveState("Death")) || 
-				InStateSequence(CurState, ResolveState("DeathLoop")) || 
-				InStateSequence(CurState, ResolveState("DeathStop")) ||
-				InStateSequence(CurState, ResolveState("Death.D1")) ||
-				InStateSequence(CurState, ResolveState("XDeath")) ||
-				InStateSequence(CurState, ResolveState("XDeath.D1")) ||
-				InStateSequence(CurState, ResolveState("DeathFade.Loop")) ||
-				InStateSequence(CurState, ResolveState("DeathFade")))
-			{
-				if (bBOSSSPAWNED == true)
-				{
-					visgoal = 0.60;
-				}
-				else
+				if (InStateSequence(CurState, ResolveState("Death")) || 
+					InStateSequence(CurState, ResolveState("DeathLoop")) || 
+					InStateSequence(CurState, ResolveState("DeathStop")) ||
+					InStateSequence(CurState, ResolveState("Death.D1")) ||
+					InStateSequence(CurState, ResolveState("XDeath")) ||
+					InStateSequence(CurState, ResolveState("XDeath.D1")) ||
+					InStateSequence(CurState, ResolveState("DeathFade.Loop")) ||
+					InStateSequence(CurState, ResolveState("DeathFade")) ||
+					(InStateSequence(CurState, ResolveState("Spawn")) && bSTARTINVIS != true) || 
+					(InStateSequence(CurState, ResolveState("Idle")) && bSTARTINVIS != true))
 				{
 					visgoal = 1.0;	
-				}
-				
-				bSHADOW = false;
-				ISINVISABLE = false;
-			}
-			else
-			{
-								
-				if (bBOSSSPAWNED == true)
-				{
-					visgoal = 0.15;
+					bSHADOW = false;
+					ISINVISABLE = false;
 				}
 				else
 				{
 					visgoal = 0.25;
+					bSHADOW = true;
+					ISINVISABLE = true;
 				}
-				
-				bSHADOW = true;
-				ISINVISABLE = true;
-			}
 		 
-			if (InStateSequence(CurState, ResolveState("XDeath")) ||
-				InStateSequence(CurState, ResolveState("XRaise")) ||
-				InStateSequence(CurState, ResolveState("XDeath.D1")) ||
-				((InStateSequence(CurState, ResolveState("Shin.Raise")) || 
-				  InStateSequence(CurState, ResolveState("Raise"))) && ISGIBBED == true))
-			{
-				visAddSub = 0.035;
-				visgoalx1 = 0.15;
-				visgoalx2 = 0.35;
-				visgoalx3 = 0.45;
-			}
-			else
-			{
-				visAddSub = 0.025;
-				visgoalx1 = 0.25;
-				visgoalx2 = 0.45;
-				visgoalx3 = 0.75;
-			}
-			
-			if ((ISINVISABLE == true) && (alpha > visgoal))
-			{
-				if (alpha < visgoal)
+				if (InStateSequence(CurState, ResolveState("XDeath")) ||
+					InStateSequence(CurState, ResolveState("XRaise")) ||
+					InStateSequence(CurState, ResolveState("XDeath.D1")) ||
+				  ((InStateSequence(CurState, ResolveState("Shin.Raise")) || 
+					InStateSequence(CurState, ResolveState("Raise"))) && ISGIBBED == true))
 				{
-					if (bBOSSSPAWNED == true)
-						alpha = 0.15;
-					else
+					visAddSub = 0.035;
+					visgoalx1 = 0.15;
+					visgoalx2 = 0.35;
+					visgoalx3 = 0.45;
+				}
+				else
+				{
+					visAddSub = 0.025;
+					visgoalx1 = 0.25;
+					visgoalx2 = 0.45;
+					visgoalx3 = 0.75;
+				}
+			
+				if ((ISINVISABLE == true) && (alpha > visgoal))
+				{
+					if ( (alpha < visgoal) || bSTARTINVIS == true)
+					{
 						alpha = 0.25;
-				}
-				else
-				{
-					alpha -= visAddSub;
-				}
-			}
-			
-			if ((ISINVISABLE != true) && (alpha < visgoal))
-			{
-				if(!InStateSequence(CurState, ResolveState("DeathFade.Loop")))
-				{
-					if (alpha > visgoal)
-					{
-						if (bBOSSSPAWNED == true)
-							alpha = 0.6;
-						else
-							alpha = 1.0;
 					}
 					else
 					{
-						alpha += visAddSub;
+						alpha -= visAddSub;
 					}
 				}
-			}
-		 
-			if (alpha <= visgoalx1)
-			{
-				if (bBOSSSPAWNED != true)
-					A_SetTranslation("SpectrePal1");
-			}		 
-		 
-			if ((alpha > visgoalx1) && (alpha < visgoalx2))
-			{
-				if (bBOSSSPAWNED != true)
-					A_SetTranslation("SpectrePal2");
-			}
 			
-			if ((alpha > visgoalx2) && (alpha < visgoalx3))
-			{
-				if (bBOSSSPAWNED != true)
-					A_SetTranslation("SpectrePal3");
-			}	 
-		 
-			if ((alpha > visgoalx3) && (alpha <= 1.0))
-			{
-				if (bBOSSSPAWNED != true)
+				if ((ISINVISABLE != true) && (alpha < visgoal))
 				{
-					A_SetTranslation("None");
+					if(!InStateSequence(CurState, ResolveState("DeathFade.Loop")))
+					{
+						if (alpha > visgoal)
+						{
+							alpha = 1.0;
+						}
+						else
+						{
+							alpha += visAddSub;
+						}
+					}
 				}
-				else
+		 
+				if (alpha <= visgoalx1)
 				{
-					A_SetTranslation("IconSpawn");
-				}			
+					A_SetTranslation("SpectrePal1");
+				}		 
+		 
+				if ((alpha > visgoalx1) && (alpha < visgoalx2))
+				{
+					A_SetTranslation("SpectrePal2");
+				}
+			
+				if ((alpha > visgoalx2) && (alpha < visgoalx3))
+				{
+					A_SetTranslation("SpectrePal3");
+				}	 
+		 
+				if ((alpha > visgoalx3) && (alpha <= 1.0))
+				{
+					if(!InStateSequence(CurState, ResolveState("DeathFade")))
+					{
+						A_SetTranslation("None");	
+					}
+				}		 
 			}		 
-		 }		 
 	   }
     }
 	
@@ -336,14 +307,14 @@ Extend Class ShinDoom_Actor
 		invoker.sprite = invoker.BaseSprite;
 	}
 	
-	void A_DualProjectileAttack(Class<Actor> spawntype = "PlasmaBall", double height = 32, double offset = 25)
+	void A_DualProjectileAttack(Class<Actor> spawntype = "PlasmaBall1", double height = 32, double offset = 25)
 	{
 		A_FaceTarget();
 		A_SpawnProjectile(spawntype, height, offset, 0);
 		A_SpawnProjectile(spawntype, height,-offset, 0);
 	}
 	
-	void A_FireVolley(Class<Actor> spawntype = "PlasmaBall", int numMissiles = 3, double coneAngle = 30, double spawnHeight = 32, int flags = 0)
+	void A_FireVolley(Class<Actor> spawntype = "PlasmaBall1", int numMissiles = 3, double coneAngle = 30, double spawnHeight = 32, int flags = 0)
 	{
 		if (NumMissiles == 0) numMissiles = 3;
 		if (NumMissiles == 1) numMissiles = 2;
@@ -407,7 +378,6 @@ Extend Class ShinDoom_Actor
 	{	
 		if (bBOSSSPAWNED == true)
 		{
-			A_SetRenderStyle(0.60, STYLE_Translucent);
 			SetState(FindState("DeathFade"));
 		}
 	}
@@ -477,6 +447,12 @@ Extend Class ShinDoom_Actor
 	{
 		bNOPAIN = false;
 		DamageFactor = 1.0;
+	}
+	
+	Void A_ShrinkingFade()
+	{
+		A_SetSize(radius-1,height-1); 
+		A_SetScale(scale.x-0.07,scale.y-0.07);
 	}
 	
 	void A_SummonDudes()

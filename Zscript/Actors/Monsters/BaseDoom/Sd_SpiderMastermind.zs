@@ -48,7 +48,7 @@ Class Shin_SpiderMastermind : ShinDoom_Actor Replaces SpiderMastermind
 		SPID A 3 A_Metal();
 		Goto see+1;
 	Missile:
-		SPID A 20 A_FaceTarget;
+		SPID A 20 { A_FaceTarget(); A_StopSound(CHAN_AUTO); }
 		SPID H 2 BRIGHT A_SpidAttack();
 		SPID G 2 BRIGHT A_FaceTarget;
 		SPID H 1 BRIGHT A_SpidRefire;
@@ -67,7 +67,7 @@ Class Shin_SpiderMastermind : ShinDoom_Actor Replaces SpiderMastermind
 		SPID M 2 Bright A_Spiderexplode();
 		SPID NNOOPPQQ 5 Bright A_Spiderexplode();
 		SPID R 10 Bright;
-		SPID S 30;
+		SPID S 60;
 		SPID S -1 A_ShinBossDeath();
 		Stop;
 	XDeath:
@@ -75,7 +75,8 @@ Class Shin_SpiderMastermind : ShinDoom_Actor Replaces SpiderMastermind
 		SPID J 9 A_XScream();
 		SPID K 6 A_NoBlocking;
 		SPID LMNOPQR 6 Bright;
-		Goto Death+16;
+		SPID S 30;
+		Goto Death+17;
 	Shin.Raise:
 		SPID R 6;
 		SPID QPONMLKJ 6;

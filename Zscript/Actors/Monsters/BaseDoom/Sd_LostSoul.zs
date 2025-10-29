@@ -3,7 +3,7 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 {
 	Default
 	{
-		Health 60;
+		Health 100;
 		Radius 16;
 		Height 56;
 		Mass 50;
@@ -16,11 +16,13 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 		+NOGRAVITY 
 		+DONTFALL 
 		+NOICEDEATH 
-		-COUNTKILL
 		+BOUNCEONFLOORS 
 		+BOUNCEONCEILINGS 
 		+ONLYSLAMSOLID
+		+NOINFIGHTSPECIES
+		+DONTHARMSPECIES
 		BounceType "Doom";
+		scale 1.1;
 		FloatBobStrength 0.5;
 		FloatBobFactor 0.8;
 		AttackSound "skull/melee";
@@ -56,7 +58,7 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 		SKUL K 6 BRIGHT;
 		Stop;
 	XDeath:
-		SKUL F 4 BRIGHT {bFLOATBOB = False;}
+		SKUL F 4 BRIGHT { bFLOATBOB = False; }
 		SKUL G 4 BRIGHT A_Scream;
 		SKUL H 4 BRIGHT;
 		SKUL I 4 BRIGHT A_NoBlocking;

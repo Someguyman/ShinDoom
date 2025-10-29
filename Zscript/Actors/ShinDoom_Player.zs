@@ -14,7 +14,7 @@ Class Shin_DoomPlayer : DoomPlayer Replaces playerpawn
 		Player.WeaponSlot 3, "Shin_Shotgun", "Shin_SuperShotgun";
 		Player.WeaponSlot 4, "Shin_Chaingun", "Shin_CombatRifle";
 		Player.WeaponSlot 5, "Shin_GrenadeLauncher", "Shin_RocketLauncher";
-		Player.WeaponSlot 6, "Shin_Incinerator", "Shin_PlasmaRifle", "Shin_CalamityBlade", "Shin_BFG9000";
+		Player.WeaponSlot 6, "Shin_Incinerator", "Shin_CalamityBlade", "Shin_PlasmaRifle", "Shin_BFG9000";
 		Player.WeaponSlot 7, "Shin_DarkClaw",  "Shin_Reaper", "Shin_Unmaker";
 		
 		Player.ColorRange 112, 127;

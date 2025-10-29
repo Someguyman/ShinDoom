@@ -84,7 +84,7 @@ Class Shin_RevenantTracer : ShinDoom_Actor
 		Radius 11;
 		Height 8;
 		Speed 10;
-		Damage 6;
+		Damage 7;
 		Projectile;
 		+SEEKERMISSILE 
 		+RANDOMIZE

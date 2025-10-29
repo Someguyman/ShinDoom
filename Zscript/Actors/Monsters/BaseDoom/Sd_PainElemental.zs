@@ -14,6 +14,7 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		+NOGRAVITY
 		+NEVERRESPAWN
 		+DONTGIB
+		+NOINFIGHTSPECIES
 		SeeSound "pain/sight";
 		PainSound "pain/pain";
 		DeathSound "pain/death";
@@ -22,6 +23,8 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		Scale 1.2;
 		FloatBobStrength 0.5;
 		FloatBobFactor 0.8;
+		Species "PainElemental";
+		DamageFactor "PainSkull", 0;
 	}
 	States
 	{
@@ -37,10 +40,8 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		PAIN F 5 BRIGHT A_FaceTarget;
 		PAIN F 0 BRIGHT 
 		{ 
-			if (bSHADOW == true)
+			if (bSHINSHADOW == true)
 				A_PainAttack("Shin_Spectre_PainSoul"); 
-			else if(bBOSSSPAWNED == true)
-				A_PainAttack("Shin_PainSoul_IOS"); 
 			else
 				A_PainAttack("Shin_PainSoul"); 
 				
@@ -56,24 +57,10 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		PAIN G 5 A_GenericFreezeDeath;
 		TNT1 A 1
 		{
-			if (bBOSSSPAWNED == true)
-				A_PainDie("Shin_PainSoul_IOS"); 
-			else
-				A_PainDie("Shin_PainSoul");	
-				
+			A_PainDie("Shin_PainSoul");			
 			A_Freezedeathchunks();
 		}
 		WAIT;
-	/*
-	Death:
-		PAIN H 8 BRIGHT {bFLOATBOB = False;}
-		PAIN I 8 BRIGHT A_Scream;
-		PAIN J 8 BRIGHT;
-		PAIN K 8 BRIGHT;
-		PAIN L 7 BRIGHT { A_PainDie("Shin_PainSoul"); A_FadeOut(0.247059); }
-		PAIN M 6 BRIGHT;
-		Stop;
-	*/
 	Death:
 		PAIN H 6 BRIGHT {bFLOATBOB = False;}
 		PAIN I 9 BRIGHT A_Scream;
@@ -81,23 +68,11 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		PAIN K 8 BRIGHT;
 		PAIN L 7 BRIGHT 
 		{ 
-			if (bBOSSSPAWNED == true)
-				A_PainDie("Shin_PainSoul_IOS"); 
-			else
-				A_PainDie("Shin_PainSoul");	 
-				
+			A_PainDie("Shin_PainSoul");	 	
 			A_BloodSplat(20); 
 		}
 		PAIN M 6 BRIGHT;
 		Stop;
-	/*XDeath:
-		PAIN H 3 BRIGHT {bFLOATBOB = False;}
-		PAIN I 12 BRIGHT; //A_Scream;
-		PAIN K 6 BRIGHT;
-		PAIN L 5 BRIGHT A_PainDie("Shin_PainSoul");
-		PAIN M 4 BRIGHT;
-		Stop;
-	*/
 	Crush:
 		stop;
 	Raise:
@@ -107,22 +82,49 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 
 Class Shin_PainSoul : Shin_Lostsoul
 {
-	States
-	{
-		Spawn:
-			SKUL CD 4 BRIGHT;
-			Loop;
-		Idle:
-			SKUL AB 10 BRIGHT { A_Look(); bFLOATBOB = True; }
-			Loop;
-	}
-}
-
-Class Shin_PainSoul_IOS : Shin_Lostsoul
-{
 	Default
 	{
-		Translation "Iconspawn";
-		alpha 0.60;
+		AttackSound "PainSkull/melee";
+		PainSound "PainSkull/pain";
+		DeathSound "PainSkull/death";
+		ActiveSound "PainSkull/active";
+		scale 0.9;
+		Health 50;
+		-COUNTKILL;
+		+DONTHARMSPECIES
+		Tag "Blood Soul";
+		Species "PainElemental";
+		DamageType "PainSkull";
+		DamageFactor "PainSkull", 0;
+	}
+	States
+	{
+	Spawn:
+		PSKL CD 4 BRIGHT;
+		Loop;
+	Idle:
+		PSKL AB 10 BRIGHT { A_Look(); bFLOATBOB = True; }
+		Loop;
+	See:
+		PSKL AB 6 BRIGHT A_Chase;
+		Loop;
+	Missile:
+		PSKL C 10 BRIGHT A_FaceTarget;
+		PSKL D 4 BRIGHT { A_SkullAttack(); bFLOATBOB = False; }
+		PSKL CD 4 BRIGHT;
+		Goto Missile+2;
+	Pain:
+		PSKL E 3 BRIGHT;
+		PSKL E 3 BRIGHT A_Pain;
+		Goto See;
+	XDeath:
+	Death:
+		PSKL F 4 BRIGHT {bFLOATBOB = False;}
+		PSKL G 4 BRIGHT A_Scream;
+		PSKL H 4 BRIGHT;
+		PSKL I 4 BRIGHT A_NoBlocking;
+		PSKL J 4 BRIGHT;
+		PSKL K 4 BRIGHT;
+		Stop;
 	}
 }

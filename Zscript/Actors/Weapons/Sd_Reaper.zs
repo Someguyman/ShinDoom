@@ -11,7 +11,7 @@ Class Shin_Reaper : ShinDoom_Weapon
 	States
 	{
 	Ready:
-		UNMK ABCD 4 A_WeaponReady;
+		UNMK ABCD 5 A_WeaponReady;
 		Loop;
 	Deselect:
 		UNMK A 1 A_Lower;
@@ -27,7 +27,7 @@ Class Shin_Reaper : ShinDoom_Weapon
 		UNMK E 1 Bright A_FireShotgun;
 		UNMK F 6 Bright; 
 		UNMK E 1 Bright A_FireShotgun;
-		UNMK FGHIFGHI 4 Bright; 
+		UNMK FGHIFGHI 5 Bright; 
 		UNMK E 3;
 		UNMK E 0 A_Refire();
 		goto Ready;

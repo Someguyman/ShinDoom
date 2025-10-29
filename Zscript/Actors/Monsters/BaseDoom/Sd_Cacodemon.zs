@@ -44,10 +44,10 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		Goto See;
 	Missile2:
 		HEAD E 5 A_FaceTarget;
-		HEAD B 5 A_FaceTarget;
-		HEAD C 5 A_FaceTarget;
-		HEAD DDD 5 BRIGHT A_HeadAttack();
-		HEAD B 0 A_Jump(50, "Missile3");
+		HEAD P 5 A_FaceTarget;
+		HEAD Q 5 A_FaceTarget;
+		HEAD RRR 5 BRIGHT A_HeadAttack();
+		HEAD Q 0 A_Jump(50, "Missile3");
 		Goto See;
 	Missile3:
 		HEAD M 5 A_FaceTarget; 

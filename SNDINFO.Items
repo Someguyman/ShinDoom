@@ -6,39 +6,39 @@ $Random misc/a_pkup_h2 { misc/a_pkup3 misc/a_pkup4 misc/a_pkup5 }
 $Random misc/a_pkup_b1 { misc/a_pkup1 misc/a_pkup2 }
 $Random misc/a_pkup_b2 { misc/a_pkup3 misc/a_pkup4 misc/a_pkup5 }
 
-misc/a_pkup1 DSCLIPP1
-misc/a_pkup2 DSCLIPP2
-misc/a_pkup3 DSAMMOP1
-misc/a_pkup4 DSAMMOP2
-misc/a_pkup5 DSAMMOP3
+Misc/a_pkup1 DSCLIPP1
+Misc/a_pkup2 DSCLIPP2
+Misc/a_pkup3 DSAMMOP1
+Misc/a_pkup4 DSAMMOP2
+Misc/a_pkup5 DSAMMOP3
 
-misc/a_pkup_r1 DSRKTUP
-misc/a_pkup_r2 DSRBXUP
-misc/a_pkup_c1 DSCELUP
-misc/a_pkup_c2 DSCEPUP
-misc/a_pkup_g1 dsitemup
-misc/a_pkup_g2 dsitemup
-misc/a_pkup_s dsitemup
+Misc/a_pkup_r1 DSRKTUP
+Misc/a_pkup_r2 DSRBXUP
+Misc/a_pkup_c1 DSCELUP
+Misc/a_pkup_c2 DSCEPUP
+Misc/a_pkup_g1 dsitemup
+Misc/a_pkup_g2 dsitemup
+Misc/a_pkup_s dsitemup
 
-misc/p_pkup_v DSGETPWV
-misc/p_pkup_i DSGETPWI
-misc/p_pkup_a DSGETPWA
-misc/p_pkup_r DSGETPWR
-misc/p_pkup_l DSGETPWL
-misc/p_pkup_s DSGETPWS
-misc/p_pkup_m DSGETPWM
-misc/p_pkup_q DSGETPWQ
+Misc/p_pkup_v DSGETPWV
+Misc/p_pkup_i DSGETPWI
+Misc/p_pkup_a DSGETPWA
+Misc/p_pkup_r DSGETPWR
+Misc/p_pkup_l DSGETPWL
+Misc/p_pkup_s DSGETPWS
+Misc/p_pkup_m DSGETPWM
+Misc/p_pkup_q DSGETPWQ
 
-misc/b_pkup	DSAMMOP4
+Misc/b_pkup	DSAMMOP4
 
-armor/pkup1 DSARMR2
-armor/pkup2 DSARMR2
+Armor/pkup1 DSARMR2
+Armor/pkup2 DSARMR2
 $pitchset armor/pkup2 0.8
 
-health/pkup1 DSHELTH2
-health/pkup2 DSHEALTH
+Health/pkup1 DSHELTH2
+Health/pkup2 DSHEALTH
 
-gore/drink DSHSLURP
+Gore/drink DSHSLURP
 
 KeyCard/pkup DPICKUPK
 SkullKey/pkup DPICKUPS

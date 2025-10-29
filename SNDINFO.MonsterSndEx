@@ -54,6 +54,15 @@ skull/active dssklact
 skull/pain	dssklpin
 skull/death	dsskldth
 
+PainSkull/active dssklact
+PainSkull/pain dssklpin
+PainSkull/death dsskldth
+PainSkull/melee dssklatk
+$pitchset PainSkull/active 1.03
+$pitchset PainSkull/pain 1.03
+$pitchset PainSkull/death 1.03
+$pitchset PainSkull/melee 1.03
+
 caco/active DSCACACT
 caco/pain DSCACPIN
 caco/melee DSCACBIT
@@ -75,6 +84,8 @@ knight/pain	dskntpin
 knight/melee dskntmel
 knight/attack dskntatk
 knight/shotx dskntexp
+$limit knight/attack 0
+$limit knight/shotx 0
 
 baron/active DSBRSACT
 baron/pain	DSBRSPIN
@@ -111,12 +122,15 @@ spider/pain	DSSPIPIN
 spider/attack DSSPIATK
 spider/walk DSSPIWLK
 spider/XDeath DSSPIEXP
+$attenuation spider/attack 0.9
 
 cyber/active DSCYBACT
 cyber/pain DSCYBPIN
 cyber/walk DSMETAL
 cyber/attack DSCYBATK
 cyber/shotx DSCYBEXP
+cyber/XDeath DSCYBXDH
+$attenuation cyber/attack 0.9
 
 $limit brain/cube 0
 brain/cubeboom DSBOSFIR

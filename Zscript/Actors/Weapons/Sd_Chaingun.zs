@@ -116,6 +116,7 @@ Class Shin_Chaingun : ShinDoom_Weapon Replaces Chaingun
 		SDWG C 2 Bright A_Light1;
 		//SDWG E 1 Bright A_Light2;
 		SDWG D 1 Bright A_Light2;
+		//SDWG E 1 Bright A_Light2;
 		Goto LightDone;
 	Spawn:
 		CGUN A -1;

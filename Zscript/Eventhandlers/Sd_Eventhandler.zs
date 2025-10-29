@@ -144,6 +144,18 @@ Class ShinDoom_EventHandler : EventHandler
 			else
 				e.Replacement = 'Shin_Chaingunguy';
 		}
+		
+		if (wads.FindLump("SC2MTL") && wads.FindLump("PRODIGY") != -1)
+		{
+			if (e.Replacee == 'wolfensteinss')
+				e.Replacement = 'Shin_EvilMarine';
+				
+			if (mapName != "test")
+			{
+				if (e.Replacee == 'commanderkeen')
+					e.Replacement = 'Shin_Afrit';
+			}
+		}	
 			
 		if (e.Replacee == 'doomimp')
 			e.Replacement = 'Shin_DoomImp';
@@ -161,6 +173,7 @@ Class ShinDoom_EventHandler : EventHandler
 		{
 			if ((mapName == "e1m8") ||
 				(mapName == "e1m8b") ||
+				(mapName == "e2m9") ||
 				(mapName == "test"))
 			{
 				e.Replacement = 'Shin_Baronofhell';

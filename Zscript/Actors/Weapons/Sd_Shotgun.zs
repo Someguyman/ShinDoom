@@ -31,7 +31,7 @@ Class Shin_Shotgun : ShinDoom_Weapon Replaces Shotgun
 		SDWS A 2 Offset(0,42) A_FireShotgun();
 		SDWS A 2 Offset(0,38);
 		SDWS A 3 Offset(0,32);
-		SDWS A 0 A_Jump(128, "RightPump");
+		//SDWS A 0 A_Jump(128, "RightPump");
 		SDWS BC 3 Offset(0,32);
 		SDWS C 3 Offset(0,34);
 		SDWS D 1 Offset(-3,32);

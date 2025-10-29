@@ -1,13 +1,13 @@
 
 $random machinegunguy/sight	{ machinegunguy/sight1  machinegunguy/sight2  }
 $random machinegunguy/death	{ machinegunguy/death1  machinegunguy/death2  }
-machinegunguy/sight1 DSXPSIT1
-machinegunguy/sight2 DSXPSIT2
-machinegunguy/active DSXPACT
-machinegunguy/pain DSXPPAIN
-machinegunguy/death1 DSXPDTH1
-machinegunguy/death2 DSXPDTH2
-machinegunguy/attack DSXPFIRE
+Machinegunguy/sight1 DSXPSIT1
+Machinegunguy/sight2 DSXPSIT2
+Machinegunguy/active DSXPACT
+Machinegunguy/pain DSXPPAIN
+Machinegunguy/death1 DSXPDTH1
+Machinegunguy/death2 DSXPDTH2
+Machinegunguy/attack DSXPFIRE
 $limit machinegunguy/attack 0
 
 $random MechaZombie/Sight { MechaZombie/Sight1 MechaZombie/Sight2 }

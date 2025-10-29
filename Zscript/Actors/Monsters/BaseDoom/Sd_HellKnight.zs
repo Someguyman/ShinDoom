@@ -14,7 +14,7 @@ Class Shin_HellKnight : Shin_BaronOfHell Replaces Hellknight
 		-BOSSDEATH
 		-E1M8BOSS
 		ShinDoom_Actor.FootstepSound "Knight/walk";
-		BloodColor "red";
+		//BloodColor "red";
 		Tag "$FN_HELL";
 		MissileChanceMult 1.0;
 		Scale 1.1;
@@ -25,45 +25,23 @@ Class Shin_HellKnight : Shin_BaronOfHell Replaces Hellknight
 	Precache:
 		ZBS2 A 0;
 		BOS2 A 0;
-		Stop;		
-	Spawn:
-		BOS2 AB 10 { A_Look(); A_RestoreSprite(); }
-		Loop;
-	See:
-		"####" A 3 A_Footstep();
-		"####" ABB 3 A_Chase;
-		"####" C 3 A_Footstep();
-		"####" CDD 3 A_Chase;
-		Loop;
+		Stop;
 	Melee:
 		Goto Missile+1;
 	Missile:
-		//"####" A 0 A_JUMP(100, "Missile.Dual1");
-		"####" A 0 A_JUMP(70, "Missile.Triple");
+		"####" A 0 A_JUMPIF(MissileCount == 0, "Missile.SuperAtk");
+		"####" A 0 A_JUMPIF(MissileCount == 1, "Missile.RightHand");
 		"####" EF 8 A_FaceTarget;
 		"####" G 8 A_HKnightAttack();
-		//"####" A 0 A_JUMP(128, "Missile.RightHand");
 		Goto See;
 	Missile.RightHand:
 		"####" PQ 8 A_FaceTarget;
 		"####" R 8 A_HKnightAttack();
 		Goto See;
-	Missile.Triple:
+	Missile.SuperAtk:
 		"####" ST 8 A_FaceTarget;
-		"####" U 8 A_FireVolley("Shin_KnightBall");
+		"####" U 8 A_HKnightAttack2();
 		Goto See;
-	Pain:
-		"####" H  2;
-		"####" H  2 A_Pain;
-		Goto See;
-	Death:
-		"####" I  8;
-		"####" J  8 A_Scream;
-		"####" K  8;
-		"####" L  8 A_NoBlocking;
-		"####" MN 8;
-		"####" O -1 A_ShinBossDeath();
-		Stop;
 	XDeath:
 		"####" A 0 A_Jumpif((BaseSprite == GetSpriteIndex('ZBS2')), "XDeath.D1");
 		BS2X A 5;
@@ -81,21 +59,28 @@ Class Shin_HellKnight : Shin_BaronOfHell Replaces Hellknight
 		ZBX2 EFGH 5;
 		ZBX2 I -1 A_ShinBossDeath();
 		Stop;
-	Raise:
-		"----" A 0 A_RestoreSprite();
-		"####" M 8;
-		"####" LKJI  8;
+	XRaise:
+		"####" A 0 A_Jumpif((BaseSprite == GetSpriteIndex('ZBS2')), "XRaise.D1");
+		BS2X H 5;
+		BS2X GFEDCBA 5;
+		"####" A 0 A_RestoreSprite();
+		Goto See;
+	XRaise.D1:
+		ZBX2 H 5;
+		ZBX2 GFEDCBA 5;
+		"####" A 0 A_RestoreSprite();
 		Goto See;
 	}
 }
 
-Class Shin_KnightBall : BaronBall
+Class Shin_KnightBall : Shin_BaronBall
 {
 	Default
 	{
 		Seesound "knight/attack";
 		Deathsound "knight/shotx";
 	}
+	/*
 	States
 	{
 		Spawn:
@@ -105,6 +90,7 @@ Class Shin_KnightBall : BaronBall
 			KNBL CDE 6 BRIGHT;
 			Stop;
 	}
+	*/
 }
 
 extend Class Shin_Hellknight
@@ -131,6 +117,11 @@ extend Class Shin_Hellknight
 			i = 1;
 		}
 		
+		if (mapName == "test")
+		{
+			i = random(0,1);
+		}
+		
 		if ( i == 1 ) //If we are using the Doom 1 sprites, then change the sounds to the Doom 1 versions as well.
 		{
 			SeeSound = "KnightD1/Sight";
@@ -145,7 +136,14 @@ extend Class Shin_Hellknight
 	
 	void A_HKnightAttack()
 	{
+		MissileCount -= 1;
 		A_FaceTarget();
 		A_CustomComboAttack("Shin_KnightBall", 32, 10 * random(1, 8), "knight/melee");
+	}
+	
+	Void A_HKnightAttack2()
+	{
+		MissileCount = InitialCount;
+		A_FireVolley("Shin_KnightBall");
 	}
 }

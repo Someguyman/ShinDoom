@@ -64,7 +64,8 @@ Class Shin_Spectre_Painsoul : Shin_Painsoul
 {
 	Default
 	{
-		+ShinDoom_Actor.SHINSHADOW	
+		+ShinDoom_Actor.SHINSHADOW
+		+ShinDoom_Actor.STARTINVIS
 		tag "spectre soul";
 	}
 }

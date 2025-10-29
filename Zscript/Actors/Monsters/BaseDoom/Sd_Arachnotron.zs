@@ -52,7 +52,7 @@ Class Shin_Arachnotron : ShinDoom_Actor Replaces Arachnotron
 		Goto see+1;
 	Missile:
 		"####" A 0 BRIGHT A_jump(100, "Missile.Barrage");
-		"####" A 20 A_FaceTarget;
+		"####" A 20 { A_FaceTarget(); A_StopSound(CHAN_AUTO); }
 		"####" G 4 BRIGHT A_ArachnidAttack();
 		"####" H 4 BRIGHT A_FaceTarget();
 		"####" H 1 BRIGHT A_SpidRefire;
@@ -220,6 +220,7 @@ Extend Class Shin_Arachnotron
 	
 	void A_BspiFaceTarget()
 	{
+		A_StopSound(CHAN_AUTO);
         A_FaceTarget();
 		userReactionTime = 7;
 	}

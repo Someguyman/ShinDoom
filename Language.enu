@@ -26,6 +26,7 @@ FN_BURST = "former lieutenant";
 FN_HEAVY = "former commando";
 FN_CAPTAIN = "former captain";
 FN_CYBERZ = "hellified soldier";
+FN_ID24PLASMAGUY = "Shock Trooper";
 FN_DEMON = "pinky";
 
 FN_STEALTHZOMBIE = "camo trooper";
@@ -36,7 +37,7 @@ OB_SHOTGUN = "%o was shot by a former sergeant.";
 OB_BURST = "%o was riddled with bullets by a former lieutenant.";
 OB_HEAVY = "%o was perforated by a former commando.";
 OB_CAPTAIN = "%o was destroyed by a former captain.";
-OB_CYBERZ = "%o was blasted by a sellified soldier.";
+OB_CYBERZ = "%o was blasted by a hellified soldier.";
 OB_DEMONHIT = "%o was bit by a pinky.";
 
 OB_STEALTHZOMBIE = "%o thought %g saw a former trooper.";

@@ -29,19 +29,32 @@ Class Shin_DarkClaw : ShinDoom_Weapon
 		DRKC C 4 Bright;
 		DRKC D 15
 		{
-			A_FirePistol();
-			A_FirePistol();
-			A_FirePistol();
-			A_FireShotgun();
+			//A_FirePistol();
+			//A_FirePistol();
+			//A_FirePistol();
+			//A_FireShotgun();
+			A_FireProjectile("Shin_DarkClaw_Ball");
+			A_FireProjectile("Shin_DarkClaw_Ball", 5);
+			A_FireProjectile("Shin_DarkClaw_Ball", -5);
 		}
 		DRKC E 5;
 		DRKC F 4;
-		DRKC G 3;
-		DRKC A 8;
+		DRKC C 3;
+		DRKC A 3;
+		DRKC G 8;
 		DRKC A 1 A_ReFire;
 		Goto Ready;
 	Spawn:
 		DRKC Z -1;
 		stop;
+	}
+}
+
+Class Shin_DarkClaw_Ball : Shin_BaronBall
+{
+	Default
+	{
+		Speed 20;
+		FastSpeed 20;
 	}
 }
