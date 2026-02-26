@@ -107,12 +107,35 @@ Class Shin_RevenantTracer : ShinDoom_Actor
 	}
 }
 
+Class Shin_RevenantTracerNoHomo : Shin_RevenantTracer
+{
+	States
+	{
+	Spawn:
+		FATB AB 2 BRIGHT;
+		Loop;
+	Death:
+		FBXP A 8 BRIGHT;
+		FBXP B 6 BRIGHT;
+		FBXP C 4 BRIGHT;
+		Stop;
+	}
+}
+
 Extend Class Shin_Revenant
 {
 	Void A_SkelMissile()
 	{
 		A_Facetarget();
-		A_SpawnProjectile("Shin_RevenantTracer",53,-20);
-		A_SpawnProjectile("Shin_RevenantTracer",54,9);
+		if (level.maptime & 3)
+		{
+			A_SpawnProjectile("Shin_RevenantTracerNoHomo",53,-20);
+			A_SpawnProjectile("Shin_RevenantTracerNoHomo",54,9);
+		}
+		else
+		{
+			A_SpawnProjectile("Shin_RevenantTracer",53,-20);
+			A_SpawnProjectile("Shin_RevenantTracer",54,9);
+		}
 	}
 }

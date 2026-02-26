@@ -302,6 +302,30 @@ Extend Class ShinDoom_Actor
 		}
 	}
 	
+	void A_Tracer()
+	{
+		// killough 1/18/98: this is why some missiles do not have smoke
+		// and some do. Also, internal demos start at random gametics, thus
+		// the bug in which revenants cause internal demos to go out of sync.
+
+		//if (level.maptime & 3)	return;
+	
+		// spawn a puff of smoke behind the rocket
+		SpawnPuff ("BulletPuff", pos, angle, angle, 3);
+		Actor smoke = Spawn ("RevenantTracerSmoke", Vec3Offset(-Vel.X, -Vel.Y, 0.), ALLOW_REPLACE);
+	
+		if (smoke != null)
+		{
+			smoke.Vel.Z = 1.;
+			smoke.tics -= random[Tracer](0, 3);
+			if (smoke.tics < 1)
+				smoke.tics = 1;
+		}
+
+		// The rest of this function was identical with Strife's version, except for the angle being used.
+		A_Tracer2(16.875);
+	}
+	
 	action void A_RestoreSprite()
 	{
 		invoker.sprite = invoker.BaseSprite;
@@ -515,6 +539,67 @@ Class ShinDoom_Weapon : DoomWeapon
 		else
 		{
 			Return;
+		}
+	}
+	
+	action void A_FireShotgun()
+	{
+		if (player == null)
+		{
+			return;
+		}
+
+		A_StartSound ("weapons/shotgf", CHAN_WEAPON);
+		Weapon weap = player.ReadyWeapon;
+		if (weap != null && invoker == weap && stateinfo != null && stateinfo.mStateType == STATE_Psprite)
+		{
+			if (!weap.DepleteAmmo (weap.bAltFire, true))
+				return;
+			
+			player.SetPsprite(PSP_FLASH, weap.FindState('Flash'), true);
+		}
+		player.mo.PlayAttacking2 ();
+
+		double pitch = BulletSlope ();
+
+		for (int i = 0; i < 8; i++)
+		{
+			GunShot (false, "BulletPuff", pitch);
+		}
+	}
+	
+	action void A_FireShotgun2()
+	{
+		if (player == null)
+		{
+			return;
+		}
+
+		A_StartSound ("weapons/sshotf", CHAN_WEAPON);
+		Weapon weap = player.ReadyWeapon;
+		if (weap != null && invoker == weap && stateinfo != null && stateinfo.mStateType == STATE_Psprite)
+		{
+			if (!weap.DepleteAmmo (weap.bAltFire, true))
+				return;
+			
+			player.SetPsprite(PSP_FLASH, weap.FindState('Flash'), true);
+		}
+		player.mo.PlayAttacking2 ();
+
+		double pitch = BulletSlope ();
+			
+		for (int i = 0 ; i < 21 ; i++)
+		{
+			int damage = 5 * random[FireSG2](1, 3);
+			double ang = angle + Random2[FireSG2]() * (11.25 / 256);
+
+			// Doom adjusts the bullet slope by shifting a random number [-255,255]
+			// left 5 places. At 2048 units away, this means the vertical position
+			// of the shot can deviate as much as 255 units from nominal. So using
+			// some simple trigonometry, that means the vertical angle of the shot
+			// can deviate by as many as ~7.097 degrees.
+
+			LineAttack (ang, PLAYERMISSILERANGE, pitch + Random2[FireSG2]() * (7.097 / 256), damage, 'Hitscan', "BulletPuff");
 		}
 	}
 	

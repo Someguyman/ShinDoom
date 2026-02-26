@@ -187,31 +187,92 @@ Class Shin_UnmakerTrail : actor
 {
 	Default
 	{
-		PROJECTILE;
-		RenderStyle "Translucent";
-		+NOCLIP
-		-ACTIVATEIMPACT
-		-ACTIVATEPCROSS
-        -BLOODSPLATTER
-		+BLOODLESSIMPACT
-        +NOBLOODDECALS
-        +HITTRACER
-        +DONTSPLASH
-        +FORCEXYBILLBOARD
-        +PAINLESS
 		+NOINTERACTION
-		+NOGRAVITY
-        +NOTONAUTOMAP
-		+NOBLOCKMAP
-		+ZDOOMTRANS
+		+CLIENTSIDEONLY
+		+Bright
+		RenderStyle "Translucent";
 		Alpha 0.5;
-		Scale 0.5;
-		Speed 0;
+		Scale 0.6;
+		//Speed 0;
 	}
 	States
 	{
 	Spawn:
-		LSRT A 6 Bright;
+		LSRT A 2;
+		Loop;
+	}
+	
+	Override Void Tick()
+	{
+		Super.Tick();
+		if (InStateSequence(curstate, spawnstate) && GetAge() >= TICRATE * 0.5)
+		{
+			A_FadeOut(0.5);
+		}
+	}
+}
+
+Class Shin_GaussLaserTrail : ShinDoom_Actor
+{
+	Default
+	{
+		+NOGRAVITY
+		+NOBLOCKMAP
+		+NOCLIP
+		+NOINTERACTION
+		+DONTSPLASH
+		+THRUACTORS
+		+CLIENTSIDEONLY
+		RenderStyle "Translucent";
+		Alpha 0.75;
+		Radius 6;
+		Height 12;
+		Scale 0.2;
+		//YScale 1.1;
+	}
+	
+  States
+  {
+  Toaster:
+	TNT1 A 0;
+	Stop;
+  Spawn:
+	TNT1 AA 0;
+  BurnOut:
+	GAUT A 2 Bright A_FadeOut(0.01);
+	GAUT B 2 Bright A_FadeOut(0.01);
+	GAUT C 2 Bright A_FadeOut(0.01);
+	GAUT A 2 Bright A_FadeOut(0.01);
+	GAUT B 2 Bright A_FadeOut(0.01);
+	GAUT C 2 Bright A_FadeOut(0.01);
+	GAUT A 2 Bright A_FadeOut(0.01);
+	GAUT B 2 Bright A_FadeOut(0.01);
+	GAUT C 2 Bright A_FadeOut(0.01);
+	PLSE E 2 Bright;
+	PLSE F 2 Bright;
+	Stop;
+  }
+}
+
+Class Shin_GaussExplosion : ShinDoom_actor
+{
+	Default
+	{
+		+RANDOMIZE
+		+ALWAYSPUFF
+		projectile;
+		Scale 0.4;
+		//SeeSound "Explosion/lol";
+		//DeathSound "Explosion/lol";
+	}
+	States
+	{
+	//Spawn:
+		//Goto Crash;
+	Crash:
+		RILX AB 1 Bright;
+		RILX C 10 Bright A_Explode();
+		RILX DEF 6 Bright;
 		Stop;
 	}
 }
@@ -219,6 +280,22 @@ Class Shin_UnmakerTrail : actor
 Extend Class Shin_Unmaker
 {
 	Actor pufftarget;
+	
+	action void A_ShinFireLaser(double ang = 0, Sound soundid = "weapons/unmaker", double spawnheight = 40, double range = 4096)
+	{
+		int damage = (random[Laser](0, 7) * 10) + 10;
+		
+		double angleoffs = invoker.owner.angle+ang;
+		
+		if (soundid != "")
+		{
+			A_GunFlash();
+        	A_StartSound(soundid, CHAN_AUTO, 0, 1.0, ATTN_NORM);
+		}
+		
+		//A_RailAttack(damage, spawnheight, true,
+		A_RailAttack(damage, 0, true, "", "", RGF_CENTERZ | RGF_EXPLICITANGLE | RGF_SILENT | RGF_NOPIERCING , 0, "BulletPuff", 0, BulletSlope()-pitch, 0, 0, 0, 0, "Shin_UnmakerTrail");
+	}
 	
 	action void A_FireLaser(double ang = 0, Sound soundid = "weapons/unmaker", double spawnheight = 40, double range = 4096)
     {

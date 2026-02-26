@@ -207,7 +207,7 @@ Class Shin_Megasphere : CustomInventory Replaces Megasphere
 		goto PickupSuccess;
 	PickupSuccess:
 		TNT1 A 0 A_GiveInventory("BlueArmorForMegasphere", 1);
-		TNT1 A 0 A_GiveInventory("MegasphereHealth", 1);
+		TNT1 A 0 A_GiveInventory("MegasphereHealth", 1); 
 		Stop;
 	PickupFail:
 		TNT1 A 0;
@@ -233,8 +233,16 @@ Class Shin_Supersphere : Shin_Megasphere
 		TNT1 A 0 A_JumpIf(health >= 200, "ArmorCheck");
 		goto PickupSuccess;
 	PickupSuccess:
+		//TNT1 A 0 A_GiveInventory("Shin_SupersphereHealth", 1);
+		//TNT1 A 0 A_GiveInventory("Shin_BlueArmorForSupersphere", 1);
+	Pickup.Loop:
+		TNT1 A 0 A_JumpIf(health == 100, "Pickup.end");
+		TNT1 A 0 A_JumpIfInventory("BasicArmor", 100, "Pickup.end");
+		
 		TNT1 A 0 A_GiveInventory("Shin_SupersphereHealth", 1);
 		TNT1 A 0 A_GiveInventory("Shin_BlueArmorForSupersphere", 1);
+		Loop;
+	Pickup.end:
 		Stop;
 	PickupFail:
 		TNT1 A 0;
@@ -246,7 +254,7 @@ Class Shin_SupersphereHealth : Health
 {
 	Default
 	{
-		Inventory.Amount 100;
+		Inventory.Amount 1;
 		Inventory.MaxAmount 200;
 		+INVENTORY.ALWAYSPICKUP
 	}
@@ -257,7 +265,7 @@ Class Shin_BlueArmorForSupersphere : BasicArmorBonus
 	Default
 	{
 		Armor.SavePercent 50;
-		Armor.Saveamount 100;
+		Armor.Saveamount 1;
 		Armor.Maxsaveamount 200;
 		+INVENTORY.ALWAYSPICKUP
 	}

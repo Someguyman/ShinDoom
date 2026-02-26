@@ -145,6 +145,15 @@ Class Shin_Baronball_Small : Shin_Baronball
 		Seesound "knight/attack";
 		Deathsound "knight/shotx";
 	}
+	States
+	{
+		Spawn:
+			BALB AB 4 BRIGHT;
+			Loop;
+		Death:
+			BALB CDE 6 BRIGHT;
+			Stop;
+	}
 }
 
 Class Shin_BaronBall_Big : ShinDoom_Actor

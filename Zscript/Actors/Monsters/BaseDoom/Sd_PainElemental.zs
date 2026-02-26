@@ -100,10 +100,12 @@ Class Shin_PainSoul : Shin_Lostsoul
 	States
 	{
 	Spawn:
-		PSKL CD 4 BRIGHT;
+		PSKL CDCDCD 4 BRIGHT { bTHRUSPECIES = true; }
+	SpawnLoop:
+		PSKL CD 4 BRIGHT { bTHRUSPECIES = false; }
 		Loop;
 	Idle:
-		PSKL AB 10 BRIGHT { A_Look(); bFLOATBOB = True; }
+		PSKL AB 10 BRIGHT { A_Look(); bFLOATBOB = True; bTHRUSPECIES = false; }
 		Loop;
 	See:
 		PSKL AB 6 BRIGHT A_Chase;
@@ -114,7 +116,7 @@ Class Shin_PainSoul : Shin_Lostsoul
 		PSKL CD 4 BRIGHT;
 		Goto Missile+2;
 	Pain:
-		PSKL E 3 BRIGHT;
+		PSKL E 3 BRIGHT { bTHRUSPECIES = false; }
 		PSKL E 3 BRIGHT A_Pain;
 		Goto See;
 	XDeath:
