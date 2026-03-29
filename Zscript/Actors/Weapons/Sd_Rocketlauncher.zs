@@ -45,7 +45,7 @@ Class Shin_RocketLauncher : ShinDoom_Weapon replaces RocketLauncher
 	}
 }
 
-Class Shin_PlayerRocket : ShinDoom_Actor
+Class Shin_PlayerRocket : ShinDoom_Projectile
 {
 	Default
 	{
@@ -53,12 +53,8 @@ Class Shin_PlayerRocket : ShinDoom_Actor
 		Height 8;
 		Speed 25;
 		Damage 20;
-		Projectile;
-		+RANDOMIZE
-		+DEHEXPLOSION
-		+ZDOOMTRANS
+		+ShinDoom_Projectile.EXPLOSIVE
 		SeeSound "weapons/rocklf";
-		DeathSound "weapons/rocklx";
 		Obituary "$OB_MPROCKET";
 	}
 	States
@@ -66,15 +62,6 @@ Class Shin_PlayerRocket : ShinDoom_Actor
 	Spawn:
 		MISL A 1 Bright;
 		Loop;
-	Death:
-		MISL B 8 Bright A_Explode(-1, -1.0, 0, 0, 0, 0, 10, "BulletPuff", "ExplosionDM");
-		MISL C 6 Bright;
-		MISL D 4 Bright;
-		Stop;
-	BrainExplode:
-		MISL BC 10 Bright;
-		MISL D 10 A_BrainExplode;
-		Stop;
 	}
 }
 

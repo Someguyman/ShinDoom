@@ -46,7 +46,7 @@ Class Shin_Incinerator : ShinDoom_Weapon Replaces ID24Incinerator // Incinerator
 	}
 }
 
-Class Shin_IncineratorFlame : ShinDoom_Actor Replaces ID24IncineratorFlame// Incinerator Flame 
+Class Shin_IncineratorFlame : ShinDoom_Projectile Replaces ID24IncineratorFlame// Incinerator Flame 
 {
 	Default
 	{
@@ -54,11 +54,9 @@ Class Shin_IncineratorFlame : ShinDoom_Actor Replaces ID24IncineratorFlame// Inc
 		Speed 40;
 		Radius 13;
 		Height 8;
-
-		Projectile;
-		+ZDOOMTRANS;
+		//+ZDOOMTRANS;
 		+FORCERADIUSDMG;
-		RenderStyle "Add";
+		//RenderStyle "Add";
 	}
 
 	States

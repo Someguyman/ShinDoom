@@ -111,4 +111,15 @@ Extend Class Shin_Cybruiser
 		A_StartSound("Cybruiser/Walk", CHAN_BODY, CHANF_DEFAULT, 1, ATTN_IDLE);
 		A_Chase();
 	}
+	
+	override void PostBeginPlay()
+	{
+		super.PostBeginPlay();
+		
+
+		BaseSprite = GetSpriteIndex("CBOS");	
+		sprite = BaseSprite;
+		
+		Return;
+	}
 }

@@ -73,7 +73,7 @@ Class Shin_HellGaurd : Shin_BaronOfHell
 	}
 }
 
-Class Shin_GaurdShield : Actor
+Class Shin_GaurdShield : ShinDoom_Actor
 {
 	Default
 	{
@@ -97,7 +97,7 @@ Class Shin_GaurdShield : Actor
   }
 }
 
-Class Shin_Gaurdball : BaronBall
+Class Shin_Gaurdball : Shin_BaronBall
 {
 	Default
 	{

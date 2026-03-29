@@ -202,3 +202,13 @@ $limit Beta/Shot 0
 PsxPlasma/Shot DSPSXPL
 PsxPlasma/ShotX DSPSXPX
 $limit PsxPlasma/Shot 0
+
+$limit mother/sight 4
+$limit mother/death 4
+mother/sight			dsmothsi
+mother/active			dsmothac
+mother/pain				dsmothpn
+mother/death			dsmothdt
+
+mother/missile	dsskeatk
+$pitchset mother/missile 1.2

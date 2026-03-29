@@ -37,12 +37,12 @@ version "4.14.1"
 #include "Zscript/Actors/Monsters/BaseDoom/Sd_Fatso.zs"
 #include "Zscript/Actors/Monsters/BaseDoom/Sd_Archvile.zs"
 
-#include "Zscript/Actors/Monsters/BaseDoom/Sd_Ghoul.zs"
-#include "Zscript/Actors/Monsters/BaseDoom/Sd_Banshee.zs"
-#include "Zscript/Actors/Monsters/BaseDoom/Sd_Shocktrooper.zs"
-#include "Zscript/Actors/Monsters/BaseDoom/Sd_Vassago.zs"
-#include "Zscript/Actors/Monsters/BaseDoom/Sd_Mindweaver.zs"
-#include "Zscript/Actors/Monsters/BaseDoom/Sd_Tyrant.zs"
+#include "Zscript/Actors/Monsters/BaseDoom/ID24/Sd_Ghoul.zs"
+#include "Zscript/Actors/Monsters/BaseDoom/ID24/Sd_Banshee.zs"
+#include "Zscript/Actors/Monsters/BaseDoom/ID24/Sd_Shocktrooper.zs"
+#include "Zscript/Actors/Monsters/BaseDoom/ID24/Sd_Vassago.zs"
+#include "Zscript/Actors/Monsters/BaseDoom/ID24/Sd_Mindweaver.zs"
+#include "Zscript/Actors/Monsters/BaseDoom/ID24/Sd_Tyrant.zs"
 
 #include "Zscript/Actors/Monsters/NewGuys/Sd_Cybruiser.zs"
 #include "Zscript/Actors/Monsters/NewGuys/Sd_CyberFatso.zs"
@@ -53,6 +53,7 @@ version "4.14.1"
 #include "Zscript/Actors/Monsters/Bosses/Sd_IconOfSin.zs"
 #include "Zscript/Actors/Monsters/Bosses/Sd_LordBalgarr.zs"
 #include "Zscript/Actors/Monsters/Bosses/Sd_AraneaImperatrix.zs"
+#include "Zscript/Actors/Monsters/Bosses/Sd_MotherDemon.zs"
 
 //		PWADS		//
 
@@ -71,7 +72,6 @@ version "4.14.1"
 #include "Zscript/Actors/Weapons/Sd_RocketLauncher.zs"
 #include "Zscript/Actors/Weapons/Sd_Grenadelauncher.zs"
 #include "Zscript/Actors/Weapons/Sd_PlasmaRifle.zs"
-//#include "Zscript/Actors/Weapons/Sd_GaussCannon.zs"
 #include "Zscript/Actors/Weapons/Sd_Incinerator.zs"
 #include "Zscript/Actors/Weapons/Sd_BFG9000.zs"
 #include "Zscript/Actors/Weapons/Sd_Unmaker.zs"
@@ -82,6 +82,7 @@ version "4.14.1"
 //		Spawners		//
 
 #include "Zscript/Actors/Spawners/Sd_Monster_Spawners.zs"
+#include "Zscript/Actors/Spawners/Sd_Weapon_Spawners.zs"
 
 //		Misc		//
 

@@ -138,6 +138,17 @@ Class Shin_SoulReaper : Shin_BaronOfHell
 	-BOSSDEATH
 	-E1M8BOSS
   }
+  
+  	override void PostBeginPlay()
+	{
+		super.PostBeginPlay();
+		
+
+		BaseSprite = GetSpriteIndex("SLRP");	
+		sprite = BaseSprite;
+		
+		Return;
+	}
 	
   States
   {
@@ -186,7 +197,7 @@ Class Shin_SoulReaper : Shin_BaronOfHell
   }
 }
 
-Class Shin_SoulHarvesterBall : ShinDoom_Actor
+Class Shin_SoulHarvesterBall : ShinDoom_Projectile
 {
   Default
   {
@@ -216,16 +227,15 @@ Class Shin_SoulHarvesterBall : ShinDoom_Actor
   }
 }
 
-Class Shin_SoulBallTrail : ShinDoom_Actor
+Class Shin_SoulBallTrail : ShinDoom_Projectile
 {
   Default
   {
     Radius 1;
     Height 1;
     Speed 0;
-	+ZdoomTrans
-    RENDERSTYLE "ADD";
     ALPHA 0.5;
+	Renderstyle "Add";
     PROJECTILE;
     +NOCLIP
   }
@@ -286,18 +296,15 @@ Class Shin_SoulReaperBall : Shin_BigSoulHarvesterBall
   }
 }
 
-Class Shin_SoulHarvesterGhost : ShinDoom_Actor
+Class Shin_SoulHarvesterGhost : ShinDoom_Projectile
 {
   Default
   {
     Radius 1;
     Height 1;
     Speed 0;
-	+ZdoomTrans
-    RENDERSTYLE "ADD";
-    ALPHA 0.7;
+    ALPHA 0.7; Renderstyle "Add";
     SeeSound "harvester/ghost";
-    PROJECTILE;
     +NOCLIP
   }
 

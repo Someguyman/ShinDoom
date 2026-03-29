@@ -27,7 +27,7 @@ Class Shin_ExplosiveBarrel : ShinDoom_Actor Replaces ExplosiveBarrel
 		BEXP A 3 BRIGHT;
 		BEXP B 5 BRIGHT;
 		BEXP C 5 BRIGHT;
-		BEXP D 8 BRIGHT { A_Scream(); A_Explode(-1, -1.0, 0, 0, 0, 0, 10, "BulletPuff", "BarrelExplosion"); }
+		BEXP D 8 BRIGHT { A_Scream(); A_Explode(-1, -1.0, 0, 0, 0, 0, 10, "BulletPuff", "BarrelExplosion"); A_SetRenderStyle(0.7, STYLE_Translucent); }
 		BEXP E 7 BRIGHT; 
 		BEXP F 6 BRIGHT;
 		TNT1 A 1050 BRIGHT A_BarrelDestroy;

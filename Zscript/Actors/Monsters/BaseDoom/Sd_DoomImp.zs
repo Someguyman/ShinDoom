@@ -64,55 +64,25 @@ Class Shin_DoomImp : ShinDoom_Actor Replaces Doomimp
 	}
 }
 
-Class Shin_Prowler : Shin_Doomimp
+class Shin_DoomImpBall : ShinDoom_Projectile
 {
 	Default
 	{
-		+ShinDoom_Actor.SHINSHADOW	
-		Obituary "$OB_STEALTHIMP";
-		HitObituary "$OB_STEALTHIMP";
-		tag "Prowler";
+		Radius 6;
+		Height 8;
+		Speed 10;
+		FastSpeed 20;
+		Damage 3;
+		SeeSound "imp/attack";
+		DeathSound "imp/shotx";
 	}
 	States
 	{
-		Spawn:
-			STRO AB 10 A_Look;
-			Loop;
-		See:
-			STRO AABBCCDD 3 A_Chase;
-			Loop;
-		Melee:
-		Missile:
-			STRO EF 8 A_FaceTarget;
-			STRO G 8 A_TroopAttack;
-			Goto See;
-		Pain:
-			STRO H 2;
-			STRO H 2 A_Pain;
-			Goto See;
-		Death:
-			STRO I 8;
-			STRO J 8 A_Scream;
-			STRO K 6;
-			STRO L 6 A_NoBlocking;
-			STRO M -1 A_NormalDeath();
-			Stop;
-		XDeath:
-			STRO N 5;
-			STRO O 5 A_XScream;
-			STRO P 5;
-			STRO Q 5 A_NoBlocking;
-			STRO RST 5;
-			STRO U -1 A_NormalDeath();
-			Stop;
-		Shin.Raise:
-			STRO M 8;
-			STRO L 8;
-			STRO KJI 6;
-			Goto See;
-		XRaise:
-			STRO R 5;
-			STRO QPON 5;
-			Goto See;		
+	Spawn:
+		BAL1 AB 4 BRIGHT;
+		Loop;
+	Death:
+		BAL1 CDE 6 BRIGHT;
+		Stop;
 	}
 }

@@ -24,7 +24,7 @@ DoomEdNums
 	686 = Shin_NightmareCacodemon
 	697 = Shin_NightmareSpectre
 	
-	2002 = Shin_MachinePistol
+	2002 = Shin_WeaponSlot4Spawner
 	
 	151 = Shin_Ghoul
 	3008 = Shin_Banshee

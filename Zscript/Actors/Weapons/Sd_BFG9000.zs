@@ -66,7 +66,7 @@ Class Shin_BFG9000 : ShinDoom_Weapon Replaces BFG9000
 	}
 }
 
-Class Shin_BFGBall : ShinDoom_Actor Replaces BFGBall
+Class Shin_BFGBall : ShinDoom_Projectile Replaces BFGBall
 {
 	Default
 	{
@@ -74,11 +74,7 @@ Class Shin_BFGBall : ShinDoom_Actor Replaces BFGBall
 		Height 8;
 		Speed 35;
 		Damage 100;
-		Projectile;
-		+RANDOMIZE
-		+ZDOOMTRANS
-		RenderStyle "Add";
-		Alpha 0.75;
+		//DamageType "BigFuckingDamage";
 		SeeSound "Weapons/BfgBallFire";
 		DeathSound "weapons/bfgx";
 		Obituary "$OB_MPBFG_BOOM";

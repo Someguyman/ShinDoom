@@ -127,6 +127,9 @@ Class ShinDoom_EventHandler : EventHandler
 		
 		if (e.Replacee == 'Shin_DoomPlayer')
 			e.Replacement = 'playerpawn';
+			
+		if (e.Replacee == 'Pistol')
+			e.Replacement = 'Shin_Pistol';
 		
 		if (e.Replacee == 'Shotgun')
 			e.Replacement = 'Shin_Shotgun';
@@ -136,6 +139,9 @@ Class ShinDoom_EventHandler : EventHandler
 		
 		if (e.Replacee == 'SuperShotgun')
 			e.Replacement = 'Shin_SuperShotgun';
+			
+		if (e.Replacee == 'RocketLauncher')
+			e.Replacement = 'Shin_RocketLauncher';
 			
 		if (e.Replacee == 'chaingunguy')
 		{
@@ -168,7 +174,8 @@ Class ShinDoom_EventHandler : EventHandler
 			
 		if (e.Replacee == 'cacodemon')
 			e.Replacement = 'Shin_Cacodemon';
-					
+		
+		/*
 		if (e.Replacee == 'baronofhell')
 		{
 			if ((mapName == "e1m8") ||
@@ -186,6 +193,7 @@ Class ShinDoom_EventHandler : EventHandler
 				}
 			}
 		}
+		*/
 		
 		if (e.Replacee == 'Shin_Archvile' && (mapName.Left(1) == "e" && mapName.Mid(2, 1) == "m" ))
 		{
@@ -195,10 +203,10 @@ Class ShinDoom_EventHandler : EventHandler
 		if ( mapPrefix == "ab_" )
 		{
 			if (e.Replacee == 'Chainsaw')
-			e.Replacement = 'Chainsaw';
+			e.Replacement = 'Shin_Chainsaw';
 			
 			if (e.Replacee == 'Plasmarifle')
-			e.Replacement = 'Plasmarifle';
+			e.Replacement = 'Shin_Plasmarifle';
 			
 			if (e.Replacee == 'CommanderKeen')
 			e.Replacement = 'Shin_NightmareImp';

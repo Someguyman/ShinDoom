@@ -23,6 +23,7 @@ Class Shin_BaronOfHell : ShinDoom_Actor Replaces Baronofhell
 		Obituary "$OB_BARON";
 		HitObituary "$OB_BARONHIT";
 		ShinDoom_Actor.FootstepSound "Baron/walk";
+		//FootstepSound "Baron/walk";
 		Tag "$FN_BARON";
 		BloodColor "30 67 23";
 		+NOINFIGHTSPECIES
@@ -92,22 +93,25 @@ Class Shin_BaronOfHell : ShinDoom_Actor Replaces Baronofhell
 		ZBSX I -1 A_ShinBossDeath();
 		Stop;
 	Shin.Raise:
-		"####" A 0 A_Jumpif((BaseSprite == GetSpriteIndex('ZBOS')), "XRaise.D1");
 		"####" M 8;
 		"####" LKJI  8;
+		"####" A 0 A_RestoreSprite();
 		Goto See;
 	XRaise:
+		"####" A 0 A_Jumpif((BaseSprite == GetSpriteIndex('ZBOS')), "XRaise.D1");
 		BOSX H 5;
 		BOSX GFEDCBA 5;
+		"####" A 0 A_RestoreSprite();
 		Goto See;
 	XRaise.D1:
 		ZBSX H 5;
 		ZBSX GFEDCBA 5;
+		"####" A 0 A_RestoreSprite();
 		Goto See;
 	}
 }
 
-Class Shin_Baronball : ShinDoom_Actor Replaces Baronball
+Class Shin_Baronball : ShinDoom_Projectile Replaces Baronball
 {
 	Default
 	{
@@ -116,11 +120,6 @@ Class Shin_Baronball : ShinDoom_Actor Replaces Baronball
 		Speed 15;
 		FastSpeed 20;
 		Damage 8;
-		Projectile ;
-		+RANDOMIZE
-		+ZDOOMTRANS
-		RenderStyle "Add";
-		Alpha 1;
 		SeeSound "baron/attack";
 		DeathSound "baron/shotx";
 		Decal "BaronScorch";
@@ -156,7 +155,7 @@ Class Shin_Baronball_Small : Shin_Baronball
 	}
 }
 
-Class Shin_BaronBall_Big : ShinDoom_Actor
+Class Shin_BaronBall_Big : ShinDoom_Projectile
 {
 	Default
 	{
@@ -165,11 +164,6 @@ Class Shin_BaronBall_Big : ShinDoom_Actor
 		Speed 20;
 		FastSpeed 25;
 		Damage 4;
-		Projectile;
-		+RANDOMIZE
-		+ZDOOMTRANS
-		RenderStyle "Add";
-		Alpha 1;
 		SeeSound "baron/attack";
 		DeathSound "baron/shotx";
 		Decal "BaronScorch";

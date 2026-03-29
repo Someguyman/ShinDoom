@@ -77,7 +77,7 @@ Class Shin_Revenant : ShinDoom_Actor Replaces Revenant
 	}
 }
 
-Class Shin_RevenantTracer : ShinDoom_Actor
+Class Shin_RevenantTracer : ShinDoom_Projectile
 {
 	Default
 	{
@@ -85,14 +85,10 @@ Class Shin_RevenantTracer : ShinDoom_Actor
 		Height 8;
 		Speed 10;
 		Damage 7;
-		Projectile;
 		+SEEKERMISSILE 
-		+RANDOMIZE
-		+ZDOOMTRANS
 		scale 0.8;
 		SeeSound "skeleton/attack";
 		DeathSound "skeleton/tracex";
-		RenderStyle "Add";
 	}
 	States
 	{
@@ -109,6 +105,10 @@ Class Shin_RevenantTracer : ShinDoom_Actor
 
 Class Shin_RevenantTracerNoHomo : Shin_RevenantTracer
 {
+	Default
+	{
+		Speed 12;
+	}
 	States
 	{
 	Spawn:

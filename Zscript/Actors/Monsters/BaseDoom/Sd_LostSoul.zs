@@ -7,10 +7,10 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 		Radius 16;
 		Height 56;
 		Mass 50;
-		Speed 8;
+		Speed 4;
 		Damage 3;
 		PainChance 256;
-		MissileChanceMult 0.5;
+		MissileChanceMult 1.5;
 		Monster;
 		+FLOAT 
 		+NOGRAVITY 
@@ -22,9 +22,7 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 		+NOINFIGHTSPECIES
 		+DONTHARMSPECIES
 		BounceType "Doom";
-		scale 1.1;
-		FloatBobStrength 0.5;
-		FloatBobFactor 0.8;
+		//scale 1.1;
 		AttackSound "skull/melee";
 		PainSound "skull/pain";
 		DeathSound "skull/death";
@@ -38,7 +36,7 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 		SKUL AB 10 BRIGHT { A_Look(); bFLOATBOB = True; }
 		Loop;
 	See:
-		SKUL AB 6 BRIGHT A_Chase;
+		SKUL AABB 3 BRIGHT A_Skullchase();
 		Loop;
 	Missile:
 		SKUL C 10 BRIGHT A_FaceTarget;
@@ -46,7 +44,7 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 		SKUL CD 4 BRIGHT;
 		Goto Missile+2;
 	Pain:
-		SKUL E 3 BRIGHT;
+		SKUL E 3 BRIGHT { A_Chase; bFLOATBOB = True; }
 		SKUL E 3 BRIGHT A_Pain;
 		Goto See;
 	Death:
@@ -65,5 +63,10 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 		SKUL J 4 BRIGHT;
 		SKUL K 4 BRIGHT;
 		Stop;
+	}
+	
+	Void A_Skullchase()
+	{
+		A_Chase(); bFLOATBOB = True;
 	}
 }

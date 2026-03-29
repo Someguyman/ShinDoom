@@ -125,7 +125,7 @@ Class Shin_SpawnCube_Large : Shin_SpawnCube
 	Default
 	{
 		Scale 2.0;
-		/*
+		///*
 		Dropitem "Shin_Arachnotron", -1, 128;
 		Dropitem "Shin_Mancubus", -1, 128;
 		Dropitem "Shin_Mindweaver", -1, 90;
@@ -134,8 +134,8 @@ Class Shin_SpawnCube_Large : Shin_SpawnCube
 		Dropitem "Shin_Vassago", -1, 60;
 		Dropitem "Shin_Tyrant", -1, 60;
 		Dropitem "Shin_Cyberdemon", -1, 30;
-		*/
-		Dropitem "Shin_Spidermastermind", -1, 30;
+		//*/
+		//Dropitem "Shin_Spidermastermind", -1, 30;
 	}
 }
 

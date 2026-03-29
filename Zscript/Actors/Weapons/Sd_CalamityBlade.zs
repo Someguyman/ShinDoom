@@ -66,7 +66,7 @@ Class Shin_CalamityBlade : ShinDoom_Weapon Replaces ID24CalamityBlade // Heatwav
 	}
 }
 
-Class Shin_CalamityProjectile : ShinDoom_Actor Replaces ID24IncineratorProjectile // Heatwave Ripper 
+Class Shin_CalamityProjectile : ShinDoom_Projectile Replaces ID24IncineratorProjectile // Heatwave Ripper 
 {
 	Default
 	{
@@ -74,12 +74,7 @@ Class Shin_CalamityProjectile : ShinDoom_Actor Replaces ID24IncineratorProjectil
 		Speed 20;
 		Radius 16;
 		Height 8;
-
-		Projectile;
-		+ZDOOMTRANS;
 		+RIPPER;
-		RenderStyle "Add";
-
 		DeathSound "weapons/calamityblade/explode";
 	}
 

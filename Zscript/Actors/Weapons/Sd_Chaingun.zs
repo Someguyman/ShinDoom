@@ -49,7 +49,7 @@ Class Shin_Chaingun : ShinDoom_Weapon Replaces Chaingun
 		SDWG B 4 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
 		SDWG B 0 A_ReFire("Fire.part2");
 		SDWG A 0 A_Stopsound(7);
-		SDWG AAAAAABBBBBBAAAAAABBBBBB 1 A_ReFire("Fire.part1");
+		SDWG AAAAAABBBBBBAAAAAABBBBBBAAAAAA 1 A_ReFire("Fire.part1");
 		Goto Ready;
 	Fire.part2:
 		SDWG A 0 A_Startsound("Weapon/ChaingunRevUp", 7, CHANF_LOOPING);
@@ -57,7 +57,7 @@ Class Shin_Chaingun : ShinDoom_Weapon Replaces Chaingun
 		SDWG B 4 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
 		SDWG B 0 A_ReFire("Fire.part3");
 		SDWG A 0 A_Stopsound(7);
-		SDWG AAAAAABBBBBBAAAAAABBBBBB 1 A_ReFire("Fire.part1");
+		SDWG AAAAAABBBBBBAAAAAABBBBBBAAAAAA 1 A_ReFire("Fire.part1");
 		Goto Ready;
 	Fire.part3:
 		SDWG A 0 A_Startsound("Weapon/ChaingunRevUp", 7, CHANF_LOOPING);
@@ -69,6 +69,8 @@ Class Shin_Chaingun : ShinDoom_Weapon Replaces Chaingun
 		SDWG B 3 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
 		SDWG A 3 A_FireCGun3();
 		SDWG B 3 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
+		SDWG A 2 A_FireCGun3();
+		SDWG B 2 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
 		SDWG B 0 A_ReFire("Fire.part4");
 		SDWG A 0 A_Stopsound(7);
 		SDWG AAAABBBB 1 A_ReFire("Fire.part1");
@@ -77,7 +79,7 @@ Class Shin_Chaingun : ShinDoom_Weapon Replaces Chaingun
 	Fire.part4:
 		SDWG A 0 A_Startsound("Weapon/ChaingunRevmid", 7, CHANF_LOOPING);
 		SDWG A 2 A_FireCGun4();
-		SDWG B 2;
+		SDWG B 2 A_CGunROffset();
 		SDWG B 0 A_ReFire("Fire.part4");
 		SDWG A 0 A_CheckSpin();
 		Goto SpinDown;
@@ -102,7 +104,7 @@ Class Shin_Chaingun : ShinDoom_Weapon Replaces Chaingun
 		SDWG A 0 Offset(1,32) { A_Stopsound(7); A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY); }
 		SDWG A 0 Offset(0,32) A_Startsound("Weapon/ChaingunRevDown", 7);
 		SDWG AABBBBAAAABBBBAAAA 1 Offset(0,32) Offset(0,32) { if (player.cmd.buttons & BT_ATTACK) { A_ReFire("Fire.part4"); } }
-		SDWG BBBBBBAAAAAABBBBBBAAAAAA 1 Offset(0,32) { if (player.cmd.buttons & BT_ATTACK) { A_ReFire("Fire.part3"); } }
+		SDWG BBBBBBAAAAAABBBBBBAAAAAAAABBBBBBBBAAAAAAAAAA 1 Offset(0,32) { if (player.cmd.buttons & BT_ATTACK) { A_ReFire("Fire.part3"); } }
 		Goto Ready;
 	Flash1:
 		SDWG C 3 Bright A_Light1;
@@ -126,6 +128,25 @@ Class Shin_Chaingun : ShinDoom_Weapon Replaces Chaingun
 
 Extend Class Shin_Chaingun
 {
+	Action Void A_CGunROffset()
+	{
+		int ammo = invoker.Ammo1.Amount;
+		int rand;
+		int ypos;
+		// randomize sx
+		rand = (((random[GunShot]() & 1) << 1) - 1);
+		rand -= 1;
+		double sx = rand;
+
+		// randomize sy
+		rand = -((((ammo - 1) & 1) << 1) - 1);
+		rand -= 1;
+		ypos = rand == -2 ? 1 : 2;
+		double sy = 32 - ((rand * (ypos)));
+
+		A_WeaponOffset(sx, sy, WOF_INTERPOLATE);
+	}
+
 	Action Void A_FireCGun()
 	{
 		A_GunFlash("Flash");
@@ -154,21 +175,8 @@ Extend Class Shin_Chaingun
 	Action Void A_FireCGun4()
 	{
 		A_FireCGun(); A_GunFlash("Flash3");
-		int ammo = invoker.Ammo1.Amount;
-		int rand;
-		int ypos;
-		// randomize sx
-		rand = (((random[GunShot]() & 1) << 1) - 1);
-		rand -= 1;
-		double sx = rand;
+		A_CGunROffset();
 
-		// randomize sy
-		rand = -((((ammo - 1) & 1) << 1) - 1);
-		rand -= 1;
-		ypos = rand == -2 ? 1 : 2;
-		double sy = 32 - ((rand * (ypos)));
-
-		A_WeaponOffset(sx, sy, WOF_INTERPOLATE);
 	}
 	
 	Action Void A_CheckSpin()

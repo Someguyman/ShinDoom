@@ -21,6 +21,8 @@ Class ShinDoom_Actor : Actor Replaces Actor
 			stop;
 	   Death.SuperShotgun:
 			"####" A 0 A_Jumpif(Self.SpawnHealth() > 400, "Death"); //Any enemy with 400 + health will not gib to the super shotgun
+	   Death.BFGSplash:
+			"####" A 0 A_Jumpif(Self.SpawnHealth() > 1000, "Death");
 			"####" A 0 A_Jumpifcloser(128, "XDeath");
 			"####" A 0 A_Jump(256, "Death");
 			Stop;
@@ -51,9 +53,12 @@ Class ShinDoom_Actor : Actor Replaces Actor
 			"####" "#" 3 Bright A_FadeOut(0.05);
 			"####" "#" 0 A_ShrinkingFade;
 			Loop;
+		Goner:
+			Stop;
 		Raise:
 			"####" "#" 0
 			{
+				//A_RaiseStart();
 				A_SpectreDisappear();		
 				A_RestoreSprite();
 				return isgibbed? ResolveState("XRaise") : ResolveState("Shin.Raise");
@@ -96,12 +101,15 @@ Extend Class ShinDoom_Actor
 	double visgoalx2;
 	double visgoalx3;
 	double visAddSub;
+	Vector3 spawnheight;
     bool BecomeInvisible;
 	
 	SpriteID BaseSprite;
 	
 	override void BeginPlay()
 	{
+		Vector3 CurrentPos;
+		//Vector3 NewPos = Vec3Offset(0,0,32);
 		super.BeginPlay();
 				
 		if (bISMONSTER)
@@ -119,6 +127,14 @@ Extend Class ShinDoom_Actor
 			if(bSHINSHADOW == true)
 			{
 				A_SetRenderStyle(1.0, STYLE_OptFuzzy);
+			}
+			
+			if (bFLOAT == true)
+			{
+				FloatBobStrength = 0.35;
+				FloatBobFactor = 0.8;
+				bFLOATBOB = true;
+				self.SetOrigin(self.pos + (0, 0, 11.5), true);
 			}
 		}
 	}
@@ -168,7 +184,7 @@ Extend Class ShinDoom_Actor
 			if (InStateSequence(CurState, ResolveState("Shin.Raise")) || 
 				InStateSequence(CurState, ResolveState("XRaise")))
 			{
-				A_RaiseStart();
+				A_RaiseStart(); //When in the raise state, call this function
 			}	
 			else
 			{
@@ -282,6 +298,20 @@ Extend Class ShinDoom_Actor
 	   }
     }
 	
+	void A_FlyLook()
+	{
+		A_Look();
+		if (bFLOAT == true && bNOGRAVITY == true)
+			bFLOATBOB = true;
+	}
+	
+	void A_FlyChase()
+	{
+		A_Chase();
+		if (bFLOAT == true && bNOGRAVITY == true)
+			bFLOATBOB = true;
+	}
+	
 	void A_BruisAttack()
 	{
 		let targ = target;
@@ -300,30 +330,6 @@ Extend Class ShinDoom_Actor
 				SpawnMissile (target, "BaronBall");
 			}
 		}
-	}
-	
-	void A_Tracer()
-	{
-		// killough 1/18/98: this is why some missiles do not have smoke
-		// and some do. Also, internal demos start at random gametics, thus
-		// the bug in which revenants cause internal demos to go out of sync.
-
-		//if (level.maptime & 3)	return;
-	
-		// spawn a puff of smoke behind the rocket
-		SpawnPuff ("BulletPuff", pos, angle, angle, 3);
-		Actor smoke = Spawn ("RevenantTracerSmoke", Vec3Offset(-Vel.X, -Vel.Y, 0.), ALLOW_REPLACE);
-	
-		if (smoke != null)
-		{
-			smoke.Vel.Z = 1.;
-			smoke.tics -= random[Tracer](0, 3);
-			if (smoke.tics < 1)
-				smoke.tics = 1;
-		}
-
-		// The rest of this function was identical with Strife's version, except for the angle being used.
-		A_Tracer2(16.875);
 	}
 	
 	action void A_RestoreSprite()
@@ -447,6 +453,9 @@ Extend Class ShinDoom_Actor
 	
 	Void A_Scream()
 	{
+		if (bFLOAT == true && bNOGRAVITY == true)
+			bFLOATBOB = FALSE;
+		
 		if (bBOSS == True || bFULLVOLDEATH == True)
 			{ A_StartSound(DeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_NONE); }
 		else
@@ -455,22 +464,33 @@ Extend Class ShinDoom_Actor
 	
 	Void A_XScream()
 	{
+		if (bFLOAT == true && bNOGRAVITY == true)
+			bFLOATBOB = FALSE;
+		
 		if (bBOSS == True || bFULLVOLDEATH == True)
-			{ A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_NONE); A_BloodSplat(32); }
+			{ A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_NONE); A_BloodSplat(35); }
 		else
-			{ A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_IDLE); A_BloodSplat(20); }
+			{ A_StartSound(XDeathSound, CHAN_VOICE, CHANF_DEFAULT, 1, ATTN_IDLE); A_BloodSplat(22); }
 	}
 	
 	Void A_RaiseStart()
 	{
 		bNOPAIN = true;
 		DamageFactor = 0.3;
+		if (bFLOAT)
+		{
+			bFLOATBOB = FALSE;
+		}
 	}
 	
 	Void A_RaiseEnd()
 	{
 		bNOPAIN = false;
 		DamageFactor = 1.0;
+		if (bFLOAT)
+		{
+			bFLOATBOB = TRUE;
+		}
 	}
 	
 	Void A_ShrinkingFade()
@@ -518,6 +538,89 @@ Extend Class ShinDoom_Actor
 	}
 }
 
+Class ShinDoom_Projectile : Actor
+{
+	Default
+	{
+		Projectile;
+		+RANDOMIZE
+		//+ZDOOMTRANS
+		//+ShinDoom_Projectile.EXPLOSIVE
+		RenderStyle "Translucent";
+		Alpha 0.75;
+		SeeSound "imp/attack";
+		DeathSound "imp/shotx";
+		ShinDoom_Projectile.ExplosionSound "weapons/rocklx";
+	}
+	States
+	{
+	Spawn:
+		BAL2 AB 4 BRIGHT;
+		Loop;
+	Death:
+		"####" "#" 0
+		{
+			return bEXPLOSIVE? ResolveState("Death.Explosion") : ResolveState("Death.Normal");
+		}
+		Stop;
+	Death.Normal:
+		BAL2 CDE 6 BRIGHT;
+		Stop;
+	Death.Explosion:
+		MISL B 0 Bright { A_StopSound(CHAN_VOICE); A_StartSound(ExplosionSound, Chan_Auto); A_SetRenderStyle(0.7, STYLE_Translucent); A_NoGravity(); }
+		MISL B 8 Bright A_Explode(-1, -1.0, 0, 0, 0, 0, 10, "BulletPuff", "ExplosionDM");
+		MISL C 6 Bright;
+		MISL D 4 Bright;
+		Stop;
+	}
+}
+
+Extend Class ShinDoom_Projectile
+{
+	int ProjFlags;
+	sound ExplosionSound;
+	
+	property ExplosionSound : ExplosionSound;
+
+	flagdef EXPLOSIVE : ProjFlags, 1;
+	
+	override void BeginPlay()
+	{
+		super.BeginPlay();
+				
+		if (bMISSILE)
+		{	
+			if (bEXPLOSIVE)
+			{
+				A_SetRenderStyle(1.0, STYLE_NORMAL);
+			}
+		}
+	}
+	
+	void A_Tracer()
+	{
+		// killough 1/18/98: this is why some missiles do not have smoke
+		// and some do. Also, internal demos start at random gametics, thus
+		// the bug in which revenants cause internal demos to go out of sync.
+
+		//if (level.maptime & 3)	return;
+	
+		// spawn a puff of smoke behind the rocket
+		SpawnPuff ("BulletPuff", pos, angle, angle, 3);
+		Actor smoke = Spawn ("RevenantTracerSmoke", Vec3Offset(-Vel.X, -Vel.Y, 0.), ALLOW_REPLACE);
+	
+		if (smoke != null)
+		{
+			smoke.Vel.Z = 1.;
+			smoke.tics -= random[Tracer](0, 3);
+			if (smoke.tics < 1)
+				smoke.tics = 1;
+		}
+
+		// The rest of this function was identical with Strife's version, except for the angle being used.
+		A_Tracer2(16.875);
+	}
+}
 
 Class ShinDoom_Weapon : DoomWeapon
 {

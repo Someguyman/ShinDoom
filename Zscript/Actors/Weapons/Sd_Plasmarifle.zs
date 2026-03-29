@@ -13,21 +13,6 @@ Class Shin_PlasmaRifle : ShinDoom_Weapon Replaces PlasmaRifle
 		Tag "$TAG_PLASMARIFLE";
 	}
 	
-		Action Void A_FirePlasma() 
-		{
-			if (CountInv("Shin_PowerQuadDamage") == 1)
-			{
-				A_GunFlash("Flash.Onslaught"); 
-				A_FireProjectile("Shin_PlasmaBall2",0,1,0);
-			}
-			else
-			{
-				A_GunFlash("Flash"); 
-				A_FireProjectile("Shin_PlasmaBall",0,1,0);
-			}
-			invoker.mp_clip++;
-		}
-	
 	States
 	{
 	Ready:
@@ -73,7 +58,25 @@ Class Shin_PlasmaRifle : ShinDoom_Weapon Replaces PlasmaRifle
 	}
 }
 
-Class Shin_PlasmaBall : ShinDoom_Actor
+Extend Class Shin_Plasmarifle
+{
+		Action Void A_FirePlasma() 
+		{
+			if (CountInv("Shin_PowerQuadDamage") == 1)
+			{
+				A_GunFlash("Flash.Onslaught"); 
+				A_FireProjectile("Shin_PlasmaBall2",0,1,0);
+			}
+			else
+			{
+				A_GunFlash("Flash"); 
+				A_FireProjectile("Shin_PlasmaBall",0,1,0);
+			}
+			invoker.mp_clip++;
+		}
+}
+
+Class Shin_PlasmaBall : ShinDoom_Projectile
 {
 	Default
 	{
@@ -81,11 +84,6 @@ Class Shin_PlasmaBall : ShinDoom_Actor
 		Height 8;
 		Speed 30;
 		Damage 5;
-		Projectile;
-		+RANDOMIZE
-		+ZDOOMTRANS
-		RenderStyle "Add";
-		Alpha 0.75;
 		SeeSound "weapons/plasmaf";
 		DeathSound "weapons/plasmax";
 		Obituary "$OB_MPPLASMARIFLE";
@@ -95,7 +93,7 @@ Class Shin_PlasmaBall : ShinDoom_Actor
 	Spawn:
 		PLSS AB 6 Bright;
 		Loop;
-	Death:
+	Death.Normal:
 		PLSE ABCDE 4 Bright;
 		Stop;
 	}

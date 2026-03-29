@@ -14,6 +14,7 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		+NOGRAVITY
 		+NEVERRESPAWN
 		+DONTGIB
+		+NOTARGET
 		+NOINFIGHTSPECIES
 		SeeSound "pain/sight";
 		PainSound "pain/pain";
@@ -21,8 +22,6 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		ActiveSound "pain/active";
 		Tag "$FN_PAIN";
 		Scale 1.2;
-		FloatBobStrength 0.5;
-		FloatBobFactor 0.8;
 		Species "PainElemental";
 		DamageFactor "PainSkull", 0;
 	}
@@ -92,7 +91,7 @@ Class Shin_PainSoul : Shin_Lostsoul
 		Health 50;
 		-COUNTKILL;
 		+DONTHARMSPECIES
-		Tag "Blood Soul";
+		Tag "Pain Soul";
 		Species "PainElemental";
 		DamageType "PainSkull";
 		DamageFactor "PainSkull", 0;
@@ -108,7 +107,7 @@ Class Shin_PainSoul : Shin_Lostsoul
 		PSKL AB 10 BRIGHT { A_Look(); bFLOATBOB = True; bTHRUSPECIES = false; }
 		Loop;
 	See:
-		PSKL AB 6 BRIGHT A_Chase;
+		PSKL AABB 3 BRIGHT A_SkullChase();
 		Loop;
 	Missile:
 		PSKL C 10 BRIGHT A_FaceTarget;

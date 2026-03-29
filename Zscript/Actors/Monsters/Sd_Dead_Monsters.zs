@@ -189,9 +189,12 @@ Class Shin_DeadArachnotron : Shin_Arachnotron
 		Idle:
 			Goto Super::Spawn;
 		Death.Spawndeath:
-			BSPI P 0 A_NoBlocking;
-			BSPI P -1;
-			Stop;
+			"####" A 0 A_Jumpif((BaseSprite == GetSpriteIndex('BSP2')), 2);
+			"####" P 0 A_Jump(25, "Gibbed");
+			"####" P 0 A_NoBlocking;
+			Goto Super::Death+7;
+		Gibbed:
+			Goto Super::XDeath+8;
 	}
 }
 
@@ -301,12 +304,7 @@ Class Shin_DeadCyberdemon : Shin_Cyberdemon
 
 Class Shin_DeadWolfensteinSS : Shin_WolfensteinSS
 {
-	Default
-	{
-		-COUNTKILL
-		+NEVERRESPAWN
-		DropItem "None";
-	}
+	Default { -COUNTKILL +NEVERRESPAWN DropItem "None"; }
 	States
 	{
 		Spawn:

@@ -141,7 +141,7 @@ Class Shin_Test_Healer : Shin_Archvile
 	}
 }
 
-Class Shin_VileHellFire : Actor
+Class Shin_VileHellFire : ShinDoom_Projectile
 {
   Default
   {

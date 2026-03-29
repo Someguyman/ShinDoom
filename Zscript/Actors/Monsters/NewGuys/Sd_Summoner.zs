@@ -112,7 +112,7 @@ Class Shin_Summonerball : RevenantTracer
 	}
 }
 
-Class Shin_SummonerPentagram : ShinDoom_Actor
+Class Shin_SummonerPentagram : ShinDoom_Projectile
 {
 	Default
 	{

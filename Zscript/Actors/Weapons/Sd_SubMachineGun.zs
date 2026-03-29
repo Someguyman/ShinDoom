@@ -40,14 +40,14 @@ Class Shin_MachinePistol : ShinDoom_Weapon
 	AltFire:
 	Reload:
 		SMGG C 0 { If(invoker.mp_clip == 0){ SetWeaponState("Ready"); } }
-		SMGG F 2;
+		SMGG F 3;
 		SMGG C 3 A_StartSound("weapons/smgo",CHAN_AUTO);
 		SMGG D 2;
-		SMGG D 6 Offset(-3,37);
+		SMGG D 8 Offset(-3,37);
 		SMGG C 2 Offset(1,30) { A_StartSound("weapons/smgl",CHAN_AUTO); }
 		SMGG E 2 Offset(3,25) { invoker.mp_clip = 0; }
-		SMGG E 5 Offset(6,29) { invoker.mp_clip = 0; }
-		SMGG F 2 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
+		SMGG E 8 Offset(6,29) { invoker.mp_clip = 0; }
+		//SMGG F 2 Offset(0,32) A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY);
 		//SMGG A 3 Offset(9,36);
 		SMGG A 1 Offset(0,32) { A_WeaponReady(WRF_NOBOB); A_WeaponOffset(0,0,WOF_INTERPOLATE|WOF_KEEPY); }
 		Goto Ready;

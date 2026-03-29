@@ -18,7 +18,6 @@ Class Shin_ZombieMan : ShinDoom_Actor Replaces ZombieMan
 		Obituary "$OB_ZOMBIE";
 		Tag "$FN_ZOMBIE";
 		DropItem "Shin_Pistol";
-		//DropItem "Shin_HeavyAmmo", 128;
 	}
 	States
 	{
@@ -82,8 +81,6 @@ Class Shin_ShotgunGuy : ShinDoom_Actor Replaces ShotgunGuy
 		Obituary "$OB_SHOTGUY";
 		Tag "$FN_SHOTGUN";
 		DropItem "Shin_Shotgun";
-		//DropItem "Shin_HeavyAmmo", 64;
-		//DropItem "Shin_LightAmmo", 64;
 	}
 	States
 	{

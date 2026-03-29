@@ -12,8 +12,6 @@ Class Shin_Ghoul : ShinDoom_Actor Replaces deh_actor_150
 		Monster;
 		+FLOAT
 		+NOGRAVITY
-		//+DONTFALL
-		//+DONTCORPSE
 		FloatBobStrength 0.5;
 		FloatBobFactor 0.8;
 		BloodColor "30 67 23";
@@ -60,20 +58,13 @@ Class Shin_Ghoul : ShinDoom_Actor Replaces deh_actor_150
 	}
 }
 
-Class Shin_GhoulBall : ShinDoom_Actor
+Class Shin_GhoulBall : ShinDoom_Projectile
 {
 	Default
 	{
-		Radius 8;
-		Height 6;
 		Speed 15;
 		FastSpeed 20;
 		Damage 3;
-		Projectile;
-		+RANDOMIZE
-		+ZDOOMTRANS
-		RenderStyle "Add";
-		Alpha 0.75;
 		SeeSound "Ghoul/Shot";
 		DeathSound "Ghoul/ShotX";
 	}

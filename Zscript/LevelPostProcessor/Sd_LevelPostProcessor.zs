@@ -56,6 +56,12 @@ Class ShinDoom_LevelPostProcessor : LevelPostProcessor
 			
 			Switch (Checksum)
 			{
+				Default :
+				{
+					
+					Break;
+				}
+				
 				case 'E43C1797DFD9443D1B4C035327743588' : //TestMap
 				{
 					SetThingEdNum(1,0);

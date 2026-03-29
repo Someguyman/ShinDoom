@@ -55,7 +55,7 @@ Class Shin_GrenadeLauncher : ShinDoom_Weapon
 	}
 }
 
-Class Shin_40mmShot : ShinDoom_Actor
+Class Shin_40mmShot : ShinDoom_Projectile
 {
 	Default
 	{
@@ -66,12 +66,11 @@ Class Shin_40mmShot : ShinDoom_Actor
 		SeeSound "";
 		Deathsound "Weapons/RockLX";
 		BounceSound "Weapons/GrenadeBounce";
+		+ShinDoom_Projectile.EXPLOSIVE
 		BounceFactor 0.5;
 		BounceCount 4;
 		ReactionTime 139;
 		ProjectileKickback 100;
-		Projectile;
-		+DEHEXPLOSION
 		BounceType "Doom";
 		-NOTELEPORT
 		+FOILINVUL
@@ -84,11 +83,6 @@ Class Shin_40mmShot : ShinDoom_Actor
 			SHRP O 0 BRIGHT A_CountDown();
 			SHRP O 3 bright;
 			Loop;
-		Death:
-			MISL B 8 Bright { A_NoGravity(); A_Explode(); }
-			MISL C 6 Bright;
-			MISL D 4 Bright;
-			Stop;
 	}
 }
 
@@ -106,13 +100,5 @@ Class Shin_40mmTimedShot : Shin_40mmShot
 		+BOUNCEONACTORS
 		+EXTREMEDEATH
 		+CANBOUNCEWATER
-	}
-	States
-	{
-		Death:
-			MISL B 8 Bright { A_NoGravity(); A_Explode(); }
-			MISL C 6 Bright;
-			MISL D 4 Bright;
-			Stop;
 	}
 }

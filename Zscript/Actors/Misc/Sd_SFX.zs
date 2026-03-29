@@ -22,7 +22,7 @@ Class Shin_TeleportFog : ShinDoom_Actor Replaces TeleportFog
 		Spawn:
 			TFOG A 4 Bright;
 			TFOG B 4 Bright A_SpawnItemEx("Shin_TeleportFogEffect",0,0,0,0,0,0,0,128);
-			TFOG CDEFGHIJIH 4 Bright;
+			TFOG CDEFGHIJIHG 4 Bright;
 			Stop;
 	}
 }
@@ -45,7 +45,7 @@ Class Shin_TeleportFogEffect : ShinDoom_Actor
 	States
 	{
 		Spawn:
-			TFOG ABCDEFGHIJIH 4 Bright;
+			TFOG ABCDEFGHIJIHG 4 Bright;
 			Stop;
 	}
 }
@@ -57,7 +57,7 @@ Class Shin_TeleportFogRed : Shin_TeleportFog
 		Spawn:
 			TFRD A 4 Bright;
 			TFRD B 4 Bright A_SpawnItemEx("Shin_TeleportFogRedEffect",0,0,0,0,0,0,0,128);
-			TFRD CDEFGHIJIH 4 Bright;
+			TFRD CDEFGHIJIHG 4 Bright;
 			Stop;
 	}
 }
@@ -67,7 +67,7 @@ Class Shin_TeleportFogRedEffect : Shin_TeleportFogEffect
 	States
 	{
 		Spawn:
-			TFRD ABCDEFGHIJIH 4 Bright;
+			TFRD ABCDEFGHIJIHG 4 Bright;
 			Stop;
 	}
 }

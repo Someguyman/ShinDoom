@@ -96,7 +96,7 @@ Class Shin_Mancubus : ShinDoom_Actor Replaces Fatso
 	}
 }
 
-Class Shin_FatShot : ShinDoom_Actor Replaces Fatshot
+Class Shin_FatShot : ShinDoom_Projectile Replaces Fatshot
 {
 	Default
 	{
@@ -104,11 +104,6 @@ Class Shin_FatShot : ShinDoom_Actor Replaces Fatshot
 		Height 8;
 		Speed 20;
 		Damage 8;
-		Projectile;
-		+RANDOMIZE
-		+ZDOOMTRANS
-		RenderStyle "Add";
-		Alpha 1;
 		SeeSound "fatso/attack";
 		DeathSound "fatso/shotx";
 	}
@@ -134,7 +129,7 @@ Class Shin_CorpulentShot : Shin_FatShot
 	}
 }
 
-Class Shin_FireTrail : ShinDoom_Actor
+Class Shin_FireTrail : ShinDoom_Projectile
 {
 	Default
 	{
@@ -146,12 +141,9 @@ Class Shin_FireTrail : ShinDoom_Actor
 		DamageFunction 1;
 		Mass 1000;
 		Scale 1.0;
-		Projectile;
 		BounceType "Doom";
-		+ZDOOMTRANS
 		+Ripper
 		+MTHRUSPECIES
-		RenderStyle "Add";
 		Seesound "vile/firecrkl";
 		Alpha 1;
 	}

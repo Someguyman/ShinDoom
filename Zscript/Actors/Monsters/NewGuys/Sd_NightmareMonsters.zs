@@ -55,7 +55,7 @@ Class Shin_NightmareImp : Shin_Doomimp
 	}
 }
 
-Class Shin_NightmareImpBall : CacodemonBall 
+Class Shin_NightmareImpBall : Shin_CacodemonBall 
 {
 	Default
 	{
@@ -206,7 +206,7 @@ Class Shin_NightmareSpectre : Shin_Nightmaredemon
 	}
 }
 
-Class Shin_NightmareCacodemon : Cacodemon
+Class Shin_NightmareCacodemon : Shin_Cacodemon
 {
 	Default
 	{
@@ -268,7 +268,7 @@ Class Shin_NightmareCacodemon : Cacodemon
 	}
 }
 
-class Shin_NightmareCacodemonBall : CacodemonBall
+class Shin_NightmareCacodemonBall : Shin_CacodemonBall
 {
 	Default
 	{

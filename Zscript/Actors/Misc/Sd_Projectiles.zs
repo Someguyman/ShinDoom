@@ -34,29 +34,6 @@ Class Shin_PlasmaBall2 : Shin_PlasmaBall1 Replaces PlasmaBall2
 	}
 }
 
-Class Shin_PlasmaBall3 : Shin_PlasmaBall
-{
-	Default
-	{
-		Damage 8;
-		Speed 15;
-		FastSpeed 20;
-		SeeSound "caco/shot2";
-		DeathSound "caco/xshot2";
-		//Seesound "Beta/Shot";
-		//Deathsound "Beta/ShotX";
-	}
-	States
-	{
-		Spawn:
-			BAL3 AB 4 BRIGHT;
-			Loop;
-		Death:
-			BAL3 CDE 6 BRIGHT;
-			Stop;
-	}
-}
-
 Class Shin_PlasmaBall4 : Shin_PlasmaBall3
 {
 	Default

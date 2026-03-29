@@ -80,17 +80,6 @@ Class Shin_KnightBall : Shin_BaronBall
 		Seesound "knight/attack";
 		Deathsound "knight/shotx";
 	}
-	/*
-	States
-	{
-		Spawn:
-			KNBL AB 4 BRIGHT;
-			Loop;
-		Death:
-			KNBL CDE 6 BRIGHT;
-			Stop;
-	}
-	*/
 }
 
 extend Class Shin_Hellknight

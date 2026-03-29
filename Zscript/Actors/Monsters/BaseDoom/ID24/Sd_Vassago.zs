@@ -61,7 +61,7 @@ Class Shin_Vassago : ShinDoom_Actor Replaces deh_actor_154
 	}
 }
 
-Class Shin_VassagoFlame : ShinDoom_Actor
+Class Shin_VassagoFlame : ShinDoom_Projectile
 {
 	Default
 	{
@@ -70,11 +70,6 @@ Class Shin_VassagoFlame : ShinDoom_Actor
 		Speed 15;
 		FastSpeed 20;
 		Damage 5;
-		+RANDOMIZE
-		+ZDOOMTRANS
-		RenderStyle "Add";
-		Alpha 1;
-		Projectile;
 		SeeSound "Vassago/Shot";
 		DeathSound "Vassago/ShotX";
 	}

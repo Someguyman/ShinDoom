@@ -48,8 +48,8 @@ $Pitchset Weapon/ChaingunRevDown 0.9
 
 Weapons/MachinePistol DSPISTOL
 $Pitchset Weapons/MachinePistol 1.1
-Weapons/MachineGun DSPISTOL
-$Pitchset Weapons/Machinegun 0.9
+Weapons/MachineGun DSMCHNGN
+//$Pitchset Weapons/Machinegun 0.9
 
 weaponDn/Chainsaw DSSAWDN
 weaponUP/Pistol DSPISUP

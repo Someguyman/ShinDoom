@@ -64,7 +64,7 @@ Class Shin_Gargoyle : Shin_DoomImp
 	}
 }
 
-Class Shin_GargoyleProjectile : ShinDoom_Actor
+Class Shin_GargoyleProjectile : ShinDoom_Projectile
 {
 	Default
 	{

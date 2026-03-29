@@ -12,7 +12,7 @@ Class Shin_CommanderKeen : ShinDoom_Actor Replaces CommanderKeen
 		+SPAWNCEILING 
 		+NOGRAVITY 
 		+SHOOTABLE 
-		+COUNTKILL 
+		-COUNTKILL 
 		+NEVERRESPAWN
 		+NOICEDEATH
 		+DONTFALL

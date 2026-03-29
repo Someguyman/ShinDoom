@@ -13,7 +13,7 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		Monster;
 		+FLOAT +NOGRAVITY
 		BloodColor "blue";
-		FloatBobStrength 0.5;
+		FloatBobStrength 0.3;
 		FloatBobFactor 0.8;
 		Scale 1.1;
 		Species "Cacodemon";
@@ -29,7 +29,7 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 	States
 	{
 	Spawn:
-		HEAD A 10 { A_Look(); bFLOATBOB = True; }
+		HEAD A 10 A_FlyLook();
 		Loop;
 	See:
 		HEAD A 3 A_Chase();
@@ -44,16 +44,16 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		Goto See;
 	Missile2:
 		HEAD E 5 A_FaceTarget;
-		HEAD P 5 A_FaceTarget;
-		HEAD Q 5 A_FaceTarget;
-		HEAD RRR 5 BRIGHT A_HeadAttack();
+		HEAD M 5 A_FaceTarget;
+		HEAD N 5 A_FaceTarget;
+		HEAD OOO 5 BRIGHT A_HeadAttack2();
 		HEAD Q 0 A_Jump(50, "Missile3");
 		Goto See;
 	Missile3:
-		HEAD M 5 A_FaceTarget; 
-		HEAD N 5 A_FaceTarget;
-		HEAD O 5 BRIGHT A_HeadAttack2();
-		HEAD M 5 A_FaceTarget; 
+		HEAD P 6 A_FaceTarget; 
+		HEAD Q 6 A_FaceTarget;
+		HEAD R 6 BRIGHT A_HeadAttack3();
+		HEAD P 5 A_FaceTarget; 
 		Goto See;
 	Melee:
 		HEAD C 4 A_FaceTarget();
@@ -61,7 +61,7 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		HEAD B 6 A_CustomMeleeAttack(30,"caco/melee");
 		Goto See;
 	Pain:
-		HEAD E 3;
+		HEAD E 3 { bFLOATBOB = True; }
 		HEAD E 3 A_Pain;
 		HEAD F 6;
 		Goto See;
@@ -102,19 +102,13 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 	}
 }
 
-Class Shin_CacodemonBall : ShinDoom_Actor
+Class Shin_CacodemonBall : ShinDoom_Projectile
 {
 	Default
 	{
-		Radius 6;
-		Height 8;
 		Speed 10;
 		FastSpeed 20;
 		Damage 5;
-		Projectile;
-		+RANDOMIZE
-		+ZDOOMTRANS
-		RenderStyle "Add";
 		Alpha 1;
 		SeeSound "caco/attack";
 		DeathSound "caco/shotx";
@@ -143,6 +137,29 @@ Class Shin_Cacodemonball2 : Shin_CacodemonBall
 	}
 }
 
+Class Shin_PlasmaBall3 : Shin_PlasmaBall
+{
+	Default
+	{
+		Damage 8;
+		Speed 15;
+		FastSpeed 20;
+		SeeSound "caco/shot2";
+		DeathSound "caco/xshot2";
+		//Seesound "Beta/Shot";
+		//Deathsound "Beta/ShotX";
+	}
+	States
+	{
+		Spawn:
+			BAL3 AB 4 BRIGHT;
+			Loop;
+		Death:
+			BAL3 CDE 6 BRIGHT;
+			Stop;
+	}
+}
+
 Extend Class Shin_cacodemon
 {
 	void A_HeadAttack()
@@ -167,6 +184,27 @@ Extend Class Shin_cacodemon
 	}
 	
 	void A_HeadAttack2()
+	{
+		let targ = target;
+		if (targ)
+		{
+			if (CheckMeleeRange())
+			{
+				int damage = random[pr_headattack](1, 6) * 10;
+				A_StartSound (AttackSound, CHAN_WEAPON);
+				int newdam = target.DamageMobj (self, self, damage, "Melee");
+				targ.TraceBleed (newdam > 0 ? newdam : damage, self);
+			}
+			else
+			{
+				// launch a missile
+				A_FaceTarget();
+				A_SpawnProjectile("Shin_Cacodemonball2", 22, 0, 0, CMF_BADPITCH);
+			}
+		}
+	}
+	
+	void A_HeadAttack3()
 	{
 		let targ = target;
 		if (targ)

@@ -91,14 +91,16 @@ Class Shin_Arachnotron : ShinDoom_Actor Replaces Arachnotron
 		BSPX F 6;
 		BSPX G -1 A_ShinBossDeath();
 		Stop;
-	 Shin.Raise:
+	Shin.Raise:
 		"----" A 0 { A_RestoreSprite(); }
 		"####" O 5 A_SpectreDisappear();
 		"####" NMLKJ 5;
+		"####" A 0 A_RestoreSprite();
 		Goto See+1;
 	XRaise:
 		BSPX F 5 A_SpectreDisappear();
-		BSPX ECDBA 5;
+		BSPX EDCBA 5;
+		"####" A 0 A_RestoreSprite();
 		Goto See;
 	Crush:
 		BSPI A 0;
@@ -107,7 +109,7 @@ Class Shin_Arachnotron : ShinDoom_Actor Replaces Arachnotron
 	}
 }
 
-Class Shin_ArachnotronPlasma : ShinDoom_Actor Replaces ArachnotronPlasma
+Class Shin_ArachnotronPlasma : ShinDoom_Projectile Replaces ArachnotronPlasma
 {
 	Default
 	{
@@ -115,10 +117,6 @@ Class Shin_ArachnotronPlasma : ShinDoom_Actor Replaces ArachnotronPlasma
 		Height 8;
 		Speed 25;
 		Damage 5;
-		Projectile;
-		+RANDOMIZE
-		+ZDOOMTRANS
-		RenderStyle "Add";
 		Alpha 0.75;
 		SeeSound "baby/attack";
 		DeathSound "baby/shotx";
@@ -128,7 +126,7 @@ Class Shin_ArachnotronPlasma : ShinDoom_Actor Replaces ArachnotronPlasma
 	Spawn:
 		APLS AB 6 BRIGHT;
 		Loop;
-	Death:
+	Death.Normal:
 		APBX ABCDE 4 BRIGHT;
 		Stop;
 	}
@@ -146,7 +144,7 @@ Class Shin_ArachknightPlasma : Shin_ArachnotronPlasma
 	Spawn:
 		ARAX AB 3 BRIGHT;
 		Loop;
-	Death:
+	Death.Normal:
 		ARAX CDEFGHI 3 BRIGHT;
 		Stop;
 	}
