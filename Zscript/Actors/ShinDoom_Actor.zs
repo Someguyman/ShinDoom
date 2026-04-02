@@ -134,7 +134,9 @@ Extend Class ShinDoom_Actor
 				FloatBobStrength = 0.35;
 				FloatBobFactor = 0.8;
 				bFLOATBOB = true;
-				self.SetOrigin(self.pos + (0, 0, 11.5), true);
+				
+				if (( Target != null && (self.pos.Z <= target.pos.Z)) && self.height >= 56)
+					self.SetOrigin(self.pos + (0, 0, 11.5), true);
 			}
 		}
 	}

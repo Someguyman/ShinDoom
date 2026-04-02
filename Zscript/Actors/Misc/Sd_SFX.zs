@@ -169,9 +169,12 @@ Class Shin_DeathFire : ShinDoom_Actor
 		+RANDOMIZE
 		+NOINTERACTION
 		+NOTELEPORT
-		+ZDOOMTRANS
+		//+ZDOOMTRANS
+		RenderStyle "Translucent";
+		Alpha 0.75;
 		Damage 0;
 		scale 1.2;
+		
 	}
 	States
 	{

@@ -151,7 +151,7 @@ Extend Class Shin_Chaingun
 	{
 		A_GunFlash("Flash");
 		A_Startsound("weapons/chngun", CHAN_WEAPON);
-		A_FireBullets(5.6, 0, 2, 7, "BulletPuff", FBF_USEAMMO);
+		A_FireBullets(5.6, 0, 1, 7, "BulletPuff", FBF_USEAMMO);
 	}
 	
 	Action Void A_FireCGun1()

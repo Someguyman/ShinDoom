@@ -3,7 +3,6 @@
 
 script "TNTSkyChange" (void)
 {	
-	//Thing_Destroy(0);
 	Delay(10);
 	ChangeSky("DOHBLU2","DOHBLU2");	
 	Delay(10);

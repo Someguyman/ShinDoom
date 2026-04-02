@@ -43,6 +43,8 @@ Class Shin_CombatRifle : ShinDoom_Weapon
 		RIFF A 1 Bright Offset(0,34) { invoker.mp_clip++; }
 		RIFF B 1 Bright Offset(0,36) A_FireRifle();
 		RIFF A 1 Bright Offset(0,34) { invoker.mp_clip++; }
+		RIFF B 1 Bright Offset(0,36) A_FireRifle();
+		RIFF A 1 Bright Offset(0,34) { invoker.mp_clip++; }
 		RIFL A 2 Offset(0,32);
 		RIFL A 0 A_ReFire("Fire.Delay");
 	Pullback:
