@@ -124,7 +124,7 @@ Class Shin_CacodemonBall : ShinDoom_Projectile
 	}
 }
 
-Class Shin_Cacodemonball2 : Shin_CacodemonBall
+Class Shin_Cacodemonball2 : Shin_CacodemonBall Replaces CacodemonBall
 {
 	States
 	{

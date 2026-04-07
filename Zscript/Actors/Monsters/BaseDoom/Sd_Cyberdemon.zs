@@ -109,7 +109,7 @@ Extend Class Shin_Cyberdemon
 	{
 		if (!bBOSSSPAWNED)
 		{
-			A_SpawnProjectile("Shin_BossExplosion",FRandom(20,80),FRandom(20,-20),FRandom(0,360),2,FRandom(0,360));
+			A_SpawnProjectile("Shin_BossExplosion_red",FRandom(20,80),FRandom(20,-20),FRandom(0,360),2,FRandom(0,360));
 			A_BloodSplat(32);
 		}
 	}

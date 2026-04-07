@@ -175,7 +175,7 @@ Class ShinDoom_EventHandler : EventHandler
 		if (e.Replacee == 'cacodemon')
 			e.Replacement = 'Shin_Cacodemon';
 		
-		/*
+		///*
 		if (e.Replacee == 'baronofhell')
 		{
 			if ((mapName == "e1m8") ||
@@ -187,13 +187,13 @@ Class ShinDoom_EventHandler : EventHandler
 			}
 			else
 			{
-				if ( mapName.Left(1) == "e" && mapName.Mid(2, 1) == "m" )
+				if ( mapName.Left(2) == "e4" && mapName.Mid(2, 1) == "m" )
 				{
-					e.Replacement = 'Shin_Hellknight';
+					e.Replacement = 'Shin_HellGaurd';
 				}
 			}
 		}
-		*/
+		//*/
 		
 		if (e.Replacee == 'Shin_Archvile' && (mapName.Left(1) == "e" && mapName.Mid(2, 1) == "m" ))
 		{

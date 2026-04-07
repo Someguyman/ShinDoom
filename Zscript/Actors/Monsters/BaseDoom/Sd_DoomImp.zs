@@ -64,7 +64,7 @@ Class Shin_DoomImp : ShinDoom_Actor Replaces Doomimp
 	}
 }
 
-class Shin_DoomImpBall : ShinDoom_Projectile
+class Shin_DoomImpBall : ShinDoom_Projectile Replaces DoomImpBall
 {
 	Default
 	{

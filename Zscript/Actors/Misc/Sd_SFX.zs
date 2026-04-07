@@ -93,6 +93,18 @@ Class Shin_BossExplosion : ShinDoom_Actor
 	}
 }
 
+Class Shin_BossExplosion_red : Shin_BossExplosion
+{
+	States
+	{
+	Spawn:
+		MIS2 B 6 bright;
+		MISL C 4 bright;
+		MISL D 3 bright;
+		Stop;
+	}
+}
+
 Class Shin_ComicalExplosion : ShinDoom_actor
 {
 	Default

@@ -9,6 +9,7 @@ Class Shin_DoomPlayer : DoomPlayer Replaces playerpawn
 		Player.StartItem "Shin_Pistol";
 		Player.StartItem "Shin_Fist";
 		Player.StartItem "Shin_LightAmmo", 50;
+		Player.StartItem "Shin_HeavyAmmo", 50;
 		Player.WeaponSlot 1, "Shin_Fist", "Shin_Chainsaw";
 		Player.WeaponSlot 2, "Shin_Pistol", "Shin_MachinePistol";
 		Player.WeaponSlot 3, "Shin_Shotgun", "Shin_SuperShotgun";

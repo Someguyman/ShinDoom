@@ -448,7 +448,7 @@ Extend Class ShinDoom_Actor
 		{
 			For (Int I; I <= Bloodcount; I++)
 			{
-				A_SpawnItemEx ("Shin_FlyingBlood", 1, 1, random(8,32), random(0,5), random(0,5), random(8,18), random(0,360), SXF_USEBLOODCOLOR, 0);
+				A_SpawnItemEx("Shin_FlyingBlood", random(0,1), random(0,1), random(8,32), random(0,5), random(0,5), random(8,18), random(0,360), SXF_USEBLOODCOLOR, 0);
 			}
 		}
 	}
@@ -595,6 +595,7 @@ Extend Class ShinDoom_Projectile
 			if (bEXPLOSIVE)
 			{
 				A_SetRenderStyle(1.0, STYLE_NORMAL);
+				bFOILINVUL = true;
 			}
 		}
 	}

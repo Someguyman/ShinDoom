@@ -3,7 +3,7 @@ Class Shin_HellGaurd : Shin_BaronOfHell
 {
 	Default
 	{
-		Health 500;
+		Health 600;
 		Speed 8;
 		Scale 1.2;
 		Species "HellKnoble";
@@ -33,20 +33,24 @@ Class Shin_HellGaurd : Shin_BaronOfHell
 		Loop;
 	Melee:
 	Missile:
-		HWAR EF 5 A_FaceTarget;
-		HWAR G 5 A_GaurdAttack();
+		HWAR EF 8 A_FaceTarget;
+		HWAR G 8 A_GaurdAttack();
 		Goto See;
 	Pain:
+		HWAR J 2;
 		HWAR J 2 A_Pain();
+		HWAR J 2 A_Jump(125, "Sheild");
+		Goto See;
+	Sheild:
 		HWAR H 0 A_SetInvulnerable();
 		HWAR HHHHHH 5 A_FaceTarget();
 		HWAR H 1 A_CPosRefire;
-		HWAR I 5 Bright A_FireVolley("Baronball");
+		HWAR I 5 Bright A_FireVolley("Shin_Gaurdball2", 4, 35);
 		HWAR H 7 A_FaceTarget();
 		HWAR HHHH 5 A_FaceTarget();
 		HWAR H 3 A_FaceTarget();
 		HWAR H 1 A_CPosRefire;
-		HWAR I 5 Bright A_FireVolley("Baronball");
+		HWAR I 5 Bright A_FireVolley("Shin_Gaurdball2");
 		HWAR H 0 A_UnSetInvulnerable();
 		Goto See;
 	Death:
@@ -115,11 +119,48 @@ Class Shin_Gaurdball : Shin_BaronBall
 	}
 }
 
+
+Class Shin_Gaurdball2 : ShinDoom_Projectile
+{
+  Default
+  {
+    Radius 6;
+    Height 8;
+    Speed 8;
+    Damage 2;
+    RenderStyle "Add";
+    Alpha 0.9;
+    Scale 0.5;
+    +Ripper
+  }
+
+  States
+  {
+  Spawn:
+    GRBA ABCDEFGH 2 Bright;
+    Loop;
+  Death:
+    GRBA AIJKLMN 3 Bright;
+    Stop;
+  }
+}
+
 Extend Class Shin_HellGaurd
 {
 	Void A_GaurdAttack()
 	{
 		A_FaceTarget();
 		A_CustomComboAttack("Shin_Gaurdball", 32, 10 * random(1, 8), "knight/melee");
+	}
+	
+	override void PostBeginPlay()
+	{
+		super.PostBeginPlay();
+		
+
+		BaseSprite = GetSpriteIndex("HWAR");	
+		sprite = BaseSprite;
+		
+		Return;
 	}
 }
