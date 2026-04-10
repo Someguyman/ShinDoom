@@ -72,7 +72,7 @@ Class Shin_Wargrin : ShinDoom_Actor
 	}
 }
 
-class Shin_WargrinFireball : Doomimpball
+class Shin_WargrinFireball : Shin_Doomimpball
 {
 	Default
 	{
@@ -84,7 +84,7 @@ class Shin_WargrinFireball : Doomimpball
 	States
 	{
 		Spawn:
-			BRB2 AB 4 BRIGHT;
+			BRB2 AB 3 BRIGHT;
 			Loop;
 		Death:
 			BRB2 CDEFGHI 3 Bright;

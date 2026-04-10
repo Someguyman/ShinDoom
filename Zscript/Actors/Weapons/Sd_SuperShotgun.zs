@@ -27,12 +27,12 @@ Class Shin_SuperShotgun : ShinDoom_Weapon Replaces SuperShotgun
 	Fire:
 		SDW2 A 2 Offset(0,50) A_FireShotgun2;
 		SDW2 A 2 Offset(0,48);
-		SDW2 A 5 Offset(0,32);
+		SDW2 A 4 Offset(0,32);
 		SDW2 A 0 Offset(0,32) A_CheckReload;
 		SDW2 B 1 Offset(10,46);
 		SDW2 B 2 Offset(-10,32);
 		SDW2 C 3 Offset(4,34);
-		SDW2 C 4 Offset(-1,32);
+		SDW2 C 5 Offset(-1,32);
 		SDW2 C 3 Offset(4,34);
 		SDW2 C 3 Offset(40,50);
 		SDW2 D 3 Offset(1,32) A_OpenShotgun2;

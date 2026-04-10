@@ -52,7 +52,7 @@ Class Shin_ShockTrooper : ShinDoom_Actor Replaces deh_actor_153
 			PPOS O 5 A_XScream;
 			PPOS P 5 A_Fall;
 			PPOS P 0 A_ScaleVelocity(0.5); 
-			PPOS Q 5 nodelay { A_SpawnItemEx("Shin_ShocktrooperTorso", xofs: -8.0, 0, 32.0 , 4.0, 0 , 2.0 , 0, SXF_ABSOLUTEVELOCITY|SXF_ABSOLUTEPOSITION|SXF_TRANSFERTRANSLATION ); A_FaceTarget(); }
+			PPOS Q 5 { A_SpawnItemEx("Shin_ShocktrooperTorso", xofs: -8.0, 0, 32.0 , 4.0, 0 , 2.0 , 0, SXF_ABSOLUTEVELOCITY|SXF_ABSOLUTEPOSITION|SXF_TRANSFERTRANSLATION ); A_FaceTarget(); }
 			PPOS RST 5;
 			PPOS U -1 A_NormalDeath();
 			stop;

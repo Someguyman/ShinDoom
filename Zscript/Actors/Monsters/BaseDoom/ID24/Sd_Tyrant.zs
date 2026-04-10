@@ -15,7 +15,7 @@ Class Shin_Tyrant : ShinDoom_Actor Replaces deh_actor_155
 		Speed 16;
 		PainChance 20;
 		Monster;
-		Scale 1.1;
+		Scale 1.0;
 		MinMissileChance 160;
 		MissileChanceMult 0.5;
 		SeeSound "Tyrant/sight";
