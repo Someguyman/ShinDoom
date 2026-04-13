@@ -48,10 +48,7 @@ Class Shin_Pinky : ShinDoom_Actor Replaces Demon
 		SARG J 8 A_Scream;
 		SARG K 4;
 		SARG L 3 A_NoBlocking;
-	DeathLoop:
-		SARG L 1 A_CheckFloor("DeathStop");
-		Loop;
-	DeathStop:
+	Death.End:
 		SARG M 0 A_StartSound("misc/thud", 0);
 		SARG M 4;
 		SARG N -1 A_NormalDeath();
@@ -113,10 +110,7 @@ Class Shin_Spectre : Shin_Pinky Replaces Spectre
 		SAR2 J 8 A_Scream;
 		SAR2 K 4;
 		SAR2 L 3 A_NoBlocking;
-	DeathLoop:
-		SAR2 L 1 A_CheckFloor("DeathStop");
-		Loop;
-	DeathStop:
+	Death.End:
 		SAR2 M 0 A_StartSound("misc/thud", 0);
 		SAR2 M 4;
 		SAR2 N -1 A_NormalDeath();

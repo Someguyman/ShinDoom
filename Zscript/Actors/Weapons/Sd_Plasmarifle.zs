@@ -27,7 +27,8 @@ Class Shin_PlasmaRifle : ShinDoom_Weapon Replaces PlasmaRifle
 	Fire:
 		TNT1 A 3 A_FirePlasma();
 		PLSG A 0 A_ReFire;
-		TNT1 A 0 A_JumpIf(invoker.mp_clip > 3, "Cooldown");
+		TNT1 A 0 A_JumpIf(invoker.mp_clip > 7, "Cooldown");
+		PLSG A 10;
 		TNT1 A 0 { invoker.mp_clip = 0; }
 		PLSG AAA 1 Offset(0,32) A_WeaponReady(WRF_NOBOB);
 		Goto Ready;

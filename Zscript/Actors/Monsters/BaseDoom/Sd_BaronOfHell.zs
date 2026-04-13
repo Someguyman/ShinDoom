@@ -23,7 +23,6 @@ Class Shin_BaronOfHell : ShinDoom_Actor Replaces Baronofhell
 		Obituary "$OB_BARON";
 		HitObituary "$OB_BARONHIT";
 		ShinDoom_Actor.FootstepSound "Baron/walk";
-		//FootstepSound "Baron/walk";
 		Tag "$FN_BARON";
 		BloodColor "30 67 23";
 		+NOINFIGHTSPECIES
@@ -139,7 +138,7 @@ Class Shin_Baronball_Small : Shin_Baronball
 {
 	Default
 	{
-		scale 0.75;
+		scale 0.95;
 		Damage 2;
 		Seesound "knight/attack";
 		Deathsound "knight/shotx";
@@ -176,14 +175,26 @@ Class Shin_BaronBall_Big : ShinDoom_Projectile
 	Death:
 		BBL2 C 6 BRIGHT
 		{
-			A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 0, CMF_AIMDIRECTION, 0);
-			A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 45, CMF_AIMDIRECTION, 0);
-			A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 90, CMF_AIMDIRECTION, 0);
-			A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 135, CMF_AIMDIRECTION, 0);
-			A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 180, CMF_AIMDIRECTION, 0);
-			A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 225, CMF_AIMDIRECTION, 0);
-			A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 270, CMF_AIMDIRECTION, 0);
-			A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 315, CMF_AIMDIRECTION, 0);
+			//A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 0, CMF_AIMDIRECTION, 0);
+			//A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 45, CMF_AIMDIRECTION, 0);
+			//A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 90, CMF_AIMDIRECTION, 0);
+			//A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 135, CMF_AIMDIRECTION, 0);
+			//A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 180, CMF_AIMDIRECTION, 0);
+			//A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 225, CMF_AIMDIRECTION, 0);
+			//A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 270, CMF_AIMDIRECTION, 0);
+			//A_SpawnProjectile ("Shin_Baronball_Small", 0, 0, 315, CMF_AIMDIRECTION, 0);
+			for (int i = 0; i < 8; i++)
+			{
+				Actor shard = Spawn("Shin_Baronball_Small", Pos, ALLOW_REPLACE);
+				if (shard != null)
+				{
+					shard.target = target;
+					shard.angle = i*45.;
+					shard.VelFromAngle();
+					shard.Vel.Z = -.6;
+					shard.CheckMissileSpawn (radius);
+				}
+			}
 		}
 		BBL2 DE 6 BRIGHT;
 		Stop;

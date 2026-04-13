@@ -10,8 +10,7 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		Speed 8;
 		PainChance 128;
 		Monster;
-		+FLOAT 
-		+NOGRAVITY
+		+ShinDoom_Actor.SHINFLYER;
 		+NEVERRESPAWN
 		+DONTGIB
 		+NOTARGET
@@ -28,7 +27,7 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 	States
 	{
 	Spawn:
-		PAIN AB 10 { A_Look(); bFLOATBOB = True; }
+		PAIN AB 10 A_Look;
 		Loop;
 	See:
 		PAIN AABBCC 3 A_Chase;
@@ -52,7 +51,6 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		PAIN G 6 A_Pain;
 		Goto See;
 	Death.Ice:
-		PAIN G 0 {bFLOATBOB = False;}
 		PAIN G 5 A_GenericFreezeDeath;
 		TNT1 A 1
 		{
@@ -61,7 +59,7 @@ Class Shin_PainElemental : ShinDoom_Actor Replaces PainElemental
 		}
 		WAIT;
 	Death:
-		PAIN H 6 BRIGHT {bFLOATBOB = False;}
+		PAIN H 6 BRIGHT;
 		PAIN I 9 BRIGHT A_Scream;
 		PAIN J 5 BRIGHT;
 		PAIN K 8 BRIGHT;
@@ -104,14 +102,14 @@ Class Shin_PainSoul : Shin_Lostsoul
 		PSKL CD 4 BRIGHT { bTHRUSPECIES = false; }
 		Loop;
 	Idle:
-		PSKL AB 10 BRIGHT { A_Look(); bFLOATBOB = True; bTHRUSPECIES = false; }
+		PSKL AB 10 BRIGHT { A_Look(); bTHRUSPECIES = false; }
 		Loop;
 	See:
-		PSKL AABB 3 BRIGHT A_SkullChase();
+		PSKL AABB 3 BRIGHT A_Chase();
 		Loop;
 	Missile:
 		PSKL C 10 BRIGHT A_FaceTarget;
-		PSKL D 4 BRIGHT { A_SkullAttack(); bFLOATBOB = False; }
+		PSKL D 4 BRIGHT A_SkullAttack();
 		PSKL CD 4 BRIGHT;
 		Goto Missile+2;
 	Pain:
@@ -120,7 +118,7 @@ Class Shin_PainSoul : Shin_Lostsoul
 		Goto See;
 	XDeath:
 	Death:
-		PSKL F 4 BRIGHT {bFLOATBOB = False;}
+		PSKL F 4 BRIGHT;
 		PSKL G 4 BRIGHT A_Scream;
 		PSKL H 4 BRIGHT;
 		PSKL I 4 BRIGHT A_NoBlocking;

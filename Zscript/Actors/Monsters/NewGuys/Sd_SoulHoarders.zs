@@ -97,9 +97,7 @@ Class Shin_SoulDevourer : Shin_Cacodemon
 			SLDR I 6 A_Scream;
 			SLDR JKL 6;
 			SLDR M 5 A_SpawnItemEx("Shin_SoulHarvesterGhost",0,0,48,0,0,0,0,SXF_CLIENTSIDE);
-		DeathLoop:
-			SLDR M 1 A_CheckFloor("DeathStop");
-			Loop;
+			Goto DeathLoop;
 		DeathStop:
 			SLDR N 6 A_StartSound("caco/deathland", 0);
 			SLDR O 6; 

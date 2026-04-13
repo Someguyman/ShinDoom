@@ -12,8 +12,7 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 		PainChance 256;
 		MissileChanceMult 1.5;
 		Monster;
-		+FLOAT 
-		+NOGRAVITY 
+		+ShinDoom_Actor.SHINFLYER;
 		+DONTFALL 
 		+NOICEDEATH 
 		+BOUNCEONFLOORS 
@@ -33,22 +32,22 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 	States
 	{
 	Spawn:
-		SKUL AB 10 BRIGHT { A_Look(); bFLOATBOB = True; }
+		SKUL AB 10 BRIGHT A_Look;
 		Loop;
 	See:
-		SKUL AABB 3 BRIGHT A_Skullchase();
+		SKUL AABB 3 BRIGHT A_Chase;
 		Loop;
 	Missile:
 		SKUL C 10 BRIGHT A_FaceTarget;
-		SKUL D 4 BRIGHT { A_SkullAttack(); bFLOATBOB = False; }
+		SKUL D 4 BRIGHT A_SkullAttack();
 		SKUL CD 4 BRIGHT;
 		Goto Missile+2;
 	Pain:
-		SKUL E 3 BRIGHT { A_Chase; bFLOATBOB = True; }
+		SKUL E 3 BRIGHT A_Chase;
 		SKUL E 3 BRIGHT A_Pain;
 		Goto See;
 	Death:
-		SKUL F 6 BRIGHT { bFLOATBOB = False; }
+		SKUL F 6 BRIGHT;
 		SKUL G 6 BRIGHT A_Scream;
 		SKUL H 6 BRIGHT;
 		SKUL I 6 BRIGHT A_NoBlocking;
@@ -56,17 +55,12 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 		SKUL K 6 BRIGHT;
 		Stop;
 	XDeath:
-		SKUL F 4 BRIGHT { bFLOATBOB = False; }
+		SKUL F 4 BRIGHT;
 		SKUL G 4 BRIGHT A_Scream;
 		SKUL H 4 BRIGHT;
 		SKUL I 4 BRIGHT A_NoBlocking;
 		SKUL J 4 BRIGHT;
 		SKUL K 4 BRIGHT;
 		Stop;
-	}
-	
-	Void A_Skullchase()
-	{
-		A_Chase(); bFLOATBOB = True;
 	}
 }

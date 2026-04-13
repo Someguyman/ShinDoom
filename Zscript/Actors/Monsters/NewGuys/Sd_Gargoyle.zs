@@ -11,6 +11,7 @@ Class Shin_Gargoyle : Shin_DoomImp
 		PainChance 200;
 		Monster;
 		+FLOORCLIP
+		FloatSpeed 6;
 		SeeSound "Gargoyle/sight";
 		PainSound "Gargoyle/pain";
 		DeathSound "Gargoyle/death";
@@ -42,10 +43,8 @@ Class Shin_Gargoyle : Shin_DoomImp
 		FIMP I 5;
 		FIMP J 5 { A_Scream(); A_NoBlocking(); }
 		FIMP K 4;
-	DeathLoop:
-		FIMP K 1 A_CheckFloor("DeathStop");
-		Loop;
-	DeathStop:
+		Goto Death.Loop;
+	Death.End:
 		FIMP LM 4;
 		FIMP M -1 A_NormalDeath();
 		Stop;

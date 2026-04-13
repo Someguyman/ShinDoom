@@ -117,10 +117,8 @@ Class Shin_Nightmaredemon : Shin_Pinky
 			NMDM J 8 A_Scream;
 			NMDM K 4;
 			NMDM L 3 A_NoBlocking;
-		DeathLoop:
-			NMDM L 1 A_CheckFloor("DeathStop");
-			Loop;
-		DeathStop:
+			Goto Death.Loop;
+		Death.End:
 			NMDM M 0 A_StartSound("misc/thud", 0);
 			NMDM M 4;
 			NMDM N -1;
@@ -180,10 +178,10 @@ Class Shin_NightmareSpectre : Shin_Nightmaredemon
 			NMSP J 8 A_Scream;
 			NMSP K 4;
 			NMSP L 3 A_NoBlocking;
-		DeathLoop:
+		Death.Loop:
 			NMSP L 1 A_CheckFloor("DeathStop");
 			Loop;
-		DeathStop:
+		Death.End:
 			NMSP M 0 A_StartSound("misc/thud", 0);
 			NMSP M 4;
 			NMSP N -1;

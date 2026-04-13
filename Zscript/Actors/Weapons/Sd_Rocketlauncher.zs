@@ -27,8 +27,8 @@ Class Shin_RocketLauncher : ShinDoom_Weapon replaces RocketLauncher
 		Loop;
 	Fire:
 		SDWR A 2 A_FireRLaunch();
-		SDWR B 10 Offset(0,38);
-		SDWR B 3 Offset(0,34);
+		SDWR B 13 Offset(0,38);
+		//SDWR B 3 Offset(0,34);
 		SDWR A 3 Offset(0,34);
 		SDWR A 3 Offset(0,32);
 		SDWR B 0 A_ReFire;

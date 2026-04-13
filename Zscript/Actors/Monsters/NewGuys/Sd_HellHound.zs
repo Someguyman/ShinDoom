@@ -55,10 +55,8 @@ Class Shin_HellHound : ShinDoom_Actor
 		HELH J 8 A_Scream;
 		HELH K 4;
 		HELH L 3 A_NoBlocking;
-	DeathLoop:
-		HELH L 1 A_CheckFloor("DeathStop");
-		Loop;
-	DeathStop:
+		Goto Death.loop;
+	Death.End:
 		HELH M 0 A_StartSound("misc/thud", 0);
 		HELH M 4;
 		HELH N -1 A_NormalDeath();

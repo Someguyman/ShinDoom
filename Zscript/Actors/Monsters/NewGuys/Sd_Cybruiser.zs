@@ -19,7 +19,6 @@ Class Shin_Cybruiser : Shin_BaronOfHell
 		-E1M8BOSS
 		+FLOORCLIP
 		+DONTHARMCLASS
-		//+NORADIUSDMG
 		+ShinDoom_Actor.UNHEALABLE;
 		DamageFactor "ExplosionDM", 0.5;
 		PainChance "ExplosionDM", 15;

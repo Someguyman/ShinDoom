@@ -19,7 +19,7 @@ version "4.14.1"
 
 //		Doom 1		//
 
-#include "Zscript/Actors/Monsters/NewGuys/Sd_Watcher.zs"
+//#include "Zscript/Actors/Monsters/NewGuys/Sd_Watcher.zs"
 #include "Zscript/Actors/Monsters/NewGuys/Sd_Gargoyle.zs"
 #include "Zscript/Actors/Monsters/NewGuys/Sd_WarGrin.zs"
 #include "Zscript/Actors/Monsters/NewGuys/Sd_SoulHoarders.zs"

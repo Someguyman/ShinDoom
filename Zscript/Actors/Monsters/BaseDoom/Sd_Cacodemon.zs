@@ -11,10 +11,8 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		Gibhealth 20;
 		PainChance 128;
 		Monster;
-		+FLOAT +NOGRAVITY
+		+ShinDoom_Actor.SHINFLYER;
 		BloodColor "blue";
-		FloatBobStrength 0.3;
-		FloatBobFactor 0.8;
 		Scale 1.1;
 		Species "Cacodemon";
 		SeeSound "caco/sight";
@@ -29,7 +27,7 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 	States
 	{
 	Spawn:
-		HEAD A 10 A_FlyLook();
+		HEAD A 10 A_Look();
 		Loop;
 	See:
 		HEAD A 3 A_Chase();
@@ -61,40 +59,36 @@ Class Shin_Cacodemon : ShinDoom_Actor Replaces Cacodemon
 		HEAD B 6 A_CustomMeleeAttack(30,"caco/melee");
 		Goto See;
 	Pain:
-		HEAD E 3 { bFLOATBOB = True; }
+		HEAD E 3;
 		HEAD E 3 A_Pain;
 		HEAD F 6;
 		Goto See;
 	Death:
-		HEAD G 8 { bFLOATBOB = False; }
+		HEAD G 8;
 		HEAD H 8 A_Scream;
 		HEAD I 7;
-	DeathLoop:
-		HEAD I 1 A_CheckFloor("DeathStop");
-		Loop;
-	DeathStop:
+	Goto Death.Loop;
+	Death.End:
 		HEAD J 0 A_StartSound("caco/deathland", 0);
 		HEAD J 8;
 		HEAD K 8 A_NoBlocking;
-		HEAD L -1 { A_SetFloorClip; A_NormalDeath(); }
+		HEAD L -1 { A_SetFloorClip(); A_NormalDeath(); }
 		Stop;
 	XDeath:
-		HEDX A 4 {bFLOATBOB = False; }
+		HEDX A 4;
 		HEDX B 4 A_XScream;
 		HEDX C 4;
 		HEDX D 4 A_NoBlocking;
 		HEDX EFGHI 4;
-		HEDX J -1 { A_SetFloorClip; A_NormalDeath(); }
+		HEDX J -1 { A_SetFloorClip(); A_NormalDeath(); }
 		Stop;
 	Shin.Raise:
 		HEAD L 8 A_UnSetFloorClip;
 		HEAD KJIHG 8;
-		HEAD A 0 {bFLOATBOB = True; }
 		Goto See;
 	XRaise:
 		HEDX H 5 A_UnSetFloorClip;
 		HEDX GFEDCBA 5;
-		HEDX A 0 {bFLOATBOB = True; }
 		Goto See;
 	Crush.Loop:
 		HEGI A -1;

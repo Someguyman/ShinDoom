@@ -19,6 +19,14 @@ Class ShinDoom_Actor : Actor Replaces Actor
 		Crush.Loop:
 			POL5 A -1;
 			stop;
+	   Missile:
+			stop;
+	   Missile.1:
+			stop;
+	   Missile.2:
+			stop;
+	   Missile.3:
+			stop;
 	   Death.SuperShotgun:
 			"####" A 0 A_Jumpif(Self.SpawnHealth() > 400, "Death"); //Any enemy with 400 + health will not gib to the super shotgun
 	   Death.BFGSplash:
@@ -26,7 +34,7 @@ Class ShinDoom_Actor : Actor Replaces Actor
 			"####" A 0 A_Jumpifcloser(128, "XDeath");
 			"####" A 0 A_Jump(256, "Death");
 			Stop;
-	   Death.WeakAttack:
+	   Death.Weak:
 			"####" A 0 A_Jump(256, "Death");
 			Stop;
 	   Death.BarrelExplosion:
@@ -37,18 +45,24 @@ Class ShinDoom_Actor : Actor Replaces Actor
 			Goto Death;
 	   XDeath:
 			Stop;
+	   Death.Loop:
+			"####" "#" 1 A_CheckFloor("Death.End");
+			Loop;
+	   Death.End:
+			"####" "#" 1;
+			Stop;
 		Death:
 			"####" "#" 8 Bright A_ScaleVelocity(0); 
 			"####" "#" 10 Bright A_Spawnprojectile("Shin_ComicalExplosion", 0);
 			Stop;
-		DeathFade:
+		Death.Fade:
 			"####" "#" 24;
 			"####" "#" 0 A_ShrinkingFade();
 			"####" "#" 3 A_SetTranslation("IconSpawn");
 			"####" "#" 0 A_ShrinkingFade();
 			"####" "#" 3 Bright { A_DeathFireSpawn(); A_SetTranslation("IconSpawn2"); }
 			"####" "#" 0 A_ShrinkingFade();
-		DeathFade.Loop:
+		Death.Fade.Loop:
 			"####" "#" 0 {A_JumpIf(radius<=0,"NULL"); A_JumpIf(height<=0,"NULL"); A_JumpIf(scale.x<=0,"NULL");}
 			"####" "#" 3 Bright A_FadeOut(0.05);
 			"####" "#" 0 A_ShrinkingFade;
@@ -58,7 +72,6 @@ Class ShinDoom_Actor : Actor Replaces Actor
 		Raise:
 			"####" "#" 0
 			{
-				//A_RaiseStart();
 				A_SpectreDisappear();		
 				A_RestoreSprite();
 				return isgibbed? ResolveState("XRaise") : ResolveState("Shin.Raise");
@@ -82,6 +95,8 @@ Extend Class ShinDoom_Actor
 	flagdef STAYDEAD : ActorFlags, 2;
 	flagdef SHINSHADOW : ActorFlags, 3;
 	flagdef STARTINVIS : ActorFlags, 4;
+	flagdef SHINFLYER : ActorFlags, 5;
+	//flagdef FLYER : ActorFlags, 6;
 
 	Bool ISGIBBED;
 	Bool ISINVISABLE;
@@ -109,7 +124,6 @@ Extend Class ShinDoom_Actor
 	override void BeginPlay()
 	{
 		Vector3 CurrentPos;
-		//Vector3 NewPos = Vec3Offset(0,0,32);
 		super.BeginPlay();
 				
 		if (bISMONSTER)
@@ -128,16 +142,6 @@ Extend Class ShinDoom_Actor
 			{
 				A_SetRenderStyle(1.0, STYLE_OptFuzzy);
 			}
-			
-			if (bFLOAT == true)
-			{
-				FloatBobStrength = 0.35;
-				FloatBobFactor = 0.8;
-				bFLOATBOB = true;
-				
-				if (( Target != null && (self.pos.Z <= target.pos.Z)) && self.height >= 56)
-					self.SetOrigin(self.pos + (0, 0, 11.5), true);
-			}
 		}
 	}
 	
@@ -154,6 +158,25 @@ Extend Class ShinDoom_Actor
 				bTELESTOMP = true;
 				bSTAYDEAD = true;
 				bBOSSDEATH = false;
+			}
+			
+						
+			if (bSHINFLYER == true)
+			{
+				FloatBobStrength = 0.2;
+				FloatBobFactor = 0.4;
+				bFLOATBOB = true;
+				bFLOAT = true;
+				bNOGRAVITY = true;
+				
+				if (( Target != null && (self.pos.Z <= target.pos.Z)) && self.height >= 56)
+				{
+					self.SetOrigin(self.pos + (0, 0, 11.5), true);
+					if (bDONTFALL == true && self.CheckClass("Shin_Painsoul") == false)
+					{
+						self.SetOrigin(self.pos + (0, 0, 100), true);
+					}
+				}
 			}
 		}
 	}
@@ -202,18 +225,52 @@ Extend Class ShinDoom_Actor
 			{
 				ISGIBBED = false;
 			}
+			
+			if (bSHINFLYER == true)
+			{
+				if (InStateSequence(CurState, ResolveState("Shin.Raise")) ||
+					InStateSequence(CurState, ResolveState("Raise")) ||
+					InStateSequence(CurState, ResolveState("Death")) || 
+					InStateSequence(CurState, ResolveState("Death.Loop")) || 
+					InStateSequence(CurState, ResolveState("Death.End")) ||
+					InStateSequence(CurState, ResolveState("Death.D1")) ||
+					InStateSequence(CurState, ResolveState("XDeath")) ||
+					InStateSequence(CurState, ResolveState("XDeath.D1")) ||
+					InStateSequence(CurState, ResolveState("Death.Fade.Loop")) ||
+					InStateSequence(CurState, ResolveState("Death.Fade")))
+				{
+					bFLOATBOB = false;
+					FloatBobFactor = 0;
+					FloatBobStrength = 0;
+				}
+				else
+				{
+					bFLOATBOB = true;
+					FloatBobFactor = 0.8;
+					FloatBobStrength = 0.35;
+				}
+				
+				
+				
+				if (InStateSequence(CurState, ResolveState("Missile")) ||
+					 InStateSequence(CurState, ResolveState("Missile2")) ||
+					 InStateSequence(CurState, ResolveState("Missile3")))
+				{
+					FloatBobFactor = 0.4;
+				}
+			}		
  
 			if (bSHINSHADOW == true)
 			{
 		
 				if (InStateSequence(CurState, ResolveState("Death")) || 
-					InStateSequence(CurState, ResolveState("DeathLoop")) || 
-					InStateSequence(CurState, ResolveState("DeathStop")) ||
+					InStateSequence(CurState, ResolveState("Death.Loop")) || 
+					InStateSequence(CurState, ResolveState("Death.End")) ||
 					InStateSequence(CurState, ResolveState("Death.D1")) ||
 					InStateSequence(CurState, ResolveState("XDeath")) ||
 					InStateSequence(CurState, ResolveState("XDeath.D1")) ||
-					InStateSequence(CurState, ResolveState("DeathFade.Loop")) ||
-					InStateSequence(CurState, ResolveState("DeathFade")) ||
+					InStateSequence(CurState, ResolveState("Death.Fade.Loop")) ||
+					InStateSequence(CurState, ResolveState("Death.Fade")) ||
 					(InStateSequence(CurState, ResolveState("Spawn")) && bSTARTINVIS != true) || 
 					(InStateSequence(CurState, ResolveState("Idle")) && bSTARTINVIS != true))
 				{
@@ -261,7 +318,7 @@ Extend Class ShinDoom_Actor
 			
 				if ((ISINVISABLE != true) && (alpha < visgoal))
 				{
-					if(!InStateSequence(CurState, ResolveState("DeathFade.Loop")))
+					if(!InStateSequence(CurState, ResolveState("Death.Fade.Loop")))
 					{
 						if (alpha > visgoal)
 						{
@@ -291,7 +348,7 @@ Extend Class ShinDoom_Actor
 		 
 				if ((alpha > visgoalx3) && (alpha <= 1.0))
 				{
-					if(!InStateSequence(CurState, ResolveState("DeathFade")))
+					if(!InStateSequence(CurState, ResolveState("Death.Fade")))
 					{
 						A_SetTranslation("None");	
 					}
@@ -299,20 +356,6 @@ Extend Class ShinDoom_Actor
 			}		 
 	   }
     }
-	
-	void A_FlyLook()
-	{
-		A_Look();
-		if (bFLOAT == true && bNOGRAVITY == true)
-			bFLOATBOB = true;
-	}
-	
-	void A_FlyChase()
-	{
-		A_Chase();
-		if (bFLOAT == true && bNOGRAVITY == true)
-			bFLOATBOB = true;
-	}
 	
 	void A_BruisAttack()
 	{
@@ -391,12 +434,12 @@ Extend Class ShinDoom_Actor
 	
 	void A_VileStart()
 	{
-		A_StartSound ("vile/start", CHAN_AUTO);
+		A_StartSound("vile/start", CHAN_AUTO);
 	}
 	
 	void A_VileStart2()
 	{
-		A_StartSound ("vile/start2", CHAN_AUTO);
+		A_StartSound("vile/start2", CHAN_AUTO);
 	}
 	
 	void A_MetalHoof()
@@ -410,8 +453,9 @@ Extend Class ShinDoom_Actor
 	{	
 		if (bBOSSSPAWNED == true)
 		{
-			SetState(FindState("DeathFade"));
+			SetState(FindState("Death.Fade"));
 		}
+		bFLOATBOB = false;
 	}
 	
 	Void A_ShinBossDeath()
@@ -455,7 +499,7 @@ Extend Class ShinDoom_Actor
 	
 	Void A_Scream()
 	{
-		if (bFLOAT == true && bNOGRAVITY == true)
+		if (bSHINFLYER == true)
 			bFLOATBOB = FALSE;
 		
 		if (bBOSS == True || bFULLVOLDEATH == True)
@@ -466,7 +510,7 @@ Extend Class ShinDoom_Actor
 	
 	Void A_XScream()
 	{
-		if (bFLOAT == true && bNOGRAVITY == true)
+		if (bSHINFLYER == true)
 			bFLOATBOB = FALSE;
 		
 		if (bBOSS == True || bFULLVOLDEATH == True)
@@ -479,7 +523,7 @@ Extend Class ShinDoom_Actor
 	{
 		bNOPAIN = true;
 		DamageFactor = 0.3;
-		if (bFLOAT)
+		if (bSHINFLYER == true)
 		{
 			bFLOATBOB = FALSE;
 		}
@@ -489,7 +533,7 @@ Extend Class ShinDoom_Actor
 	{
 		bNOPAIN = false;
 		DamageFactor = 1.0;
-		if (bFLOAT)
+		if (bSHINFLYER == true)
 		{
 			bFLOATBOB = TRUE;
 		}
@@ -510,7 +554,6 @@ Extend Class ShinDoom_Actor
 			'Spectre',
 			'Lostsoul',
 			'Shin_Gargoyle',
-			'Shin_Watcher',
 			'HellKnight'
 		};
 		
@@ -522,7 +565,7 @@ Extend Class ShinDoom_Actor
 		Vector3 FinalPos;
 		int limit = 21;
 		
-		A_StartSound ("misc/teleport",CHAN_VOICE);
+		A_StartSound("misc/teleport",CHAN_VOICE);
  				
 		//Repeat this code 3 times, to spawn 3 clones.
 		For (Int I; I <= 3; I++)

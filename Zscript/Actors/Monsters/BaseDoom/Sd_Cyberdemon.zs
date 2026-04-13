@@ -25,7 +25,7 @@ Class Shin_Cyberdemon : ShinDoom_Actor Replaces Cyberdemon
 		SeeSound "cyber/sight";
 		PainSound "cyber/pain";
 		DeathSound "cyber/death";
-		ShinDoom_Actor.XDeathSound "cyber/death";
+		ShinDoom_Actor.XDeathSound "cyber/xdeath";
 		ActiveSound "cyber/active";
 		Obituary "$OB_CYBORG";
 		Tag "$FN_CYBER";

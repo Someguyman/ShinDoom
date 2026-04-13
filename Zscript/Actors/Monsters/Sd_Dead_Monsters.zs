@@ -99,7 +99,7 @@ Class Shin_DeadPinky : Shin_Pinky
 		Death.Spawndeath:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_Jump(50, "Gibbed");
-			Goto Super::DeathStop+2;
+			Goto Super::Death.End+2;
 		Gibbed:
 			Goto Super::XDeath+9;
 	}
@@ -119,7 +119,7 @@ Class Shin_DeadSpectre : Shin_Spectre
 		Death.Spawndeath:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_Jump(50, "Gibbed");
-			Goto Super::DeathStop+2;
+			Goto Super::Death.End+2;
 		Gibbed:
 			Goto Super::XDeath+9;
 	}
@@ -154,7 +154,7 @@ Class Shin_DeadCaco : Shin_Cacodemon Replaces DeadCacodemon
 		Death.Spawndeath:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_Jump(50, "Gibbed");
-			Goto Super::DeathStop+3;
+			Goto Super::Death.End+3;
 		Gibbed:
 			Goto Super::XDeath+9;
 	}
@@ -513,23 +513,6 @@ Class Shin_DeadNightmareSpectre : Shin_NightmareSpectre
 Class Shin_DeadHellHound : Shin_HellHound
 {
 	Default { -COUNTKILL +NEVERRESPAWN -BOSSDEATH }
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Die("spawndeath");
-			Stop;
-		Idle:
-			Goto Super::Spawn;
-		Death.Spawndeath:
-			TNT1 A 0 A_NoBlocking;
-			Goto Super::Death+7;
-	}
-}
-
-Class Shin_DeadWatcher : Shin_Watcher
-{
-	Default { -COUNTKILL +NEVERRESPAWN }
 	States
 	{
 		Spawn:
