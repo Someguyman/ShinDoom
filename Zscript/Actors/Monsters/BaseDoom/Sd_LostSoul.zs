@@ -20,6 +20,7 @@ Class Shin_LostSoul : ShinDoom_Actor Replaces LostSoul
 		+ONLYSLAMSOLID
 		+NOINFIGHTSPECIES
 		+DONTHARMSPECIES
+		+NOBLOOD
 		BounceType "Doom";
 		//scale 1.1;
 		AttackSound "skull/melee";

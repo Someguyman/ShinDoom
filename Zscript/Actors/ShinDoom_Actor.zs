@@ -237,7 +237,9 @@ Extend Class ShinDoom_Actor
 					InStateSequence(CurState, ResolveState("XDeath")) ||
 					InStateSequence(CurState, ResolveState("XDeath.D1")) ||
 					InStateSequence(CurState, ResolveState("Death.Fade.Loop")) ||
-					InStateSequence(CurState, ResolveState("Death.Fade")))
+					InStateSequence(CurState, ResolveState("Death.Fade")) ||
+					InStateSequence(CurState, ResolveState("Crush")) ||
+					InStateSequence(CurState, ResolveState("Crush.Loop")))
 				{
 					bFLOATBOB = false;
 					FloatBobFactor = 0;

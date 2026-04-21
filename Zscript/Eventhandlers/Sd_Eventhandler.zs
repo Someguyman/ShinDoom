@@ -189,7 +189,7 @@ Class ShinDoom_EventHandler : EventHandler
 			{
 				if ( mapName.Left(2) == "e4" && mapName.Mid(2, 1) == "m" )
 				{
-					e.Replacement = 'Shin_HellGaurd';
+					e.Replacement = 'Shin_HellKnight';
 				}
 			}
 		}
