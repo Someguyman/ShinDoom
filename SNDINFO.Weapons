@@ -56,7 +56,7 @@ Weapons/MachineGun DSMCHNGN
 weaponDn/Chainsaw DSSAWDN
 weaponUP/Pistol DSPISUP
 weaponUp/SMG DSSMGGUP
-weaponUP/Shotgun dswpnup
+weaponUP/Shotgun DSSHGNPU
 weaponUP/SuperShotgun dsdbcls
 weaponUP/Machinegun DSMNGUP
 weaponUP/Chaingun DSCGNPU
@@ -72,7 +72,7 @@ $Pitchset WeaponUP/GaussCannon 0.7
 misc/w_pkup_Saw DSSWPIC
 misc/w_pkup_Pistol DSPISPK
 misc/w_pkup_SMG DSSMGGPK
-misc/w_pkup_Shotgun DSSHGNPU
+misc/w_pkup_Shotgun dswpnup
 misc/w_pkup_SuperShotgun DSDSGNPK
 misc/w_pkup_Machinegun DSMNGPK
 misc/w_pkup_Chaingun DSCGNPK

@@ -20,14 +20,16 @@ Misc/a_pkup_g1 dsitemup
 Misc/a_pkup_g2 dsitemup
 Misc/a_pkup_s dsitemup
 
+Misc/p_pkup DSGETPOW
 Misc/p_pkup_v DSGETPWV
 Misc/p_pkup_i DSGETPWI
 Misc/p_pkup_a DSGETPWA
 Misc/p_pkup_r DSGETPWR
 Misc/p_pkup_l DSGETPWL
-Misc/p_pkup_s DSGETPWS
-Misc/p_pkup_m DSGETPWM
+Misc/p_pkup_s DSGETPWM
+Misc/p_pkup_m DSGETPOW
 Misc/p_pkup_q DSGETPWQ
+$pitchset Misc/p_pkup_m 0.8
 
 Misc/b_pkup	DSAMMOP4
 
